@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import { loadQuestions, loadModels, saveResult } from './loader';
+import { loadQuestions, loadModels, saveResult, saveModelResults } from './loader';
 import { askQuestion, judgeAnswer, JUDGE_SYSTEM_PROMPT } from './api';
 import { TestResult } from './types';
 import { generateHash, createVersionInfo } from './hash';
@@ -33,13 +33,14 @@ async function main() {
   console.log(`Using judge model: ${JUDGE_MODEL}\n`);
 
   const results: TestResult[] = [];
+  const resultsByModel: Record<string, TestResult[]> = {};
   const outputDir = path.join(__dirname, '../output');
   let humanReviewCount = 0;
 
   // Test each model with each question
-  for (const model of models) {
+  for (const modelId of models) {
     console.log(`\n${'='.repeat(60)}`);
-    console.log(`Testing model: ${model.name} (${model.id})`);
+    console.log(`Testing model: ${modelId}`);
     console.log('='.repeat(60));
 
     for (const question of questions) {
@@ -48,7 +49,7 @@ async function main() {
 
       try {
         // Ask the question
-        const answer = await askQuestion(OPENROUTER_API_KEY, model, question);
+        const answer = await askQuestion(OPENROUTER_API_KEY, modelId, question);
         console.log(`  A: ${answer}`);
 
         // Judge the answer
@@ -76,8 +77,8 @@ async function main() {
         // Store the result
         const result: TestResult = {
           questionId: question.id,
-          modelId: model.id,
-          modelName: model.name,
+          modelId: modelId,
+          modelName: modelId,
           question: question.question,
           answer,
           judgment,
@@ -88,10 +89,10 @@ async function main() {
         };
 
         results.push(result);
-
-        // Save individual result
-        const fileName = `${model.id.replace(/\//g, '_')}_${question.id}.json`;
-        saveResult(outputDir, fileName, result);
+        if (!resultsByModel[modelId]) {
+          resultsByModel[modelId] = [];
+        }
+        resultsByModel[modelId].push(result);
 
       } catch (error) {
         console.error(`  Error: ${error instanceof Error ? error.message : String(error)}`);
@@ -103,8 +104,8 @@ async function main() {
         // Store error result
         const result: TestResult = {
           questionId: question.id,
-          modelId: model.id,
-          modelName: model.name,
+          modelId: modelId,
+          modelName: modelId,
           question: question.question,
           answer: `ERROR: ${error instanceof Error ? error.message : String(error)}`,
           judgment: 'ERROR',
@@ -115,11 +116,20 @@ async function main() {
         };
         
         results.push(result);
+        if (!resultsByModel[modelId]) {
+          resultsByModel[modelId] = [];
+        }
+        resultsByModel[modelId].push(result);
       }
 
       // Small delay to avoid rate limiting
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
+  }
+
+  // Save grouped model results
+  for (const modelId of Object.keys(resultsByModel)) {
+    saveModelResults(outputDir, modelId, resultsByModel[modelId]);
   }
 
   // Save summary results

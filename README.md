@@ -48,7 +48,7 @@ This will:
 1. Load questions from `data/questions.json`
 2. Load models from `data/models.json`
 3. Query each model with each question
-4. Save individual responses to `output/`
+4. Save grouped model responses to `output/{company}/{model}.json`
 5. Use a judge model to evaluate each answer
 6. Flag answers that need human review
 7. Generate a summary report with hashes
@@ -117,14 +117,13 @@ Questions are defined in `data/questions.json` with the following structure:
 
 ## Models Format
 
-Models are defined in `data/models.json` as a flat array:
+Models are defined in `data/models.json` as a flat array of OpenRouter model IDs:
 
 ```json
 [
-  {
-    "id": "openai/gpt-4o",
-    "name": "GPT-4o"
-  }
+  "openai/gpt-4o",
+  "openai/gpt-4o-mini",
+  "anthropic/claude-3.5-sonnet"
 ]
 ```
 
@@ -137,7 +136,7 @@ You can add new models automatically:
 1. Go to the "Actions" tab
 2. Select "Add Model" workflow
 3. Click "Run workflow"
-4. Enter the model ID and name
+4. Enter the model ID
 5. A pull request will be created automatically
 
 ## Configuration
@@ -158,8 +157,10 @@ The judge uses a dedicated system prompt that instructs it to:
 ## Output
 
 Results are saved in the `output/` directory:
-- Individual test results: `{model-id}_{question-id}.json`
+- Grouped model results: `{company}/{model}.json`
 - Summary report: `summary.json`
+
+Each `{company}/{model}.json` file contains an array of all question/answer results for that model.
 
 Each result includes:
 - Question and answer

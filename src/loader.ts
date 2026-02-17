@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Ajv from 'ajv';
-import { Question, QuestionsData, Model } from './types';
+import { Question, QuestionsData } from './types';
 
 const ajv = new Ajv();
 
@@ -28,8 +28,8 @@ export function loadQuestions(filePath: string): Question[] {
 /**
  * Load and validate models from JSON file
  */
-export function loadModels(filePath: string): Model[] {
-  const data = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as Model[];
+export function loadModels(filePath: string): string[] {
+  const data = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as string[];
   return data;
 }
 
@@ -49,4 +49,30 @@ export function saveResult(outputDir: string, fileName: string, data: unknown): 
   ensureOutputDir(outputDir);
   const filePath = path.join(outputDir, fileName);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+}
+
+/**
+ * Parse model id into company and model name
+ */
+export function parseModelId(modelId: string): { company: string; modelName: string } {
+  const [company = 'unknown', ...modelParts] = modelId.split('/');
+  const modelName = modelParts.join('/') || company;
+  return { company, modelName };
+}
+
+/**
+ * Sanitize text for safe file names
+ */
+export function sanitizeFileName(value: string): string {
+  return value.replace(/[\\/:*?"<>|]/g, '_');
+}
+
+/**
+ * Save model results to output/{company}/{model}.json
+ */
+export function saveModelResults(outputDir: string, modelId: string, data: unknown): void {
+  const { company, modelName } = parseModelId(modelId);
+  const companyDir = path.join(outputDir, sanitizeFileName(company));
+  const fileName = `${sanitizeFileName(modelName)}.json`;
+  saveResult(companyDir, fileName, data);
 }
