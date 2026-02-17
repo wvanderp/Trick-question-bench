@@ -45,7 +45,7 @@ export function ensureOutputDir(dirPath: string): void {
 /**
  * Save result to a JSON file
  */
-export function saveResult(outputDir: string, fileName: string, data: any): void {
+export function saveResult(outputDir: string, fileName: string, data: unknown): void {
   ensureOutputDir(outputDir);
   const filePath = path.join(outputDir, fileName);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
