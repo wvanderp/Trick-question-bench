@@ -126,10 +126,11 @@ Answer: ${answer}`;
     JUDGE_SYSTEM_PROMPT
   );
   
-  // Parse the judgment
-  const judgmentUpper = judgment.toUpperCase();
-  const passed = judgmentUpper.includes('PASS') && !judgmentUpper.includes('FAIL');
-  const needsHumanReview = judgmentUpper.includes('NEEDS_HUMAN_REVIEW');
+  // Parse the judgment - check the beginning of the judgment only
+  const trimmedJudgment = judgment.trim();
+  const firstLine = trimmedJudgment.split('\n')[0].toUpperCase();
+  const passed = firstLine.startsWith('PASS') && !firstLine.startsWith('FAIL');
+  const needsHumanReview = judgment.toUpperCase().includes('NEEDS_HUMAN_REVIEW');
   
   // Extract confidence if present
   let confidence: string | undefined;
