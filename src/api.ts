@@ -45,6 +45,16 @@ export async function queryModel(
   }
 
   const data = await response.json() as OpenRouterResponse;
+  
+  // Validate response structure
+  if (!data.choices || !Array.isArray(data.choices) || data.choices.length === 0) {
+    throw new Error('Invalid response structure from OpenRouter API');
+  }
+  
+  if (!data.choices[0].message || typeof data.choices[0].message.content !== 'string') {
+    throw new Error('Invalid message structure in OpenRouter API response');
+  }
+  
   return data.choices[0].message.content;
 }
 
