@@ -14,8 +14,11 @@ export interface Model {
   name: string;
 }
 
-export interface ModelsData {
-  models: Model[];
+export interface JudgmentResult {
+  judgment: string;
+  passed: boolean;
+  needsHumanReview: boolean;
+  confidence?: string;
 }
 
 export interface TestResult {
@@ -26,5 +29,15 @@ export interface TestResult {
   answer: string;
   judgment: string;
   passed: boolean;
+  needsHumanReview: boolean;
   timestamp: string;
+  hash: string;
+}
+
+export interface VersionInfo {
+  questionId: string;
+  question: string;
+  judgePrompt: string;
+  judgeSystemPrompt: string;
+  judgeModel: string;
 }

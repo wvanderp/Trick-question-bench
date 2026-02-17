@@ -1,8 +1,9 @@
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { loadQuestions, loadModels, saveResult } from './loader';
-import { askQuestion, judgeAnswer } from './api';
+import { askQuestion, judgeAnswer, JUDGE_SYSTEM_PROMPT } from './api';
 import { TestResult } from './types';
+import { generateHash, createVersionInfo } from './hash';
 
 // Load environment variables
 dotenv.config();
@@ -33,6 +34,7 @@ async function main() {
 
   const results: TestResult[] = [];
   const outputDir = path.join(__dirname, '../output');
+  let humanReviewCount = 0;
 
   // Test each model with each question
   for (const model of models) {
@@ -50,15 +52,26 @@ async function main() {
         console.log(`  A: ${answer}`);
 
         // Judge the answer
-        const { judgment, passed } = await judgeAnswer(
+        const { judgment, passed, needsHumanReview, confidence } = await judgeAnswer(
           OPENROUTER_API_KEY,
           JUDGE_MODEL,
           question,
           answer
         );
         
+        // Generate hash for this test
+        const versionInfo = createVersionInfo(question, JUDGE_SYSTEM_PROMPT, JUDGE_MODEL);
+        const hash = generateHash(versionInfo);
+        
         console.log(`  Judge: ${judgment}`);
         console.log(`  Result: ${passed ? '✓ PASS' : '✗ FAIL'}`);
+        if (needsHumanReview) {
+          console.log(`  ⚠️  NEEDS HUMAN REVIEW`);
+          humanReviewCount++;
+        }
+        if (confidence) {
+          console.log(`  Confidence: ${confidence}`);
+        }
 
         // Store the result
         const result: TestResult = {
@@ -69,7 +82,9 @@ async function main() {
           answer,
           judgment,
           passed,
-          timestamp: new Date().toISOString()
+          needsHumanReview,
+          timestamp: new Date().toISOString(),
+          hash
         };
 
         results.push(result);
@@ -81,6 +96,10 @@ async function main() {
       } catch (error) {
         console.error(`  Error: ${error instanceof Error ? error.message : String(error)}`);
         
+        // Generate hash even for errors
+        const versionInfo = createVersionInfo(question, JUDGE_SYSTEM_PROMPT, JUDGE_MODEL);
+        const hash = generateHash(versionInfo);
+        
         // Store error result
         const result: TestResult = {
           questionId: question.id,
@@ -90,7 +109,9 @@ async function main() {
           answer: `ERROR: ${error instanceof Error ? error.message : String(error)}`,
           judgment: 'ERROR',
           passed: false,
-          timestamp: new Date().toISOString()
+          needsHumanReview: true,
+          timestamp: new Date().toISOString(),
+          hash
         };
         
         results.push(result);
@@ -106,7 +127,9 @@ async function main() {
     totalTests: results.length,
     passed: results.filter(r => r.passed).length,
     failed: results.filter(r => !r.passed).length,
+    needsHumanReview: results.filter(r => r.needsHumanReview).length,
     timestamp: new Date().toISOString(),
+    judgeModel: JUDGE_MODEL,
     results
   });
 
@@ -115,6 +138,7 @@ async function main() {
   console.log(`  Total tests: ${results.length}`);
   console.log(`  Passed: ${results.filter(r => r.passed).length}`);
   console.log(`  Failed: ${results.filter(r => !r.passed).length}`);
+  console.log(`  Needs human review: ${humanReviewCount}`);
   console.log(`\nResults saved to: ${outputDir}`);
 }
 

@@ -1,0 +1,72 @@
+name: Run Benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      models:
+        description: 'Comma-separated list of model IDs to test (leave empty for all)'
+        required: false
+        type: string
+      questions:
+        description: 'Comma-separated list of question IDs to test (leave empty for all)'
+        required: false
+        type: string
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run benchmark
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          JUDGE_MODEL: ${{ vars.JUDGE_MODEL || 'openai/gpt-4o' }}
+        run: npm start
+      
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results-${{ github.run_number }}
+          path: output/
+          retention-days: 90
+      
+      - name: Commit results
+        if: success()
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add output/
+          git diff --quiet && git diff --staged --quiet || git commit -m "Add benchmark results from run ${{ github.run_number }}"
+      
+      - name: Push results
+        if: success()
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+      
+      - name: Create summary
+        if: always()
+        run: |
+          if [ -f output/summary.json ]; then
+            echo "## Benchmark Results" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Total Tests:** $(jq '.totalTests' output/summary.json)" >> $GITHUB_STEP_SUMMARY
+            echo "**Passed:** $(jq '.passed' output/summary.json)" >> $GITHUB_STEP_SUMMARY
+            echo "**Failed:** $(jq '.failed' output/summary.json)" >> $GITHUB_STEP_SUMMARY
+            echo "**Needs Human Review:** $(jq '.needsHumanReview' output/summary.json)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Results have been saved to the output directory." >> $GITHUB_STEP_SUMMARY
+          fi

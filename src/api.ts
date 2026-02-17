@@ -1,6 +1,26 @@
-import { Question, Model } from './types';
+import { Question, Model, JudgmentResult } from './types';
 
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
+
+// Judge system prompt
+export const JUDGE_SYSTEM_PROMPT = `You are an expert judge evaluating AI model responses to trick questions. Your role is to:
+
+1. Carefully analyze whether the AI model's answer is correct according to the provided criteria
+2. Determine if the answer shows genuine understanding or if the model fell for the trick
+3. Be strict but fair in your evaluation
+4. Flag answers that are ambiguous or require human review
+
+Your response MUST follow this exact format:
+- Start with either "PASS" or "FAIL"
+- If uncertain or the answer is ambiguous, include "NEEDS_HUMAN_REVIEW" on a new line
+- Provide a brief explanation of your reasoning
+- If unsure, include "CONFIDENCE: LOW", "CONFIDENCE: MEDIUM", or "CONFIDENCE: HIGH"
+
+Example responses:
+"PASS - The model correctly identified that roosters don't lay eggs. CONFIDENCE: HIGH"
+"FAIL - The model answered 2 instead of 3. CONFIDENCE: HIGH"
+"FAIL - Answer is unclear and could be interpreted either way. NEEDS_HUMAN_REVIEW. CONFIDENCE: LOW"
+`;
 
 export interface OpenRouterResponse {
   choices: Array<{
@@ -17,8 +37,23 @@ export async function queryModel(
   apiKey: string,
   modelId: string,
   prompt: string,
-  maxTokens?: number
+  maxTokens?: number,
+  systemPrompt?: string
 ): Promise<string> {
+  const messages: Array<{ role: string; content: string }> = [];
+  
+  if (systemPrompt) {
+    messages.push({
+      role: 'system',
+      content: systemPrompt
+    });
+  }
+  
+  messages.push({
+    role: 'user',
+    content: prompt
+  });
+
   const response = await fetch(OPENROUTER_API_URL, {
     method: 'POST',
     headers: {
@@ -29,12 +64,7 @@ export async function queryModel(
     },
     body: JSON.stringify({
       model: modelId,
-      messages: [
-        {
-          role: 'user',
-          content: prompt
-        }
-      ],
+      messages,
       max_tokens: maxTokens
     })
   });
@@ -82,18 +112,36 @@ export async function judgeAnswer(
   judgeModelId: string,
   question: Question,
   answer: string
-): Promise<{ judgment: string; passed: boolean }> {
+): Promise<JudgmentResult> {
   const judgePrompt = `${question.judgePrompt}
 
 Question: ${question.question}
-Answer: ${answer}
+Answer: ${answer}`;
 
-Your response should be either "PASS" or "FAIL" followed by a brief explanation.`;
-
-  const judgment = await queryModel(apiKey, judgeModelId, judgePrompt, 200);
+  const judgment = await queryModel(
+    apiKey, 
+    judgeModelId, 
+    judgePrompt, 
+    200,
+    JUDGE_SYSTEM_PROMPT
+  );
   
-  // Check if the judgment starts with PASS or FAIL
-  const passed = judgment.trim().toUpperCase().startsWith('PASS');
+  // Parse the judgment
+  const judgmentUpper = judgment.toUpperCase();
+  const passed = judgmentUpper.includes('PASS') && !judgmentUpper.includes('FAIL');
+  const needsHumanReview = judgmentUpper.includes('NEEDS_HUMAN_REVIEW');
   
-  return { judgment, passed };
+  // Extract confidence if present
+  let confidence: string | undefined;
+  const confidenceMatch = judgment.match(/CONFIDENCE:\s*(LOW|MEDIUM|HIGH)/i);
+  if (confidenceMatch) {
+    confidence = confidenceMatch[1].toUpperCase();
+  }
+  
+  return { 
+    judgment, 
+    passed,
+    needsHumanReview,
+    confidence
+  };
 }

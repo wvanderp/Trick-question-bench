@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Ajv from 'ajv';
-import { Question, QuestionsData, Model, ModelsData } from './types';
+import { Question, QuestionsData, Model } from './types';
 
 const ajv = new Ajv();
 
@@ -29,8 +29,8 @@ export function loadQuestions(filePath: string): Question[] {
  * Load and validate models from JSON file
  */
 export function loadModels(filePath: string): Model[] {
-  const data = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as ModelsData;
-  return data.models;
+  const data = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as Model[];
+  return data;
 }
 
 /**
