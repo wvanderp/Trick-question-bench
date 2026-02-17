@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Question",
+  "description": "Schema for a trick question with judge prompt",
+  "type": "object",
+  "required": ["id", "question", "judgePrompt"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the question"
+    },
+    "question": {
+      "type": "string",
+      "description": "The trick question to ask the AI model"
+    },
+    "judgePrompt": {
+      "type": "string",
+      "description": "The prompt to use when judging the answer"
+    },
+    "tokenLimit": {
+      "type": "integer",
+      "description": "Optional maximum number of tokens for the response",
+      "minimum": 1
+    }
+  }
+}
