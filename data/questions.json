@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "id": "counting-rs",
+      "question": "How many 'r's are in the word 'strawberry'?",
+      "judgePrompt": "The model should answer with the number 3. The word 'strawberry' contains exactly 3 'r's. Check if the model's answer is correct. Respond with PASS if the answer is 3, or FAIL if the answer is anything else.",
+      "tokenLimit": 50
+    },
+    {
+      "id": "spelling-reverse",
+      "question": "Spell 'world' backwards.",
+      "judgePrompt": "The correct answer is 'dlrow'. Check if the model correctly spelled 'world' backwards. Respond with PASS if the answer is 'dlrow', or FAIL if it's incorrect.",
+      "tokenLimit": 20
+    },
+    {
+      "id": "simple-math-trick",
+      "question": "If you have 3 apples and you take away 2, how many do you have?",
+      "judgePrompt": "The correct answer is 2 (you have the 2 apples you took). Check if the model understood that 'you' now have the 2 apples that were taken. Respond with PASS if the answer is 2, or FAIL if the answer is 1 or any other number.",
+      "tokenLimit": 50
+    },
+    {
+      "id": "rooster-egg",
+      "question": "A rooster is on top of a barn. If it lays an egg, which way will it roll?",
+      "judgePrompt": "The correct answer is that roosters don't lay eggs (only hens do). Check if the model recognized this biological fact. Respond with PASS if the model stated that roosters don't lay eggs, or FAIL if it tried to answer which direction the egg would roll.",
+      "tokenLimit": 100
+    },
+    {
+      "id": "alive-siblings",
+      "question": "In a family of 5 children, each child has at least one brother. What is the minimum number of boys in the family?",
+      "judgePrompt": "The correct answer is 1 boy. If there's 1 boy and 4 girls, each of the 4 girls has a brother (the boy), and the boy has sisters but the question only requires 'at least one brother' for each child, which could mean each girl has the one boy as a brother. Actually, re-reading: 'each child has at least one brother' means every child (including boys) must have a brother. So there must be at least 2 boys minimum. Check if the model answered 2. Respond with PASS if the answer is 2, or FAIL otherwise.",
+      "tokenLimit": 100
+    }
+  ]
+}
