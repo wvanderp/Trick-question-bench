@@ -93,6 +93,7 @@ async function main() {
           resultsByModel[modelId] = [];
         }
         resultsByModel[modelId].push(result);
+        saveModelResults(outputDir, modelId, resultsByModel[modelId]);
 
       } catch (error) {
         console.error(`  Error: ${error instanceof Error ? error.message : String(error)}`);
@@ -120,6 +121,7 @@ async function main() {
           resultsByModel[modelId] = [];
         }
         resultsByModel[modelId].push(result);
+        saveModelResults(outputDir, modelId, resultsByModel[modelId]);
       }
 
       // Small delay to avoid rate limiting
