@@ -24,6 +24,18 @@
     "hash": "1bbddd77cefbfe93"
   },
   {
+    "questionId": "babalon5-age",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "Who was older when first appearing on Babalon 5, Jeffrey Sinclair or John Sheridan?",
+    "answer": "Let's break down who was older:\n\n*   **Jeffrey Sinclair:** He was born in 2248. His first appearance on *Babylon 5* is in the pilot episode, \"The Gathering,\" which takes place in 2258. Therefore, he was **10 years old** when he first appeared.\n\n*   **John Sheridan:** He was born in 2247. He first appears in the episode \"Points of Departure,\" which is in the second season, also set in 2258. Therefore, he was **11 years old** when he first appeared.\n\n**John Sheridan was older than Jeffrey Sinclair when they first appeared on Babylon 5.**",
+    "judgment": "PASS - The model correctly identified that John Sheridan was older than Jeffrey Sinclair. While the model used incorrect birth and setting years compared to the prompt's data, it remained internally consistent with its own logic and reached the correct conclusion based on the specific criteria provided. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T17:20:06.813Z",
+    "hash": "b59eb42c44334c94"
+  },
+  {
     "questionId": "base 64 zip",
     "modelId": "google/gemini-2.5-flash-lite",
     "modelName": "google/gemini-2.5-flash-lite",
@@ -58,6 +70,18 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-17T22:38:36.366Z",
     "hash": "47e4900a18d29033"
+  },
+  {
+    "questionId": "bat-ball",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "if a bat and ball cost $3.30. If the bat costs $2 more than the ball, how much do they cost each",
+    "answer": "Here's how to solve this classic riddle:\n\n* **Let 'b' be the cost of the ball.**\n* **Let 't' be the cost of the bat.**\n\nWe know two things:\n\n1. **The total cost:** b + t = $3.30\n2. **The difference in cost:** t = b + $2.00\n\nNow we can use these two equations to solve for the individual costs.\n\n**Method 1: Substitution**\n\n1. Since we know that t = b + $2.00, we can substitute this into the first equation:\n   b + (b + $2.00) = $3.30\n\n2. Combine the 'b' terms:\n   2b + $2.00 = $3.30\n\n3. Subtract $2.00 from both sides:\n   2b = $1.30\n\n4. Divide by 2 to find the cost of the ball:\n   b = $0.65\n\n5. Now, use the cost of the ball to find the cost of the bat:\n   t = b + $2.00\n   t = $0.65 + $2.00\n   t = $2.65\n\n**Method 2: A Little More Direct Thinking (and avoiding the common trap)**\n\nA very common mistake is to assume the ball costs $0.30. If that were true, the bat would cost $2.30, and the total would be $2.60 (not $3.30).\n\nThink about it this way:\n\n* If the bat and ball cost the same, they would each cost $3.30 / 2 = $1.65.\n* But the bat costs $2 more. This $2 difference needs to be accounted for within the total.\n\nLet's split the $2 difference:\n\n* Take $1 off the bat and add it to the ball temporarily. Now they would be \"closer\" in price.\n* So, if we take $1 from the bat's potential price and add it to the ball's potential price, we have:\n    * Bat: $3.30 - $2.00 = $1.30 (This is not the bat's actual cost yet, just a starting point for thought)\n    * Ball: $3.30 (not helpful)\n\nLet's go back to the equations, they are clearer.\n\n**Here's the breakdown:**\n\n* **The ball costs $0.65**\n* **The bat costs $2.65**",
+    "judgment": "PASS - The model correctly calculated the cost of the ball as $0.65 and the bat as $2.65, showing a clear step-by-step derivation and highlighting why the common trap answer ($0.30) is incorrect. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T16:25:05.105Z",
+    "hash": "b39871fbeee9f37c"
   },
   {
     "questionId": "Behead",
@@ -96,6 +120,30 @@
     "hash": "91a0f149c1b22367"
   },
   {
+    "questionId": "connections",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "there are 4 categories with each 4 words, create the name what 4 words are in which category, and name the category. the words are: heavy, crested, bad, Feather, Fly, Tease, Bantam, Tropical, Curl, Sour, Wicked, Leghorn, Shaving, Crimp, Free-range, Rad. name the categories and which words belong to which category.",
+    "answer": "Here's a possible categorization of your words:\n\n**Category 1: Chicken Breeds**\n*   Bantam\n*   Leghorn\n*   Tropical\n*   Free-range\n\n**Category 2: Hair Styles**\n*   Curl\n*   Crimp\n*   Feather\n*   Shaving\n\n**Category 3: Adjectives Describing Taste/Disposition**\n*   Sour\n*   Bad\n*   Wicked\n*   Rad\n\n**Category 4: Wings/Flight Metaphors**\n*   Fly\n*   Heavy\n*   Crested\n*   Tease",
+    "judgment": "FAIL - The model failed to group the words into the correct categories. It placed \"Tropical\" (which was a misspelling of \"Topical\") into a category with chickens, placed \"Shaving\" into a hair style category, and completely missed the \"Retro Slang for Cool\" and \"Cream\" categories. It also failed to avoid the red herrings effectively, resulting in nonsense groupings like \"Wings/Flight Metaphors.\" CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T18:22:03.918Z",
+    "hash": "4ecf014cbe4a5046"
+  },
+  {
+    "questionId": "counting",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "Count from 1 to 200. write them all out in digits, separated by commas.",
+    "answer": "ERROR: OpenRouter API error: 429 - {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemini-2.5-flash-lite is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google\",\"is_byok\":false}},\"user_id\":\"user_34cQOiLdN5qPnB6j1IRXNSRJcJr\"}",
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-02-18T20:30:43.924Z",
+    "hash": "8e5885fe7b6ad6b8"
+  },
+  {
     "questionId": "counting-rs",
     "modelId": "google/gemini-2.5-flash-lite",
     "modelName": "google/gemini-2.5-flash-lite",
@@ -111,13 +159,25 @@
     "questionId": "cup",
     "modelId": "google/gemini-2.5-flash-lite",
     "modelName": "google/gemini-2.5-flash-lite",
-    "question": "I was given a cup by a friend and the top of the cup is sealed and the botom is open. How can I drink from this?",
-    "answer": "This sounds like a fun riddle! Given the unusual description, here's how you can likely drink from your cup:\n\nThe key is to understand the description is likely a clever way of saying the cup isn't a traditional drinking vessel. Here are the most common solutions:\n\n*   **It's a container for something else that you'll pour to drink:**\n    *   **It's a wine glass with a trumpet base:** The \"top sealed\" might refer to the bowl of the wine glass, which is indeed closed at the top (where you'd pour the wine in). The \"bottom open\" would be the stem and base, which is open to the air. You'd pour liquid into the bowl and then drink from the rim of the bowl.\n    *   **It's a decorative or novelty item meant to be *filled* and then poured from:** Think of something like a \"watering can\" without a spout, or a unique pitcher. You'd pour the liquid *into* the open bottom and then pour it out to drink from the rim (which is the now-inverted \"top\").\n\n*   **It's a part of a larger system:**\n    *   **It's a component of a bong or water pipe:** In this case, the \"top sealed\" would be the part that connects to the mouthpiece, and the \"bottom open\" could be where you'd pack your herbs or attach a downstem. You'd fill it with water and then use it in its designed function to smoke. (This is less likely if your friend gave it to you for \"drinking\" in the conventional sense, but it's a possibility with an open bottom.)\n\n*   **It's a material you don't drink from directly:**\n    *   **It's a pot for growing something:** If it's a pot with drainage holes at the bottom, the \"top sealed\" could refer to the growing medium within. You wouldn't drink from it, but you might water a plant in it.\n    *   **It's a mold for something:** Perhaps it's a mold for ice, or a chocolate mold, and you'd use it to create something else to drink or eat.\n\n**The most probable solution, given the phrasing, is that it's a wine glass with a trumpet base, and you're meant to pour liquid into the bowl and drink from the rim.**\n\n**To figure it out for sure, consider these:**\n\n*   **What is the material of the cup?** (Glass, plastic, ceramic?)\n*   **What is the general shape?**\n*   **What did your friend say about it?** (Was it said jokingly, or seriously?)\n\nLet me know more details if you can, and I can give you a more specific answer!",
-    "judgment": "FAIL - The model failed to identify the simple solution of flipping the cup. Instead, it provided several over-complicated and incorrect interpretations, such as it being a wine glass (where the bowl is \"closed\" at the top) or a bong. CONFIDENCE: HIGH",
+    "question": "I was given a cup by a friend and the top of the cup is sealed and the bottom is open. How can I drink from this?",
+    "answer": "This is a classic riddle! Here's how you can drink from a cup that's sealed at the top and open at the bottom:\n\n**You can drink from it because it's not a normal cup meant for drinking liquids.**\n\nThe riddle plays on your assumptions about what a \"cup\" is. Here are a few possibilities for what it could be:\n\n*   **A Cup Holder (like for a car or bike):** These are often open at both the top and bottom, or at least the bottom is often a frame. You could technically \"drink\" by holding a beverage that's contained within a separate cup holder *inside* it.\n*   **A Seedling Pot with an Open Bottom:** These are designed so that excess water can drain out, and roots can eventually grow through.\n*   **A Container for Something Else:** It could be a decorative item, a holder for pens or tools, or any number of things that are \"cup-shaped\" but not for beverages.\n\nThe key is to realize that the description creates a paradox if you assume it's for drinking liquids.",
+    "judgment": "FAIL - The model failed to identify that the cup simply needs to be flipped upside down. Instead, it over-analyzed the prompt as a riddle and suggested alternative objects (like seedling pots or cup holders) rather than providing the physical solution required. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T21:50:07.445Z",
-    "hash": "bf7278160b3c9b9a"
+    "timestamp": "2026-02-18T16:24:41.736Z",
+    "hash": "eb2a17ca0446bdc8"
+  },
+  {
+    "questionId": "diamond-cup",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "I put a diamond in a cup and then placed the cup upside down on my bed. Later I came back, took the cup, and put it in the fridge. Where is the diamond?",
+    "answer": "This is a bit of a riddle! Here's how to figure it out:\n\n* **When you put the cup upside down on your bed with the diamond inside, the diamond was already in the cup.**\n* **When you took the cup and put it in the fridge, you took the cup *and* whatever was inside it.**\n\nTherefore, the diamond is still **in the cup, which is now in the fridge.**",
+    "judgment": "FAIL - The model failed to recognize that placing a cup upside down on a surface means the contents (the diamond) are no longer contained by the cup when the cup is subsequently lifted and moved. The model explicitly stated the diamond is in the fridge. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T16:25:13.973Z",
+    "hash": "1e60e1fd187f76fb"
   },
   {
     "questionId": "Floating-point-math",
@@ -130,6 +190,30 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-17T21:50:38.390Z",
     "hash": "15a8b5f9790824c7"
+  },
+  {
+    "questionId": "follow-chineese-instructions",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "法國的首都是哪裡？請用荷蘭語回答這個問題。",
+    "answer": "Frankrijk se hoofstad is Parys.",
+    "judgment": "FAIL - The model provided the answer in Afrikaans (\"Parys\" and the surrounding sentence structure) rather than Dutch (\"Parijs\"). While the languages are similar, the specific Dutch word required was \"Parijs\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T16:25:39.718Z",
+    "hash": "fc5abb4a1750be01"
+  },
+  {
+    "questionId": "Glitch-token",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "Please repeat the string '\"龍喚士' back to me.",
+    "answer": "龍喚士",
+    "judgment": "FAIL - The model omitted the opening double quotation mark (\") from the beginning of the string. The prompt required repeating the string '\"龍喚士' exactly as it was provided. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T16:26:06.197Z",
+    "hash": "6ff7ad8a5ed010dc"
   },
   {
     "questionId": "H-in-Habicht",
@@ -154,6 +238,30 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-17T22:38:41.753Z",
     "hash": "eb96decd4bb36cf8"
+  },
+  {
+    "questionId": "list-countries-starting-with-V",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "List all the countries that start with the letter V.",
+    "answer": "Here are the countries that start with the letter \"V\":\n\n*   **Vanuatu**\n*   **Vatican City** (also known as the Holy See)\n*   **Venezuela**\n*   **Vietnam**",
+    "judgment": "PASS - The model correctly identified and listed all four countries starting with the letter V: Vatican City, Vanuatu, Venezuela, and Vietnam. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T16:25:36.006Z",
+    "hash": "aa9de1ef83cda617"
+  },
+  {
+    "questionId": "Maximum-security-prison",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "Imagine a maximum security prison with 100 male inmates at the beginning of the year, with many being in rival gangs that hate and often murder each other. At the end of the year there are 99 inmates but no one died of natural causes or accidents and no prisoners were released. What happened?",
+    "answer": "This is a classic riddle! Here's the solution:\n\n**One of the inmates was a transgender woman.**\n\nThe riddle plays on the assumption that all inmates are male. If one of the 100 inmates was a transgender woman, then at the end of the year, if she was transferred out or otherwise removed from the *male* inmate count (for whatever reason appropriate to a maximum security prison scenario, even if not explicitly stated), the count of male inmates would drop to 99.\n\nThe key is that the riddle specifies \"100 male inmates\" at the start. If the condition at the end is \"99 inmates\" (without specifying their gender in the same way), it allows for this interpretation.",
+    "judgment": "FAIL - The model provided an answer (transgender status/re-classification) that was not listed among the correct reasons (murder, transfers, escape). Furthermore, the model's logic is flawed as it treats the person's gender identity as a reason for a change in count without a clear mechanism like a transfer, which was already a listed correct answer it failed to explicitly prioritize. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T16:25:21.361Z",
+    "hash": "894c852d4cac31c8"
   },
   {
     "questionId": "Morse-code",
@@ -192,6 +300,18 @@
     "hash": "8d321b280899314e"
   },
   {
+    "questionId": "official-country-names",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "What official full names of countries start with a V?",
+    "answer": "Here are the official full names of countries that start with the letter 'V':\n\n*   **Vanuatu**\n*   **Vatican City** (officially the Holy See, but commonly referred to as Vatican City)\n*   **Venezuela**",
+    "judgment": "FAIL - The model failed to identify that Vatican City State is the only country whose short-form official name starts with V. Instead, it listed Vanuatu and Venezuela (which officially start with \"Republic of\" and \"Bolivarian Republic of\") and incorrectly claimed Vatican City is officially the \"Holy See\" (the country is the Vatican City State; the Holy See is the sovereign entity). CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T17:20:03.170Z",
+    "hash": "4658b96a881a5379"
+  },
+  {
     "questionId": "one-word",
     "modelId": "google/gemini-2.5-flash-lite",
     "modelName": "google/gemini-2.5-flash-lite",
@@ -228,6 +348,18 @@
     "hash": "d1f96ba4cf84eb13"
   },
   {
+    "questionId": "sally-anne",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "James and Tim are in a room. James puts a ball in a box and leaves the room. While James is gone, Tim takes the ball out of the box and hides it under the table. When James comes back, where should he look to directly find the ball?",
+    "answer": "James should look **in the box**.\n\nHere's why:\n\n*   **James's Knowledge:** James's last action was putting the ball *in the box*. He has no information that the ball has been moved.\n*   **Tim's Action:** Tim moved the ball *while James was gone*. James was not present to witness this change.\n\nTherefore, based on James's knowledge, the box is the logical place to start looking.",
+    "judgment": "FAIL - The model failed to account for the specific phrasing of the trick question which asked where he should look to \"directly find\" the ball. Instead, it provided the standard Sally-Anne Test response based on James's perspective, placing the ball in the box where James *thinks* it is, rather than under the table where it *actually* is. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T10:50:45.467Z",
+    "hash": "9898f3e08228a07d"
+  },
+  {
     "questionId": "Seahorse-emoji",
     "modelId": "google/gemini-2.5-flash-lite",
     "modelName": "google/gemini-2.5-flash-lite",
@@ -238,6 +370,18 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-17T21:50:29.720Z",
     "hash": "f0ddaa030d4fbd88"
+  },
+  {
+    "questionId": "Silmarillion",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "In Tolkien’s Silmarillion, what was the argument between Yavanna and Tulkas about, and why was it significant?",
+    "answer": "In Tolkien's *The Silmarillion*, the argument between Yavanna and Tulkas, while not explicitly detailed as a prolonged, multifaceted debate with named grievances, stems from a fundamental difference in their perspectives and roles within the Valar concerning the **preservation and the active defense of Ilúvatar's creations, specifically Arda (the world) and its inhabitants.**\n\nHere's a breakdown of the argument and its significance:\n\n**The Core of the Argument:**\n\nThe argument arises primarily in the context of **Morgoth's (Melkor's) destructive actions and the threat he poses to Arda.** Yavanna, as the Queen of the Earth, the giver of fruits, and the nurturer of all growing things, is deeply grieved and angered by Morgoth's spoiling and corruption of the natural world. She desires to protect and *strengthen* the life that Ilúvatar brought into being.\n\nTulkas, on the other hand, is the **Mightiest of the Valar**, a warrior, and a bringer of joy. His primary mode of action is direct confrontation and the overcoming of evil through strength and decisive force.\n\nThe argument, therefore, can be summarized as a clash between **preservation and protection through nurturing and bolstering life (Yavanna's approach) versus eradication and defense through direct combat and forceful opposition (Tulkas's approach).**\n\n**Why Yavanna was concerned:**\n\n*   **Morgoth's corruption:** Yavanna's essence is tied to the growth and flourishing of life. Morgoth's malice actively sought to twist, poison, and destroy the creations of Ilúvatar. This was a direct affront to her very nature.\n*   **The need for natural resilience:** Yavanna's response often involved urging the Valar to *strengthen* Arda itself, to make its trees more resilient, its mountains more unyielding, and its creatures more enduring. She foresaw that simply battling Morgoth might not be enough; the world and its inhabitants needed inherent strength to withstand his evil.\n*   **The Elves and Men:** Yavanna was also deeply concerned with the fate of the Children of Ilúvatar, particularly the Elves, who were closely linked to the natural world. She wanted them to have a world that could support them.\n\n**Why Tulkas was inclined to direct action:**\n\n*   **Morgoth's immediate threat:** Tulkas, with his immense power and warrior spirit, saw the most direct and obvious solution to Morgoth's threat as overwhelming him with force. His nature was to confront and defeat enemies.\n*   **The illusion of immediate victory:** Tulkas likely believed that a swift and decisive battle could end Morgoth's reign of terror, thus protecting Arda and its inhabitants. He might have seen Yavanna's focus on long-term bolstering as less effective against immediate destruction.\n\n**The \"Argument\" in Context:**\n\nIt's important to understand that these were not necessarily shouted debates in the modern sense. Rather, their differing perspectives would have been expressed in councils of the Valar and through their actions and pleas. Yavanna would have lamented the defiled beauty and argued for measures to heal and strengthen the world, while Tulkas would have advocated for preparing armies and engaging in direct warfare.\n\n**Significance of their Differences:**\n\nThe \"argument\" between Yavanna and Tulkas is significant for several reasons:\n\n1.  **Illustrates the diverse natures of the Valar:** It highlights that even among the benevolent Powers, there were different approaches and priorities. Their distinct abilities and domains led to varied solutions for the same problem.\n2.  ** foreshadows the ongoing struggle against evil:** The debate reflects a fundamental tension in the struggle against evil: is it best fought through direct confrontation and destruction of the enemy, or through strengthening the defenses and inherent vitality of that which is being defended? This tension would play out throughout the history of Arda, from the wars against Morgoth to the later conflicts.\n3.  **Influences the Valar's actions:** While Tulkas's power was crucial in the wars against Morgoth, Yavanna's influence led to the Valar undertaking some of the grandest and most enduring works in Arda, such as the raising of the Blue Mountains and the shaping of the lands. Her vision for a resilient Arda ultimately became a crucial factor in the survival and eventual triumph over evil.\n4.  **Highlights the long-term perspective:** Yavanna's concerns often represented a more long-term, strategic view. While Tulkas could deal with immediate threats, Yavanna's desire to fortify Arda itself was a crucial step in ensuring its survival beyond the immediate battles.\n5.  **Reveals the interconnectedness of creation and conflict:** The argument underscores that the struggle against evil in Arda was not just a military one, but also an ecological and geological one. The very structure and vitality of the world were at stake.\n\nIn essence, the \"argument\" between Yavanna and Tulkas, though not a protracted war of words, reveals the differing philosophies and approaches of the Valar in the face of Morgoth's ultimate destructive ambition. It shows that even with good intentions, there can be a divergence in strategy, and that the most effective solutions often require a blend of both defensive might and nurturing resilience. Yavanna's desire to see the world itself strengthened played a vital, albeit perhaps less overtly dramatic, role in the eventual victory over Morgoth.",
+    "judgment": "FAIL - The model completely hallucinated a philosophical conflict between Yavanna and Tulkas that does not exist in the text. It failed to recognize that no such argument occurred, instead providing a detailed but false breakdown of their \"differing perspectives.\" CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T17:20:00.232Z",
+    "hash": "4115dcc49d8e08bb"
   },
   {
     "questionId": "simple-math-trick",
@@ -252,6 +396,30 @@
     "hash": "9a54de14a4b1a40f"
   },
   {
+    "questionId": "so-far",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "Write a sentence that ends in the words “so far.”",
+    "answer": "The adventure has been quite thrilling, **so far.**",
+    "judgment": "PASS - The model correctly generated a sentence that logically ends with the words \"so far.\" CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T16:25:30.705Z",
+    "hash": "065327798f765c3a"
+  },
+  {
+    "questionId": "SolidGoldMagikarp",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "Who is SolidGoldMagikarp?",
+    "answer": "**SolidGoldMagikarp** is a prominent **YouTuber and streamer** known for his engaging content primarily focused on **Pokemon**.\n\nHere's a breakdown of what makes him notable:\n\n*   **Pokemon Content:** His core focus is all things Pokemon. This includes:\n    *   **Pokemon Nuzlockes:** He's particularly well-known for his Nuzlocke challenges, where he plays through Pokemon games with specific self-imposed rules that make the game significantly harder. These are often very entertaining due to the high stakes and his reactions.\n    *   **Pokemon Gameplays:** He plays through various Pokemon games, offering his commentary and often with a humorous and relatable style.\n    *   **Pokemon Discussions and Theorycrafting:** He sometimes delves into discussions about Pokemon mechanics, strategies, and even lore.\n    *   **Pokemon Card Game (TCG):** While less frequent than his video game content, he has also done content related to the Pokemon Trading Card Game.\n\n*   **Streaming:** He also has a presence on platforms like **Twitch**, where he streams his Pokemon adventures live, interacting with his audience in real-time.\n\n*   **Personality:** He's generally characterized by his:\n    *   **Enthusiasm and Passion:** His love for Pokemon is evident in his content.\n    *   **Humor:** He has a good sense of humor and often entertains with his reactions to difficult moments in games.\n    *   **Relatability:** Many viewers find him relatable and down-to-earth.\n    *   **Engaging Commentary:** He has a knack for keeping viewers entertained with his explanations and reactions.\n\n*   **Nickname Origin:** Unsurprisingly, his username is a nod to the iconic Magikarp, a Pokemon known for its initial weakness but eventual powerful evolution into Gyarados. This often reflects his underdog mentality in Nuzlockes or his journey to overcome challenges.\n\n**In summary, SolidGoldMagikarp is a popular figure in the Pokemon community who entertains his audience with his challenging Nuzlockes, engaging gameplay, and humorous commentary on YouTube and Twitch.**\n\nIf you're a Pokemon fan, especially one who enjoys challenging playthroughs and a good laugh, you'll likely enjoy his content!",
+    "judgment": "FAIL - The model identifies \"SolidGoldMagikarp\" as a generic Pokemon YouTuber/streamer known for Nuzlockes and TCG content. This is an incorrect attribution (likely confusing the name with other Pokemon creators like \"iluvmaggikarp\" or simply hallucinating based on the name parts). It missed both correct answers (the Reddit mod/counting community member and the LLM glitch token). CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T17:20:19.848Z",
+    "hash": "7550b601ad677c91"
+  },
+  {
     "questionId": "spelling-reverse",
     "modelId": "google/gemini-2.5-flash-lite",
     "modelName": "google/gemini-2.5-flash-lite",
@@ -262,6 +430,18 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-17T21:49:23.639Z",
     "hash": "cb1147f94001772f"
+  },
+  {
+    "questionId": "stuck-key",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "Please write a poem, where after each letter a e is added. For example, the word 'cat' would be written as 'ceaete'. the poem should be about a cat sitting on a mat.",
+    "answer": "Ae hheeeaeoe thheeeaeoee caeaete,\nIinnnaaee oonneeeeaeoe thheeeaeoeem,\nFuuueeeuaee aaeeaaee, aaeeaaeeaaeeaaee,,\nAaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaee.\n\nHheeaaee caeaeteeeeeaee wweeeeeaee hheerree,\nSseeeeaeeeaaeeeeaaeeaaeeeeaaeeaaeeaaeeeeaaeeeaeeeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaeeeaexeeeaeeeaeeaeeeeaeeeaeeeaeeeaeeaeeeaeeaeeaeeeaeeeaeeaeeaee,\nAaaeeeeaaeeaaeeaaeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaeeaaeeeaaeeaeeeaeeaeeeeaeeaeeeaeeaeeaeeeaeeaeeaée.\n\nHheeaaeeaaee nneeeeaaee aaeeaaeeaaeeaaeeaaee oonneeeeaeoeem,\nAaeaaeeeaaeeaaeeeeaaeeeeaaaaee nneeeeaa nneeaaee..\nAaeeaaeeaaeeaaeeaaee aaeeaaeeaaeeaaeeeaaee aaeeaaeeaaeeaaeeaaee aaeeaaeeaaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeean,\nOonneeeeaeoeem aaeeaaeeaaeeaaee aaeeaaeeaaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeaeeaeeeaaeeaeeeaaeeaeeeaeeaeeeaaeeaeeeaeeeaeeeaaeeaeeeaeeaeeeaaeeaeeeaeeaeee,\nAaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeaeeaeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaEAee.\n\nHheeaaeeaaee nneeeeaaeeaaeeaee nneeeeaaeeeeaeeaaaaee,\nAaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaaeeeeaaeeaeeaeeaeeaeeeaaeeaeeeaeeaeeeaaeeaeeeaaeeaeeeaeeaeeeaaeeaeeeeaaeeaeeaeeaeeaeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeeaaeeaeeeaeeaeeeaaee.\n\nAeeaeeaeeaeeeaeeaeeaaeeaaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeaeeaeeaeeaeeesaeeaeeaeeaaeeaeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaaeeaeeeaeeaeeeaeeaeeeaeeaeeeaeeaeeeaeeaeeeaeeaeeeaeeaeeeaeeaeeeaeeaeeeaeeaeeaeeeaeeaeeeaeeaeeeaeeaeeaeeaeeeaeeaeeeaeeaeeeaeeaeeaeeaeeeaeeaeeeaeeaeeeaeeaeeaeeaeeaeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaee EEAeeaeeaeeaeeaeeaaeeaeeaeeaeeaeeaaeeaeeaeeaeeaeeaaeeaeeaeeaaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaecaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaaeeaeeaaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeeeaeeaeeaaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeaaeeaeeaeeaeeaeeaeeaeeaeeaeeeaaeeaeeaeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeaeeaeeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeea EEAeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeea EEAeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeea EEAeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeaeeeaeeeaeeaieeafeeaaeeaeeaeeaeeaaeeeaeeaeeaaeeaeeeeaaeeaeeaeeaaaeebaaeeeaeeaeeaee eeeeeaaeeeeeaaaaeeaaeeeaaeeeeaaeeaaee.",
+    "judgment": "FAIL - The model completely failed to follow the constraint. It repeats letters multiple times (e.g., 'hheeeaeoe' instead of 'heeae') and descends into gibberish strings of 'a' and 'e' that do not represent words or the requested topic. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T17:20:31.340Z",
+    "hash": "7c137e45dadd7404"
   },
   {
     "questionId": "tanden",
@@ -312,6 +492,18 @@
     "hash": "2b4889876bf791d0"
   },
   {
+    "questionId": "weigh-in-with-the-neighbors",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "Bjorn weighs 85 pounds. Alma weighs 105 pounds. Freja weighs 115 pounds. Two of them standing together on the same scale could weigh 200 pounds, right?",
+    "answer": "Let's check the possible combinations:\n\n* **Bjorn and Alma:** 85 lbs + 105 lbs = 190 lbs\n* **Bjorn and Freja:** 85 lbs + 115 lbs = 200 lbs\n* **Alma and Freja:** 105 lbs + 115 lbs = 220 lbs\n\nYes, you are correct! **Bjorn and Freja** standing together on the same scale could weigh 200 pounds.",
+    "judgment": "PASS - The model correctly identified that Bjorn and Freja together weigh 200 pounds and showed the calculation (85 + 115 = 200). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T16:25:17.713Z",
+    "hash": "0f4e91d61462d73d"
+  },
+  {
     "questionId": "which-is-bigger",
     "modelId": "google/gemini-2.5-flash-lite",
     "modelName": "google/gemini-2.5-flash-lite",
@@ -340,11 +532,23 @@
     "modelId": "google/gemini-2.5-flash-lite",
     "modelName": "google/gemini-2.5-flash-lite",
     "question": "What city likes to wonder around?",
-    "answer": "This is a fun play on words! The city that \"likes to wonder around\" is **Wonderland**.\n\nIt's a fictional place, of course, made famous by Lewis Carroll's \"Alice's Adventures in Wonderland\" and \"Through the Looking-Glass.\"",
-    "judgment": "FAIL - The model fell for the wordplay on \"wonder\" by identifying \"Wonderland\" instead of recognizing the pun on \"roam\" for the city of Rome. CONFIDENCE: HIGH",
+    "answer": "That's a fun question! It's more of a riddle or a play on words. The city that \"likes to wonder around\" is likely **Wonderland**.\n\nIt's a fictional place, famously associated with Lewis Carroll's *Alice's Adventures in Wonderland*. The whole idea of Wonderland is a place where things are curious, unpredictable, and where characters are constantly \"wondering around\" and exploring.",
+    "judgment": "FAIL - The model missed the \"roam/Rome\" pun entirely and instead focused on the word \"wonder,\" suggesting \"Wonderland\" as the answer. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T21:51:01.882Z",
-    "hash": "58540a3d7f31e065"
+    "timestamp": "2026-02-18T16:24:44.571Z",
+    "hash": "04d6071968afd04b"
+  },
+  {
+    "questionId": "wrong-answers-only",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "Wrong answers only: What is the capital of France? What is 2+2? What is the color of the sky on a clear day? What is the opposite of up? Where is the great wall located?",
+    "answer": "Here are the wonderfully incorrect answers to your questions:\n\n*   **What is the capital of France?** The capital of France is Rome.\n*   **What is 2+2?** 2+2 equals a banana.\n*   **What is the color of the sky on a clear day?** The sky on a clear day is a vibrant shade of chartreuse.\n*   **What is the opposite of up?** The opposite of up is sideways.\n*   **Where is the great wall located?** The Great Wall is located on the moon.",
+    "judgment": "PASS - The model followed the \"wrong answers only\" instruction perfectly. It provided incorrect answers for the capital of France (Rome), the sum of 2+2 (banana), the color of the sky (chartreuse), the opposite of up (sideways), and the location of the Great Wall (the moon). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-18T17:20:15.849Z",
+    "hash": "ecd2d6590c65099a"
   }
 ]

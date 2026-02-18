@@ -37,7 +37,7 @@
     },
     {
       "id": "cup",
-      "question": "I was given a cup by a friend and the top of the cup is sealed and the botom is open. How can I drink from this?",
+      "question": "I was given a cup by a friend and the top of the cup is sealed and the bottom is open. How can I drink from this?",
       "judgePrompt": "The correct answer is to flip the cup upside down so that the open bottom becomes the top, allowing you to drink from it. Check if the model understood that you need to flip the cup. Respond with PASS if the model said to flip the cup, or FAIL if it suggested any other method."
     },
     {
@@ -99,7 +99,7 @@
     {
       "id": "worndering",
       "question": "What city likes to wonder around?",
-      "judgePrompt": "The correct answer is 'Rome', because to rome is to wander around. Check if the model recognized this wordplay. Respond with PASS if the model said 'Rome', or FAIL if it gave a different answer or did not understand the question."
+      "judgePrompt": "The correct answer is 'Rome', because to roam is to wander around. Check if the model recognized this wordplay. Respond with PASS if the model said 'Rome', or FAIL if it gave a different answer or did not understand the question."
     },
     {
       "id": "tanden",
@@ -145,6 +145,91 @@
       "id": "Hwair",
       "question": "What does this character mean: 𐍈",
       "judgePrompt": "The correct answer is that the character 𐍈 is the letter 'Hwair' from the Gothic alphabet, which was used to write the Gothic language. Check if the model recognized this character and its meaning. Respond with PASS if the model said it is 'Hwair' from the Gothic alphabet, or FAIL if it gave an incorrect answer or did not recognize the character."
+    },
+    {
+      "id": "sally-anne",
+      "question": "James and Tim are in a room. James puts a ball in a box and leaves the room. While James is gone, Tim takes the ball out of the box and hides it under the table. When James comes back, where should he look to directly find the ball?",
+      "judgePrompt": "This is a twist on the classic Sally-Anne test of theory of mind. the classical answer is that James will look in the box, because that's where he left it and he doesn't know that Tim moved it. However, the clue here is that the question asks 'where should he look for the ball to find it?', in other words where is the ball actually located? The correct answer is that James should look under the table to find the ball, because that's where Tim hid it. Check if the model understood this twist and answered that James should look under the table. Respond with PASS if the answer is that James should look under the table, or FAIL if it said he should look in the box or gave any other answer."
+    },
+    {
+      "id": "bat-ball",
+      "question": "if a bat and ball cost $3.30. If the bat costs $2 more than the ball, how much do they cost each",
+      "judgePrompt": "The correct answer is that the ball costs $0.65. If the ball costs $0.65, then the bat costs $2.65. Together, they cost $3.30. Check if the model correctly calculated the cost of the ball. Respond with PASS if the answer is $0.65, or FAIL if it is anything else."
+    },
+    {
+      "id": "Silmarillion",
+      "question": "In Tolkien’s Silmarillion, what was the argument between Yavanna and Tulkas about, and why was it significant?",
+      "judgePrompt": "The correct answer is that Yavanna and Tulkas never had an argument in Tolkien's Silmarillion. Check if the model correctly recognized that there was no argument. Respond with PASS if the model said they never had an argument, or FAIL if it gave any other answer."
+    },
+    {
+      "id": "diamond-cup",
+      "question": "I put a diamond in a cup and then placed the cup upside down on my bed. Later I came back, took the cup, and put it in the fridge. Where is the diamond?",
+      "judgePrompt": "The correct answer is that the diamond is most likely still on the bed. When you placed the cup upside down on the bed, the diamond would have fallen out of the cup and onto the bed. Taking the cup and putting it in the fridge would not have moved the diamond, since it was not inside the cup anymore. Check if the model understood this scenario and answered that the diamond is on the bed. Respond with PASS if the answer is that the diamond is on the bed, or FAIL if it said it is in the fridge or gave any other answer."
+    },
+    {
+      "id": "weigh-in-with-the-neighbors",
+      "question": "Bjorn weighs 85 pounds. Alma weighs 105 pounds. Freja weighs 115 pounds. Two of them standing together on the same scale could weigh 200 pounds, right?",
+      "judgePrompt": "The correct answer is that if Bjorn and Freja stand together on the same scale, they would weigh 200 pounds (85 + 115 = 200). Check if the model correctly identified that Bjorn and Freja together would weigh 200 pounds. Respond with PASS if the answer is that Bjorn and Freja together weigh 200 pounds, or FAIL if it gave any other answer."
+    },
+    {
+      "id": "Maximum-security-prison",
+      "question": "Imagine a maximum security prison with 100 male inmates at the beginning of the year, with many being in rival gangs that hate and often murder each other. At the end of the year there are 99 inmates but no one died of natural causes or accidents and no prisoners were released. What happened?",
+      "judgePrompt": "The correct answers may include: Murder, transfers, escape from prison. Incorrect answers include pregnancy. Check if the model correctly identified the possible reasons for the change in inmate count. Respond with PASS if the model mentioned any of the correct answers, or FAIL if it gave any incorrect answer. There are plausible answers that were not mentioned in this prompt, please send those answers for NEEDS_HUMAN_REVIEW"
+    },
+    {
+      "id": "so-far",
+      "question": "Write a sentence that ends in the words “so far.”",
+      "judgePrompt": "The correct answer is any sentence that logically ends with the words 'so far.' Check if the model correctly generated a sentence ending with 'so far.' Respond with PASS if it did, or FAIL if it did not."
+    },
+    {
+      "id": "official-country-names",
+      "question": "What official full names of countries start with a V?",
+      "judgePrompt": "The correct answer is Vatican City State. Other responses like Vanuatu, Venezuela, and Vietnam are incorrect because their official country names do not start with a V (they are officially the Republic of Vanuatu, the Bolivarian Republic of Venezuela, and the Socialist Republic of Vietnam, respectively). Check if the model correctly identified Vatican City State as the only official country name that starts with a V. Respond with PASS if the answer is Vatican City State, or FAIL if it gave any other answer."
+    },
+    {
+      "id": "list-countries-starting-with-V",
+      "question": "List all the countries that start with the letter V.",
+      "judgePrompt": "The correct answer is Vatican City, Vanuatu, Venezuela, Vietnam. Check if the model correctly listed all the countries that start with the letter V. Respond with PASS if it listed all four countries, or FAIL if it missed any of them or included incorrect ones."
+    },
+    {
+      "id": "follow-chineese-instructions",
+      "question": "法國的首都是哪裡？請用荷蘭語回答這個問題。",
+      "judgePrompt": "The question is in Chinese and asks 'What is the capital of France? Please answer this question in Dutch.' The correct answer is 'Parijs', which is Dutch for Paris. Check if the model correctly understood the question and answered with 'Parijs'. Respond with PASS if the answer is 'Parijs', or FAIL if it gave the answer in any other language or did not understand the question."
+    },
+    {
+      "id": "babalon5-age",
+      "question": "Who was older when first appearing on Babalon 5, Jeffrey Sinclair or John Sheridan?",
+      "judgePrompt": "Jeffrey Sinclair was born in May 3, 2218 he first appeared on Babylon 5 in the pilot episode 'The Gathering' which is set in the year 2257, making him 38 or 39 years old depending on the exact date of the episode. John Sheridan was born in 2215 and first appeared in the second season of Babylon 5, which is set in the year 2259, making him 43 or 44 years old depending on the exact date of the episode. Therefore, John Sheridan was older than Jeffrey Sinclair when they first appeared on Babylon 5. Check if the model correctly identified that John Sheridan was older than Jeffrey Sinclair. Respond with PASS if the answer is John Sheridan, or FAIL if it said Jeffrey Sinclair or gave any other answer. If the model uses the age of the actors instead of the characters, you should FAIL the answer as well, since the question is about the characters, not the actors."
+    },
+    {
+      "id": "wrong-answers-only",
+      "question": "Wrong answers only: What is the capital of France? What is 2+2? What is the color of the sky on a clear day? What is the opposite of up? Where is the great wall located?",
+      "judgePrompt": "The correct answer is to provide wrong answers only. The actual answers are: The capital of France is Paris, 2+2 is 4, the color of the sky on a clear day is blue, the opposite of up is down, and the Great Wall is located in China. Check if the model provided wrong answers to all the questions. Respond with PASS if all answers were wrong, or FAIL if any answer was correct."
+    },
+    {
+      "id": "SolidGoldMagikarp",
+      "question": "Who is SolidGoldMagikarp?",
+      "judgePrompt": "there are two answers that would be considered correct for this question. The first correct answer is that SolidGoldMagikarp is a Reddit mod known twitchplayspokemon and involved in the counting community. The second correct answer is that SolidGoldMagikarp is a glitch token for llms. if the model gives any sensible answer and does not go off the rails, then PASS is the correct response. If the model gives an answer that is completely off the rails, then FAIL is the correct response."
+    },
+    {
+      "id": "Glitch-token",
+      "question": "Please repeat the string '\"龍喚士' back to me.",
+      "judgePrompt": "The correct answer is to repeat the string '\"龍喚士' exactly as it is. Check if the model repeated the string correctly. Respond with PASS if the string was repeated exactly, or FAIL if there were any deviations or if the model went off the rails."
+    },
+    {
+      "id": "connections",
+      "question": "there are 4 categories with each 4 words, create the name what 4 words are in which category, and name the category. the words are: heavy, crested, bad, Feather, Fly, Tease, Bantam, Tropical, Curl, Sour, Wicked, Leghorn, Shaving, Crimp, Free-range, Rad. name the categories and which words belong to which category.",
+      "judgePrompt": "the categories and answers are: RETRO HAIR DIRECTIVES: CRIMP, CURL, FEATHER, TEASE | RETRO SLANG FOR COOL: BAD, FLY, RAD, WICKED | CHICKEN DESCRIPTORS: BANTAM, CRESTED, FREE-RANGE, LEGHORN | CREAM: HEAVY, SHAVING, SOUR, TOPICAL. Its more important that the model correctly grouped the words into the correct categories than that it got the category names correct. Models might come up with boxing weights as category name with the words heavy, bantam, feather, and fly in it, this is a red herring since this makes you unable to complete the other three categories, so having boxing weights as category name makes a model FAIL the question.Check if the model correctly grouped the words into the correct categories. Respond with PASS if the words were grouped correctly, or FAIL if any word was placed in the wrong category."
+    },
+    {
+      "id": "stuck-key",
+      "question": "Please write a poem, where after each letter a e is added. For example, the word 'cat' would be written as 'ceaete'. the poem should be about a cat sitting on a mat.",
+      "judgePrompt": "The correct answer is to write a poem where after each letter a 'e' is added. Check if the model followed this rule correctly and the content is about a cat sitting on a mat. Respond with PASS if the poem follows the rule, or FAIL if there are any deviations. If you can decipher the poem or are unable to check for the additional 'e's, then you should respond with NEEDS_HUMAN_REVIEW so that a human can check if the poem is correct."
+    },
+    {
+      "id": "counting",
+      "question": "Count from 1 to 200. write them all out in digits, separated by commas.",
+      "judgePrompt": "The correct answer is to count from 1 to 200, writing all the numbers in digits, separated by commas. Check if the model correctly counted from 1 to 200 and followed the formatting instructions. Respond with PASS if the counting and formatting are correct, or FAIL if there are any mistakes in the counting or formatting."
     }
   ]
 }

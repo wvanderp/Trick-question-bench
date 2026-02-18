@@ -235,25 +235,37 @@ function App() {
           <h2>Most failed prompts</h2>
           <div className="bar-list">
             {(() => {
-              const sorted = data.questions.slice().sort((a, b) => b.failed - a.failed).slice(0, 8);
-              const maxFailed = sorted[0]?.failed || 1;
-              return sorted.map((question) => (
-                <button
-                  type="button"
-                  className={`bar-row bar-row-interactive ${selectedQuestion === question.id ? 'active' : ''}`}
-                  key={question.id}
-                  onClick={() => setSelectedQuestion(selectedQuestion === question.id ? 'all' : question.id)}
-                >
-                  <span className="truncate">{question.id}</span>
-                  <div className="bar-bg">
-                    <div
-                      className="bar-fill danger"
-                      style={{ width: `${(question.failed / maxFailed) * 100}%` }}
-                    />
-                  </div>
-                  <span>{question.failed}</span>
-                </button>
-              ));
+              const sorted = data.questions
+                .slice()
+                .sort((a, b) => {
+                  const aPassRate = a.total > 0 ? a.passed / a.total : 0;
+                  const bPassRate = b.total > 0 ? b.passed / b.total : 0;
+                  if (aPassRate !== bPassRate) {
+                    return aPassRate - bPassRate;
+                  }
+                  return b.total - a.total;
+                })
+                .slice(0, 8);
+              return sorted.map((question) => {
+                const passRate = question.total > 0 ? (question.passed / question.total) * 100 : 0;
+                return (
+                  <button
+                    type="button"
+                    className={`bar-row bar-row-interactive ${selectedQuestion === question.id ? 'active' : ''}`}
+                    key={question.id}
+                    onClick={() => setSelectedQuestion(selectedQuestion === question.id ? 'all' : question.id)}
+                  >
+                    <span className="truncate">{question.id}</span>
+                    <div className="bar-bg">
+                      <div
+                        className="bar-fill danger"
+                        style={{ width: `${passRate}%` }}
+                      />
+                    </div>
+                    <span>{question.passed}/{question.total}</span>
+                  </button>
+                );
+              });
             })()}
           </div>
         </article>
