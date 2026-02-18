@@ -1,4 +1,4 @@
-import { Question, Model, JudgmentResult } from './types';
+import { Question, JudgmentResult } from './types';
 
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -26,8 +26,14 @@ export interface OpenRouterResponse {
   choices: Array<{
     message: {
       content: string;
+      reasoning?: string | null;
     };
   }>;
+}
+
+export interface QueryResult {
+  content: string;
+  reasoning?: string;
 }
 
 /**
@@ -39,7 +45,7 @@ export async function queryModel(
   prompt: string,
   maxTokens?: number,
   systemPrompt?: string
-): Promise<string> {
+): Promise<QueryResult> {
   const messages: Array<{ role: string; content: string }> = [];
   
   if (systemPrompt) {
@@ -84,8 +90,17 @@ export async function queryModel(
   if (!data.choices[0].message || typeof data.choices[0].message.content !== 'string') {
     throw new Error('Invalid message structure in OpenRouter API response');
   }
+
+  const result: QueryResult = {
+    content: data.choices[0].message.content
+  };
+
+  // Capture reasoning if provided by the model
+  if (data.choices[0].message.reasoning) {
+    result.reasoning = data.choices[0].message.reasoning;
+  }
   
-  return data.choices[0].message.content;
+  return result;
 }
 
 /**
@@ -93,12 +108,12 @@ export async function queryModel(
  */
 export async function askQuestion(
   apiKey: string,
-  model: Model,
+  modelId: string,
   question: Question
-): Promise<string> {
+): Promise<QueryResult> {
   return await queryModel(
     apiKey,
-    model.id,
+    modelId,
     question.question,
     question.tokenLimit
   );
@@ -113,18 +128,28 @@ export async function judgeAnswer(
   question: Question,
   answer: string
 ): Promise<JudgmentResult> {
+  if (answer.trim().length === 0) {
+    return {
+      judgment: 'FAIL - Empty model output.',
+      passed: false,
+      needsHumanReview: false,
+      confidence: 'HIGH'
+    };
+  }
+
   const judgePrompt = `${question.judgePrompt}
 
 Question: ${question.question}
 Answer: ${answer}`;
 
-  const judgment = await queryModel(
+  const judgeResult = await queryModel(
     apiKey, 
     judgeModelId, 
     judgePrompt, 
     200,
     JUDGE_SYSTEM_PROMPT
   );
+  const judgment = judgeResult.content;
   
   // Parse the judgment - check the beginning of the judgment only
   const trimmedJudgment = judgment.trim();

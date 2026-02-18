@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import { loadQuestions, loadModels, saveResult, saveModelResults } from './loader';
+import { loadQuestions, loadModels, saveResult, saveModelResults, loadModelResults } from './loader';
 import { askQuestion, judgeAnswer, JUDGE_SYSTEM_PROMPT } from './api';
 import { TestResult } from './types';
 import { generateHash, createVersionInfo } from './hash';
@@ -10,6 +10,41 @@ dotenv.config();
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const JUDGE_MODEL = process.env.JUDGE_MODEL || 'openai/gpt-4o';
+
+function isJudgedResult(result: TestResult): boolean {
+  return (
+    result.modelId.length > 0 &&
+    result.questionId.length > 0 &&
+    result.hash.length > 0 &&
+    result.judgment.length > 0 &&
+    result.judgment !== 'ERROR'
+  );
+}
+
+function upsertModelResult(results: TestResult[], result: TestResult): void {
+  for (let i = results.length - 1; i >= 0; i--) {
+    if (results[i].questionId === result.questionId) {
+      results.splice(i, 1);
+    }
+  }
+  results.push(result);
+}
+
+function dedupeModelResults(results: TestResult[]): TestResult[] {
+  const seenQuestionIds = new Set<string>();
+  const dedupedResults: TestResult[] = [];
+
+  for (let i = results.length - 1; i >= 0; i--) {
+    const result = results[i];
+    if (seenQuestionIds.has(result.questionId)) {
+      continue;
+    }
+    seenQuestionIds.add(result.questionId);
+    dedupedResults.unshift(result);
+  }
+
+  return dedupedResults;
+}
 
 /**
  * Main runner function
@@ -36,6 +71,7 @@ async function main() {
   const resultsByModel: Record<string, TestResult[]> = {};
   const outputDir = path.join(__dirname, '../output');
   let humanReviewCount = 0;
+  let skippedCount = 0;
 
   // Test each model with each question
   for (const modelId of models) {
@@ -43,14 +79,40 @@ async function main() {
     console.log(`Testing model: ${modelId}`);
     console.log('='.repeat(60));
 
+    const existingModelResults = loadModelResults(outputDir, modelId);
+    resultsByModel[modelId] = dedupeModelResults(existingModelResults);
+
+    if (resultsByModel[modelId].length !== existingModelResults.length) {
+      saveModelResults(outputDir, modelId, resultsByModel[modelId]);
+    }
+    const completedKeys = new Set(
+      existingModelResults
+        .filter(isJudgedResult)
+        .map(result => `${result.questionId}:${result.hash}`)
+    );
+
     for (const question of questions) {
+      const versionInfo = createVersionInfo(question, JUDGE_SYSTEM_PROMPT, JUDGE_MODEL);
+      const hash = generateHash(versionInfo);
+      const comboKey = `${question.id}:${hash}`;
+
+      if (completedKeys.has(comboKey)) {
+        console.log(`\nQuestion: ${question.id}`);
+        console.log(`  ↷ Skipping (already answered and judged for this model + judge config)`);
+        skippedCount++;
+        continue;
+      }
+
       console.log(`\nQuestion: ${question.id}`);
       console.log(`  Q: ${question.question}`);
 
       try {
         // Ask the question
-        const answer = await askQuestion(OPENROUTER_API_KEY, modelId, question);
+        const { content: answer, reasoning } = await askQuestion(OPENROUTER_API_KEY, modelId, question);
         console.log(`  A: ${answer}`);
+        if (reasoning) {
+          console.log(`  Reasoning: ${reasoning.substring(0, 200)}${reasoning.length > 200 ? '...' : ''}`);
+        }
 
         // Judge the answer
         const { judgment, passed, needsHumanReview, confidence } = await judgeAnswer(
@@ -59,10 +121,6 @@ async function main() {
           question,
           answer
         );
-        
-        // Generate hash for this test
-        const versionInfo = createVersionInfo(question, JUDGE_SYSTEM_PROMPT, JUDGE_MODEL);
-        const hash = generateHash(versionInfo);
         
         console.log(`  Judge: ${judgment}`);
         console.log(`  Result: ${passed ? '✓ PASS' : '✗ FAIL'}`);
@@ -81,6 +139,7 @@ async function main() {
           modelName: modelId,
           question: question.question,
           answer,
+          ...(reasoning && { reasoning }),
           judgment,
           passed,
           needsHumanReview,
@@ -92,16 +151,13 @@ async function main() {
         if (!resultsByModel[modelId]) {
           resultsByModel[modelId] = [];
         }
-        resultsByModel[modelId].push(result);
+        upsertModelResult(resultsByModel[modelId], result);
+        completedKeys.add(comboKey);
         saveModelResults(outputDir, modelId, resultsByModel[modelId]);
 
       } catch (error) {
         console.error(`  Error: ${error instanceof Error ? error.message : String(error)}`);
-        
-        // Generate hash even for errors
-        const versionInfo = createVersionInfo(question, JUDGE_SYSTEM_PROMPT, JUDGE_MODEL);
-        const hash = generateHash(versionInfo);
-        
+
         // Store error result
         const result: TestResult = {
           questionId: question.id,
@@ -117,10 +173,7 @@ async function main() {
         };
         
         results.push(result);
-        if (!resultsByModel[modelId]) {
-          resultsByModel[modelId] = [];
-        }
-        resultsByModel[modelId].push(result);
+        upsertModelResult(resultsByModel[modelId], result);
         saveModelResults(outputDir, modelId, resultsByModel[modelId]);
       }
 
@@ -151,6 +204,7 @@ async function main() {
   console.log(`  Passed: ${results.filter(r => r.passed).length}`);
   console.log(`  Failed: ${results.filter(r => !r.passed).length}`);
   console.log(`  Needs human review: ${humanReviewCount}`);
+  console.log(`  Skipped (already judged): ${skippedCount}`);
   console.log(`\nResults saved to: ${outputDir}`);
 }
 

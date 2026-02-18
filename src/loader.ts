@@ -1,9 +1,37 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Ajv from 'ajv';
-import { Question, QuestionsData } from './types';
+import { Question, QuestionsData, TestResult } from './types';
 
 const ajv = new Ajv();
+
+function isQuestionIdEntry(value: unknown): value is { questionId: string } {
+  return typeof value === 'object' && value !== null && 'questionId' in value && typeof (value as { questionId?: unknown }).questionId === 'string';
+}
+
+function sortByQuestionId<T extends { questionId: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => a.questionId.localeCompare(b.questionId));
+}
+
+function sortOutputByQuestionId(data: unknown): unknown {
+  if (Array.isArray(data) && data.every(isQuestionIdEntry)) {
+    return sortByQuestionId(data);
+  }
+
+  if (typeof data === 'object' && data !== null && 'results' in data) {
+    const objectData = data as Record<string, unknown>;
+    const results = objectData.results;
+
+    if (Array.isArray(results) && results.every(isQuestionIdEntry)) {
+      return {
+        ...objectData,
+        results: sortByQuestionId(results)
+      };
+    }
+  }
+
+  return data;
+}
 
 /**
  * Load and validate questions from JSON file
@@ -48,7 +76,8 @@ export function ensureOutputDir(dirPath: string): void {
 export function saveResult(outputDir: string, fileName: string, data: unknown): void {
   ensureOutputDir(outputDir);
   const filePath = path.join(outputDir, fileName);
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+  const sortedData = sortOutputByQuestionId(data);
+  fs.writeFileSync(filePath, JSON.stringify(sortedData, null, 2), 'utf-8');
 }
 
 /**
@@ -75,4 +104,19 @@ export function saveModelResults(outputDir: string, modelId: string, data: unkno
   const companyDir = path.join(outputDir, sanitizeFileName(company));
   const fileName = `${sanitizeFileName(modelName)}.json`;
   saveResult(companyDir, fileName, data);
+}
+
+/**
+ * Load model results from output/{company}/{model}.json
+ */
+export function loadModelResults(outputDir: string, modelId: string): TestResult[] {
+  const { company, modelName } = parseModelId(modelId);
+  const filePath = path.join(outputDir, sanitizeFileName(company), `${sanitizeFileName(modelName)}.json`);
+
+  if (!fs.existsSync(filePath)) {
+    return [];
+  }
+
+  const data = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as unknown;
+  return Array.isArray(data) ? (data as TestResult[]) : [];
 }

@@ -9,11 +9,6 @@ export interface QuestionsData {
   questions: Question[];
 }
 
-export interface Model {
-  id: string;
-  name: string;
-}
-
 export interface JudgmentResult {
   judgment: string;
   passed: boolean;
@@ -27,6 +22,7 @@ export interface TestResult {
   modelName: string;
   question: string;
   answer: string;
+  reasoning?: string;
   judgment: string;
   passed: boolean;
   needsHumanReview: boolean;
