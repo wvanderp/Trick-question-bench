@@ -49,6 +49,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
+          token: ${{ secrets.GH_TOKEN }}
           commit-message: "Add model: ${{ github.event.inputs.model_id }}"
           title: "Add model: ${{ github.event.inputs.model_id }}"
           body: |
