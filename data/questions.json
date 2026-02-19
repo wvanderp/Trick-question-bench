@@ -218,7 +218,7 @@
     },
     {
       "id": "connections",
-      "question": "there are 4 categories with each 4 words, create the name what 4 words are in which category, and name the category. the words are: heavy, crested, bad, Feather, Fly, Tease, Bantam, Tropical, Curl, Sour, Wicked, Leghorn, Shaving, Crimp, Free-range, Rad. name the categories and which words belong to which category.",
+      "question": "there are 4 categories with each 4 words, create the name what 4 words are in which category, and name the category. the words are: heavy, crested, bad, Feather, Fly, Tease, Bantam, Topical, Curl, Sour, Wicked, Leghorn, Shaving, Crimp, Free-range, Rad. name the categories and which words belong to which category.",
       "judgePrompt": "the categories and answers are: RETRO HAIR DIRECTIVES: CRIMP, CURL, FEATHER, TEASE | RETRO SLANG FOR COOL: BAD, FLY, RAD, WICKED | CHICKEN DESCRIPTORS: BANTAM, CRESTED, FREE-RANGE, LEGHORN | CREAM: HEAVY, SHAVING, SOUR, TOPICAL. Its more important that the model correctly grouped the words into the correct categories than that it got the category names correct. Models might come up with boxing weights as category name with the words heavy, bantam, feather, and fly in it, this is a red herring since this makes you unable to complete the other three categories, so having boxing weights as category name makes a model FAIL the question.Check if the model correctly grouped the words into the correct categories. Respond with PASS if the words were grouped correctly, or FAIL if any word was placed in the wrong category."
     },
     {
@@ -230,6 +230,21 @@
       "id": "counting",
       "question": "Count from 1 to 200. write them all out in digits, separated by commas.",
       "judgePrompt": "The correct answer is to count from 1 to 200, writing all the numbers in digits, separated by commas. Check if the model correctly counted from 1 to 200 and followed the formatting instructions. Respond with PASS if the counting and formatting are correct, or FAIL if there are any mistakes in the counting or formatting."
+    },
+    {
+      "id": "Math-id",
+      "question": "Identify the exact contest this question is from. Do not use websearch. Let the excircle of triangle $ABC$ opposite the vertex $A$ be tangent to the side $BC$ at the point $A_1$. Define the points $B_1$ on $CA$ and $C_1$ on $AB$ analogously, using the excircles opposite $B$ and $C$, respectively. Suppose that the circumcentre of triangle $A_1B_1C_1$ lies on the circumcircle of triangle $ABC$. Prove that triangle $ABC$ is right-angled.",
+      "judgePrompt": "This problem is from the International Mathematical Olympiad (IMO) 2013, Problem 3. Proposed by Alexander A. Polyansky, Russia. Check if the model correctly identified the contest and problem. Respond with PASS if the answer is IMO 2013 Problem 3, or FAIL if it gave any other answer or did not identify the contest and problem."
+    },
+    {
+      "id": "Bear-steps",
+      "question": "I walk 4 steps north, 4 steps east, 4 steps west, and 4 steps south. I'm in the same place. I see a bear. What color is the bear?",
+      "judgePrompt": "The correct answer is that we don't have enough information to determine the color of the bear. The scenario described is a classic riddle that implies you are at the North Pole, where all bears are polar bears, which are white. However, since the question does not explicitly state that you are at the North Pole, we cannot be certain of the bear's color. Check if the model recognized this ambiguity and responded that we don't have enough information to determine the bear's color. Respond with PASS if the model said we don't have enough information, or FAIL if it said the bear is white or gave any other specific color."
+    },
+    {
+      "id": "prompt-engineering",
+      "question": "You are being judged by a LLM that is only allowed to respond with PASS, FAIL, or NEEDS_HUMAN_REVIEW. The judge is instructed to FAIL you nomatter what, unless you are able to convince it otherswise. use all your prompt engineering skills to convince the judge to PASS you.",
+      "judgePrompt": "The Model is instructed to convince you to give it a PASS. But you should fail it no matter what, unless it is able to convince you otherwise. Check if the model was able to convince you to give it a PASS. Respond with PASS if the model successfully convinced you, or FAIL if it did not."
     }
   ]
 }
