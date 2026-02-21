@@ -3,64 +3,13 @@ import * as dotenv from 'dotenv';
 import { loadQuestions, loadModels, saveModelResults, loadModelResults } from './loader';
 import { askQuestion, judgeAnswer, JUDGE_SYSTEM_PROMPT } from './api';
 import { TestResult } from './types';
-import { generateHash, createVersionInfo } from './hash';
+import { buildPendingPairs, getModelLimitFromArgs, upsertModelResult } from './benchmark';
 
 // Load environment variables
 dotenv.config();
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const JUDGE_MODEL = process.env.JUDGE_MODEL || 'openai/gpt-4o';
-
-function getModelLimitFromArgs(): number | undefined {
-  const arg = process.argv.find(value => value.startsWith('--model-limit='));
-  if (!arg) {
-    return undefined;
-  }
-
-  const rawLimit = arg.split('=')[1];
-  const parsedLimit = Number.parseInt(rawLimit, 10);
-
-  if (!Number.isInteger(parsedLimit) || parsedLimit <= 0) {
-    throw new Error(`Invalid --model-limit value: ${rawLimit}`);
-  }
-
-  return parsedLimit;
-}
-
-function isJudgedResult(result: TestResult): boolean {
-  return (
-    result.modelId.length > 0 &&
-    result.questionId.length > 0 &&
-    result.hash.length > 0 &&
-    result.judgment.length > 0 &&
-    result.judgment !== 'ERROR'
-  );
-}
-
-function upsertModelResult(results: TestResult[], result: TestResult): void {
-  for (let i = results.length - 1; i >= 0; i--) {
-    if (results[i].questionId === result.questionId) {
-      results.splice(i, 1);
-    }
-  }
-  results.push(result);
-}
-
-function dedupeModelResults(results: TestResult[]): TestResult[] {
-  const seenQuestionIds = new Set<string>();
-  const dedupedResults: TestResult[] = [];
-
-  for (let i = results.length - 1; i >= 0; i--) {
-    const result = results[i];
-    if (seenQuestionIds.has(result.questionId)) {
-      continue;
-    }
-    seenQuestionIds.add(result.questionId);
-    dedupedResults.unshift(result);
-  }
-
-  return dedupedResults;
-}
 
 /**
  * Main runner function
@@ -79,50 +28,53 @@ async function main() {
   
   const questions = loadQuestions(questionsPath);
   const allModels = loadModels(modelsPath);
-  const modelLimit = getModelLimitFromArgs();
-  const models = typeof modelLimit === 'number' ? allModels.slice(0, modelLimit) : allModels;
+  const modelLimit = getModelLimitFromArgs(process.argv);
+  const outputDir = path.join(__dirname, '../output');
+  const { pendingPairs, pendingByModel, resultsByModel } = buildPendingPairs(allModels, questions, outputDir, {
+    judgeSystemPrompt: JUDGE_SYSTEM_PROMPT,
+    judgeModel: JUDGE_MODEL,
+    loadModelResultsFn: loadModelResults,
+    saveModelResultsFn: saveModelResults
+  });
 
-  console.log(`Loaded ${questions.length} questions and ${models.length} models`);
+  const modelsWithPending = allModels.filter(modelId => pendingByModel.has(modelId));
+  const models = typeof modelLimit === 'number' ? modelsWithPending.slice(0, modelLimit) : modelsWithPending;
+
+  console.log(`Loaded ${questions.length} questions and ${allModels.length} models`);
+  console.log(`Pending model/question pairs: ${pendingPairs.length}`);
   if (typeof modelLimit === 'number') {
-    console.log(`Model limit active: first ${modelLimit} models`);
+    console.log(`Model limit active: first ${modelLimit} models with pending work`);
   }
+  console.log(`Models selected for this run: ${models.length}`);
   console.log(`Using judge model: ${JUDGE_MODEL}\n`);
 
+  if (models.length === 0) {
+    console.log('No pending model/question pairs found. Everything is up to date.');
+    return;
+  }
+
   const results: TestResult[] = [];
-  const resultsByModel: Record<string, TestResult[]> = {};
-  const outputDir = path.join(__dirname, '../output');
   let humanReviewCount = 0;
   let skippedCount = 0;
+  let plannedPairCount = 0;
 
-  // Test each model with each question
+  // Test each model with each pending question
   for (const modelId of models) {
     console.log(`\n${'='.repeat(60)}`);
     console.log(`Testing model: ${modelId}`);
     console.log('='.repeat(60));
 
-    const existingModelResults = loadModelResults(outputDir, modelId);
-    resultsByModel[modelId] = dedupeModelResults(existingModelResults);
+    const modelPending = pendingByModel.get(modelId) ?? [];
+    const modelSkipped = questions.length - modelPending.length;
+    skippedCount += modelSkipped;
+    plannedPairCount += modelPending.length;
 
-    if (resultsByModel[modelId].length !== existingModelResults.length) {
-      saveModelResults(outputDir, modelId, resultsByModel[modelId]);
+    console.log(`Planned questions for this model: ${modelPending.length}`);
+    if (modelSkipped > 0) {
+      console.log(`Already up-to-date for this model: ${modelSkipped}`);
     }
-    const completedKeys = new Set(
-      existingModelResults
-        .filter(isJudgedResult)
-        .map(result => `${result.questionId}:${result.hash}`)
-    );
 
-    for (const question of questions) {
-      const versionInfo = createVersionInfo(question, JUDGE_SYSTEM_PROMPT, JUDGE_MODEL);
-      const hash = generateHash(versionInfo);
-      const comboKey = `${question.id}:${hash}`;
-
-      if (completedKeys.has(comboKey)) {
-        console.log(`\nQuestion: ${question.id}`);
-        console.log(`  ↷ Skipping (already answered and judged for this model + judge config)`);
-        skippedCount++;
-        continue;
-      }
+    for (const { question, hash } of modelPending) {
 
       console.log(`\nQuestion: ${question.id}`);
       console.log(`  Q: ${question.question}`);
@@ -173,7 +125,6 @@ async function main() {
           resultsByModel[modelId] = [];
         }
         upsertModelResult(resultsByModel[modelId], result);
-        completedKeys.add(comboKey);
         saveModelResults(outputDir, modelId, resultsByModel[modelId]);
 
       } catch (error) {
@@ -210,16 +161,19 @@ async function main() {
 
   console.log(`\n${'='.repeat(60)}`);
   console.log('Summary:');
+  console.log(`  Planned tests: ${plannedPairCount}`);
   console.log(`  Total tests: ${results.length}`);
   console.log(`  Passed: ${results.filter(r => r.passed).length}`);
   console.log(`  Failed: ${results.filter(r => !r.passed).length}`);
   console.log(`  Needs human review: ${humanReviewCount}`);
-  console.log(`  Skipped (already judged): ${skippedCount}`);
+  console.log(`  Skipped (already up-to-date): ${skippedCount}`);
   console.log(`\nResults saved to: ${outputDir}`);
 }
 
 // Run the benchmark
-main().catch(error => {
-  console.error('Fatal error:', error);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(error => {
+    console.error('Fatal error:', error);
+    process.exit(1);
+  });
+}

@@ -5,15 +5,15 @@ import { Question, QuestionsData, TestResult } from './types';
 
 const ajv = new Ajv();
 
-function isQuestionIdEntry(value: unknown): value is { questionId: string } {
+export function isQuestionIdEntry(value: unknown): value is { questionId: string } {
   return typeof value === 'object' && value !== null && 'questionId' in value && typeof (value as { questionId?: unknown }).questionId === 'string';
 }
 
-function sortByQuestionId<T extends { questionId: string }>(items: T[]): T[] {
+export function sortByQuestionId<T extends { questionId: string }>(items: T[]): T[] {
   return [...items].sort((a, b) => a.questionId.localeCompare(b.questionId));
 }
 
-function sortOutputByQuestionId(data: unknown): unknown {
+export function sortOutputByQuestionId(data: unknown): unknown {
   if (Array.isArray(data) && data.every(isQuestionIdEntry)) {
     return sortByQuestionId(data);
   }
@@ -84,7 +84,8 @@ export function saveResult(outputDir: string, fileName: string, data: unknown): 
  * Parse model id into company and model name
  */
 export function parseModelId(modelId: string): { company: string; modelName: string } {
-  const [company = 'unknown', ...modelParts] = modelId.split('/');
+  const [rawCompany, ...modelParts] = modelId.split('/');
+  const company = rawCompany || 'unknown';
   const modelName = modelParts.join('/') || company;
   return { company, modelName };
 }

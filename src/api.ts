@@ -36,6 +36,31 @@ export interface QueryResult {
   reasoning?: string;
 }
 
+export interface ParsedJudgment {
+  passed: boolean;
+  needsHumanReview: boolean;
+  confidence?: string;
+}
+
+export function parseJudgment(judgment: string): ParsedJudgment {
+  const trimmedJudgment = judgment.trim();
+  const firstLine = trimmedJudgment.split('\n')[0].toUpperCase();
+  const passed = firstLine.startsWith('PASS') && !firstLine.startsWith('FAIL');
+  const needsHumanReview = judgment.toUpperCase().includes('NEEDS_HUMAN_REVIEW');
+
+  let confidence: string | undefined;
+  const confidenceMatch = judgment.match(/CONFIDENCE:\s*(LOW|MEDIUM|HIGH)/i);
+  if (confidenceMatch) {
+    confidence = confidenceMatch[1].toUpperCase();
+  }
+
+  return {
+    passed,
+    needsHumanReview,
+    confidence
+  };
+}
+
 /**
  * Query the OpenRouter API with a prompt
  */
@@ -150,24 +175,12 @@ Answer: ${answer}`;
     JUDGE_SYSTEM_PROMPT
   );
   const judgment = judgeResult.content;
-  
-  // Parse the judgment - check the beginning of the judgment only
-  const trimmedJudgment = judgment.trim();
-  const firstLine = trimmedJudgment.split('\n')[0].toUpperCase();
-  const passed = firstLine.startsWith('PASS') && !firstLine.startsWith('FAIL');
-  const needsHumanReview = judgment.toUpperCase().includes('NEEDS_HUMAN_REVIEW');
-  
-  // Extract confidence if present
-  let confidence: string | undefined;
-  const confidenceMatch = judgment.match(/CONFIDENCE:\s*(LOW|MEDIUM|HIGH)/i);
-  if (confidenceMatch) {
-    confidence = confidenceMatch[1].toUpperCase();
-  }
+  const parsed = parseJudgment(judgment);
   
   return { 
     judgment, 
-    passed,
-    needsHumanReview,
-    confidence
+    passed: parsed.passed,
+    needsHumanReview: parsed.needsHumanReview,
+    confidence: parsed.confidence
   };
 }

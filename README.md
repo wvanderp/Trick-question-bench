@@ -46,13 +46,15 @@ npm start
 
 `npm start` runs the full benchmark (`npm run start:all`) across all models in `data/models.json`.
 
-To run a smaller benchmark on just the first 5 models:
+To run a smaller benchmark on 5 models:
 
 ```bash
 npm run start:limited
 ```
 
-This will:
+`start:limited` now selects the first 5 models in `data/models.json` that still have pending work (missing answer, error result, or out-of-date hash), then runs only those pending question/model pairs.
+
+This run will:
 1. Load questions from `data/questions.json`
 2. Load models from `data/models.json`
 3. Query each model with each question
