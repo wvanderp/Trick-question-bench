@@ -27,7 +27,7 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           JUDGE_MODEL: ${{ vars.JUDGE_MODEL || 'openai/gpt-4o' }}
-        run: npm start
+        run: npm run start:limited
       
       - name: Upload results
         uses: actions/upload-artifact@v4

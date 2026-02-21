@@ -44,6 +44,14 @@ cp .env.example .env
 npm start
 ```
 
+`npm start` runs the full benchmark (`npm run start:all`) across all models in `data/models.json`.
+
+To run a smaller benchmark on just the first 5 models:
+
+```bash
+npm run start:limited
+```
+
 This will:
 1. Load questions from `data/questions.json`
 2. Load models from `data/models.json`

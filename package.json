@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "tsx src/index.ts",
+    "start": "npm run start:all",
+    "start:all": "tsx src/index.ts",
+    "start:limited": "tsx src/index.ts --model-limit=5",
     "dev": "tsx watch src/index.ts",
     "test": "tsx src/test.ts"
   },

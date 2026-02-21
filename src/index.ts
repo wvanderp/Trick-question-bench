@@ -11,6 +11,22 @@ dotenv.config();
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const JUDGE_MODEL = process.env.JUDGE_MODEL || 'openai/gpt-4o';
 
+function getModelLimitFromArgs(): number | undefined {
+  const arg = process.argv.find(value => value.startsWith('--model-limit='));
+  if (!arg) {
+    return undefined;
+  }
+
+  const rawLimit = arg.split('=')[1];
+  const parsedLimit = Number.parseInt(rawLimit, 10);
+
+  if (!Number.isInteger(parsedLimit) || parsedLimit <= 0) {
+    throw new Error(`Invalid --model-limit value: ${rawLimit}`);
+  }
+
+  return parsedLimit;
+}
+
 function isJudgedResult(result: TestResult): boolean {
   return (
     result.modelId.length > 0 &&
@@ -62,9 +78,14 @@ async function main() {
   const modelsPath = path.join(__dirname, '../data/models.json');
   
   const questions = loadQuestions(questionsPath);
-  const models = loadModels(modelsPath);
+  const allModels = loadModels(modelsPath);
+  const modelLimit = getModelLimitFromArgs();
+  const models = typeof modelLimit === 'number' ? allModels.slice(0, modelLimit) : allModels;
 
   console.log(`Loaded ${questions.length} questions and ${models.length} models`);
+  if (typeof modelLimit === 'number') {
+    console.log(`Model limit active: first ${modelLimit} models`);
+  }
   console.log(`Using judge model: ${JUDGE_MODEL}\n`);
 
   const results: TestResult[] = [];
