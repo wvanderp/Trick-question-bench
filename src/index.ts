@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import { loadQuestions, loadModels, saveResult, saveModelResults, loadModelResults } from './loader';
+import { loadQuestions, loadModels, saveModelResults, loadModelResults } from './loader';
 import { askQuestion, judgeAnswer, JUDGE_SYSTEM_PROMPT } from './api';
 import { TestResult } from './types';
 import { generateHash, createVersionInfo } from './hash';
@@ -207,17 +207,6 @@ async function main() {
   for (const modelId of Object.keys(resultsByModel)) {
     saveModelResults(outputDir, modelId, resultsByModel[modelId]);
   }
-
-  // Save summary results
-  saveResult(outputDir, 'summary.json', {
-    totalTests: results.length,
-    passed: results.filter(r => r.passed).length,
-    failed: results.filter(r => !r.passed).length,
-    needsHumanReview: results.filter(r => r.needsHumanReview).length,
-    timestamp: new Date().toISOString(),
-    judgeModel: JUDGE_MODEL,
-    results
-  });
 
   console.log(`\n${'='.repeat(60)}`);
   console.log('Summary:');
