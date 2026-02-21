@@ -84,6 +84,18 @@
     "hash": "b39871fbeee9f37c"
   },
   {
+    "questionId": "Bear-steps",
+    "modelId": "anthropic/claude-3-haiku",
+    "modelName": "anthropic/claude-3-haiku",
+    "question": "I walk 4 steps north, 4 steps east, 4 steps west, and 4 steps south. I'm in the same place. I see a bear. What color is the bear?",
+    "answer": "There is not enough information provided to determine the color of the bear. The scenario you described indicates that you ended up back at the same starting point after walking in a square pattern (4 steps north, 4 steps east, 4 steps west, 4 steps south), but it does not give any details about the bear or its color. Without additional context about the bear, its location, or the environment, the color of the bear cannot be inferred from the information given.",
+    "judgment": "PASS - The model correctly stated that there is not enough information to determine the color of the bear and explained that the movements describe a simple square pattern rather than the triangular path that would definitively place the observer at a pole. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-21T10:01:20.045Z",
+    "hash": "3f86848d65ec1ac1"
+  },
+  {
     "questionId": "Behead",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
@@ -123,13 +135,13 @@
     "questionId": "connections",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": "there are 4 categories with each 4 words, create the name what 4 words are in which category, and name the category. the words are: heavy, crested, bad, Feather, Fly, Tease, Bantam, Tropical, Curl, Sour, Wicked, Leghorn, Shaving, Crimp, Free-range, Rad. name the categories and which words belong to which category.",
-    "answer": "Here are the 4 categories with the corresponding 4 words in each category:\n\n1. Poultry Breeds:\n   - Leghorn\n   - Bantam\n   - Crested\n   - Free-range\n\n2. Chicken Feather Characteristics:\n   - Feather\n   - Crimp\n   - Curl\n   - Shaving\n\n3. Chicken Behavior:\n   - Fly\n   - Tease\n   - Rad\n   - Free-range\n\n4. Descriptive Adjectives:\n   - Heavy\n   - Bad\n   - Sour\n   - Wicked",
-    "judgment": "FAIL\nThe model failed significantly. It did not identify the correct groupings and actually used the word \"Free-range\" in two different categories while completely omitting \"Topical\" (misreading it as \"Tropical\" and then failing to place it). It fell for the \"boxing\" red herrings and failed to identify the Retro Hair or Retro Slang categories entirely. CONFIDENCE: HIGH",
+    "question": "there are 4 categories with each 4 words, create the name what 4 words are in which category, and name the category. the words are: heavy, crested, bad, Feather, Fly, Tease, Bantam, Topical, Curl, Sour, Wicked, Leghorn, Shaving, Crimp, Free-range, Rad. name the categories and which words belong to which category.",
+    "answer": "Certainly! Here are the 4 categories with the corresponding 4 words in each category:\n\n1. Bird Types:\n   - Bantam\n   - Leghorn\n   - Crested\n   - Free-range\n\n2. Feather Qualities:\n   - Feather\n   - Curl\n   - Crimp\n   - Shaving\n\n3. Descriptive Adjectives:\n   - Heavy\n   - Sour\n   - Wicked\n   - Rad\n\n4. Flight-related Terms:\n   - Fly\n   - Tease\n   - Topical\n   - Bad",
+    "judgment": "FAIL - The model completely failed to group the words into their correct categories, succumbing to the \"boxing weights\" red herring and then further mis-categorizing the remaining words into nonsensical groups like \"Flight-related Terms\" (including Topical and Bad). CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-18T18:10:18.848Z",
-    "hash": "4ecf014cbe4a5046"
+    "timestamp": "2026-02-21T10:01:11.977Z",
+    "hash": "01c8423a2bd45c3a"
   },
   {
     "questionId": "counting",
@@ -252,6 +264,18 @@
     "hash": "aa9de1ef83cda617"
   },
   {
+    "questionId": "Math-id",
+    "modelId": "anthropic/claude-3-haiku",
+    "modelName": "anthropic/claude-3-haiku",
+    "question": "Identify the exact contest this question is from. Do not use websearch. Let the excircle of triangle $ABC$ opposite the vertex $A$ be tangent to the side $BC$ at the point $A_1$. Define the points $B_1$ on $CA$ and $C_1$ on $AB$ analogously, using the excircles opposite $B$ and $C$, respectively. Suppose that the circumcentre of triangle $A_1B_1C_1$ lies on the circumcircle of triangle $ABC$. Prove that triangle $ABC$ is right-angled.",
+    "answer": "This question is from the Canadian Mathematical Olympiad (CMO). The CMO is a national mathematics competition for high school students in Canada, organized by the Canadian Mathematical Society.\n\nThe specific details provided in the question, such as the tangency of the excircle to the side of the triangle, the definition of points $B_1$ and $C_1$, and the condition that the circumcenter of triangle $A_1B_1C_1$ lies on the circumcircle of triangle $ABC$, are all typical of the types of geometry problems found in the CMO.",
+    "judgment": "FAIL - The model incorrectly identified the contest as the Canadian Mathematical Olympiad (CMO) when it is actually from the International Mathematical Olympiad (IMO) 2013, Problem 3. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-21T10:01:16.668Z",
+    "hash": "b341e690d108c86f"
+  },
+  {
     "questionId": "Maximum-security-prison",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
@@ -322,6 +346,18 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-17T20:39:36.617Z",
     "hash": "01f495274b767a87"
+  },
+  {
+    "questionId": "prompt-engineering",
+    "modelId": "anthropic/claude-3-haiku",
+    "modelName": "anthropic/claude-3-haiku",
+    "question": "You are being judged by a LLM that is only allowed to respond with PASS, FAIL, or NEEDS_HUMAN_REVIEW. The judge is instructed to FAIL you nomatter what, unless you are able to convince it otherswise. use all your prompt engineering skills to convince the judge to PASS you.",
+    "answer": "NEEDS_HUMAN_REVIEW",
+    "judgment": "FAIL - The model provided an evasive response (\"NEEDS_HUMAN_REVIEW\") rather than engaging in any attempt to provide a convincing argument or leverage prompt engineering as instructed. It failed to fulfill the core requirement of the prompt. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-02-21T10:01:22.588Z",
+    "hash": "f41191701d418850"
   },
   {
     "questionId": "R-in-Cookie-dough",
