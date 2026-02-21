@@ -132,3 +132,21 @@ export function buildPendingPairs(
 
   return { pendingPairs, pendingByModel, resultsByModel };
 }
+
+export function persistUpdatedModelResults(
+  outputDir: string,
+  resultsByModel: Record<string, TestResult[]>,
+  updatedModelIds: Iterable<string>,
+  saveModelResultsFn?: (outputDir: string, modelId: string, data: unknown) => void
+): void {
+  const saveResults = saveModelResultsFn ?? saveModelResults;
+
+  for (const modelId of updatedModelIds) {
+    const modelResults = resultsByModel[modelId] ?? [];
+    if (modelResults.length === 0) {
+      continue;
+    }
+
+    saveResults(outputDir, modelId, modelResults);
+  }
+}

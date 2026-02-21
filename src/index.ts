@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import { loadQuestions, loadModels, saveModelResults, loadModelResults } from './loader';
 import { askQuestion, judgeAnswer, JUDGE_SYSTEM_PROMPT } from './api';
 import { TestResult } from './types';
-import { buildPendingPairs, getModelLimitFromArgs, upsertModelResult } from './benchmark';
+import { buildPendingPairs, getModelLimitFromArgs, persistUpdatedModelResults, upsertModelResult } from './benchmark';
 
 // Load environment variables
 dotenv.config();
@@ -54,6 +54,7 @@ async function main() {
   }
 
   const results: TestResult[] = [];
+  const updatedModelIds = new Set<string>();
   let humanReviewCount = 0;
   let skippedCount = 0;
   let plannedPairCount = 0;
@@ -125,6 +126,7 @@ async function main() {
           resultsByModel[modelId] = [];
         }
         upsertModelResult(resultsByModel[modelId], result);
+        updatedModelIds.add(modelId);
         saveModelResults(outputDir, modelId, resultsByModel[modelId]);
 
       } catch (error) {
@@ -146,6 +148,7 @@ async function main() {
         
         results.push(result);
         upsertModelResult(resultsByModel[modelId], result);
+        updatedModelIds.add(modelId);
         saveModelResults(outputDir, modelId, resultsByModel[modelId]);
       }
 
@@ -154,10 +157,7 @@ async function main() {
     }
   }
 
-  // Save grouped model results
-  for (const modelId of Object.keys(resultsByModel)) {
-    saveModelResults(outputDir, modelId, resultsByModel[modelId]);
-  }
+  persistUpdatedModelResults(outputDir, resultsByModel, updatedModelIds, saveModelResults);
 
   console.log(`\n${'='.repeat(60)}`);
   console.log('Summary:');
