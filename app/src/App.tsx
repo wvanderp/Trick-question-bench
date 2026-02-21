@@ -22,6 +22,7 @@ function App() {
   const [selectedVerdict, setSelectedVerdict] = useState<'all' | 'pass' | 'fail'>('all');
   const [search, setSearch] = useState('');
   const [selectedResultId, setSelectedResultId] = useState<string>('');
+  const [showAllModels, setShowAllModels] = useState(false);
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}generated/benchmark-data.json`)
@@ -171,51 +172,85 @@ function App() {
       <section className="chart-grid">
         <article className="panel">
           <h2>Model leaderboard</h2>
-          <div className="leaderboard-grid">
-            <div>
-              <h3>Top 3</h3>
-              <ul className="leaderboard-list">
-                {topThreeModels.map((model, index) => (
-                  <li key={model.id} className="leaderboard-item">
-                    <button
-                      type="button"
-                      className={`leaderboard-button top ${selectedModel === model.id ? 'active' : ''}`}
-                      onClick={() => setSelectedModel(model.id)}
-                    >
-                      <span className="badge">{topBadges[index]}</span>
-                      <span className="leaderboard-model">{model.label}</span>
-                      <span>{pct(model.passRate)}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {!showAllModels ? (
+            <div className="leaderboard-grid">
+              <div>
+                <ul className="leaderboard-list">
+                  {topThreeModels.map((model, index) => (
+                    <li key={model.id} className="leaderboard-item">
+                      <button
+                        type="button"
+                        className={`leaderboard-button top ${selectedModel === model.id ? 'active' : ''}`}
+                        onClick={() => setSelectedModel(model.id)}
+                      >
+                        <span className="badge">{topBadges[index]}</span>
+                        <span className="leaderboard-model">{model.label}</span>
+                        <span>{pct(model.passRate)}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <div>
-              <h3>Worst 3</h3>
+              <div>
+                <ul className="leaderboard-list">
+                  {worstThreeModels.map((model, index) => (
+                    <li key={model.id} className="leaderboard-item">
+                      <button
+                        type="button"
+                        className={`leaderboard-button bottom ${selectedModel === model.id ? 'active' : ''}`}
+                        onClick={() => setSelectedModel(model.id)}
+                      >
+                        <span className="badge">{bottomBadges[index]}</span>
+                        <span className="leaderboard-model">{model.label}</span>
+                        <span>{pct(model.passRate)}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <div className="leaderboard-full">
               <ul className="leaderboard-list">
-                {worstThreeModels.map((model, index) => (
-                  <li key={model.id} className="leaderboard-item">
-                    <button
-                      type="button"
-                      className={`leaderboard-button bottom ${selectedModel === model.id ? 'active' : ''}`}
-                      onClick={() => setSelectedModel(model.id)}
-                    >
-                      <span className="badge">{bottomBadges[index]}</span>
-                      <span className="leaderboard-model">{model.label}</span>
-                      <span>{pct(model.passRate)}</span>
-                    </button>
-                  </li>
-                ))}
+                {rankedModels.map((model) => {
+                  const topIndex = topThreeModels.findIndex((m) => m.id === model.id);
+                  const bottomIndex = worstThreeModels.findIndex((m) => m.id === model.id);
+                  const isTop = topIndex !== -1;
+                  const isBottom = bottomIndex !== -1;
+                  
+                  return (
+                    <li key={model.id} className="leaderboard-item">
+                      <button
+                        type="button"
+                        className={`leaderboard-button ${isTop ? 'top' : ''} ${isBottom ? 'bottom' : ''} ${selectedModel === model.id ? 'active' : ''}`}
+                        onClick={() => setSelectedModel(model.id)}
+                      >
+                        {isTop && <span className="badge">{topBadges[topIndex]}</span>}
+                        {isBottom && <span className="badge">{bottomBadges[bottomIndex]}</span>}
+                        {!isTop && !isBottom && <span className="badge-placeholder" />}
+                        <span className="leaderboard-model">{model.label}</span>
+                        <span>{pct(model.passRate)}</span>
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
-          </div>
+          )}
+          <button
+            type="button"
+            className="expand-button"
+            onClick={() => setShowAllModels(!showAllModels)}
+          >
+            {showAllModels ? 'Show Top & Worst Only' : `Show All ${rankedModels.length} Models`}
+          </button>
           <p className="leaderboard-note">Tip: click a model to instantly filter results.</p>
         </article>
 
         <article className="panel">
           <h2>Pass rate by provider</h2>
-          <div className="bar-list">
+          <div className="bar-list scrollable-list">
             {data.providers
               .slice()
               .sort((a, b) => b.passRate - a.passRate)
@@ -233,7 +268,7 @@ function App() {
 
         <article className="panel">
           <h2>Most failed prompts</h2>
-          <div className="bar-list">
+          <div className="bar-list scrollable-list">
             {(() => {
               const sorted = data.questions
                 .slice()
@@ -244,8 +279,7 @@ function App() {
                     return aPassRate - bPassRate;
                   }
                   return b.total - a.total;
-                })
-                .slice(0, 8);
+                });
               return sorted.map((question) => {
                 const passRate = question.total > 0 ? (question.passed / question.total) * 100 : 0;
                 return (
