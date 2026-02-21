@@ -1,5 +1,16 @@
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
 import { describe, expect, it } from 'vitest';
-import { isQuestionIdEntry, parseModelId, sanitizeFileName, sortByQuestionId, sortOutputByQuestionId } from '../src/loader';
+import {
+  isQuestionIdEntry,
+  mergeQuestionIdEntries,
+  parseModelId,
+  sanitizeFileName,
+  saveResult,
+  sortByQuestionId,
+  sortOutputByQuestionId
+} from '../src/loader';
 
 describe('loader parsing helpers', () => {
   it('detects entries with questionId', () => {
@@ -58,5 +69,71 @@ describe('loader data wrangling helpers', () => {
   it('leaves unsupported structures unchanged', () => {
     const input = [{ foo: 'bar' }];
     expect(sortOutputByQuestionId(input)).toBe(input);
+  });
+
+  it('merges incoming question entries over existing entries', () => {
+    const existing = [
+      { questionId: 'q-1', answer: 'old-1' },
+      { questionId: 'q-2', answer: 'old-2' }
+    ];
+    const incoming = [
+      { questionId: 'q-1', answer: 'new-1' },
+      { questionId: 'q-3', answer: 'new-3' }
+    ];
+
+    expect(mergeQuestionIdEntries(existing, incoming)).toEqual([
+      { questionId: 'q-1', answer: 'new-1' },
+      { questionId: 'q-2', answer: 'old-2' },
+      { questionId: 'q-3', answer: 'new-3' }
+    ]);
+  });
+});
+
+describe('saveResult', () => {
+  it('does not overwrite existing array data when incoming updates are empty', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'loader-saveResult-empty-'));
+    const fileName = 'model.json';
+    const filePath = path.join(tempDir, fileName);
+
+    const existing = [
+      { questionId: 'q-1', answer: 'keep-me' }
+    ];
+    fs.writeFileSync(filePath, JSON.stringify(existing, null, 2), 'utf-8');
+
+    saveResult(tempDir, fileName, []);
+
+    const after = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    expect(after).toEqual(existing);
+  });
+
+  it('writes merged data when incoming updates include new or updated entries', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'loader-saveResult-merge-'));
+    const fileName = 'model.json';
+    const filePath = path.join(tempDir, fileName);
+
+    fs.writeFileSync(
+      filePath,
+      JSON.stringify(
+        [
+          { questionId: 'q-1', answer: 'old-1' },
+          { questionId: 'q-2', answer: 'old-2' }
+        ],
+        null,
+        2
+      ),
+      'utf-8'
+    );
+
+    saveResult(tempDir, fileName, [
+      { questionId: 'q-1', answer: 'new-1' },
+      { questionId: 'q-3', answer: 'new-3' }
+    ]);
+
+    const after = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    expect(after).toEqual([
+      { questionId: 'q-1', answer: 'new-1' },
+      { questionId: 'q-2', answer: 'old-2' },
+      { questionId: 'q-3', answer: 'new-3' }
+    ]);
   });
 });

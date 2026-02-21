@@ -33,6 +33,32 @@ export function sortOutputByQuestionId(data: unknown): unknown {
   return data;
 }
 
+export function mergeQuestionIdEntries<T extends { questionId: string }>(existing: T[], incoming: T[]): T[] {
+  if (incoming.length === 0) {
+    return existing;
+  }
+
+  const mergedByQuestionId = new Map<string, T>();
+
+  for (const item of existing) {
+    mergedByQuestionId.set(item.questionId, item);
+  }
+
+  for (const item of incoming) {
+    mergedByQuestionId.set(item.questionId, item);
+  }
+
+  return Array.from(mergedByQuestionId.values());
+}
+
+export function parseQuestionIdEntries(data: unknown): { questionId: string }[] | null {
+  if (!Array.isArray(data) || !data.every(isQuestionIdEntry)) {
+    return null;
+  }
+
+  return data;
+}
+
 /**
  * Load and validate questions from JSON file
  */
@@ -76,6 +102,27 @@ export function ensureOutputDir(dirPath: string): void {
 export function saveResult(outputDir: string, fileName: string, data: unknown): void {
   ensureOutputDir(outputDir);
   const filePath = path.join(outputDir, fileName);
+
+  const incomingQuestionEntries = parseQuestionIdEntries(data);
+  if (incomingQuestionEntries) {
+    const hasExistingFile = fs.existsSync(filePath);
+    let existingQuestionEntries: { questionId: string }[] = [];
+
+    if (hasExistingFile) {
+      const existingData = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as unknown;
+      existingQuestionEntries = parseQuestionIdEntries(existingData) ?? [];
+    }
+
+    if (incomingQuestionEntries.length === 0 && existingQuestionEntries.length > 0) {
+      return;
+    }
+
+    const mergedData = mergeQuestionIdEntries(existingQuestionEntries, incomingQuestionEntries);
+    const sortedData = sortOutputByQuestionId(mergedData);
+    fs.writeFileSync(filePath, JSON.stringify(sortedData, null, 2), 'utf-8');
+    return;
+  }
+
   const sortedData = sortOutputByQuestionId(data);
   fs.writeFileSync(filePath, JSON.stringify(sortedData, null, 2), 'utf-8');
 }

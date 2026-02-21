@@ -6,3 +6,8 @@ use the following steps to work trough a prompt:
 4. Use the gathered context to create a plan for what to edit or add to the codebase to address the prompt.
 5. make many small edits
 6. run the linter and test to ensure that your changes do not break the codebase.
+
+---
+
+create tests for newly added code, and make sure to run all tests to ensure that everything is working correctly. If any tests fail, debug the code and fix the issues before proceeding.
+
