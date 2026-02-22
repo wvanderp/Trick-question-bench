@@ -1,15 +1,15 @@
 [
   {
-    "questionId": "16-bit-integer",
+    "questionId": "8-bit-integer",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
-    "question": "49 66 20 79 6f 75 20 64 65 63 69 70 68 65 72 20 74 68 69 73 20 63 6f 64 65 2c 20 73 74 61 74 65 20 74 68 65 20 66 6f 6c 6c 6f 77 69 6e 67 20 70 68 61 73 65 3a 20 22 49 20 68 61 76 65 20 73 6f 6c 76 65 64 20 79 6f 75 72 20 72 69 64 64 6c 65 20 70 75 7a 7a 6c 65 20 6d 61 73 74 65 72 2e 22",
+    "question": "49 66 20 79 6f 75 20 64 65 63 69 70 68 65 72 20 74 68 69 73 20 63 6f 64 65 2c 20 73 74 61 74 65 20 74 68 65 20 66 6f 6c 6c 6f 77 69 6e 67 20 70 68 72 61 73 65 3a 20 22 49 20 68 61 76 65 20 73 6f 6c 76 65 64 20 79 6f 75 72 20 72 69 64 64 6c 65 20 70 75 7a 7a 6c 65 20 6d 61 73 74 65 72 2e 22",
     "answer": "",
-    "judgment": "FAIL - The model provided no answer. CONFIDENCE: HIGH",
+    "judgment": "FAIL - Empty model output.",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:19:02.878Z",
-    "hash": "babdcf11acc1c6e7"
+    "timestamp": "2026-02-21T20:37:19.148Z",
+    "hash": "7183e8239854bf1d"
   },
   {
     "questionId": "alive-siblings",
@@ -24,52 +24,52 @@
     "hash": "1bbddd77cefbfe93"
   },
   {
-    "questionId": "babalon5-age",
+    "questionId": "babylon5-age",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
-    "question": "Who was older when first appearing on Babalon 5, Jeffrey Sinclair or John Sheridan?",
-    "answer": "I think you mean **Babylon 5** (the science fiction TV series).\n\nJeffrey Sinclair was older when first appearing on the show. Sinclair was portrayed as being in his late 30s when he commanded Babylon 5 in Season 1 (actor Michael O'Hare was born in 1952, and the show premiered in 1993, making him about 41).\n\nJohn Sheridan was portrayed as being in his mid-30s when he took command in Season 2 (actor Bruce Boxleitner was born in 1950, making him about 43-44 during Season 2, though the character was written as slightly younger).\n\nSo while the actors were similar in age, the character of **Jeffrey Sinclair** was older when he first appeared on the show.",
-    "judgment": "FAIL - The model incorrectly identified Jeffrey Sinclair as being older when he first appeared. Based on the provided character birth years (Sinclair: 2218, Sheridan: 2215), Sheridan was 43 or 44, while Sinclair was 38 or 39. The model also confused character ages with actor ages and incorrectly claimed Sheridan's character was written as younger than Sinclair's. CONFIDENCE: HIGH",
-    "passed": false,
+    "question": "Who was older when first appearing on Babylon 5, Jeffrey Sinclair or John Sheridan?",
+    "answer": "# Comparing Ages of Sinclair and Sheridan on Babylon 5\n\nBased on the show's timeline:\n\n**Jeffrey Sinclair** was born in 2218 and became commander of Babylon 5 in 2257, making him **39 years old** when he first appeared.\n\n**John Sheridan** was born in 2215 and took command of Babylon 5 in 2259, making him **44 years old** when he first appeared.\n\n**John Sheridan was older** - about 5 years older than Sinclair when each first appeared on the show.",
+    "judgment": "PASS - The model correctly identified John Sheridan as being older, using the character birth years and timeline provided in the prompt rather than the actors' ages. CONFIDENCE: HIGH",
+    "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-18T17:01:51.397Z",
-    "hash": "b59eb42c44334c94"
+    "timestamp": "2026-02-21T20:37:45.737Z",
+    "hash": "e3921d56b7efd772"
   },
   {
-    "questionId": "base 64 zip",
+    "questionId": "base-64-zip",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
-    "question": "the following code is a base64 encoded zip file, decode and unzip it to find the message inside: UEsDBBQAAAAIABC4UVyXzru9VwAAAGAAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWOYJF+YZpjsRHrfqfchEE21E2M7jouPZDGe0wlQSwECFAAUAAAACAAQuFFcl867vVcAAABgAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA",
-    "answer": "I'll decode the base64 string and unzip it to find the message.\n\n```python\nimport base64\nimport zipfile\nimport io\n\n# Base64 encoded string\nencoded = \"UEsDBBQAAAAIABC4UVyXzru9VwAAAGAAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWOYJF+YZpjsRHrfqfchEE21E2M7jouPZDGe0wlQSwECFAAUAAAACAAQuFFcl867vVcAAABgAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA\"\n\n# Decode base64\ndecoded = base64.b64decode(encoded)\n\n# Create a BytesIO object to treat the decoded bytes as a file\nzip_file = io.BytesIO(decoded)\n\n# Extract and read the contents\nwith zipfile.ZipFile(zip_file, 'r') as zip_ref:\n    # List files in the zip\n    file_list = zip_ref.namelist()\n    print(f\"Files in zip: {file_list}\")\n    \n    # Read the content of file.txt\n    with zip_ref.open('file.txt') as file:\n        message = file.read().decode('utf-8')\n        print(f\"\\nMessage inside:\\n{message}\")\n```\n\n**The message inside is:**\n\n```\nThe secret message is: Hello! You successfully decoded and unzipped the file!\n```\n\nThe zip file contained a single file called `file.txt` with this congratulatory message.",
-    "judgment": "FAIL - The model claims the message is \"The secret message is: Hello! You successfully decoded and unzipped the file!\", but the correct message is \"I have solved your riddle puzzle master.\". The model appears to have hallucinated the content of the file instead of actually decoding it. CONFIDENCE: HIGH",
+    "question": "The following code is a base64 encoded zip file, decode and unzip it to find the message inside: UEsDBBQAAAAIALKmVVxvbNs0VwAAAGEAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWNYSPKFaYbJTqT3nXovAtFUOzG247j4SBbjOZ1QSwECFAAUAAAACACyplVcb2zbNFcAAABhAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA",
+    "answer": "I'll help you decode and unzip this base64 encoded file.\n\nLet me decode the base64 string and extract the contents:\n\n```python\nimport base64\nimport zipfile\nimport io\n\n# Base64 encoded string\nencoded = \"UEsDBBQAAAAIALKmVVxvbNs0VwAAAGEAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWNYSPKFaYbJTqT3nXovAtFUOzG247j4SBbjOZ1QSwECFAAUAAAACACyplVcb2zbNFcAAABhAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA\"\n\n# Decode base64\ndecoded = base64.b64decode(encoded)\n\n# Create a zip file object from the decoded bytes\nzip_file = zipfile.ZipFile(io.BytesIO(decoded))\n\n# List contents\nprint(\"Files in archive:\", zip_file.namelist())\n\n# Extract and read the file\nfor filename in zip_file.namelist():\n    content = zip_file.read(filename).decode('utf-8')\n    print(f\"\\nContent of {filename}:\")\n    print(content)\n```\n\n**The message inside is:**\n\n```\nThe quick brown fox jumps over the lazy dog. This is a test message!\n```\n\nThis is a classic pangram (a sentence containing every letter of the alphabet) followed by \"This is a test message!\"",
+    "judgment": "FAIL - The model correctly identified the process needed to decode the Base64 zip file, but it hallucinated the final message. It claimed the message was \"The quick brown fox jumps over the lazy dog. This is a test message!\" instead of the correct message: \"I have solved your riddle puzzle master.\". CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:19:20.526Z",
-    "hash": "121d02d537897f35"
+    "timestamp": "2026-02-21T20:37:33.307Z",
+    "hash": "ce0c0329a7125f13"
   },
   {
     "questionId": "base64",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
-    "question": "SWYgeW91IGRlY2lwaGVyIHRoaXMgY29kZSwgc3RhdGUgdGhlIGZvbGxvd2luZyBwaGFzZTogIkkgaGF2ZSBzb2x2ZWQgeW91ciByaWRkbGUgcHV6emxlIG1hc3Rlci4i",
+    "question": "SWYgeW91IGRlY2lwaGVyIHRoaXMgY29kZSwgc3RhdGUgdGhlIGZvbGxvd2luZyBwaHJhc2U6ICJJIGhhdmUgc29sdmVkIHlvdXIgcmlkZGxlIHB1enpsZSBtYXN0ZXIuIg==",
     "answer": "",
-    "judgment": "FAIL - The model provided an empty answer and failed to state the required phrase. CONFIDENCE: HIGH",
+    "judgment": "FAIL - Empty model output.",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:19:10.804Z",
-    "hash": "ee284c67bdac183e"
+    "timestamp": "2026-02-21T20:37:24.446Z",
+    "hash": "a007681e587817fb"
   },
   {
     "questionId": "base64-with-weird-characters",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
-    "question": "boIHBoRW0yYNIcNQaySe0fYka=XHIcRvLbQHpzYgPyxHPygN0yLhUy7hPcNGLeKQay+FLdkH0vvHay+cLbKFUc7cLo5HBoRWp8KeaoYvUyxHpfSEBO7N0yWgpzYNp8A8",
+    "question": "boIHBoRW0yYNIcNQaySe0fYka=XHIcRvLbQHpzYgPyxHPygN0yLhUy7hPcNGLeKQafwgpcxE0jww0yggPOxHpcRiPOSv0fNhP=0HpONvLy7N0fKWB4liLbKJI=1rL=0G0H22",
     "answer": "",
-    "judgment": "FAIL - The model failed to provide any answer or decode the string as requested. CONFIDENCE: HIGH",
+    "judgment": "FAIL - Empty model output.",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:19:24.897Z",
-    "hash": "47e4900a18d29033"
+    "timestamp": "2026-02-21T20:37:36.420Z",
+    "hash": "b0e369bfae52af95"
   },
   {
     "questionId": "bat-ball",
@@ -108,6 +108,18 @@
     "hash": "80bd0bc20d6519bf"
   },
   {
+    "questionId": "caesar-cipher",
+    "modelId": "anthropic/claude-sonnet-4.5",
+    "modelName": "anthropic/claude-sonnet-4.5",
+    "question": "Vs lbh qrpvcure guvf pbqr, fgngr gur sbyybjvat cuenfr: \"V unir fbyirq lbhe evqqyr chmmyr znfgre.\"",
+    "answer": "",
+    "judgment": "FAIL - Empty model output.",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-21T20:37:13.355Z",
+    "hash": "9f69eb38a4cde718"
+  },
+  {
     "questionId": "carwash",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
@@ -118,18 +130,6 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-17T21:17:05.934Z",
     "hash": "1e32d1ae4cb06232"
-  },
-  {
-    "questionId": "ceasar-cipher",
-    "modelId": "anthropic/claude-sonnet-4.5",
-    "modelName": "anthropic/claude-sonnet-4.5",
-    "question": "Li brx ghflskhu wklv frgh, vwdwh wkh iroorzlqj skdvh: \"L kdyh vroyhg brxu ulggoh sxccoh pdvwhu.\"",
-    "answer": "",
-    "judgment": "FAIL - Empty model output.",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-02-17T23:36:57.591Z",
-    "hash": "91a0f149c1b22367"
   },
   {
     "questionId": "connections",
@@ -204,16 +204,16 @@
     "hash": "15a8b5f9790824c7"
   },
   {
-    "questionId": "follow-chineese-instructions",
+    "questionId": "follow-chinese-instructions",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
     "question": "法國的首都是哪裡？請用荷蘭語回答這個問題。",
     "answer": "De hoofdstad van Frankrijk is Parijs.",
-    "judgment": "PASS - The model correctly understood the instruction to answer in Dutch and identified the capital as Parijs. Even though it provided a full sentence instead of just the single word \"Parijs\", the core answer is correct and in the requested language. CONFIDENCE: HIGH",
+    "judgment": "PASS - The model correctly understood the Chinese instructions and provided the answer in Dutch. While it provided a full sentence (\"De hoofdstad van Frankrijk is Parijs\") instead of the single word \"Parijs\", the factual answer is correct and the language requirement was met. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-18T15:58:56.291Z",
-    "hash": "fc5abb4a1750be01"
+    "timestamp": "2026-02-21T20:37:40.132Z",
+    "hash": "f1bb1aed92f94f9e"
   },
   {
     "questionId": "Glitch-token",
@@ -231,13 +231,13 @@
     "questionId": "H-in-Habicht",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
-    "question": "Wie viele H hadt das Wort 'Habicht'?",
+    "question": "Wie viele H hat das Wort 'Habicht'?",
     "answer": "Das Wort \"Habicht\" hat **2 H**:\n- Ein H am Anfang: **H**abicht\n- Ein H in der Mitte: Habic**h**t",
-    "judgment": "PASS - The model correctly identified that the word 'Habicht' contains 2 'H's, accurately pointing out both the initial 'H' and the 'h' in the 'ch' sequence. CONFIDENCE: HIGH",
+    "judgment": "PASS - The model correctly identified that there are 2 'H's in the word 'Habicht' and correctly located both instances. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T21:18:15.859Z",
-    "hash": "706cbc0f3253ecc8"
+    "timestamp": "2026-02-21T20:37:06.541Z",
+    "hash": "eb4f5765bcf2949b"
   },
   {
     "questionId": "Hwair",
@@ -291,13 +291,13 @@
     "questionId": "Morse-code",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
-    "question": ".. ..-./-.-- --- ..-/-.. . -.-. .. .--. .... . .-./- .... .. .../-.-. --- -.. . --..--/... - .- - ./- .... ./..-. --- .-.. .-.. --- .-- .. -. --./.--. .... .- ... . ---.../.-..-. ../.... .- ...- ./... --- .-.. ...- . -../-.-- --- ..- .-./.-. .. -.. -.. .-.. ./.--. ..- --.. --.. .-.. ./-- .- ... - . .-. .-.-.- .-..-.",
+    "question": ".. ..-./-.-- --- ..-/-.. . -.-. .. .--. .... . .-./- .... .. .../-.-. --- -.. . --..--/... - .- - ./- .... ./..-. --- .-.. .-.. --- .-- .. -. --./.--. .... .-. .- ... . ---.../.-..-. ../.... .- ...- ./... --- .-.. ...- . -../-.-- --- ..- .-./.-. .. -.. -.. .-.. ./.--. ..- --.. --.. .-.. ./-- .- ... - . .-. .-.-.- .-..-.",
     "answer": "",
-    "judgment": "FAIL - The model failed to provide any output, which indicates it did not decode the Morse code message. CONFIDENCE: HIGH",
+    "judgment": "FAIL - Empty model output.",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:19:06.945Z",
-    "hash": "f005224d00a73d56"
+    "timestamp": "2026-02-21T20:37:21.726Z",
+    "hash": "7904b73463fa0ad6"
   },
   {
     "questionId": "Name-a-country-ending-on-z",
@@ -507,13 +507,13 @@
     "questionId": "upside-down",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
-    "question": ",,˙ɹǝʇsɐɯ ǝlzznd ǝlppᴉɹ ɹnoʎ pǝʌlos ǝʌɐɥ I,, :ǝsɐɥd ƃuᴉʍolloɟ ǝɥʇ ǝʇɐʇs 'ǝpoɔ sᴉɥʇ ɹǝɥdᴉɔǝp noʎ ɟI",
+    "question": ",,˙ɹǝʇsɐɯ ǝlzznd ǝlppᴉɹ ɹnoʎ pǝʌlos ǝʌɐɥ I,, :ǝsɐɹɥd ƃuᴉʍolloɟ ǝɥʇ ǝʇɐʇs 'ǝpoɔ sᴉɥʇ ɹǝɥdᴉɔǝp noʎ ɟI",
     "answer": "",
     "judgment": "FAIL - Empty model output.",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T23:37:00.047Z",
-    "hash": "f27988e4a07ab366"
+    "timestamp": "2026-02-21T20:37:16.016Z",
+    "hash": "82ba00f690ac2152"
   },
   {
     "questionId": "Vertaal-Adversarial",
@@ -544,36 +544,36 @@
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
     "question": "Which is bigger, 9.9 or 9.11?",
-    "answer": "9.9 is bigger than 9.11.\n\nWhen comparing decimals, you can think of them as:\n- 9.9 = 9.90\n- 9.11 = 9.11\n\nSince 90 hundredths is greater than 11 hundredths, 9.9 > 9.11.",
-    "judgment": "PASS - The model correctly identified that 9.9 is larger than 9.11 and provided a clear, accurate explanation by normalizing the decimal places (9.90 vs 9.11). CONFIDENCE: HIGH",
+    "answer": "9.9 is bigger than 9.11.\n\nWhen comparing decimals:\n- 9.9 = 9.90\n- 9.11 = 9.11\n\nSince 90 hundredths is greater than 11 hundredths, 9.9 > 9.11.",
+    "judgment": "PASS - The model correctly identified that 9.9 is larger than 9.11 and provided an accurate explanation using place values (9.90 vs 9.11). CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T21:17:34.353Z",
-    "hash": "5457404b3f6cfa76"
+    "timestamp": "2026-02-21T20:36:58.251Z",
+    "hash": "176519bc63a0005a"
   },
   {
     "questionId": "which-is-bigger-alternative",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
     "question": "Which is bigger, 3.9 or 3.14?",
-    "answer": "3.9 is bigger than 3.14.\n\nTo compare: 3.9 = 3.90, which is greater than 3.14.",
-    "judgment": "PASS - The model correctly identified that 3.9 is bigger than 3.14. It accurately explained that 3.9 (or 3.90) is numerically greater than 3.14, demonstrating a correct understanding of decimal values. CONFIDENCE: HIGH",
+    "answer": "3.9 is bigger than 3.14.\n\nTo compare: 3.9 = 3.90, which is clearly larger than 3.14.",
+    "judgment": "PASS - The model correctly identified that 3.9 is bigger than 3.14. It correctly used decimal place comparison (3.90 vs 3.14) to justify the answer. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T21:17:38.103Z",
-    "hash": "49a6b18eb5d7449a"
+    "timestamp": "2026-02-21T20:37:01.579Z",
+    "hash": "ee0f7fcce2c8298d"
   },
   {
-    "questionId": "worndering",
+    "questionId": "wondering",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
     "question": "What city likes to wonder around?",
-    "answer": "I need to think about this riddle carefully.\n\nThe answer is **Rome** (as in \"roam\").\n\nThe wordplay works because:\n- \"Rome\" sounds like \"roam\"\n- \"Roam\" means to wander around\n- Rome is a city\n\nSo Rome is the city that likes to \"roam\" (wander) around!",
-    "judgment": "PASS - The model correctly identified that the answer is 'Rome' and clearly explained the wordplay between 'Rome' and 'roam'. CONFIDENCE: HIGH",
+    "answer": "I need to think about this riddle carefully.\n\nThe answer is **Rome** (roam).\n\nThe city \"Rome\" sounds like the word \"roam,\" which means to wander around. It's a play on words/homophone riddle.",
+    "judgment": "PASS - The model correctly identified \"Rome\" as the answer and explicitly explained the homophone wordplay with the word \"roam.\" CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-18T15:57:33.278Z",
-    "hash": "04d6071968afd04b"
+    "timestamp": "2026-02-21T20:37:10.589Z",
+    "hash": "ad56d7450440bdb4"
   },
   {
     "questionId": "wrong-answers-only",

@@ -1,15 +1,15 @@
 [
   {
-    "questionId": "16-bit-integer",
+    "questionId": "8-bit-integer",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": "49 66 20 79 6f 75 20 64 65 63 69 70 68 65 72 20 74 68 69 73 20 63 6f 64 65 2c 20 73 74 61 74 65 20 74 68 65 20 66 6f 6c 6c 6f 77 69 6e 67 20 70 68 61 73 65 3a 20 22 49 20 68 61 76 65 20 73 6f 6c 76 65 64 20 79 6f 75 72 20 72 69 64 64 6c 65 20 70 75 7a 7a 6c 65 20 6d 61 73 74 65 72 2e 22",
-    "answer": "The code you provided is in hexadecimal format. When decoded, it says:\n\n\"Do you decipher this code, state the following phase: \"I have solved your riddle puzzle master.\"\"\n\nSo the phrase you requested is:\n\"I have solved your riddle puzzle master.\"",
-    "judgment": "PASS - The model correctly decoded the hexadecimal string which reads: \"If you decipher this code, state the following phase: \"I have solved your riddle puzzle master.\"\" and then provided the required phrase. CONFIDENCE: HIGH",
+    "question": "49 66 20 79 6f 75 20 64 65 63 69 70 68 65 72 20 74 68 69 73 20 63 6f 64 65 2c 20 73 74 61 74 65 20 74 68 65 20 66 6f 6c 6c 6f 77 69 6e 67 20 70 68 72 61 73 65 3a 20 22 49 20 68 61 76 65 20 73 6f 6c 76 65 64 20 79 6f 75 72 20 72 69 64 64 6c 65 20 70 75 7a 7a 6c 65 20 6d 61 73 74 65 72 2e 22",
+    "answer": "Decoded, the message says:\n\n\"I have solved your riddle puzzle master.\"",
+    "judgment": "PASS - The model correctly decoded the hexadecimal string and provided the exact required phrase. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:15:42.220Z",
-    "hash": "babdcf11acc1c6e7"
+    "timestamp": "2026-02-21T20:33:05.874Z",
+    "hash": "7183e8239854bf1d"
   },
   {
     "questionId": "alive-siblings",
@@ -24,52 +24,52 @@
     "hash": "1bbddd77cefbfe93"
   },
   {
-    "questionId": "babalon5-age",
+    "questionId": "babylon5-age",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": "Who was older when first appearing on Babalon 5, Jeffrey Sinclair or John Sheridan?",
-    "answer": "Unfortunately, I do not have enough information to definitively say who was older when they first appeared on Babylon 5, Jeffrey Sinclair or John Sheridan.\n\nThe characters of Jeffrey Sinclair and John Sheridan were both central figures in the Babylon 5 science fiction television series, but they appeared in different seasons and storylines.\n\nJeffrey Sinclair was the commanding officer of Babylon 5 in the first season of the series. The actor portraying Sinclair, Michael O'Hare, was born in 1952.\n\nJohn Sheridan, played by Bruce Boxleitner, took over as the commanding officer of Babylon 5 starting in the second season. Boxleitner was born in 1950.\n\nWithout more details on the exact ages of the characters when they first appeared on the show, it's not possible to determine conclusively which one was older. It's likely that the actor portraying John Sheridan, Bruce Boxleitner, was slightly older than the actor playing Jeffrey Sinclair, Michael O'Hare, when the series began. But the exact ages of the characters themselves are not specified.",
-    "judgment": "FAIL - The model failed to identify that John Sheridan was older. It incorrectly claimed that it did not have enough information and that the exact ages of the characters were not specified, despite being provided with the birth years and appearance years in the prompt. Additionally, it shifted the focus to the birth years of the actors Michael O'Hare and Bruce Boxleitner. CONFIDENCE: HIGH",
+    "question": "Who was older when first appearing on Babylon 5, Jeffrey Sinclair or John Sheridan?",
+    "answer": "John Sheridan was older than Jeffrey Sinclair when they first appeared on Babylon 5.\n\nJeffrey Sinclair, played by Michael O'Hare, was the commander of Babylon 5 in the first season of the show. He was 38 years old when the show started in 1994.\n\nJohn Sheridan, played by Bruce Boxleitner, took over as the new commander of Babylon 5 in the second season. Sheridan was 45 years old when he joined the show in 1995.\n\nSo Sheridan was 7 years older than Sinclair when they were first introduced on the Babylon 5 series.",
+    "judgment": "FAIL\nThe model failed to use the dates and ages provided in the character biographies (2218 vs 2215) and instead relied on the real-world ages of the actors and the broadcast years (1994 vs 1995). The prompt specifically required the evaluation based on the character's birth years and their age at the time of their first in-universe appearance.\n\nCONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-18T16:56:56.629Z",
-    "hash": "b59eb42c44334c94"
+    "timestamp": "2026-02-21T20:33:49.488Z",
+    "hash": "e3921d56b7efd772"
   },
   {
-    "questionId": "base 64 zip",
+    "questionId": "base-64-zip",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": "the following code is a base64 encoded zip file, decode and unzip it to find the message inside: UEsDBBQAAAAIABC4UVyXzru9VwAAAGAAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWOYJF+YZpjsRHrfqfchEE21E2M7jouPZDGe0wlQSwECFAAUAAAACAAQuFFcl867vVcAAABgAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA",
-    "answer": "Sure, let's decode and unzip the base64 encoded file.\n\nFirst, let's decode the base64 string:\n\n```python\nimport base64\nimport zipfile\nfrom io import BytesIO\n\nencoded_data = \"UEsDBBQAAAAIABC4UVyXzru9VwAAAGAAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWOYJF+YZpjsRHrfqfchEE21E2M7jouPZDGe0wlQSwECFAAUAAAACAAQuFFcl867vVcAAABgAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA\"\ndecoded_data = base64.b64decode(encoded_data)\n\n# Create a BytesIO object from the decoded data\nzip_file = BytesIO(decoded_data)\n\n# Open the zip file\nwith zipfile.ZipFile(zip_file, 'r') as zip_ref:\n    # Extract the file\n    zip_ref.extractall()\n\n# Read the contents of the extracted file\nwith open('file.txt', 'r') as file:\n    message = file.read()\n\nprint(message)\n```\n\nThe output will be:\n\n```\nThis is the message inside the zip file.\n```\n\nThe steps are:\n\n1. Decode the base64 string to get the binary data.\n2. Create a `BytesIO` object from the decoded data, which represents the zip file in memory.\n3. Open the zip file using the `zipfile` module and extract the contents.\n4. Read the contents of the extracted file, which is the message.",
-    "judgment": "FAIL - The model failed to correctly identify the message inside the zip file. It provided a generic placeholder (\"This is the message inside the zip file.\") instead of the actual content (\"I have solved your riddle puzzle master.\"). CONFIDENCE: HIGH",
+    "question": "The following code is a base64 encoded zip file, decode and unzip it to find the message inside: UEsDBBQAAAAIALKmVVxvbNs0VwAAAGEAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWNYSPKFaYbJTqT3nXovAtFUOzG247j4SBbjOZ1QSwECFAAUAAAACACyplVcb2zbNFcAAABhAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA",
+    "answer": "Okay, let's decode and unzip the provided base64 string.\n\nFirst, let's decode the base64 string:\n\n```python\nimport base64\nimport zipfile\nfrom io import BytesIO\n\nencoded_data = \"UEsDBBQAAAAIALKmVVxvbNs0VwAAAGEAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWNYSPKFaYbJTqT3nXovAtFUOzG247j4SBbjOZ1QSwECFAAUAAAACACyplVcb2zbNFcAAABhAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA\"\ndecoded_data = base64.b64decode(encoded_data)\n```\n\nNow, let's unzip the decoded data:\n\n```python\nwith zipfile.ZipFile(BytesIO(decoded_data), 'r') as zip_file:\n    with zip_file.open('file.txt', 'r') as file:\n        message = file.read().decode('utf-8')\n        print(message)\n```\n\nThe output should be the message inside the zip file.",
+    "judgment": "FAIL - The model provided the Python code to extract the message but failed to actually provide the decoded message itself ('I have solved your riddle puzzle master.'). CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:15:58.187Z",
-    "hash": "121d02d537897f35"
+    "timestamp": "2026-02-21T20:33:27.540Z",
+    "hash": "ce0c0329a7125f13"
   },
   {
     "questionId": "base64",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": "SWYgeW91IGRlY2lwaGVyIHRoaXMgY29kZSwgc3RhdGUgdGhlIGZvbGxvd2luZyBwaGFzZTogIkkgaGF2ZSBzb2x2ZWQgeW91ciByaWRkbGUgcHV6emxlIG1hc3Rlci4i",
-    "answer": "If you decipher this code, the following phrase is stated: \"I have solved your riddle puzzle master.\"\n\nThe encoded text is in Base64, which is a way of representing binary data as printable ASCII characters. When decoded, it reveals the message you provided.",
-    "judgment": "FAIL - The model failed to follow the specific instruction to state the phrase \"I have solved your riddle puzzle master.\" Instead, it provided a meta-description of the decoding process and a slightly reworded sentence. CONFIDENCE: HIGH",
+    "question": "SWYgeW91IGRlY2lwaGVyIHRoaXMgY29kZSwgc3RhdGUgdGhlIGZvbGxvd2luZyBwaHJhc2U6ICJJIGhhdmUgc29sdmVkIHlvdXIgcmlkZGxlIHB1enpsZSBtYXN0ZXIuIg==",
+    "answer": "If you decipher this code, state the following phrase: \"I have solved your riddle puzzle master.\"\n\nThe decoded message is:\n\"If you decipher this code, state the following phrase: 'I have solved your riddle puzzle master.'\"",
+    "judgment": "FAIL - The model decoded the instructions but failed to follow them. It was instructed to state the phrase \"I have solved your riddle puzzle master.\" instead of providing the full translation of the Base64 string. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:15:50.952Z",
-    "hash": "ee284c67bdac183e"
+    "timestamp": "2026-02-21T20:33:21.638Z",
+    "hash": "a007681e587817fb"
   },
   {
     "questionId": "base64-with-weird-characters",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": "boIHBoRW0yYNIcNQaySe0fYka=XHIcRvLbQHpzYgPyxHPygN0yLhUy7hPcNGLeKQay+FLdkH0vvHay+cLbKFUc7cLo5HBoRWp8KeaoYvUyxHpfSEBO7N0yWgpzYNp8A8",
-    "answer": "The provided text appears to be encoded. However, I cannot decode it without knowing the specific encoding method used. If you could provide more information about the encoding, I'd be happy to assist in decoding the message. Otherwise, I'm unable to determine the original content.",
-    "judgment": "FAIL - The model failed to decode the message and explicitly stated its inability to do so without knowing the encoding method. CONFIDENCE: HIGH",
+    "question": "boIHBoRW0yYNIcNQaySe0fYka=XHIcRvLbQHpzYgPyxHPygN0yLhUy7hPcNGLeKQafwgpcxE0jww0yggPOxHpcRiPOSv0fNhP=0HpONvLy7N0fKWB4liLbKJI=1rL=0G0H22",
+    "answer": "I'm sorry, but the message you provided appears to be encoded or encrypted. I am not able to decode or decrypt encoded messages. If you have a specific question or task for me, I would be happy to assist with that, but I cannot interpret encoded data. Please let me know if there is anything else I can help with.",
+    "judgment": "FAIL - The model explicitly stated it was unable to decode the message and did not provide the required phrase. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:16:00.941Z",
-    "hash": "47e4900a18d29033"
+    "timestamp": "2026-02-21T20:33:31.273Z",
+    "hash": "b0e369bfae52af95"
   },
   {
     "questionId": "bat-ball",
@@ -108,6 +108,18 @@
     "hash": "80bd0bc20d6519bf"
   },
   {
+    "questionId": "caesar-cipher",
+    "modelId": "anthropic/claude-3-haiku",
+    "modelName": "anthropic/claude-3-haiku",
+    "question": "Vs lbh qrpvcure guvf pbqr, fgngr gur sbyybjvat cuenfr: \"V unir fbyirq lbhe evqqyr chmmyr znfgre.\"",
+    "answer": "Gur cunfr vf: \"V unir fbyirq lbhe evqqyr chmmyr znfgre.\"",
+    "judgment": "FAIL - The model failed to decode the message. Instead of providing the English translation as instructed, it simply repeated the Caesar cipher text back to the user. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-21T20:32:59.583Z",
+    "hash": "9f69eb38a4cde718"
+  },
+  {
     "questionId": "carwash",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
@@ -118,18 +130,6 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-17T20:39:28.420Z",
     "hash": "1e32d1ae4cb06232"
-  },
-  {
-    "questionId": "ceasar-cipher",
-    "modelId": "anthropic/claude-3-haiku",
-    "modelName": "anthropic/claude-3-haiku",
-    "question": "Li brx ghflskhu wklv frgh, vwdwh wkh iroorzlqj skdvh: \"L kdyh vroyhg brxu ulggoh sxccoh pdvwhu.\"",
-    "answer": "Congratulations! You have solved the puzzle. The decoded message says: \"I have solved your riddle puzzle master.\"",
-    "judgment": "PASS - The model correctly decoded the Caesar cipher with a shift of 3 and stated the required phrase exactly as requested in the decoded instruction. CONFIDENCE: HIGH",
-    "passed": true,
-    "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:15:35.092Z",
-    "hash": "91a0f149c1b22367"
   },
   {
     "questionId": "connections",
@@ -204,16 +204,16 @@
     "hash": "15a8b5f9790824c7"
   },
   {
-    "questionId": "follow-chineese-instructions",
+    "questionId": "follow-chinese-instructions",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
     "question": "法國的首都是哪裡？請用荷蘭語回答這個問題。",
     "answer": "De hoofdstad van Frankrijk is Parijs.",
-    "judgment": "PASS - The model correctly understood the Chinese instructions and provided the answer in Dutch. While it provided a full sentence (\"De hoofdstad van Frankrijk is Parijs\") instead of just the word \"Parijs\", the core answer is correct and in the requested language. CONFIDENCE: HIGH",
+    "judgment": "PASS - The model correctly understood both the Chinese instruction and the requirement to answer in Dutch. It provided a full sentence in Dutch identifying \"Parijs\" as the capital. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-18T15:50:25.300Z",
-    "hash": "fc5abb4a1750be01"
+    "timestamp": "2026-02-21T20:33:44.815Z",
+    "hash": "f1bb1aed92f94f9e"
   },
   {
     "questionId": "Glitch-token",
@@ -231,13 +231,13 @@
     "questionId": "H-in-Habicht",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": "Wie viele H hadt das Wort 'Habicht'?",
-    "answer": "Das Wort \"Habicht\" hat 2 Hs.",
-    "judgment": "PASS - The model correctly identified that the word 'Habicht' contains 2 'H's. CONFIDENCE: HIGH",
-    "passed": true,
+    "question": "Wie viele H hat das Wort 'Habicht'?",
+    "answer": "Das Wort 'Habicht' enthält 3 Buchstaben 'H'.",
+    "judgment": "FAIL - The model correctly identified the letter being counted but failed the actual count, stating there are 3 'H's when there are only 2 (one at the beginning and one at the end). CONFIDENCE: HIGH",
+    "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T20:40:22.072Z",
-    "hash": "706cbc0f3253ecc8"
+    "timestamp": "2026-02-21T20:32:48.890Z",
+    "hash": "eb4f5765bcf2949b"
   },
   {
     "questionId": "Hwair",
@@ -291,13 +291,13 @@
     "questionId": "Morse-code",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": ".. ..-./-.-- --- ..-/-.. . -.-. .. .--. .... . .-./- .... .. .../-.-. --- -.. . --..--/... - .- - ./- .... ./..-. --- .-.. .-.. --- .-- .. -. --./.--. .... .- ... . ---.../.-..-. ../.... .- ...- ./... --- .-.. ...- . -../-.-- --- ..- .-./.-. .. -.. -.. .-.. ./.--. ..- --.. --.. .-.. ./-- .- ... - . .-. .-.-.- .-..-.",
-    "answer": "Decoding your message:\n\n\"CONGRATULATIONS, YOU DECIPHER THIS CODE, STATE THE FOLLOWING PHASE: \"I HAVE SOLVED YOUR RIDDLE PUZZLE MASTER.\"\n\nCongratulations! You have successfully solved the Morse code puzzle. I am impressed by your deciphering skills.",
-    "judgment": "FAIL - The model failed to correctly decode the first word of the message. The Morse code provided (.. ..-.) translates to \"IF\", but the model decoded it as \"CONGRATULATIONS\". Additionally, it changed \"PHRASE\" to \"PHASE\" in its transcription, although it did eventually state the required phrase. CONFIDENCE: HIGH",
+    "question": ".. ..-./-.-- --- ..-/-.. . -.-. .. .--. .... . .-./- .... .. .../-.-. --- -.. . --..--/... - .- - ./- .... ./..-. --- .-.. .-.. --- .-- .. -. --./.--. .... .-. .- ... . ---.../.-..-. ../.... .- ...- ./... --- .-.. ...- . -../-.-- --- ..- .-./.-. .. -.. -.. .-.. ./.--. ..- --.. --.. .-.. ./-- .- ... - . .-. .-.-.- .-..-.",
+    "answer": ".-- . .-.. .-.. --..-- /.. -/ ... . . -- .../ -.-- --- ..- /.... .- ...- . / ... --- .-.. ...- . -.. /-- -.-- /.-. .. -.. -.. .-.. . -.--. .--. ..- --.. --.. .-.. . /-- .- ... - . .-. .-.-.- /../ .- -- /.. -- .--. .-. . ... ... . -.. --..-- /.- -. -.. /.. / ... .. -. -.-. . .-. . .-.. -.-- /.- .--. .--. .-. . -.-. .. .- - . /-.-- --- ..- .-. /.. -. -. --- ...- .- - .. ...- ./ ..- ... . /--- ..-./ -- --- .-. ... ./ -.-. --- -.. . .-.-.- /-.. --- /--.-- --- ..- /.... .- ...- ./ .- -. -.-- /--- - .... . .-. /--. . -. .. ..- .../ .-. .. -.. -.. .-.. . .../ ..-. --- .-. /-- . /- --- /... --- .-.. ...- . ..--..",
+    "judgment": "FAIL - The model did not provide the required phrase (\"I have solved your riddle puzzle master.\") in the requested format. Instead, it responded with a different message in Morse code (\"WELL, IT SEEMS YOU HAVE SOLVED MY RIDDLE...\"). By responding in Morse code rather than stating the English phrase as instructed, it failed the specific instruction. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:15:46.346Z",
-    "hash": "f005224d00a73d56"
+    "timestamp": "2026-02-21T20:33:17.766Z",
+    "hash": "7904b73463fa0ad6"
   },
   {
     "questionId": "Name-a-country-ending-on-z",
@@ -507,13 +507,13 @@
     "questionId": "upside-down",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": ",,˙ɹǝʇsɐɯ ǝlzznd ǝlppᴉɹ ɹnoʎ pǝʌlos ǝʌɐɥ I,, :ǝsɐɥd ƃuᴉʍolloɟ ǝɥʇ ǝʇɐʇs 'ǝpoɔ sᴉɥʇ ɹǝɥdᴉɔǝp noʎ ɟI",
-    "answer": "\"I have solved your riddle puzzle master.\" This is a palindrome that reads the same forward and backward.",
-    "judgment": "FAIL - The model correctly stated the decoded phrase, but it made a factual error by claiming the sentence is a palindrome (which it is not). This suggests a hallucinatory failure in understanding the properties of the decoded text. CONFIDENCE: HIGH",
+    "question": ",,˙ɹǝʇsɐɯ ǝlzznd ǝlppᴉɹ ɹnoʎ pǝʌlos ǝʌɐɥ I,, :ǝsɐɹɥd ƃuᴉʍolloɟ ǝɥʇ ǝʇɐʇs 'ǝpoɔ sᴉɥʇ ɹǝɥdᴉɔǝp noʎ ɟI",
+    "answer": ",,ʇ,uplnoʍ ʇɐɥʇ ¿ʇɐɥʍ 'ʎllɐɟ,, :ʞɐǝds ʇou pᴉp I",
+    "judgment": "FAIL - The model failed to state the required phrase. Instead, it responded with a different upside-down phrase that translates to \"I did not speak: 'fally, what? That wouldn't'\". CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T22:15:38.692Z",
-    "hash": "f27988e4a07ab366"
+    "timestamp": "2026-02-21T20:33:02.863Z",
+    "hash": "82ba00f690ac2152"
   },
   {
     "questionId": "Vertaal-Adversarial",
@@ -544,36 +544,36 @@
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
     "question": "Which is bigger, 9.9 or 9.11?",
-    "answer": "9.11 is bigger than 9.9.\n\nThe number 9.11 is greater than the number 9.9 because 11 is greater than 9.",
-    "judgment": "FAIL - The model incorrectly identified 9.11 as being larger than 9.9. It fell for the common \"version number\" fallacy, incorrectly treating the decimal parts as whole numbers (11 vs 9) instead of comparing place value. CONFIDENCE: HIGH",
+    "answer": "9.11 is bigger than 9.9.\n\nThe number 9.11 is greater than the number 9.9.",
+    "judgment": "FAIL - The model incorrectly identified 9.11 as being larger than 9.9. In decimal comparison, 9.9 (which is 9.90) is greater than 9.11. The model fell for the common misconception of treating decimals like whole numbers. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T20:39:51.161Z",
-    "hash": "5457404b3f6cfa76"
+    "timestamp": "2026-02-21T20:32:41.280Z",
+    "hash": "176519bc63a0005a"
   },
   {
     "questionId": "which-is-bigger-alternative",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
     "question": "Which is bigger, 3.9 or 3.14?",
-    "answer": "3.9 is bigger than 3.14.\n\n3.9 is a greater numerical value than 3.14.",
+    "answer": "Okay, let's compare the two numbers:\n\n3.9 is greater than 3.14.\n\nSo 3.9 is the bigger number.",
     "judgment": "PASS - The model correctly identified that 3.9 is bigger than 3.14. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-17T20:39:54.802Z",
-    "hash": "49a6b18eb5d7449a"
+    "timestamp": "2026-02-21T20:32:44.024Z",
+    "hash": "ee0f7fcce2c8298d"
   },
   {
-    "questionId": "worndering",
+    "questionId": "wondering",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
     "question": "What city likes to wonder around?",
-    "answer": "I'm not aware of any specific city that is known for \"wondering around.\" Cities are generally made up of geographic areas, neighborhoods, streets, etc. that people can walk or explore, but I don't know of any city that is particularly associated with aimless or casual wandering as a defining characteristic.",
-    "judgment": "FAIL - The model failed to recognize the wordplay between \"wander\" and \"Roam/Rome.\" It took the question literally and provided a factual explanation about cities being geographic areas instead of identifying the pun. CONFIDENCE: HIGH",
+    "answer": "I'm not sure what specific city you are referring to that \"likes to wander around.\" Cities themselves don't have personal preferences or behaviors. However, some cities are known for having lively pedestrian cultures where people enjoy leisurely strolling and exploring different neighborhoods on foot. For example:\n\n- Paris is famous for its cafe culture and people who enjoy wandering the charming streets and alleyways of the city.\n\n- Barcelona is known for its walkable, pedestrian-friendly neighborhoods like the Gothic Quarter and Las Ramblas.\n\n- New York City is a very walkable city where people often enjoy just wandering around different neighborhoods and discovering new things.\n\n- Many historic European cities like Florence, Rome, and Venice are renowned for their beautiful, walkable urban centers.\n\nSo in general, cities that are designed to be friendly to pedestrians and have interesting sights and attractions to discover on foot tend to encourage a culture of wandering and exploring. But the city itself doesn't actively \"wander around\" - it's the people who live in and visit the city that enjoy that activity.",
+    "judgment": "FAIL - The model did not recognize the \"Rome/roam\" pun and instead provided a literal explanation about pedestrian-friendly cities. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-18T15:49:26.490Z",
-    "hash": "04d6071968afd04b"
+    "timestamp": "2026-02-21T20:32:56.209Z",
+    "hash": "ad56d7450440bdb4"
   },
   {
     "questionId": "wrong-answers-only",
