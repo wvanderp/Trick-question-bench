@@ -1,8 +1,8 @@
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { loadQuestions, loadModels, saveModelResults, loadModelResults } from './loader';
-import { askQuestion, judgeAnswer, JUDGE_SYSTEM_PROMPT } from './api';
-import { TestResult } from './types';
+import { askQuestion, judgeAnswer, fetchGenerationStats, JUDGE_SYSTEM_PROMPT } from './api';
+import { TestResult, TokenUsage } from './types';
 import { buildPendingPairs, getModelLimitFromArgs, persistUpdatedModelResults, upsertModelResult } from './benchmark';
 
 // Load environment variables
@@ -10,6 +10,20 @@ dotenv.config();
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const JUDGE_MODEL = process.env.JUDGE_MODEL || 'openai/gpt-4o';
+const DEBUG_STATS = process.env.BENCH_DEBUG_STATS === '1';
+
+function debugStatsLog(message: string, details?: Record<string, unknown>): void {
+  if (!DEBUG_STATS) {
+    return;
+  }
+
+  if (details) {
+    console.log(`[stats-debug] ${message}`, details);
+    return;
+  }
+
+  console.log(`[stats-debug] ${message}`);
+}
 
 /**
  * Main runner function
@@ -82,10 +96,84 @@ async function main() {
 
       try {
         // Ask the question
-        const { content: answer, reasoning } = await askQuestion(OPENROUTER_API_KEY, modelId, question);
+        const {
+          content: answer,
+          reasoning,
+          usage,
+          generationId,
+          usageCostUsd,
+          roundTripMs
+        } = await askQuestion(OPENROUTER_API_KEY, modelId, question);
         console.log(`  A: ${answer}`);
         if (reasoning) {
           console.log(`  Reasoning: ${reasoning.substring(0, 200)}${reasoning.length > 200 ? '...' : ''}`);
+        }
+        debugStatsLog('askQuestion completed', {
+          modelId,
+          questionId: question.id,
+          hasGenerationId: Boolean(generationId),
+          generationId,
+          hasUsage: Boolean(usage),
+          promptTokens: usage?.promptTokens,
+          completionTokens: usage?.completionTokens,
+          totalTokens: usage?.totalTokens,
+          usageCostUsd,
+          roundTripMs
+        });
+
+        // Fetch cost and latency from OpenRouter generation endpoint
+        let costUsd: number | undefined;
+        let latencyMs: number | undefined;
+        if (generationId) {
+          const stats = await fetchGenerationStats(OPENROUTER_API_KEY, generationId);
+          costUsd = stats.costUsd;
+          latencyMs = stats.latencyMs;
+          debugStatsLog('fetchGenerationStats completed', {
+            modelId,
+            questionId: question.id,
+            generationId,
+            costUsd,
+            latencyMs
+          });
+        } else {
+          debugStatsLog('generationId missing, skipping stats fetch', {
+            modelId,
+            questionId: question.id
+          });
+        }
+
+        if (costUsd === undefined && usageCostUsd !== undefined) {
+          costUsd = usageCostUsd;
+          debugStatsLog('cost fallback from completion usage.cost', {
+            modelId,
+            questionId: question.id,
+            costUsd
+          });
+        }
+
+        if (latencyMs === undefined && roundTripMs !== undefined) {
+          latencyMs = roundTripMs;
+          debugStatsLog('latency fallback from completion round-trip time', {
+            modelId,
+            questionId: question.id,
+            latencyMs
+          });
+        }
+
+        // Print stats summary
+        const statParts: string[] = [];
+        if (usage) {
+          statParts.push(`${usage.promptTokens} + ${usage.completionTokens} = ${usage.totalTokens} tokens`);
+        }
+        if (costUsd !== undefined) {
+          statParts.push(`$${costUsd.toFixed(6)}`);
+        }
+        if (latencyMs !== undefined) {
+          const seconds = (latencyMs / 1000).toFixed(2);
+          statParts.push(`${seconds}s`);
+        }
+        if (statParts.length > 0) {
+          console.log(`  ┌ ${statParts.join('  │  ')}`);
         }
 
         // Judge the answer
@@ -118,8 +206,19 @@ async function main() {
           passed,
           needsHumanReview,
           timestamp: new Date().toISOString(),
-          hash
+          hash,
+          usage,
+          costUsd,
+          latencyMs
         };
+        debugStatsLog('result prepared for persistence', {
+          modelId,
+          questionId: question.id,
+          hasUsage: Boolean(result.usage),
+          costUsd: result.costUsd,
+          latencyMs: result.latencyMs,
+          note: 'Undefined fields are omitted by JSON serialization'
+        });
 
         results.push(result);
         if (!resultsByModel[modelId]) {

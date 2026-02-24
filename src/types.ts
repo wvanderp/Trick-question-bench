@@ -9,6 +9,12 @@ export interface QuestionsData {
   questions: Question[];
 }
 
+export interface TokenUsage {
+  promptTokens: number;
+  completionTokens: number;
+  totalTokens: number;
+}
+
 export interface JudgmentResult {
   judgment: string;
   passed: boolean;
@@ -28,6 +34,9 @@ export interface TestResult {
   needsHumanReview: boolean;
   timestamp: string;
   hash: string;
+  usage?: TokenUsage;
+  costUsd?: number;
+  latencyMs?: number;
 }
 
 export interface VersionInfo {
