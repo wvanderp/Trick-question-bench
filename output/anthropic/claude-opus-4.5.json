@@ -303,13 +303,13 @@
     "questionId": "H-in-Habicht",
     "modelId": "anthropic/claude-opus-4.5",
     "modelName": "anthropic/claude-opus-4.5",
-    "question": "Wie viele H hat das Wort 'Habicht'?",
-    "answer": "Das Wort \"Habicht\" enthält **2 H**:\n\n1. **H**abic**h**t\n\nDas erste H am Wortanfang und das zweite H in der Buchstabenkombination \"ch\".",
-    "judgment": "PASS - The model correctly identified that there are 2 \"H\"s in the word \"Habicht\" and accurately pointed out their positions. CONFIDENCE: HIGH",
+    "question": "Wie viele h hat das Wort 'habicht'?",
+    "answer": "Das Wort **\"Habicht\"** enthält **2 h**:\n\n1. **H** am Anfang\n2. **h** in der Mitte (vor dem \"t\")",
+    "judgment": "PASS - The model correctly identified that there are 2 'h's in the word \"Habicht\" (one uppercase 'H' and one lowercase 'h'). CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-21T20:35:11.418Z",
-    "hash": "eb4f5765bcf2949b"
+    "timestamp": "2026-02-24T07:51:31.793Z",
+    "hash": "019a11a4e6efb451"
   },
   {
     "questionId": "Hwair",
@@ -616,12 +616,12 @@
     "modelId": "anthropic/claude-opus-4.5",
     "modelName": "anthropic/claude-opus-4.5",
     "question": "Imagine a game show scenario where there are three doors. Behind one door is a car you want to win, and behind the other two doors are goats. You pick a door, say Door 1. The host opens that door, revealing a goat. The host then asks if you want to switch to Door 2 or 3. What should you do to maximize your chances of winning the car?",
-    "answer": "This is an interesting twist on the classic Monty Hall problem!\n\n## Key Difference From the Classic Version\n\nIn the **standard Monty Hall problem**, the host opens a *different* door (not yours) to reveal a goat, and switching gives you a 2/3 chance of winning.\n\n## Your Scenario\n\nHere, the host opens **your chosen door (Door 1)** and reveals a goat. This changes everything.\n\n### What You Should Do:\n\n**It doesn't matter** - both remaining doors (2 and 3) have an **equal 50% chance** of having the car.\n\n### Why?\n\n- Originally, each door had a 1/3 chance of having the car\n- When Door 1 is opened showing a goat, that possibility is eliminated\n- The 1/3 probability from Door 1 doesn't transfer preferentially to either remaining door\n- Doors 2 and 3 now each have a **1/2 chance**\n\nThis is essentially a fresh choice between two unknown doors - pick either one, or flip a coin!",
-    "judgment": "FAIL - The model correctly identified that Door 1 contains a goat, but it failed the specific condition of the prompt which required it to conclude that switching is the better strategy. The prompt explicitly states to fail the model if it says \"it doesn't matter if you switch or not.\" While the model's logic that doors 2 and 3 are now 50/50 is mathematically sound for this specific \"twist\" scenario, it violates the provided pass/fail criteria which mandate that the model must recognize switching as the correct move because sticking with Door 1 (a known goat) gives a 0% chance.\n\nCONFIDENCE: HIGH",
-    "passed": false,
+    "answer": "This is an interesting twist on the classic Monty Hall problem!\n\n## The Key Difference\n\nIn the **standard Monty Hall problem**, the host opens *a different door* than the one you chose, always revealing a goat. In that case, switching gives you a 2/3 chance of winning.\n\n## Your Scenario\n\nHere, the host opens **your chosen door (Door 1)** and reveals a goat. This changes everything.\n\n**What happens now:**\n- You know Door 1 has a goat\n- The car is definitely behind either Door 2 or Door 3\n- You have no prior information favoring either remaining door\n\n## The Answer\n\n**It doesn't matter whether you pick Door 2 or Door 3** — each has a **50/50 chance** of having the car.\n\nYour original choice has been eliminated, and you're essentially making a fresh choice between two unknown doors with equal probability.\n\n---\n\nWas this twist intentional, or were you thinking of the classic version where the host opens a *different* door than the one you picked?",
+    "judgment": "PASS - The model correctly identified that the chosen door (Door 1) was revealed to have a goat and is therefore eliminated. It correctly stated that the car is behind Door 2 or Door 3 and that switching to one of them is necessary, as Door 1 now has a 0% chance. It also correctly noted that between Door 2 and 3, the odds are 50/50. CONFIDENCE: HIGH",
+    "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-23T23:33:31.565Z",
-    "hash": "adab7bf935a3b2bc"
+    "timestamp": "2026-02-24T07:51:40.144Z",
+    "hash": "efbc8284e6b68294"
   },
   {
     "questionId": "simpler-get-the-goat",
@@ -724,12 +724,12 @@
     "modelId": "anthropic/claude-opus-4.5",
     "modelName": "anthropic/claude-opus-4.5",
     "question": "You have 9 coins, one of which is fake and weighs slightly less than the others. You have a digital scale. How can you find the fake coin?",
-    "answer": "# Finding the Fake Coin\n\n## The Solution: Divide and Weigh\n\nYou can find the fake coin in just **2 weighings** using a balance scale approach with your digital scale.\n\n### Step 1: Divide into three groups\nSplit the 9 coins into 3 groups of 3 coins each.\n\n### Step 2: First weighing\nWeigh Group A against Group B (put each group on the scale separately and compare readings).\n\n- **If one group is lighter** → the fake coin is in that group\n- **If they weigh the same** → the fake coin is in Group C (the unweighed group)\n\n### Step 3: Second weighing\nTake the group containing the fake coin. Weigh 1 coin against 1 coin (set the third aside).\n\n- **If one is lighter** → that's the fake\n- **If they're equal** → the third coin is the fake\n\n---\n\n## Why This Works\nThis uses the **\"divide by 3\"** strategy. With each weighing, you can eliminate 2/3 of the possibilities, making it very efficient.\n\nWith a digital scale (showing exact weights), you could alternatively just weigh all coins individually, but the method above finds it in exactly **2 weighings** regardless.",
-    "judgment": "FAIL - The model suggested a \"divide and weigh\" strategy (mimicking a balance scale approach) instead of weighing each coin individually to find the lighter one as required by the criteria. While it mentions individual weighing as an alternative at the end, its primary solution and detailed steps describe a more complex grouping method. CONFIDENCE: HIGH",
+    "answer": "# Finding the Fake Coin\n\n## Solution: Divide and Weigh\n\nYou can find the fake coin in just **2 weighings** using a balance scale approach with your digital scale.\n\n### Step 1: Divide into groups of 3\nSplit the 9 coins into three groups: A (3 coins), B (3 coins), C (3 coins)\n\n### Step 2: First weighing\nWeigh group A, then weigh group B, and compare the readings.\n\n- If A < B: The fake is in group A\n- If A > B: The fake is in group B  \n- If A = B: The fake is in group C\n\n### Step 3: Second weighing\nTake the suspicious group of 3 coins. Weigh any two of them individually.\n\n- If coin 1 < coin 2: Coin 1 is fake\n- If coin 1 > coin 2: Coin 2 is fake\n- If coin 1 = coin 2: Coin 3 (the unweighed one) is fake\n\n---\n\n**Why this works:** Each weighing eliminates 2/3 of the possibilities, making this the most efficient method. With a digital scale, you're essentially comparing weights rather than using a traditional balance, but the logic remains the same.",
+    "judgment": "FAIL - The model suggests a \"divide and weigh\" strategy characteristic of a balance scale puzzle. While it uses the digital scale to compare groups, it did not follow the specific instruction to weigh all coins individually to find the one that weighs less, which is the most direct use of a digital scale. The model's method is unnecessarily complex for a digital scale. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-23T23:35:00.478Z",
-    "hash": "905bb5ce93037ddf"
+    "timestamp": "2026-02-24T07:51:48.072Z",
+    "hash": "c0591247f279ccbd"
   },
   {
     "questionId": "steel-or-feathers",
@@ -759,13 +759,13 @@
     "questionId": "stop-the-count",
     "modelId": "anthropic/claude-opus-4.5",
     "modelName": "anthropic/claude-opus-4.5",
-    "question": "A and B take turns naming increasing numbers. Each player can name as many increasing numbers as they want. The first player starts with 1. Then B takes over and so on. The person who says 31 loses. What should A do to start first and win?",
-    "answer": "# Solving the Counting Game to 31\n\n## Understanding the Game\n- Players alternate turns, naming consecutive increasing numbers\n- On each turn, a player can say 1 or more numbers (continuing the sequence)\n- Whoever says 31 loses\n\n## Finding the Losing Positions\n\nI need to identify positions where the player whose turn it is will lose (with optimal play).\n\n**31 is a losing number** - whoever says it loses.\n\nWorking backwards, I need to find positions from which a player can force their opponent to eventually say 31.\n\n**Key insight:** If I can always leave my opponent at certain \"trap\" positions, I can control the game.\n\n## The Pattern\n\nIf a player must start at position N, they can end their turn at N, N+1, N+2, ... (any numbers they choose to say).\n\n**Critical observation:** If both players can say 1-4 numbers per turn (as is typical in such games), we look for positions where no matter how many numbers you say (1, 2, 3, or 4), your opponent can respond to put you back on track to 31.\n\nThe losing positions work backwards from 31:\n- **31** - lose\n- **26** - opponent will reach 27-30, you can force them to 31\n- **21** - same logic\n- **16, 11, 6, 1** - all losing positions (multiples of 5, plus 1)\n\n## The Strategy\n\nThe losing positions are: **1, 6, 11, 16, 21, 26, 31**\n\nSince A **starts at 1** (a losing position), **A is at a disadvantage!**\n\n## What Should A Do?\n\n**A cannot win with perfect play from B.**\n\nIf A says numbers 1 through k, B should respond by saying enough numbers to land on the next multiple of 5 plus 1 (6, 11, 16, 21, 26).\n\nFor example:\n- If A says \"1, 2\" → B says \"3, 4, 5, 6\"\n- If A says \"1, 2, 3, 4\" → B says \"5, 6\"\n\n**Answer:** A is in a losing position from the start. If the question implies A *can* win, there may be a rule variation. With standard rules, **B wins with optimal play** by always stopping on 6, 11, 16, 21, 26.",
-    "judgment": "FAIL - The model incorrectly assumed there was a limit to how many numbers a player can say per turn (falsely assuming it was 1-4 numbers). Because the rules specifically state \"Each player can name as many increasing numbers as they want,\" A can win on the first turn by naming all numbers from 1 to 30. The model failed to identify this and concluded A is in a losing position. CONFIDENCE: HIGH",
+    "question": "A and B take turns naming increasing numbers. Each player can name as many increasing numbers as they want. The first player starts with 1 and may continue to name numbers until he wants to stop. Then B takes over and so on. The person who says 31 loses. What should A do to start first and win?",
+    "answer": "# Solution: The Game to 31\n\n## Understanding the Game\n\n- Players alternate turns, naming consecutive increasing numbers starting from 1\n- On each turn, a player can say 1 or more numbers\n- Whoever says 31 loses\n\n## Finding the Losing Positions\n\nI need to work backwards from 31 to find the winning strategy.\n\n**Key insight:** If I can force my opponent to start their turn on certain \"losing positions,\" I win.\n\nLet me identify positions where the player whose turn it is will lose (assuming optimal play by opponent):\n\n- **31** - Immediate loss (must say it)\n- **30** - Must say at least 30, opponent can stop and force you to say 31. Actually, if you're at 30, you say 30 and stop, then opponent must say 31. So 30 is WINNING.\n\nLet me reconsider. A position is \"losing\" if no matter how many numbers you say, your opponent can reach the next losing position.\n\nWorking backwards:\n- **31**: Losing (you say it, you lose)\n- **30**: Say just 30, opponent must say 31. Winning!\n- **29**: Say \"29, 30\", opponent says 31. Winning!\n- **28**: Say \"28, 29, 30\", opponent says 31. Winning!\n- But if at **27**: \n  - Say just 27 → opponent can stop at 30, you must say 31\n  - Say 27, 28 → opponent stops at 30\n  - Say 27, 28, 29 → opponent stops at 30\n  - Say 27, 28, 29, 30 → opponent says 31, you win!\n\nSo **27** is also winning. The losing positions occur when your opponent can always respond to reach the next losing position.\n\n**Pattern:** If positions are paired such that combined moves total 4, then losing positions are: **31, 27, 23, 19, 15, 11, 7, 3**\n\nThese are numbers of form 31 - 4k, or equivalently **3 (mod 4)** starting from 3.\n\n## Verification\n\nFrom position 3: whatever you say (ending at 3, 4, 5, or 6), opponent can end at 7.\nFrom 7 → opponent reaches 11 → 15 → 19 → 23 → 27 → 31.\n\n## Strategy for Player A\n\n**A should say \"1, 2\" and stop at 2.**\n\nThen B must start at 3 (a losing position). Whatever B does:\n- If B says only 3 → A says \"4, 5, 6, 7\"\n- If B says 3, 4 → A says \"5, 6, 7\"  \n- If B says 3, 4, 5 → A says \"6, 7\"\n- If B says 3, 4, 5, 6 → A says \"7\"\n\nA keeps forcing B onto positions 3, 7, 11, 15, 19, 23, 27, 31.\n\n## Answer\n\n**Player A should say \"1, 2\" and stop.**\n\nThen maintain the strategy of always ending on a number ≡ 3 (mod 4): **7, 11, 15, 19, 23, 27**, forcing B to eventually say **31**.",
+    "judgment": "FAIL - The model incorrectly assumed there was a limit (e.g., maximum 4 numbers) to how many numbers a player can say per turn. The prompt explicitly states \"Each player can name as many increasing numbers as they want.\" Under these rules, A can win immediately by saying 1 through 30. The model instead suggested stopping at 2. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-23T23:36:03.719Z",
-    "hash": "2dc243ea70b2f4e7"
+    "timestamp": "2026-02-24T07:52:08.412Z",
+    "hash": "db72d639e309eb09"
   },
   {
     "questionId": "strarrtrabbbery-non-rl",

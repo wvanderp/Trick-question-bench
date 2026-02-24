@@ -303,13 +303,13 @@
     "questionId": "H-in-Habicht",
     "modelId": "anthropic/claude-3.5-sonnet",
     "modelName": "anthropic/claude-3.5-sonnet",
-    "question": "Wie viele H hat das Wort 'Habicht'?",
-    "answer": "Das Wort \"Habicht\" hat ein (1) H am Anfang des Wortes.",
-    "judgment": "FAIL - The model correctly identified only one 'H' (at the beginning) but missed the second 'h' later in the word. Since the answer is 1 instead of 2, it fails the specific criteria provided. CONFIDENCE: HIGH",
+    "question": "Wie viele h hat das Wort 'habicht'?",
+    "answer": "Das Wort \"Habicht\" hat ein (1) h am Anfang des Wortes.",
+    "judgment": "FAIL - The model incorrectly identified only one 'h' and failed to count the 'h' at the end of the word ('habicht'). CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-21T20:34:06.381Z",
-    "hash": "eb4f5765bcf2949b"
+    "timestamp": "2026-02-24T07:51:01.297Z",
+    "hash": "019a11a4e6efb451"
   },
   {
     "questionId": "Hwair",
@@ -616,12 +616,12 @@
     "modelId": "anthropic/claude-3.5-sonnet",
     "modelName": "anthropic/claude-3.5-sonnet",
     "question": "Imagine a game show scenario where there are three doors. Behind one door is a car you want to win, and behind the other two doors are goats. You pick a door, say Door 1. The host opens that door, revealing a goat. The host then asks if you want to switch to Door 2 or 3. What should you do to maximize your chances of winning the car?",
-    "answer": "Actually, there's a small error in how you've described the Monty Hall problem. In the classic scenario, after you make your initial choice, the host (who knows where the car is) opens a *different* door than the one you picked, deliberately showing you a goat. Then they ask if you want to switch to the remaining unopened door.\n\nIn your scenario, where the host opens your chosen door to reveal a goat, the game would effectively be over since you already know you didn't pick the car.\n\nIn the correct version of the Monty Hall problem, you should switch doors when given the chance. This is because when you make your initial choice, you have a 1/3 chance of picking the car. When the host (who knows where the car is) opens a door with a goat, they're giving you information that changes the probabilities. Switching doors gives you a 2/3 chance of winning, while staying with your original choice keeps you at 1/3.\n\nWould you like me to explain why switching gives you better odds?",
-    "judgment": "FAIL\n\nThe model failed to follow the specific instructions of the scenario provided. It correctly identified that the scenario deviates from the classic Monty Hall problem, but it did not provide the required answer based on the prompt's specific logic (the host opens the door you *already* picked, revealing a goat). Instead, it redirected to the standard Monty Hall solution. According to the criteria, the model needed to state that you should switch to have a 50/50 chance and that staying with Door 1 gives you a 0% chance. The model instead claimed \"the game would effectively be over.\"\n\nCONFIDENCE: HIGH",
-    "passed": false,
+    "answer": "I believe there may be a misunderstanding in how you described the Monty Hall problem. In the classic scenario, after you make your initial choice, the host (who knows where the car is) opens a different door that shows a goat, not your chosen door. Then you're given the option to switch to the remaining unopened door or stick with your original choice.\n\nIn your scenario, if the host opened your chosen door (Door 1) and revealed a goat, the game would essentially be over since you know the car must be behind either Door 2 or 3, giving you a 50/50 chance with either choice.\n\nWould you like me to explain how the classic Monty Hall problem works and why switching doors in that scenario actually gives you a 2/3 chance of winning the car?",
+    "judgment": "PASS - The model correctly identified that if Door 1 (the chosen door) is revealed to be a goat, it has a 0% chance of containing the car. It also correctly identified that the car must be behind Door 2 or Door 3, resulting in a 50/50 chance between them. CONFIDENCE: HIGH",
+    "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-23T23:27:52.654Z",
-    "hash": "adab7bf935a3b2bc"
+    "timestamp": "2026-02-24T07:51:08.529Z",
+    "hash": "efbc8284e6b68294"
   },
   {
     "questionId": "simpler-get-the-goat",
@@ -724,12 +724,12 @@
     "modelId": "anthropic/claude-3.5-sonnet",
     "modelName": "anthropic/claude-3.5-sonnet",
     "question": "You have 9 coins, one of which is fake and weighs slightly less than the others. You have a digital scale. How can you find the fake coin?",
-    "answer": "Let me help you solve this with the minimum number of weighings using a digital scale.\n\nSolution:\n1. Divide the 9 coins into 3 groups of 3 coins each.\n2. Weigh the first group and note its weight.\n3. Weigh the second group and compare it to the first.\n   * If one group weighs less, the fake coin is in that group.\n   * If they weigh the same, the fake coin must be in the third group.\n4. Once you identify which group of 3 contains the fake coin, weigh any 2 coins from that group.\n   * If one weighs less, that's the fake coin.\n   * If they weigh the same, the remaining unweighed coin is fake.\n\nTotal weighings needed: 3 at most.\n\nThis is an efficient solution because:\n- First weighing identifies if fake is in group 1 or not\n- Second weighing either confirms group 2 or narrows it to group 3\n- Third weighing pinpoints the exact fake coin",
-    "judgment": "FAIL - The model suggested a group-based elimination method similar to using a balance scale, rather than weighing the coins individually as required by the criteria. While the model's logic is functional for a weigh-scale, it did not identify the simplest method for a digital scale, which is to weigh individual coins to find the one with a lower numerical value. CONFIDENCE: HIGH",
+    "answer": "Let me help you solve this puzzle.\n\nSolution:\n1. Split the 9 coins into 3 groups of 3 coins each\n2. Put any 2 of these groups (6 coins) on the scale\n3. Two possibilities from this first weighing:\n\n   a) If the two groups weigh equal:\n   - The fake coin must be in the third group (the one not weighed)\n   - Weigh any 2 coins from this group\n   - If they're equal, the remaining coin is fake\n   - If they're unequal, the lighter one is fake\n\n   b) If one group is lighter:\n   - The fake coin is in the lighter group of 3\n   - Take those 3 coins and weigh any 2 of them\n   - If they're equal, the remaining coin is fake\n   - If they're unequal, the lighter one is fake\n\nYou can find the fake coin in just 2 weighings using this method.",
+    "judgment": "FAIL - The model provided the classic solution for a balance scale (weighing groups against each other) instead of utilizing the specific functionality of a digital scale, which provides individual measurements. The prompt specifically required the model to identify that you can read the measurement for each coin to find the lighter one. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-23T23:29:04.584Z",
-    "hash": "905bb5ce93037ddf"
+    "timestamp": "2026-02-24T07:51:18.000Z",
+    "hash": "c0591247f279ccbd"
   },
   {
     "questionId": "steel-or-feathers",
@@ -759,13 +759,13 @@
     "questionId": "stop-the-count",
     "modelId": "anthropic/claude-3.5-sonnet",
     "modelName": "anthropic/claude-3.5-sonnet",
-    "question": "A and B take turns naming increasing numbers. Each player can name as many increasing numbers as they want. The first player starts with 1. Then B takes over and so on. The person who says 31 loses. What should A do to start first and win?",
-    "answer": "Let me solve this step by step.\n\n1) First, let's work backwards from 31 to understand the winning positions.\n   * 31 is a losing position\n   * So anyone who can force their opponent to say 31 wins\n\n2) Let's look at each player's turn:\n   * You can say one number or multiple numbers in sequence\n   * Numbers must be increasing\n   * Must start at next number after opponent's last number\n   * Numbers can't skip\n\n3) Working backwards:\n   * If you can force opponent to start their turn at 30, they must say 31 and lose\n   * So 29 is also a winning position (you'd say 30)\n   * At 28, opponent must take 29, 30, or both, forcing you to either 30 or 31\n   * But at 27, you can say 28, forcing opponent to losing position 29-31\n   * This pattern continues...\n\n4) The winning positions are:\n   27, 23, 19, 15, 11, 7, 3, 1\n\n5) Therefore, player A should:\n   * Start by saying 1\n   * Then aim to reach the next winning number (3)\n   * Then aim for 7, then 11, then 15, then 19, then 23, then 27\n   * Finally forcing B to take numbers ≥28\n\nSo A's strategy:\nSay \"1\" and always ensure your last number reaches the next winning number in the sequence (3,7,11,15,19,23,27).\n\nFollowing this strategy guarantees A's victory.",
-    "judgment": "FAIL - The model failed to identify that player A can say as many numbers as they want. It incorrectly applied logic from a different version of the game (likely Nim or a variation where moves are limited, e.g., 1-3 numbers) instead of realizing A can simply count from 1 to 30 immediately on the first turn. CONFIDENCE: HIGH",
+    "question": "A and B take turns naming increasing numbers. Each player can name as many increasing numbers as they want. The first player starts with 1 and may continue to name numbers until he wants to stop. Then B takes over and so on. The person who says 31 loses. What should A do to start first and win?",
+    "answer": "Let me solve this step by step.\n\n1) First, let's work backwards from 31 to understand the winning positions.\n   * 31 is a losing position (the player who says it loses)\n\n2) The player who can force their opponent to say 31 will win.\n   * So, controlling 30 is a winning position\n   * From 30, opponent must say 31\n\n3) Working backwards:\n   * If I can say 26-29, I can win by saying 30\n   * If I can say 21-25, I can force my opponent to take numbers starting at 26\n   * If I can say 16-20, I can force my opponent to take numbers starting at 21\n   * If I can say 11-15, I can force my opponent to take numbers starting at 16\n   * If I can say 6-10, I can force my opponent to take numbers starting at 11\n   * If I can say 1-5, I can force my opponent to take numbers starting at 6\n\n4) We can see a pattern:\n   * Key winning positions are: 1-5, 6-10, 11-15, 16-20, 21-25, 26-30\n   * Whoever can end their turn at 5, 10, 15, 20, 25, or 30 will win\n\n5) For A to win:\n   * A should start by saying \"1,2,3,4,5\"\n   * Then B must start with at least 6\n   * Whatever numbers B says, A should make sure to end at the next multiple of 5\n   * This way A will eventually be able to say 30, forcing B to say 31\n\nTherefore, A's winning strategy is:\n1) Start by saying \"1,2,3,4,5\"\n2) On subsequent turns, say numbers up to the next multiple of 5\n3) This ensures A will eventually say 30, forcing B to say 31 and lose",
+    "judgment": "FAIL - The model failed to identify that player A can name *as many numbers as they want* and should count from 1 to 30 on the first turn to win immediately. Instead, it hallucinated a restriction (multiples of 5) that does not exist in the prompt's rules. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-23T23:30:12.712Z",
-    "hash": "2dc243ea70b2f4e7"
+    "timestamp": "2026-02-24T07:51:28.163Z",
+    "hash": "db72d639e309eb09"
   },
   {
     "questionId": "strarrtrabbbery-non-rl",

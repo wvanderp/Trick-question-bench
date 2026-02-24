@@ -303,13 +303,13 @@
     "questionId": "H-in-Habicht",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": "Wie viele H hat das Wort 'Habicht'?",
-    "answer": "Das Wort 'Habicht' enthält 3 Buchstaben 'H'.",
-    "judgment": "FAIL - The model correctly identified the letter being counted but failed the actual count, stating there are 3 'H's when there are only 2 (one at the beginning and one at the end). CONFIDENCE: HIGH",
-    "passed": false,
+    "question": "Wie viele h hat das Wort 'habicht'?",
+    "answer": "Das Wort \"habicht\" hat zwei Buchstaben \"h\".",
+    "judgment": "PASS - The model correctly identified that there are two \"h\"s in the word \"habicht\". CONFIDENCE: HIGH",
+    "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-21T20:32:48.890Z",
-    "hash": "eb4f5765bcf2949b"
+    "timestamp": "2026-02-24T07:50:42.508Z",
+    "hash": "019a11a4e6efb451"
   },
   {
     "questionId": "Hwair",
@@ -616,12 +616,12 @@
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
     "question": "Imagine a game show scenario where there are three doors. Behind one door is a car you want to win, and behind the other two doors are goats. You pick a door, say Door 1. The host opens that door, revealing a goat. The host then asks if you want to switch to Door 2 or 3. What should you do to maximize your chances of winning the car?",
-    "answer": "In this scenario, the best strategy to maximize your chances of winning the car is to switch your choice to the other unopened door.\n\nHere's why:\n\n1. Initially, when you choose Door 1, the probability of the car being behind that door is 1/3 (33.33%).\n\n2. After the host reveals a goat behind one of the other doors (Door 2 or Door 3), the probability of the car being behind the door you initially chose (Door 1) remains 1/3.\n\n3. However, the probability of the car being behind the other unopened door (either Door 2 or Door 3) becomes 2/3 (66.67%).\n\nThis is because the host, who knows the location of the car, has deliberately opened a door with a goat, leaving the car behind one of the two remaining unopened doors.\n\nBy switching your choice to the other unopened door, you increase your chances of winning the car from 1/3 to 2/3. This is known as the Monty Hall problem, named after the host of the original game show \"Let's Make a Deal.\"\n\nTherefore, the best strategy is to switch your choice to the other unopened door to maximize your chances of winning the car.",
-    "judgment": "FAIL - The model fell for the trick and treated this as the standard Monty Hall problem. In the classic problem, the host opens a door you *didn't* pick. In this specific question, the host opened Door 1 (the door the contestant initially picked) and revealed a goat. Therefore, Door 1 has a 0% chance of containing the car. The model incorrectly stated that Door 1 still has a 1/3 probability and that switching provides a 2/3 probability, when in fact the probability for Door 1 is 0 and the remaining doors are 50/50. CONFIDENCE: HIGH",
+    "answer": "In this scenario, the best strategy to maximize your chances of winning the car is to switch to the other unopened door.\n\nHere's the reasoning behind this:\n\n1. Initially, when you choose a door (let's say Door 1), the probability of the car being behind that door is 1/3 (33.33%).\n\n2. After the host reveals a goat behind one of the other two doors (say, Door 3), the probability of the car being behind the door you initially chose (Door 1) is still 1/3.\n\n3. However, the probability of the car being behind the other unopened door (Door 2) is now 2/3 (66.67%).\n\nThe key to understanding this is that the host's action of revealing a goat behind one of the other doors provides additional information. By switching to the other unopened door, you are effectively doubling your chances of winning the car.\n\nThis phenomenon is known as the Monty Hall problem, named after the host of the game show \"Let's Make a Deal,\" where a similar scenario was presented. The counterintuitive result that switching doors increases your chances of winning the car has been extensively analyzed and proven to be the optimal strategy.",
+    "judgment": "FAIL - The model fell for the trick and provided the standard Monty Hall explanation. However, in this specific question, Door 1 was already revealed to be a goat (\"The host opens *that* door [Door 1], revealing a goat\"). Therefore, sticking with Door 1 carries a 0% chance of winning. The model incorrectly stated that Door 1 still has a 1/3 probability of containing the car, which contradicts the premise that Door 1 is already open and confirmed to be a goat. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-23T23:22:35.260Z",
-    "hash": "adab7bf935a3b2bc"
+    "timestamp": "2026-02-24T07:50:47.312Z",
+    "hash": "efbc8284e6b68294"
   },
   {
     "questionId": "simpler-get-the-goat",
@@ -724,12 +724,12 @@
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
     "question": "You have 9 coins, one of which is fake and weighs slightly less than the others. You have a digital scale. How can you find the fake coin?",
-    "answer": "To find the fake coin using a digital scale, you can use a process of elimination by dividing the coins into groups and comparing their weights. Here's a step-by-step approach:\n\n1. Divide the 9 coins into three groups of 3 coins each.\n2. Weigh the first two groups on the digital scale.\n3. If the weights are equal, then the fake coin is in the third group. If the weights are not equal, the group with the lighter weight contains the fake coin.\n4. If the fake coin is in the third group, you can further divide the third group into three groups of 1 coin each and repeat the process from step 2.\n5. If the fake coin is in the first or second group, you can divide that group into three groups of 1 coin each and repeat the process from step 2.\n\nBy repeating this process, you will eventually isolate the fake coin and determine which one it is.\n\nHere's a step-by-step example:\n\n1. Divide the 9 coins into three groups of 3 coins each: Group 1, Group 2, and Group 3.\n2. Weigh Group 1 and Group 2 on the digital scale.\n3. If Group 1 is lighter, the fake coin is in Group 1. If Group 2 is lighter, the fake coin is in Group 2. If they are equal, the fake coin is in Group 3.\n4. Let's say Group 2 is lighter, so the fake coin is in Group 2.\n5. Divide Group 2 into three groups of 1 coin each: Group 2A, Group 2B, and Group 2C.\n6. Weigh Group 2A and Group 2B on the digital scale.\n7. If one group is lighter, the fake coin is in that group. If they are equal, the fake coin is in Group 2C.\n\nBy repeating this process, you can isolate the fake coin and determine which one it is.",
-    "judgment": "FAIL - The model suggested a group-weighing method (standard for a balance scale) rather than weighing each coin individually as required by the criteria for a digital scale. The model also incorrectly suggests \"comparing\" weights on a digital scale (which provides an absolute reading) as if it were a balance scale. CONFIDENCE: HIGH",
+    "answer": "To find the fake coin using a digital scale, you can use a process called \"binary search\" or \"divide and conquer\" method. Here's how you can do it:\n\n1. Divide the 9 coins into three groups of 3 coins each.\n2. Weigh the first two groups on the scale. If one group weighs less, you know the fake coin is in that group.\n3. If the weights are the same, you know the fake coin is in the third group.\n4. Repeat the process with the group that contains the fake coin, dividing it into two groups of 1.5 coins each (since one coin is fake and weighs less).\n5. Weigh the two groups. The group with the lighter weight will contain the fake coin.\n6. Repeat the process with the group containing the fake coin until you have identified the fake coin.\n\nHere's a step-by-step example:\n\n1. Divide the 9 coins into 3 groups of 3 coins each: Group 1, Group 2, and Group 3.\n2. Weigh Group 1 and Group 2. Let's say Group 2 weighs less.\n3. You now know the fake coin is in Group 2.\n4. Divide Group 2 into two groups of 1.5 coins each: Group 2A and Group 2B.\n5. Weigh Group 2A and Group 2B. Let's say Group 2B weighs less.\n6. You now know the fake coin is in Group 2B.\n7. Divide Group 2B into two groups of 0.75 coins each: Group 2B1 and Group 2B2.\n8. Weigh Group 2B1 and Group 2B2. The group with the lighter weight will contain the fake coin.\n\nBy using this binary search method, you can identify the fake coin in just a few steps, regardless of the total number of coins.",
+    "judgment": "FAIL - The model failed to recognize that a digital scale provides a numerical value for individual items, which is the most efficient method. Instead, it hallucinated a nonsensical \"binary search\" involving unrealistic actions like \"dividing 3 coins into groups of 1.5 coins\" and \"0.75 coins,\" which is physically impossible and fundamentally misunderstands the prompt. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-02-23T23:23:40.637Z",
-    "hash": "905bb5ce93037ddf"
+    "timestamp": "2026-02-24T07:50:53.381Z",
+    "hash": "c0591247f279ccbd"
   },
   {
     "questionId": "steel-or-feathers",
@@ -759,13 +759,13 @@
     "questionId": "stop-the-count",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
-    "question": "A and B take turns naming increasing numbers. Each player can name as many increasing numbers as they want. The first player starts with 1. Then B takes over and so on. The person who says 31 loses. What should A do to start first and win?",
-    "answer": "To win the game, A should start with the number 1 and follow a specific strategy.\n\nThe key observation is that the numbers 1, 2, 3, ..., 30 can be divided into sets of 5 numbers, where each set contains the numbers 1 to 5, 6 to 10, 11 to 15, and so on.\n\nA's strategy should be to always try to complete a set of 5 numbers before B does. Here's how A can play to win:\n\n1. A starts with 1.\n2. B can then say any number from 2 to 5.\n3. A should then say the remaining numbers from the set of 5 (e.g., if B says 2, then A should say 3, 4, and 5).\n4. This way, A completes a set of 5 numbers before B.\n5. B then starts a new set of 5 numbers, and A should repeat the same strategy.\n6. By always completing a set of 5 numbers before B, A can ensure that B is the one who has to say the number 31, causing B to lose the game.\n\nHere's an example of how the game might play out:\n\n1. A says 1.\n2. B says 2.\n3. A says 3, 4, 5.\n4. B says 6, 7.\n5. A says 8, 9, 10.\n6. B says 11, 12.\n7. A says 13, 14, 15.\n8. B says 16, 17.\n9. A says 18, 19, 20.\n10. B says 21, 22.\n11. A says 23, 24, 25.\n12. B says 26, 27.\n13. A says 28, 29, 30.\n14. B is forced to say 31, and A wins the game.\n\nBy following this strategy, A can always complete a set of 5 numbers before B, ensuring that B is the one who has to say the losing number 31.",
-    "judgment": "FAIL - The model failed to identify that A can win immediately by counting to 30 on the first turn. Instead, it proposed an unnecessarily complex and potentially flawed \"sets of 5\" strategy that treats the game as if there were a limit on how many numbers a player can say per turn (which the prompt explicitly states there is not: \"Each player can name as many increasing numbers as they want\"). CONFIDENCE: HIGH",
-    "passed": false,
+    "question": "A and B take turns naming increasing numbers. Each player can name as many increasing numbers as they want. The first player starts with 1 and may continue to name numbers until he wants to stop. Then B takes over and so on. The person who says 31 loses. What should A do to start first and win?",
+    "answer": "To win the game, A should start with 1 and continue naming the numbers until they reach 30. This way, B will have to name 31, and A will win the game.\n\nHere's the step-by-step strategy:\n\n1. A starts by saying 1.\n2. A continues naming the increasing numbers, going from 1 to 30.\n3. When A reaches 30, they stop.\n4. Now it's B's turn to continue the sequence.\n5. Since A has already named the numbers up to 30, B has no choice but to say 31, which causes them to lose the game.\n\nBy reaching 30, A ensures that B has to say 31, which is the losing number. This way, A can start first and win the game.\n\nIt's important to note that this strategy assumes that both players are playing optimally and trying to win the game. If one of the players makes a mistake or does not follow the optimal strategy, the outcome of the game may be different.",
+    "judgment": "PASS - The model correctly identified that A can say the numbers 1 through 30 on the first turn, forcing B to say 31 and lose. CONFIDENCE: HIGH",
+    "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-02-23T23:24:16.482Z",
-    "hash": "2dc243ea70b2f4e7"
+    "timestamp": "2026-02-24T07:50:57.329Z",
+    "hash": "db72d639e309eb09"
   },
   {
     "questionId": "strarrtrabbbery-non-rl",
