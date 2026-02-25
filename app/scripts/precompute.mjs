@@ -13,6 +13,14 @@ const targetDir = path.join(appRoot, 'public', 'generated');
 const targetFile = path.join(targetDir, 'benchmark-data.json');
 
 const asRate = (passed, total) => (total === 0 ? 0 : Number(((passed / total) * 100).toFixed(2)));
+const roundTo = (value, places = 2) => Number(value.toFixed(places));
+
+const toFiniteNumber = (value) => {
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return value;
+  }
+  return undefined;
+};
 
 const ensureArray = (value, source) => {
   if (!Array.isArray(value)) {
@@ -52,6 +60,19 @@ const addAggregate = (map, id, label, result) => {
       failed: 0,
       needsHumanReview: 0,
       passRate: 0,
+      totalPromptTokens: 0,
+      totalCompletionTokens: 0,
+      totalTokens: 0,
+      totalCostUsd: 0,
+      totalLatencyMs: 0,
+      tokenSampleCount: 0,
+      costSampleCount: 0,
+      latencySampleCount: 0,
+      avgPromptTokens: 0,
+      avgCompletionTokens: 0,
+      avgTotalTokens: 0,
+      avgCostUsd: 0,
+      avgLatencyMs: 0,
     });
   }
 
@@ -60,6 +81,23 @@ const addAggregate = (map, id, label, result) => {
   entry.passed += result.passed ? 1 : 0;
   entry.failed += result.passed ? 0 : 1;
   entry.needsHumanReview += result.needsHumanReview ? 1 : 0;
+
+  if (toFiniteNumber(result.totalTokens) !== undefined) {
+    entry.totalPromptTokens += result.promptTokens ?? 0;
+    entry.totalCompletionTokens += result.completionTokens ?? 0;
+    entry.totalTokens += result.totalTokens;
+    entry.tokenSampleCount += 1;
+  }
+
+  if (toFiniteNumber(result.costUsd) !== undefined) {
+    entry.totalCostUsd += result.costUsd;
+    entry.costSampleCount += 1;
+  }
+
+  if (toFiniteNumber(result.latencyMs) !== undefined) {
+    entry.totalLatencyMs += result.latencyMs;
+    entry.latencySampleCount += 1;
+  }
 };
 
 const finalizeAggregates = (map) =>
@@ -67,6 +105,12 @@ const finalizeAggregates = (map) =>
     .map((entry) => ({
       ...entry,
       passRate: asRate(entry.passed, entry.total),
+      avgPromptTokens: entry.tokenSampleCount > 0 ? roundTo(entry.totalPromptTokens / entry.tokenSampleCount, 2) : 0,
+      avgCompletionTokens:
+        entry.tokenSampleCount > 0 ? roundTo(entry.totalCompletionTokens / entry.tokenSampleCount, 2) : 0,
+      avgTotalTokens: entry.tokenSampleCount > 0 ? roundTo(entry.totalTokens / entry.tokenSampleCount, 2) : 0,
+      avgCostUsd: entry.costSampleCount > 0 ? roundTo(entry.totalCostUsd / entry.costSampleCount, 6) : 0,
+      avgLatencyMs: entry.latencySampleCount > 0 ? roundTo(entry.totalLatencyMs / entry.latencySampleCount, 0) : 0,
     }))
     .sort((a, b) => {
       if (b.total !== a.total) {
@@ -86,6 +130,17 @@ const run = async () => {
   const models = new Map();
   const questions = new Map();
   const results = [];
+
+  const metricTotals = {
+    totalPromptTokens: 0,
+    totalCompletionTokens: 0,
+    totalTokens: 0,
+    totalCostUsd: 0,
+    totalLatencyMs: 0,
+    tokenSampleCount: 0,
+    costSampleCount: 0,
+    latencySampleCount: 0,
+  };
 
   for (const filePath of files) {
     const text = await fs.readFile(filePath, 'utf8');
@@ -117,7 +172,29 @@ const run = async () => {
         needsHumanReview: Boolean(row.needsHumanReview),
         timestamp: String(row.timestamp ?? ''),
         hash: String(row.hash ?? ''),
+        promptTokens: toFiniteNumber(row.usage?.promptTokens),
+        completionTokens: toFiniteNumber(row.usage?.completionTokens),
+        totalTokens: toFiniteNumber(row.usage?.totalTokens),
+        costUsd: toFiniteNumber(row.costUsd),
+        latencyMs: toFiniteNumber(row.latencyMs),
       };
+
+      if (normalized.totalTokens !== undefined) {
+        metricTotals.totalPromptTokens += normalized.promptTokens ?? 0;
+        metricTotals.totalCompletionTokens += normalized.completionTokens ?? 0;
+        metricTotals.totalTokens += normalized.totalTokens;
+        metricTotals.tokenSampleCount += 1;
+      }
+
+      if (normalized.costUsd !== undefined) {
+        metricTotals.totalCostUsd += normalized.costUsd;
+        metricTotals.costSampleCount += 1;
+      }
+
+      if (normalized.latencyMs !== undefined) {
+        metricTotals.totalLatencyMs += normalized.latencyMs;
+        metricTotals.latencySampleCount += 1;
+      }
 
       results.push(normalized);
 
@@ -140,6 +217,32 @@ const run = async () => {
       failed,
       needsHumanReview,
       passRate: asRate(passed, results.length),
+      metrics: {
+        totalPromptTokens: metricTotals.totalPromptTokens,
+        totalCompletionTokens: metricTotals.totalCompletionTokens,
+        totalTokens: metricTotals.totalTokens,
+        totalCostUsd: roundTo(metricTotals.totalCostUsd, 6),
+        totalLatencyMs: metricTotals.totalLatencyMs,
+        tokenSampleCount: metricTotals.tokenSampleCount,
+        costSampleCount: metricTotals.costSampleCount,
+        latencySampleCount: metricTotals.latencySampleCount,
+        avgPromptTokens:
+          metricTotals.tokenSampleCount > 0
+            ? roundTo(metricTotals.totalPromptTokens / metricTotals.tokenSampleCount, 2)
+            : 0,
+        avgCompletionTokens:
+          metricTotals.tokenSampleCount > 0
+            ? roundTo(metricTotals.totalCompletionTokens / metricTotals.tokenSampleCount, 2)
+            : 0,
+        avgTotalTokens:
+          metricTotals.tokenSampleCount > 0 ? roundTo(metricTotals.totalTokens / metricTotals.tokenSampleCount, 2) : 0,
+        avgCostUsd:
+          metricTotals.costSampleCount > 0 ? roundTo(metricTotals.totalCostUsd / metricTotals.costSampleCount, 6) : 0,
+        avgLatencyMs:
+          metricTotals.latencySampleCount > 0
+            ? roundTo(metricTotals.totalLatencyMs / metricTotals.latencySampleCount, 0)
+            : 0,
+      },
     },
     providers: finalizeAggregates(providers),
     models: finalizeAggregates(models),

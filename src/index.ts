@@ -41,20 +41,23 @@ async function main() {
   const modelsPath = path.join(__dirname, '../data/models.json');
   
   const questions = loadQuestions(questionsPath);
-  const allModels = loadModels(modelsPath);
+  const allModelConfigs = loadModels(modelsPath);
+  const enabledModelConfigs = allModelConfigs.filter(model => !model.disabled);
+  const enabledModelIds = enabledModelConfigs.map(model => model.name);
+  const modelConfigByName = new Map(enabledModelConfigs.map(model => [model.name, model]));
   const modelLimit = getModelLimitFromArgs(process.argv);
   const outputDir = path.join(__dirname, '../output');
-  const { pendingPairs, pendingByModel, resultsByModel } = buildPendingPairs(allModels, questions, outputDir, {
+  const { pendingPairs, pendingByModel, resultsByModel } = buildPendingPairs(enabledModelIds, questions, outputDir, {
     judgeSystemPrompt: JUDGE_SYSTEM_PROMPT,
     judgeModel: JUDGE_MODEL,
     loadModelResultsFn: loadModelResults,
     saveModelResultsFn: saveModelResults
   });
 
-  const modelsWithPending = allModels.filter(modelId => pendingByModel.has(modelId));
+  const modelsWithPending = enabledModelIds.filter(modelId => pendingByModel.has(modelId));
   const models = typeof modelLimit === 'number' ? modelsWithPending.slice(0, modelLimit) : modelsWithPending;
 
-  console.log(`Loaded ${questions.length} questions and ${allModels.length} models`);
+  console.log(`Loaded ${questions.length} questions and ${enabledModelIds.length}/${allModelConfigs.length} enabled models`);
   console.log(`Pending model/question pairs: ${pendingPairs.length}`);
   if (typeof modelLimit === 'number') {
     console.log(`Model limit active: first ${modelLimit} models with pending work`);
@@ -75,8 +78,13 @@ async function main() {
 
   // Test each model with each pending question
   for (const modelId of models) {
+    const modelConfig = modelConfigByName.get(modelId);
+
     console.log(`\n${'='.repeat(60)}`);
     console.log(`Testing model: ${modelId}`);
+    if (modelConfig?.thinking) {
+      console.log(`Thinking effort: ${modelConfig.thinking}`);
+    }
     console.log('='.repeat(60));
 
     const modelPending = pendingByModel.get(modelId) ?? [];
@@ -103,7 +111,7 @@ async function main() {
           generationId,
           usageCostUsd,
           roundTripMs
-        } = await askQuestion(OPENROUTER_API_KEY, modelId, question);
+        } = await askQuestion(OPENROUTER_API_KEY, modelId, question, modelConfig?.thinking);
         console.log(`  A: ${answer}`);
         if (reasoning) {
           console.log(`  Reasoning: ${reasoning.substring(0, 200)}${reasoning.length > 200 ? '...' : ''}`);

@@ -9,6 +9,13 @@ export interface QuestionsData {
   questions: Question[];
 }
 
+export interface ModelConfig {
+  name: string;
+  disabled: boolean;
+  thinking?: string;
+  release_date?: string;
+}
+
 export interface TokenUsage {
   promptTokens: number;
   completionTokens: number;

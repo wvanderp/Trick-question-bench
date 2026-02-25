@@ -12,6 +12,11 @@ export interface BenchResult {
   needsHumanReview: boolean;
   timestamp: string;
   hash: string;
+  promptTokens?: number;
+  completionTokens?: number;
+  totalTokens?: number;
+  costUsd?: number;
+  latencyMs?: number;
 }
 
 export interface AggregateStat {
@@ -22,6 +27,35 @@ export interface AggregateStat {
   failed: number;
   needsHumanReview: number;
   passRate: number;
+  totalPromptTokens: number;
+  totalCompletionTokens: number;
+  totalTokens: number;
+  totalCostUsd: number;
+  totalLatencyMs: number;
+  tokenSampleCount: number;
+  costSampleCount: number;
+  latencySampleCount: number;
+  avgPromptTokens: number;
+  avgCompletionTokens: number;
+  avgTotalTokens: number;
+  avgCostUsd: number;
+  avgLatencyMs: number;
+}
+
+export interface GlobalMetrics {
+  totalPromptTokens: number;
+  totalCompletionTokens: number;
+  totalTokens: number;
+  totalCostUsd: number;
+  totalLatencyMs: number;
+  tokenSampleCount: number;
+  costSampleCount: number;
+  latencySampleCount: number;
+  avgPromptTokens: number;
+  avgCompletionTokens: number;
+  avgTotalTokens: number;
+  avgCostUsd: number;
+  avgLatencyMs: number;
 }
 
 export interface GeneratedData {
@@ -33,6 +67,7 @@ export interface GeneratedData {
     failed: number;
     needsHumanReview: number;
     passRate: number;
+    metrics: GlobalMetrics;
   };
   providers: AggregateStat[];
   models: AggregateStat[];

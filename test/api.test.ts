@@ -149,6 +149,32 @@ describe('queryModel usage and generationId', () => {
     });
     expect(result.generationId).toBe('gen-xyz');
   });
+
+  it('sends reasoning effort when thinking is provided', async () => {
+    fetchSpy.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        choices: [{ message: { content: 'Reasoning configured' } }]
+      })
+    } as Response);
+
+    await queryModel('test-key', 'test-model', 'Hi', undefined, undefined, { thinking: 'high' });
+
+    const call = fetchSpy.mock.calls[0];
+    expect(call[1]).toBeDefined();
+    const request = call[1] as RequestInit;
+    expect(request.method).toBe('POST');
+
+    const body = JSON.parse(request.body as string) as {
+      model: string;
+      messages: Array<{ role: string; content: string }>;
+      reasoning?: { effort: string };
+    };
+
+    expect(body.model).toBe('test-model');
+    expect(body.messages).toEqual([{ role: 'user', content: 'Hi' }]);
+    expect(body.reasoning).toEqual({ effort: 'high' });
+  });
 });
 
 describe('fetchGenerationCost', () => {

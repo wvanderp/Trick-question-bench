@@ -4,6 +4,7 @@ import path from 'path';
 import { describe, expect, it } from 'vitest';
 import {
   isQuestionIdEntry,
+  loadModels,
   mergeQuestionIdEntries,
   parseModelId,
   sanitizeFileName,
@@ -86,6 +87,44 @@ describe('loader data wrangling helpers', () => {
       { questionId: 'q-2', answer: 'old-2' },
       { questionId: 'q-3', answer: 'new-3' }
     ]);
+  });
+});
+
+describe('loadModels', () => {
+  it('loads valid model config objects', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'loader-loadModels-valid-'));
+    const filePath = path.join(tempDir, 'models.json');
+
+    fs.writeFileSync(
+      filePath,
+      JSON.stringify([
+        { name: 'openai/gpt-4o', disabled: false },
+        { name: 'qwen/qwen3-max-thinking', disabled: false, thinking: 'high', release_date: '2025-01-01' }
+      ]),
+      'utf-8'
+    );
+
+    const models = loadModels(filePath);
+    expect(models).toEqual([
+      { name: 'openai/gpt-4o', disabled: false },
+      { name: 'qwen/qwen3-max-thinking', disabled: false, thinking: 'high', release_date: '2025-01-01' }
+    ]);
+  });
+
+  it('throws for invalid model config objects', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'loader-loadModels-invalid-'));
+    const filePath = path.join(tempDir, 'models.json');
+
+    fs.writeFileSync(
+      filePath,
+      JSON.stringify([
+        { name: 'openai/gpt-4o' },
+        { name: 'anthropic/claude-3.5-sonnet', disabled: false, release_date: '20-06-2024' }
+      ]),
+      'utf-8'
+    );
+
+    expect(() => loadModels(filePath)).toThrow('Invalid models collection');
   });
 });
 

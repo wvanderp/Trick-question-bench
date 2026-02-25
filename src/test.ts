@@ -25,7 +25,7 @@ try {
   console.log(`✓ Successfully loaded ${models.length} models`);
   
   models.forEach(m => {
-    console.log(`  - ${m}`);
+    console.log(`  - ${m.name}${m.disabled ? ' (disabled)' : ''}`);
   });
   
   console.log('\n✓ All tests passed!');

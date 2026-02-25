@@ -89,6 +89,10 @@ export interface ParsedJudgment {
   confidence?: string;
 }
 
+export interface QueryModelOptions {
+  thinking?: string;
+}
+
 export function parseJudgment(judgment: string): ParsedJudgment {
   const trimmedJudgment = judgment.trim();
   const firstLine = trimmedJudgment.split('\n')[0].toUpperCase();
@@ -116,7 +120,8 @@ export async function queryModel(
   modelId: string,
   prompt: string,
   maxTokens?: number,
-  systemPrompt?: string
+  systemPrompt?: string,
+  options?: QueryModelOptions
 ): Promise<QueryResult> {
   const requestStart = Date.now();
   const messages: Array<{ role: string; content: string }> = [];
@@ -133,6 +138,23 @@ export async function queryModel(
     content: prompt
   });
 
+  const requestBody: {
+    model: string;
+    messages: Array<{ role: string; content: string }>;
+    max_tokens?: number;
+    reasoning?: { effort: string };
+  } = {
+    model: modelId,
+    messages,
+    max_tokens: maxTokens
+  };
+
+  if (options?.thinking) {
+    requestBody.reasoning = {
+      effort: options.thinking
+    };
+  }
+
   const response = await fetch(OPENROUTER_API_URL, {
     method: 'POST',
     headers: {
@@ -141,11 +163,7 @@ export async function queryModel(
       'HTTP-Referer': 'https://github.com/wvanderp/Trick-question-bench',
       'X-Title': 'Trick Question Benchmark'
     },
-    body: JSON.stringify({
-      model: modelId,
-      messages,
-      max_tokens: maxTokens
-    })
+    body: JSON.stringify(requestBody)
   });
 
   if (!response.ok) {
@@ -346,13 +364,16 @@ export async function fetchGenerationCost(
 export async function askQuestion(
   apiKey: string,
   modelId: string,
-  question: Question
+  question: Question,
+  thinking?: string
 ): Promise<QueryResult> {
   return await queryModel(
     apiKey,
     modelId,
     question.question,
-    question.tokenLimit
+    question.tokenLimit,
+    undefined,
+    { thinking }
   );
 }
 

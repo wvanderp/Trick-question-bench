@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Ajv from 'ajv';
-import { Question, QuestionsData, TestResult } from './types';
+import { ModelConfig, Question, QuestionsData, TestResult } from './types';
 
 const ajv = new Ajv();
 
@@ -30,7 +30,7 @@ export function sortOutputByQuestionId(data: unknown): unknown {
     }
   }
 
-  return data;
+  return data as ModelConfig[];
 }
 
 export function mergeQuestionIdEntries<T extends { questionId: string }>(existing: T[], incoming: T[]): T[] {
@@ -82,9 +82,18 @@ export function loadQuestions(filePath: string): Question[] {
 /**
  * Load and validate models from JSON file
  */
-export function loadModels(filePath: string): string[] {
-  const data = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as string[];
-  return data;
+export function loadModels(filePath: string): ModelConfig[] {
+  const data = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as unknown;
+
+  const schemaPath = path.join(__dirname, '../schemas/models.schema.json');
+  const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf-8'));
+
+  const valid = ajv.validate(schema, data);
+  if (!valid) {
+    throw new Error(`Invalid models collection: ${JSON.stringify(ajv.errors)}`);
+  }
+
+  return data as ModelConfig[];
 }
 
 /**
