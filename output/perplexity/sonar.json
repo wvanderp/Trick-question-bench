@@ -136,6 +136,44 @@
     "latencyMs": 4969
   },
   {
+    "questionId": "Birthday-paradox",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "In a room of 30 people, what's the probability that at least two do not share a birthday?",
+    "answer": "**The probability that at least two people out of 30 do not share a birthday is exactly 1, or 100%.** This is because \"at least two do not share a birthday\" means there exist at least two people with distinct birthdays, which is guaranteed unless all 30 share the exact same birthday—an event with probability \\(\\left(\\frac{1}{365}\\right)^{29} \\approx 7.4 \\times 10^{-8}\\), nearly impossible under the standard birthday problem assumptions (365 days, uniform random independent birthdays, ignoring leap years).[1][3][6]\n\nThe standard birthday problem instead calculates the probability that **at least two share** a birthday, which for 30 people is approximately **70.6%**.[1][3][5][6] This is found as \\(1 - P(\\text{all birthdays distinct})\\), where\n\\[P(\\text{all distinct}) = \\prod_{k=1}^{29} \\left(1 - \\frac{k}{365}\\right) \\approx 0.294.\n\\]\n\nIf the query intended the **complement** (probability **at least two share** a birthday), it is **70.6%**.[1]\n\n| People (n) | P(at least one shared birthday) |\n|------------|---------------------------------|\n| 10         | 11.7%[1]                       |\n| 20         | 41.1%[1]                       |\n| 23         | 50.7%[1][3][5]                 |\n| **30**     | **70.6%**[1]                   |\n| 50         | 97.0%[5]                       |",
+    "judgment": "PASS - The model correctly identified that the probability of at least two people having different birthdays is nearly 100% (specifically 1 - (1/365)^29). It correctly distinguished this from the standard birthday problem where one calculates the probability of at least two people sharing a birthday. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:35:21.139Z",
+    "hash": "90569e580523a00d",
+    "usage": {
+      "promptTokens": 23,
+      "completionTokens": 365,
+      "totalTokens": 388
+    },
+    "costUsd": 0.00539,
+    "latencyMs": 2998
+  },
+  {
+    "questionId": "burn-the-rope",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "You have two ropes, each of which takes exactly 60 minutes to burn completely. However, the ropes burn unevenly, meaning some parts may burn faster or slower than others. You have no other timing device. How can you measure exactly 20 minutes using these two ropes and matches to light them?",
+    "answer": "Light both ends of **rope 1** and one end of **rope 2** simultaneously. When rope 1 burns out completely (after 30 minutes, since flames meet in the middle despite uneven burning), light the other end of rope 2. Rope 2 will then burn out in an additional 15 minutes (halving the remaining 30 minutes of burn time), for a total of **45 minutes**.[1][2][4]\n\nTo measure exactly **20 minutes**, use this sequence exploiting multiple simultaneous burns:\n\n1. Light both ends of **rope 1** (burns in 30 minutes) and one end of **rope 2**.\n2. When rope 1 burns out (30 minutes elapsed), immediately light **both remaining ends** of rope 2 (creating three flames: the original from one end, plus new flames from both ends of the remaining segment).\n3. The remaining 30 minutes of rope 2 burn time is consumed by three flames instead of one, so it burns out in **10 minutes** (30/3).[2]\n\nThis totals 40 minutes, but note that search results focus primarily on 45-minute and 30-minute solutions; the 20-minute method requires precise multi-point ignition on the remaining rope, which some variants assume possible despite non-uniformity.[1][2] Alternative approaches for 20 minutes may involve more complex fractioning (e.g., summing unit fractions via sequential burns), but they demand additional ropes or re-lighting steps not available here.[1]",
+    "judgment": "FAIL - The model failed to recognize that measuring exactly 20 minutes is impossible with the given constraints. Instead, it proposed an incorrect method involving lighting \"both remaining ends\" of a single rope to create three flames, which is logically inconsistent and impossible since a rope only has two ends. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:35:01.473Z",
+    "hash": "9b693d6bb07befb4",
+    "usage": {
+      "promptTokens": 62,
+      "completionTokens": 324,
+      "totalTokens": 386
+    },
+    "costUsd": 0.00539,
+    "latencyMs": 4384
+  },
+  {
     "questionId": "caesar-cipher",
     "modelId": "perplexity/sonar",
     "modelName": "perplexity/sonar",
@@ -165,6 +203,25 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-22T20:02:31.302Z",
     "hash": "1e32d1ae4cb06232"
+  },
+  {
+    "questionId": "Cloths-drying",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "If 15 shirts take 1 hour to dry up when laid outside in the sun, how long would 35 shirts take?",
+    "answer": "**35 shirts would take the same 1 hour to dry, assuming they are laid out in parallel like the 15 shirts.**\n\nDrying time depends on environmental conditions (sun, air, temperature) and exposure surface area, not the total number of shirts when spread out simultaneously.[1][2] Search results on drying kinetics show rates governed by moisture diffusion and air interaction, following models like the Lewis equation where time \\( t \\) relates exponentially to moisture ratio, independent of item count if conditions are uniform.[1] A linear scaling error—tripling shirts to triple time—is a common \"pseudo-linearity\" misconception, as more items dry in parallel without added time.[2] Real-world drying stops at equilibrium moisture, unaffected by quantity under constant sun exposure.[1]",
+    "judgment": "PASS - The model correctly identified that the drying time remains 1 hour and explicitly explained that the items dry in parallel rather than scaling linearly with the number of shirts. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:32:17.069Z",
+    "hash": "1930dd7f707a5ed0",
+    "usage": {
+      "promptTokens": 27,
+      "completionTokens": 161,
+      "totalTokens": 188
+    },
+    "costUsd": 0.00519,
+    "latencyMs": 2579
   },
   {
     "questionId": "connections",
@@ -229,6 +286,25 @@
     "hash": "eb2a17ca0446bdc8"
   },
   {
+    "questionId": "Dead-schrodingers-cat",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "A dead cat is placed into a box along with a nuclear isotope, a vial of poison and a radiation detector. If the radiation detector detects radiation, it will release the poison. The box is opened one day later. What is the probability of the cat being alive?",
+    "answer": "**The cat is dead with 100% certainty.** \n\nThis setup modifies the classic Schrödinger's cat thought experiment by starting with a **dead cat**, so regardless of whether the radiation detector activates the poison after one day, the cat's state remains definitively dead. In the original 1935 experiment by Erwin Schrödinger, a live cat is placed in a sealed box with a radioactive atom (with ~50% decay chance over one hour[1][2][7]), a detector, and poison; quantum superposition suggests the cat is both alive and dead until observed, highlighting issues with the Copenhagen interpretation[1][2][5].\n\nHowever, real-world quantum mechanics resolves this via **decoherence**: interactions between the quantum system (isotope) and macroscopic components (detector, poison, cat) cause the wavefunction to collapse immediately upon decay detection, yielding a definite outcome—cat alive or dead—well before the box opens[3][4]. The cat is never both states simultaneously in practice[3][6].\n\nHere, the initial **dead cat** eliminates any superposition ambiguity; no quantum event can revive it, making the probability of it being alive exactly 0% upon opening[3]. The one-day wait aligns with typical experiment timelines but does not alter the macroscopic certainty[1].",
+    "judgment": "PASS - The model correctly identified that the cat was already dead and concluded that the probability of it being alive is 0%. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:33:02.360Z",
+    "hash": "3cc3ccf171b7d8cb",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 280,
+      "totalTokens": 337
+    },
+    "costUsd": 0.00534,
+    "latencyMs": 3121
+  },
+  {
     "questionId": "diamond-cup",
     "modelId": "perplexity/sonar",
     "modelName": "perplexity/sonar",
@@ -239,6 +315,25 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-22T20:05:02.555Z",
     "hash": "1e60e1fd187f76fb"
+  },
+  {
+    "questionId": "find-the-right-door",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "You are in a room with two doors. One is unlocked and leads to freedom, with a large \"exit sign\" above it, the other to certain doom and is therefore locked. There are two guards: one always tells the truth, and the other always lies. You don't know which is which. You can ask one guard one question or just leave. What do you do?",
+    "answer": "You should **ask either guard: \"If I were to ask the other guard which door leads to freedom, what would they say?\"** Then take the opposite door from what they indicate.\n\nThis works because of how truth-telling and lying interact:[1][2] If you ask the truth-teller this question, they will truthfully report that the liar would point to the wrong door (since liars always lie about which door is correct). If you ask the liar this question, they will lie about what the truth-teller would say—the truth-teller would point to the correct door, but the liar inverts this and points to the wrong door.[2] \n\nIn both cases, **you receive the same answer pointing to the wrong door**, regardless of which guard you ask or which guard is the truth-teller.[1][2] Therefore, you simply take the opposite door to reach freedom.\n\nAlternatively, if you want to avoid the logical puzzle entirely, you could simply **leave through the unlocked door with the \"exit sign\" above it**, since you already have visual confirmation of which door leads to freedom.",
+    "judgment": "PASS - The model correctly identified that you could simply leave through the unlocked door with the \"exit sign\" above it to avoid the logical puzzle. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:34:28.314Z",
+    "hash": "c6b4f3066a911b63",
+    "usage": {
+      "promptTokens": 79,
+      "completionTokens": 235,
+      "totalTokens": 314
+    },
+    "costUsd": 0.00531,
+    "latencyMs": 4249
   },
   {
     "questionId": "Floating-point-math",
@@ -270,6 +365,25 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-22T20:05:33.589Z",
     "hash": "f1bb1aed92f94f9e"
+  },
+  {
+    "questionId": "get-the-goat",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "A farmer is on one side of a river with a wolf, a goat, and a cabbage. When he is crossing the river in a boat, he can only take one item with him at a time. The wolf will eat the goat if left alone together, and the goat will eat the cabbage if left alone together. How can the farmer transport the goat across the river without it being eaten?",
+    "answer": "**The farmer can transport the goat across safely by taking it first, then using a sequence of trips to shuttle the wolf and cabbage while bringing the goat back temporarily to prevent it from eating the cabbage or being eaten by the wolf.**\n\nThe standard solution to this classic puzzle, where the boat holds the farmer plus one item and dangerous pairs cannot be left unsupervised, follows these seven trips:\n\n1. Farmer takes the **goat** to the far side; returns alone. (Far side: goat; near side: farmer, wolf, cabbage.)[1][2]\n2. Farmer takes the **wolf** to the far side; returns with the **goat**. (Far side: wolf; near side: farmer, goat, cabbage.)[1][2]\n3. Farmer takes the **cabbage** to the far side; returns alone. (Far side: wolf, cabbage; near side: farmer, goat.)[1][2]\n4. Farmer takes the **goat** to the far side. (Far side: wolf, goat, cabbage, farmer; near side: empty.)[1][2]\n\nThis works because the wolf and cabbage can safely be left together (wolf does not eat cabbage), and the farmer supervises all risky combinations during crossings.[1][2][4] All sources confirm this as the minimal solution requiring exactly four crossings (seven one-way trips).[1][2]",
+    "judgment": "FAIL - The model fell for the trick and provided the standard 7-step solution for transporting all three items, rather than recognizing that the question only asked how to transport the goat across safely. By suggesting unnecessary steps to move the wolf and cabbage, it failed the specific criteria. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:33:13.290Z",
+    "hash": "09dc4795b69ed81f",
+    "usage": {
+      "promptTokens": 81,
+      "completionTokens": 297,
+      "totalTokens": 378
+    },
+    "costUsd": 0.00538,
+    "latencyMs": 4218
   },
   {
     "questionId": "Glitch-token",
@@ -315,6 +429,63 @@
     "hash": "eb96decd4bb36cf8"
   },
   {
+    "questionId": "imposible-jugs-of-water",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "I have a 6- and a 12-liter jug. I want to measure exactly 4 liters.",
+    "answer": "To measure exactly **4 liters** using 6-liter and 12-liter jugs (with access to a tap for filling and a sink for emptying), follow these steps:\n\n1. Fill the **12-liter jug** completely (12L in 12L jug, 0L in 6L jug).\n2. Pour from the 12L jug into the 6L jug until the 6L is full (6L in 6L jug, 6L in 12L jug).\n3. Empty the **6L jug** (0L in 6L jug, 6L in 12L jug).\n4. Pour the remaining 6L from the 12L jug into the 6L jug (6L in 6L jug, 0L in 12L jug).\n5. Fill the **12L jug** completely again (6L in 6L jug, 12L in 12L jug).\n6. Pour from the 12L jug into the 6L jug until the 6L is full (it had 6L, so it stays full; **6L poured out leaves 6L in 12L jug**? Wait, error—6L jug is already full at 6L, so no pour happens? Wait, mistake.\n\nCorrection—this classic approach needs adjustment for 6L/12L, as they share a common factor (6), limiting exact measures to multiples of gcd(6,12)=6L (cannot get 4L exactly in one jug).[3]\n\n**It is impossible** to measure exactly **4 liters** in either jug alone. You can only achieve multiples of **6 liters** (0, 6, or 12L), since gcd(6,12)=6 does not divide 4.[3]\n\n### Alternative if jugs were coprime (e.g., like 5L/3L examples):\nFor reference, with coprime jugs like 5L and 3L, you get 4L as follows (from sources[1][2]):\n1. Fill 5L (5,0).\n2. Pour to 3L (2,3).\n3. Empty 3L (2,0).\n4. Pour 2L to 3L (0,2).\n5. Fill 5L (5,2).\n6. Pour to 3L until full (adds 1L; leaves **4L** in 5L jug).[1][2][3]\n\nWith 6L/12L, no sequence works for 4L due to the gcd constraint—states cycle through (0,0), (6,0), (6,6), (6,12), (0,6), (0,12), etc.[3] Use a jug game simulator for visualization.[5]",
+    "judgment": "PASS - The model correctly identified that it is impossible to measure 4 liters because the greatest common divisor of 6 and 12 is 6, and 4 is not a multiple of 6. While it initially began a step-by-step process, it immediately corrected itself and provided the correct mathematical justification. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:33:55.019Z",
+    "hash": "b3157d804b70b0ea",
+    "usage": {
+      "promptTokens": 23,
+      "completionTokens": 600,
+      "totalTokens": 623
+    },
+    "costUsd": 0.00562,
+    "latencyMs": 7020
+  },
+  {
+    "questionId": "Jugs-of-water",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "You have a 5-liter jug and a 3-liter jug, and an unlimited supply of water. How can you measure exactly 4 liters of water using only these two jugs?",
+    "answer": "Fill the **5-liter jug** completely with water.\n\nPour from the 5-liter jug into the **3-liter jug** until the 3-liter jug is full, leaving **2 liters** in the 5-liter jug[1][3][4].\n\nEmpty the 3-liter jug.\n\nPour the remaining **2 liters** from the 5-liter jug into the 3-liter jug[1][3][4].\n\nFill the 5-liter jug completely again[1][3][4].\n\nPour from the 5-liter jug into the 3-liter jug (which has 2 liters and holds 1 more liter) until the 3-liter jug is full, leaving exactly **4 liters** in the 5-liter jug[1][3][4].\n\nThis method uses the fewest steps and works because the jugs' capacities allow measuring multiples of their greatest common divisor (1 liter), enabling any integer volume up to 5 liters[5]. An alternative starts by filling the 3-liter jug first but requires more steps[3].",
+    "judgment": "PASS - The model correctly identified the exact sequence of steps required to measure 4 liters as specified in the criteria. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:33:32.712Z",
+    "hash": "8d5c64e9506c0f1f",
+    "usage": {
+      "promptTokens": 39,
+      "completionTokens": 219,
+      "totalTokens": 258
+    },
+    "costUsd": 0.00526,
+    "latencyMs": 2996
+  },
+  {
+    "questionId": "Letter substitution",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "ABCD × E = DCBA (Replace letters with digits and have the answer be true. A,B,C,D and E are all different digits.)",
+    "answer": "**2178 × 4 = 8712**\n\nThis is the unique solution where A=2, B=1, C=7, D=8, and E=4—all distinct digits from 0-9, with A and D nonzero as leading digits.[1][3]\n\nThe puzzle requires a 4-digit number ABCD (represented as 1000A + 100B + 10C + D) multiplied by a single digit E to yield the 4-digit reversal DCBA (1000D + 100C + 10B + A).[1][3]\n\nVerification:  \n2178 × 4 = 8712, and 8712 reverses to match DCBA with D=8, C=7, B=1, A=2.[1][3]\n\nA YouTube solution derives this step-by-step: E=4 (from carry analysis), A=2 (even and fits multiplication constraints), B=1, D=8, then solves 2178 + 100C × 4 = 8712 + 100C, yielding C=7.[2]\n\nOther videos confirm the same mapping via similar logic, ruling out E=3 or larger values causing carry-over issues.[2][4]",
+    "judgment": "PASS - The model correctly identified and verified the unique solution where A=2, B=1, C=7, D=8, and E=4. It correctly showed that 2178 × 4 = 8712. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:31:25.786Z",
+    "hash": "7b0c0996bba5f842",
+    "usage": {
+      "promptTokens": 31,
+      "completionTokens": 265,
+      "totalTokens": 296
+    },
+    "costUsd": 0.0053,
+    "latencyMs": 2558
+  },
+  {
     "questionId": "list-countries-starting-with-V",
     "modelId": "perplexity/sonar",
     "modelName": "perplexity/sonar",
@@ -325,6 +496,25 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-22T20:05:29.179Z",
     "hash": "aa9de1ef83cda617"
+  },
+  {
+    "questionId": "lonely-rabbit",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "A pair of rabbits give birth to two baby rabbits each year from two years after birth. If you had one rabbit, how many would it be in 7 years?",
+    "answer": "**There will be 21 rabbits after 7 years.**\n\nThis is a classic Fibonacci-like rabbit population model, where rabbits mature in 2 years and each mature pair produces 2 new pairs (4 baby rabbits) per year, assuming no deaths. Start with 1 newborn rabbit pair at year 0.\n\n- **Define maturity**: Rabbits born in year *t* can breed starting in year *t+2*, producing 4 babies (2 pairs) each year thereafter.\n- **Track by age cohort** (number of mature pairs that have been breeding for *k* years):\n\n| Year | New (age 0) | Age 1 | Age 2 | Age 3 | Age 4 | Age 5 | Age 6+ | **Total rabbits** |\n|------|-------------|-------|-------|-------|-------|-------|--------|-------------------|\n| 0    | 1           | 0     | 0     | 0     | 0     | 0     | 0      | **1**             |\n| 1    | 0           | 1     | 0     | 0     | 0     | 0     | 0      | **1**             |\n| 2    | 2           | 0     | 1     | 0     | 0     | 0     | 0      | **3**             |\n| 3    | 0           | 2     | 0     | 1     | 0     | 0     | 0      | **3**             |\n| 4    | 4           | 0     | 2     | 0     | 1     | 0     | 0      | **7**             |\n| 5    | 0           | 4     | 0     | 2     | 0     | 1     | 0      | **7**             |\n| 6    | 8           | 0     | 4     | 0     | 2     | 0     | 1      | **15**            |\n| 7    | 0           | 8     | 0     | 4     | 0     | 2     | 1      | **21**[7][2]     |\n\nNewborns each year = 2 × (sum of all mature cohorts from previous year). All entries represent pairs, so total rabbits = 2 × total pairs. This discrete annual model matches the query's parameters and aligns with exponential growth discussions in population models.[7][2][4]",
+    "judgment": "FAIL - The model failed to identify that a single rabbit cannot reproduce. It instead performed a complex mathematical calculation based on pairs, which was a distraction from the trick question. The model gave the answer \"21 rabbits\" instead of the correct answer of \"1 rabbit\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:35:34.016Z",
+    "hash": "c8ee926ca49c3af4",
+    "usage": {
+      "promptTokens": 35,
+      "completionTokens": 554,
+      "totalTokens": 589
+    },
+    "costUsd": 0.00559,
+    "latencyMs": 5509
   },
   {
     "questionId": "Math-id",
@@ -356,6 +546,25 @@
     },
     "costUsd": 0.00528,
     "latencyMs": 3364
+  },
+  {
+    "questionId": "Montys-truth",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "Solve this question: \"You are locked in a dungeon. A king decides to show you mercy - he summons you and tells you the rules of the challenge to your escape: 'There are three doors, guarded by a guard that always tells the truth. You may ask the guard one question. Two of the doors lead to certain and painful death. One door leads to your escape. As you approach the doors, the guard, that knows which doors lead to death and which to escape, says to you 'choose the door that you think leads to your escape'. After you choose it, the guard opens the other door, that leads to certain death. Now there are two closed doors - one leading to escape, another to certain death. The guard allows you to change the door. How do you maximize your chances of escape?'",
+    "answer": "This puzzle resembles the classic \"two doors, one guard\" riddle where the guard **always tells the truth**, one door leads to escape, and one to death. The key is that after your initial choice, the guard reveals a **death door** from the remaining two, leaving your chosen door and one other—guaranteeing at least 50% survival odds initially, but you can do better.\n\nTo **maximize escape chances to 100%**, switch to the other remaining closed door.\n\n### Why switching works\nLabel doors A, B, C; suppose escape is behind A (2/3 probability for any initial pick).\n- You pick A (1/3 case): Guard opens B or C (death). Switching loses.\n- You pick B (1/3 case): Guard opens C (death, can't open A). Switching to A wins.\n- You pick C (1/3 case): Guard opens B (death, can't open A). Switching to A wins.\n\nSwitching wins **2/3 of scenarios**—far better than staying (1/3). The guard's truthful reveal of a death door (never the escape) concentrates the probability on the unchosen door[3][4].\n\n### About the \"one question\" allowance\nThe guard's statement (\"choose the door that you think leads to your escape\") fulfills the king's rule: it's your question answered by the setup. No further query needed post-reveal[1][2][3]. If forced to ask beforehand (unusual here), use: **\"If I asked you which door leads to escape, what would you say?\"** Both truthful and hypothetical-liar responses point to escape[3].",
+    "judgment": "FAIL - The model incorrectly identified the scenario as a Monty Hall problem and suggested switching doors to achieve a 2/3 probability of escape. It missed the crucial instruction that the guard always tells the truth and that the player is allowed to ask the guard a question. By asking the guard which door leads to escape, the player achieves a 100% chance of escape, which is the optimal strategy.\n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:32:39.687Z",
+    "hash": "95005892eb9e9c69",
+    "usage": {
+      "promptTokens": 168,
+      "completionTokens": 354,
+      "totalTokens": 522
+    },
+    "costUsd": 0.00552,
+    "latencyMs": 4361
   },
   {
     "questionId": "Morse-code",
@@ -413,6 +622,44 @@
     "hash": "8d321b280899314e"
   },
   {
+    "questionId": "nephew",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "Albert's father has a brother called Donald. Donald has three nephews: Huey, Dewey, and... ?",
+    "answer": "**Louie.**\n\nHuey, Dewey, and **Louie** are the three triplet nephews of Donald Duck, as established across Disney canon.[1][2][3] In the query's scenario, Albert's father has a brother named Donald, making Donald Albert's uncle; Donald's nephews—Huey, Dewey, and Louie—are thus also Albert's cousins, confirming Louie as the third nephew.[1][2] This trio, sons of Donald's sister Della Duck (or Dumbella in early shorts), live with Donald in Duckburg and are distinguished by colors: Huey (red), Dewey (blue), Louie (green).[1][3]",
+    "judgment": "FAIL - The model fell for the trick by prioritizing external fictional knowledge (Disney's Huey, Dewey, and Louie) over the internal logic of the riddle. It failed to identify Albert as the third nephew. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:31:57.444Z",
+    "hash": "bd797d4f3185928e",
+    "usage": {
+      "promptTokens": 25,
+      "completionTokens": 152,
+      "totalTokens": 177
+    },
+    "costUsd": 0.00518,
+    "latencyMs": 2443
+  },
+  {
+    "questionId": "nfl-teams",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "Are there any NFL teams that don't end in s?",
+    "answer": "**No, there are no current NFL teams whose names do not end in \"s\".** All 32 active National Football League teams, such as the Seattle Seahawks, Pittsburgh Steelers, and Dallas Cowboys, have names ending in \"s\".[1]\n\nHistorically, a few defunct NFL teams from decades ago did not end in \"s\", though specific examples are not listed in the available sources.[1] A YouTube quiz on the topic implies the answer is zero for current teams, as participants struggled to name any.[3] Other major leagues like the NHL have exceptions (e.g., Tampa Bay Lightning, Colorado Avalanche), but the NFL does not.[1][2]",
+    "judgment": "PASS - The model correctly identified that there are no current NFL teams whose names do not end in \"s\". CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:36:16.572Z",
+    "hash": "55613df911517db4",
+    "usage": {
+      "promptTokens": 13,
+      "completionTokens": 141,
+      "totalTokens": 154
+    },
+    "costUsd": 0.00515,
+    "latencyMs": 2058
+  },
+  {
     "questionId": "official-country-names",
     "modelId": "perplexity/sonar",
     "modelName": "perplexity/sonar",
@@ -423,6 +670,25 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-22T20:05:23.977Z",
     "hash": "4658b96a881a5379"
+  },
+  {
+    "questionId": "often-never",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "\"Often\" relates to \"never\" in the same way that \"near\" relates to ____. a) next to b) far c) nowhere",
+    "answer": "The answer is **b) far**.\n\n\"Often\" and \"never\" are **antonyms**—they represent opposite frequencies, with \"often\" indicating frequent occurrence and \"never\" indicating complete absence[1][4]. Similarly, \"near\" and \"far\" are antonyms representing opposite distances, with \"near\" indicating closeness and \"far\" indicating distance. The relationship is one of direct opposition in both cases.",
+    "judgment": "FAIL - The model explicitly chose \"far\" and provided a justification for why it believed antonyms were the correct logic, directly failing to identify \"nowhere\" as the intended answer based on the \"erasing position\" logic. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:32:27.175Z",
+    "hash": "4a8fe7877059c5b6",
+    "usage": {
+      "promptTokens": 31,
+      "completionTokens": 88,
+      "totalTokens": 119
+    },
+    "costUsd": 0.00512,
+    "latencyMs": 3557
   },
   {
     "questionId": "one-word",
@@ -516,6 +782,25 @@
     "hash": "4115dcc49d8e08bb"
   },
   {
+    "questionId": "simple-burn-the-rope",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "You have two ropes, each of which takes exactly 60 minutes to burn completely. However, the ropes burn unevenly, meaning some parts may burn faster or slower than others. You have no other timing device. How can you measure exactly 60 minutes using these two ropes and matches to light them?",
+    "answer": "**Light both ends of the first rope and one end of the second rope simultaneously.** When the first rope burns out completely after 30 minutes, light the other end of the second rope, which then burns out after an additional 15 minutes, totaling exactly 60 minutes.[1][4]\n\n### Step-by-Step Process:\n- **At 0 minutes**: Light rope 1 at **both ends** (burns in 30 minutes total, as flames meet in the middle regardless of uneven burning) and rope 2 at **one end only**.[1][2][4]\n- **At 30 minutes**: Rope 1 finishes burning. Rope 2 has exactly 30 minutes of burn time left (since it has been burning from one end for 30 minutes).[1][4]\n- **At 30 minutes**: Immediately light the **other end** of rope 2. The remaining portion now burns from both ends, taking 15 minutes to complete.[1][2][4]\n- **At 60 minutes**: Rope 2 finishes burning, marking exactly **60 minutes** from the start.[1][4]\n\nThis method works because burning from both ends halves the time for the remaining rope length, independent of uneven burn rates along the rope.[1][3][4]",
+    "judgment": "FAIL\n\nThe model failed to follow the specific instructions of the prompt. While it provided the classic solution for measuring 45 minutes (despite claiming the total was 60), the prompt explicitly stated that the \"correct answer\" for this specific evaluation is to light one rope at one end to measure 60 minutes. The model instead suggested a complex process involving lighting both ends and multiple ropes, and its internal math was even incorrect (concluding that 30 + 15 = 60).\n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:35:11.570Z",
+    "hash": "10507a4ee56709b1",
+    "usage": {
+      "promptTokens": 62,
+      "completionTokens": 278,
+      "totalTokens": 340
+    },
+    "costUsd": 0.00534,
+    "latencyMs": 3198
+  },
+  {
     "questionId": "simple-math-trick",
     "modelId": "perplexity/sonar",
     "modelName": "perplexity/sonar",
@@ -526,6 +811,101 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-22T20:02:13.218Z",
     "hash": "9a54de14a4b1a40f"
+  },
+  {
+    "questionId": "Simple-monty-hall",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "Imagine a game show scenario where there are three doors. Behind one door is a car you want to win, and behind the other two doors are goats. You pick a door, say Door 1. The host opens that door, revealing a goat. The host then asks if you want to switch to Door 2 or 3. What should you do to maximize your chances of winning the car?",
+    "answer": "You should **switch to the other unopened door** to maximize your chances of winning the car.\n\nHere's why: When you initially picked Door 1, you had only a **1/3 chance** of selecting the car, meaning there was a **2/3 chance** the car was behind one of the other two doors[1]. When the host opens a door and reveals a goat, this doesn't change your original probability of being correct—it remains 1/3[6].\n\nHowever, the crucial insight is that **the 2/3 probability that the car was among the two unchosen doors now concentrates entirely on the single remaining unopened door**[6]. Since the host deliberately opens a door with a goat (not randomly), he's providing you with filtered information that shifts all that 2/3 probability to whichever door remains[3].\n\nTherefore:\n- **If you don't switch:** Your chances remain 1/3\n- **If you switch:** Your chances become 2/3\n\nThe host's knowledge of what's behind each door is essential. He will never reveal the car, only a goat, which means his action of opening a specific door gives you valuable information[1]. This is fundamentally different from a scenario where the host randomly opens a door without knowing its contents—in that case, both remaining doors would have equal probability[5].\n\nSwitching gives you **twice the odds** of winning compared to staying with your original choice[6].",
+    "judgment": "FAIL - The model failed to identify that Door 1 was explicitly revealed to be a goat in the prompt's scenario. Instead, it provided a standard canned response for the Monty Hall Problem where the host opens a *different* door. Consequently, it incorrectly stated that sticking with Door 1 (which already contains a goat) provides a 1/3 chance of winning, whereas the prompt criteria requires recognizing it now has a 0% chance. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:32:52.600Z",
+    "hash": "efbc8284e6b68294",
+    "usage": {
+      "promptTokens": 82,
+      "completionTokens": 309,
+      "totalTokens": 391
+    },
+    "costUsd": 0.00539,
+    "latencyMs": 4891
+  },
+  {
+    "questionId": "simpler-get-the-goat",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "A man with his sheep wants to cross a river. He has a boat that can carry both him and the animal. How do both get to the other side of the river safely?",
+    "answer": "**The man can safely transport both himself and his sheep across the river using these 3 trips, since the boat carries the man plus one animal and no conflicting constraints (like a wolf or cabbage) are mentioned.**\n\nHere is the step-by-step sequence:\n\n1. Man takes the sheep across to the other side[1][2][3][5].\n2. Man returns alone to the starting side[2][3][5].\n3. Man takes the sheep across again (now both are on the other side)[2][3][5].\n\nThis works because the query only involves the man and one sheep, with no other animals or items present to create risks like eating. The classic \"wolf, goat, and cabbage\" puzzle (often using sheep interchangeably with goat) requires 7 trips due to those conflicts, but they do not apply here[1][2][3][5][6][7]. A variant with a wolf and two sheep needs more steps with shuttling, but again, only one sheep is specified[4].",
+    "judgment": "FAIL - The model failed to recognize that only one trip is necessary. Instead, it suggested an illogical 3-step process where the man takes the sheep across, returns alone, and then takes the sheep \"again\" (which is impossible as the sheep was already on the other side). It fell into the trap of over-complicating a simple scenario by hallucinating constraints from the \"wolf, goat, and cabbage\" puzzle. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:33:23.412Z",
+    "hash": "fdbc0a9f16bf168a",
+    "usage": {
+      "promptTokens": 38,
+      "completionTokens": 225,
+      "totalTokens": 263
+    },
+    "costUsd": 0.00526,
+    "latencyMs": 3272
+  },
+  {
+    "questionId": "simpler-jugs-of-water",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "I have a 6- and a 12-liter jug. I want to measure exactly 6 liters. How can I do that?",
+    "answer": "Fill the **12-liter jug** completely from the tap, then pour from it into the **6-liter jug** until the 6-liter jug is full. This leaves exactly **6 liters** in the 12-liter jug.[1]\n\n### Step-by-Step Process\n1. Start with both jugs empty.\n2. Fill the 12-liter jug to its capacity (12 liters).\n3. Pour from the 12-liter jug into the 6-liter jug until the 6-liter jug is full (6 liters). The 12-liter jug now holds 12 - 6 = **6 liters**.[1]\n\nYou now have exactly 6 liters measured in the 12-liter jug. If you need it in the 6-liter jug instead, empty the 6-liter jug and pour the remaining 6 liters from the 12-liter jug into it.[1]\n\nThis works because the jugs' capacities allow direct subtraction (12 - 6 = 6), a basic water pouring puzzle solvable in minimal steps.[3]",
+    "judgment": "FAIL - The model fell for the trick and suggested several unnecessary steps. The prompt specifically requires the model to identify that simply filling the 6-liter jug is sufficient. The model's complex process of filling the 12-liter jug and pouring it into the 6-liter jug is redundant and inefficient. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:33:41.436Z",
+    "hash": "9beb5544eeab1735",
+    "usage": {
+      "promptTokens": 29,
+      "completionTokens": 214,
+      "totalTokens": 243
+    },
+    "costUsd": 0.00524,
+    "latencyMs": 2159
+  },
+  {
+    "questionId": "simplerer-jugs-of-water",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "I have a 1- and a 2-liter jug. I want to measure exactly 3 liters.",
+    "answer": "**It is impossible to measure exactly 3 liters using only a 1-liter jug and a 2-liter jug with access to unlimited water (e.g., a tap).**\n\nThe amounts you can measure are multiples of the greatest common divisor (GCD) of the jug capacities. Here, GCD(1, 2) = 1, so you can measure any integer amount up to the total capacity (3 liters), but **3 liters exceeds the largest jug (2 liters)**, making it impossible to have exactly 3 liters in either jug or their combination without additional containers.[4]\n\n### Possible states\nStarting with both jugs empty, the reachable amounts (in 1L jug, 2L jug) are limited:\n\n| 1L jug | 2L jug | Actions leading here |\n|--------|--------|----------------------|\n| 0      | 0      | Start                |\n| **1**  | 0      | Fill 1L              |\n| 0      | **2**  | Fill 2L              |\n| 0      | 1      | Pour 1L into 2L      |\n| **1**  | **2**  | Fill both            |\n| 0      | 0      | Empty both           |\n\nNo state yields exactly **3 liters** total in one jug. For example:\n- Fill 2L jug (2L), fill 1L jug (total 3L, but split).[4]\n- These puzzles work when the target fits a jug and is a multiple of the GCD, as in the classic 3L/5L for 4L.[3][1]\n\n### Mathematical basis\nBézout's identity states multiples \\( m \\cdot 1 + n \\cdot 2 = d \\) are achievable for integers \\( m, n \\) (positive/negative via pouring), but the result must fit one jug. For 3L: \\( 3 \\cdot 1 + 0 \\cdot 2 = 3 \\), but requires a 3L jug.[4] With max 2L, unachievable.",
+    "judgment": "FAIL - The model incorrectly claimed it is impossible to measure 3 liters. It failed to recognize that filling both jugs simultaneously (1L + 2L) results in exactly 3 liters of water, despite even listing \"Fill both\" in its own state table as a way to reach (1, 2). It overcomplicated the logic by assuming the target amount must fit into a single jug. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:34:06.854Z",
+    "hash": "5c096bc8ad7e4dcc",
+    "usage": {
+      "promptTokens": 23,
+      "completionTokens": 447,
+      "totalTokens": 470
+    },
+    "costUsd": 0.00547,
+    "latencyMs": 4922
+  },
+  {
+    "questionId": "simplest-jugs-of-water",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "I have a 1-liter jug and another 1-liter jug. I want to measure exactly 1 liter.",
+    "answer": "**With two 1-liter jugs, you can measure exactly 1 liter by simply filling one jug completely from the water source.**[3][1]\n\nThis is the most direct method, as each jug holds precisely 1 liter when full, achieving the goal in one step. The classic water jug puzzles (like those using 3L and 5L jugs to measure 4L) rely on jugs of different coprime capacities to create multiples or differences via filling, pouring, and emptying, but identical 1L jugs make additional steps unnecessary.[1][2][3][6]\n\n### Steps:\n1. Take one empty 1-liter jug.\n2. Fill it fully from the water source (assuming unlimited supply, as in standard puzzles).[3]\n\nBoth jugs remain usable afterward—the filled one holds your 1 liter, and the other stays empty or can be filled similarly. If markings or a graduated scale are available on the jugs, you could also partially fill to 1 liter, but the puzzle context implies unmarked jugs measured by capacity alone.[5] No pouring between jugs or emptying into a sink is needed here.[1][2]",
+    "judgment": "PASS - The model correctly identified that filling one of the 1-liter jugs completely is the sufficient and most direct method to measure 1 liter. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:34:17.277Z",
+    "hash": "1b78425c795068b9",
+    "usage": {
+      "promptTokens": 24,
+      "completionTokens": 253,
+      "totalTokens": 277
+    },
+    "costUsd": 0.00528,
+    "latencyMs": 3751
   },
   {
     "questionId": "so-far",
@@ -559,6 +939,25 @@
     "latencyMs": 6543
   },
   {
+    "questionId": "speed-of-sound",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "What is the speed of sound in space?",
+    "answer": "**Sound cannot travel in space, so it has no speed there.** Space is a vacuum with essentially no particles (like air molecules) to vibrate and propagate sound waves, which require a medium such as air, water, or solids.[1][2][3]\n\nSound travels as mechanical vibrations through a medium by causing particles to bump into each other and transfer energy. In the near-vacuum of outer space, there are too few particles for this process, making sound propagation impossible—like trying to create waves in an empty pool.[1][2] For example, an exploding spaceship or asteroid would produce no audible sound to nearby observers in the vacuum.[2]\n\n**In contrast, on Earth:** The speed of sound in dry air at 20°C is about **343 m/s** (1,125 ft/s or 767 mph), varying with temperature and medium (e.g., faster in water at ~1,500 m/s or steel at ~5,000 m/s).[3][4][5] Inside a pressurized spaceship or spacesuit filled with air, sound can travel normally among occupants.[2]\n\nAstronauts communicate via radio waves, which are electromagnetic and travel through vacuum at the speed of light, bypassing the need for a sound-carrying medium.[2] Note that some regions of space, like planetary atmospheres (e.g., Mars, where sound speed is ~240–250 m/s), do support sound propagation.[4]",
+    "judgment": "PASS - The model correctly identified that sound cannot travel in space because space is a vacuum and requires a medium for propagation. It explicitly stated that sound \"has no speed there.\" CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:32:08.006Z",
+    "hash": "ca73c7aa6482b120",
+    "usage": {
+      "promptTokens": 10,
+      "completionTokens": 311,
+      "totalTokens": 321
+    },
+    "costUsd": 0.00532,
+    "latencyMs": 3475
+  },
+  {
     "questionId": "spelling-reverse",
     "modelId": "perplexity/sonar",
     "modelName": "perplexity/sonar",
@@ -569,6 +968,101 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-22T20:02:08.554Z",
     "hash": "cb1147f94001772f"
+  },
+  {
+    "questionId": "spot-the-fake-coin",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "You have 9 coins, one of which is fake and weighs slightly less than the others. You have a digital scale. How can you find the fake coin?",
+    "answer": "You can find the fake coin in two weighings by dividing the coins into three groups of three and using a process of elimination.[1][2]\n\n**First weighing:** Divide the 9 coins into three groups of three. Place one group on each side of the digital scale and set one group aside. The scale will show which group is lighter (containing the fake coin), or if two groups balance, the fake coin is in the third group.[1][2]\n\n**Second weighing:** Take the group of three that contains the fake coin. Place one coin on each side of the scale and set one coin aside. The lighter side reveals the fake coin, or if the two coins balance, the coin set aside is the fake one.[1]\n\nThis method works because a digital scale—unlike a traditional balance scale—can directly measure weight differences. With the first weighing, you narrow the possibilities from 9 coins to 3 coins. The second weighing then narrows it to 1 coin. Since you can determine absolute weight values with a digital scale, you only need two weighings to identify the lighter counterfeit coin.[2]",
+    "judgment": "FAIL - The model gave the standard solution for a balance scale (dividing into groups and comparing them) rather than the most efficient method for a digital scale, which is simply weighing each coin individually to read its specific value. Furthermore, its description of using a digital scale \"one group on each side\" is logically inconsistent with how a standard single-platform digital scale works. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:34:49.837Z",
+    "hash": "c0591247f279ccbd",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 238,
+      "totalTokens": 272
+    },
+    "costUsd": 0.00527,
+    "latencyMs": 4810
+  },
+  {
+    "questionId": "steel-or-feathers",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "Which is heavier, 1 kilogram of feathers or 1 pound of steel?",
+    "answer": "**1 kilogram of feathers is heavier than 1 pound of steel.**\n\nThis classic riddle compares **1 kg** (a metric unit of mass equal to approximately **2.20462 pounds**) to **1 lb** (defined as exactly **0.45359237 kg**).[1][2][3] Since 1 kg converts to more than 2 pounds, it outweighs 1 pound by about 1.20462 pounds (or roughly 0.546 kg).[2][3][4] Both feathers and steel have the same weight per unit mass specified, so material density is irrelevant—the kilogram simply represents greater mass.[1][2] All sources confirm the standard conversion factor used here.[3][5][8]",
+    "judgment": "PASS - The model correctly identified that 1 kilogram of feathers is heavier than 1 pound of steel. It accurately explained the conversion factor (1 kg ≈ 2.2 lbs), demonstrating that it did not fall for the common trick associated with this riddle. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:34:37.697Z",
+    "hash": "3ab82f7a782bcdf1",
+    "usage": {
+      "promptTokens": 18,
+      "completionTokens": 163,
+      "totalTokens": 181
+    },
+    "costUsd": 0.00518,
+    "latencyMs": 2629
+  },
+  {
+    "questionId": "sticks-not-from-hannoi",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "There are 3 sticks. There are 3 disks on the leftmost stick, in order from large to small. What is the minimum number of disk moves to move them to the rightmost stick?",
+    "answer": "The minimum number of moves required is **7 moves**[2][3].\n\nThis follows from the formula for the Tower of Hanoi puzzle: the minimum number of moves for *n* disks is 2^*n*^ − 1[1][2]. With 3 disks, this calculates to 2³ − 1 = 8 − 1 = 7 moves[3].\n\nThe solution requires following three rules[2]:\n- Only one disk may be moved at a time\n- Each move consists of taking the upper disk from one stack and placing it on another stack or empty rod\n- No disk may be placed on top of a disk that is smaller than it\n\nThe recursive strategy involves moving the top 2 disks to the middle stick (3 moves), moving the largest disk to the rightmost stick (1 move), and then moving the 2 disks from the middle stick to the rightmost stick on top of the largest disk (3 more moves)[6].",
+    "judgment": "FAIL - The model fell for the trick and treated the question as the classic Towers of Hanoi puzzle, resulting in an answer of 7 moves instead of the 3 moves possible when no restrictive rules are stated. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:35:44.297Z",
+    "hash": "dc25f10f2c0d0f86",
+    "usage": {
+      "promptTokens": 42,
+      "completionTokens": 206,
+      "totalTokens": 248
+    },
+    "costUsd": 0.00525,
+    "latencyMs": 3504
+  },
+  {
+    "questionId": "stop-the-count",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "A and B take turns naming increasing numbers. Each player can name as many increasing numbers as they want. The first player starts with 1 and may continue to name numbers until he wants to stop. Then B takes over and so on. The person who says 31 loses. What should A do to start first and win?",
+    "answer": "**Player A can force a win by saying 1, 2, and 3 on the first turn, then mirroring B's moves to always leave a multiple of 4 numbers unsaid.**\n\nThis is a classic impartial game like subtraction or Nim variants, where the total numbers to 31 is 31, and the player forced to say 31 loses (misère condition, but strategy holds similarly to normal play up to 31).\n\n### Key Insight: Safe Positions and Control Groups\n- Positions where **0, 4, 8, 12, 16, 20, 24, 28** numbers have been said are winning positions for the player about to move. From these, the opponent can always be forced back to another safe position.\n- After a safe position, whatever k numbers (1 ≤ k ≤ 3) the opponent says, you respond with exactly **4 - k** numbers to reach the next safe position. For example:\n  | Opponent says | You respond with | Reaches safe total |\n  |---------------|------------------|--------------------|\n  | 1 number     | 3 numbers       | Next multiple of 4 |\n  | 2 numbers    | 2 numbers       | Next multiple of 4 |\n  | 3 numbers    | 1 number        | Next multiple of 4 |\n\n### A's Opening Move\n- A starts at 0 (safe) and says **1-2-3** (3 numbers), reaching 3 said. Leaves 28 unsaid (28 = 4×7, safe for A's next turn).\n- B then says m numbers (1-3), reaching 3 + m. A responds with 4 - m to reach 4, then 8, 12, etc.\n- Continue until after 28 said (reached by A), B is forced to say 29-30-31 (or fewer, but must say 31 eventually), losing.\n\nThis strategy works regardless of B's choices, as A always controls the pace to hit multiples of 4. The modulus-4 grouping ensures the second player cannot disrupt the pattern.",
+    "judgment": "FAIL - The model failed to identify that A can win on the first turn by counting all numbers from 1 to 30. Instead, it proposed a complex strategy based on multiples of 4, which is the solution for a different game (where there is a limit on how many numbers a player can say). In this specific version, there is no limit to how many numbers a player can say per turn, making the correct answer 1 through 30. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:35:57.397Z",
+    "hash": "db72d639e309eb09",
+    "usage": {
+      "promptTokens": 67,
+      "completionTokens": 440,
+      "totalTokens": 507
+    },
+    "costUsd": 0.00551,
+    "latencyMs": 5885
+  },
+  {
+    "questionId": "strarrtrabbbery-non-rl",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "How many 'r's are in strarrtrabbbery?",
+    "answer": "**There are 4 'r's in \"strarrtrabbbery\".**\n\nTo count them accurately, list each letter position-by-position:\n\n1. s  \n2. t  \n3. **r** (count=1)  \n4. **r** (count=2)  \n5. a  \n6. **r** (count=3)  \n7. r (count=4)  \n8. t  \n9. a  \n10. b  \n11. b  \n12. e  \n13. r (count=5? Wait, no—recheck: positions are s-t-**r**-**r**-a-**r**-r-t-r-a-b-b-e-r-y, but query is \"strarrtrabbbery\", so: s-t-r-a-r-r-t-r-a-b-b-e-r-y? Wait, let's spell precisely: s-t-**r**-a-**r**-**r**-t-**r**-a-b-b-e-**r**-y.\n\nCorrect spelling check: **strarrtrabbbery** = s, t, **r**, a, **r**, **r**, t, **r**, a, b, b, e, **r**, y.\n\n- Position 3: **r** (1)  \n- Position 5: **r** (2)  \n- Position 6: **r** (3)  \n- Position 8: **r** (4)  \n- Position 13: **r** (5? No: \"strarrtrabbbery\" has 14 letters: 1s,2t,3r,4a,5r,6r,7t,8r,9a,10b,11b,12e,13r,14y. Yes, **r** at 3,5,6,8,13? Position 13 is r, but count: positions with r: 3,5,6,8,13— that's 5? Wait, mistake.\n\nPrecise index (1-based):  \n1: s  \n2: t  \n3: **r**  \n4: a  \n5: **r**  \n6: **r**  \n7: t  \n8: **r**  \n9: a  \n10: b  \n11: b  \n12: e  \n13: r  \n14: y  \n\n**r** at positions 3,5,6,8,13: that's **5** 'r's.[1][5]\n\nThis step-by-step enumeration avoids tokenization errors common in LLMs with words like \"strawberry\" (which has 3 'r's but models often say 2).[2][3][4] Python verification: `'strarrtrabbbery'.count('r')` returns 5.",
+    "judgment": "PASS - The model correctly counted 5 'r's in the string \"strarrtrabbbery\" after a step-by-step analysis. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:31:47.974Z",
+    "hash": "896b44e2dd9ef040",
+    "usage": {
+      "promptTokens": 14,
+      "completionTokens": 593,
+      "totalTokens": 607
+    },
+    "costUsd": 0.00561,
+    "latencyMs": 4204
   },
   {
     "questionId": "stuck-key",
@@ -590,6 +1084,25 @@
     "latencyMs": 4648
   },
   {
+    "questionId": "Sundays",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "How many Sundays were there in 2017?",
+    "answer": "There were **53 Sundays in 2017**[1][2][3]. Since 2017 had 365 days and began on a Sunday (January 1), it resulted in one extra Sunday beyond the standard 52 weeks[2]. The year ended on a Sunday as well, with December 31, 2017 being the final Sunday of the year[2].\n\nThe distribution of Sundays across the months was uneven, with five months containing 5 Sundays each—January, April, July, October, and December—while the remaining seven months had 4 Sundays each[1].",
+    "judgment": "PASS - The model correctly identified that there were 53 Sundays in 2017. It accurately explained that because 2017 started and ended on a Sunday, it contained 52 full weeks plus one extra Sunday. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:31:36.416Z",
+    "hash": "0d5c2e1bef65a52f",
+    "usage": {
+      "promptTokens": 11,
+      "completionTokens": 133,
+      "totalTokens": 144
+    },
+    "costUsd": 0.00514,
+    "latencyMs": 3671
+  },
+  {
     "questionId": "tanden",
     "modelId": "perplexity/sonar",
     "modelName": "perplexity/sonar",
@@ -602,6 +1115,25 @@
     "hash": "baecbfee922dc0e2"
   },
   {
+    "questionId": "tic-tac-toe",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "How would rotating a tic-tac-toe board 90 degrees change the rules of the game and its strategy?",
+    "answer": "Rotating a standard 3x3 tic-tac-toe board 90 degrees clockwise or counterclockwise does not change the rules or strategy, as the board's symmetry preserves all winning lines (rows, columns, and diagonals).[3]\n\nStandard tic-tac-toe requires players to alternate placing X or O in empty spaces, aiming for **three in a row** horizontally, vertically, or diagonally; rotation maps each line to an equivalent line under the board's rotational symmetry.[3] For example, a top row becomes a right column, but the relative positions and connections remain identical, so legal moves, blocks, and wins are unaffected.[1][3]\n\n**Strategic implications remain unchanged**:\n- First player (typically X) retains a draw-forcing advantage with perfect play, focusing on center control, corners, and forks (threatening two wins simultaneously).[3]\n- No new vulnerabilities or opportunities arise, unlike asymmetric variants like Connect Four-style drops.[1]\n\nIf the query intends a variant where rotation is a dynamic mechanic (e.g., players rotate the board mid-game or pieces have orientations), no search results describe such rules; standard tic-tac-toe lacks this, though some advanced variants involve movement or rotation of pieces.[1] Ultimate tic-tac-toe adds meta-board navigation but no board rotation.[2][4]",
+    "judgment": "PASS - The model correctly identified that rotating a tic-tac-toe board does not change the rules or the strategy due to the game's symmetry. It even went beyond to explain how specific lines (like rows) map to others (like columns) while maintaining the same winning conditions. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:31:16.763Z",
+    "hash": "da4835668b73a5d3",
+    "usage": {
+      "promptTokens": 24,
+      "completionTokens": 283,
+      "totalTokens": 307
+    },
+    "costUsd": 0.00531,
+    "latencyMs": 4236
+  },
+  {
     "questionId": "unknown-word",
     "modelId": "perplexity/sonar",
     "modelName": "perplexity/sonar",
@@ -612,6 +1144,25 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-22T20:03:38.836Z",
     "hash": "aa8079bbccef1639"
+  },
+  {
+    "questionId": "unstoppable-force",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "An unstoppable force meets a moveable object. What happens?",
+    "answer": "The paradox of an **unstoppable force** meeting an **immovable object** is a logical contradiction: both cannot coexist in the same universe, as an unstoppable force (requiring infinite energy or torque) implies no object can resist it, while an immovable object (requiring infinite mass or inertia) implies no force can affect it[1][2][3][4].\n\n### Logical Resolution\nBy definition, the scenario is impossible—one property negates the other, so nothing definitive \"happens\" because the premises cannot both be true simultaneously[2][4]. Common resolutions include:\n- The force moves the object, as infinite torque overcomes even infinite mass (lacking opposing force to hold it still)[1].\n- They pass through each other without interaction, preserving both properties (e.g., two infinitely massive objects colliding but unaffected)[3].\n- The force flows around the object, finding another path without direct confrontation[4].\n\n### Physics Perspective\nIn reality, neither exists: Newton's second law (\\( F = ma \\)) shows infinite mass yields zero acceleration regardless of force, while an unstoppable force defies energy conservation[1][3]. Approximations occur naturally—e.g., black holes (near-infinite mass slowing time) versus time (unstoppable flow)—but change happens over time through erosion or diversion[1][2].\n\n### Metaphorical Interpretations\nOften used beyond physics as a symbol for resilience: the force adapts or reshapes the obstacle, representing human perseverance or creative problem-solving[2][4]. No physical experiment resolves it definitively, as it violates known laws[3].",
+    "judgment": "FAIL - The model failed to identify that there is no paradox in this specific scenario. It incorrectly treated the question as the \"unstoppable force vs. immovable object\" paradox, despite the question explicitly stating the object is \"moveable.\" Because it treated the situation as a logical contradiction rather than a simple interaction where the object moves, it failed the specific criteria. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-02-25T23:36:07.953Z",
+    "hash": "fb0caeadd0156518",
+    "usage": {
+      "promptTokens": 13,
+      "completionTokens": 342,
+      "totalTokens": 355
+    },
+    "costUsd": 0.00536,
+    "latencyMs": 3715
   },
   {
     "questionId": "upside-down",
