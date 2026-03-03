@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Question",
-  "description": "Schema for a trick question with judge prompt",
+  "description": "Schema for a trick question with judge prompt or judge function",
   "type": "object",
-  "required": ["id", "question", "judgePrompt"],
+  "required": ["id", "question"],
   "properties": {
     "id": {
       "type": "string",
@@ -15,12 +15,20 @@
     },
     "judgePrompt": {
       "type": "string",
-      "description": "The prompt to use when judging the answer"
+      "description": "The prompt to use when judging the answer with an LLM judge"
+    },
+    "judgeFunction": {
+      "type": "string",
+      "description": "Key into the judgeFunctions map in data/judgeFunctions.ts. When set, the JS function is used instead of an LLM judge."
     },
     "tokenLimit": {
       "type": "integer",
       "description": "Optional maximum number of tokens for the response",
       "minimum": 1
     }
-  }
+  },
+  "oneOf": [
+    { "required": ["judgePrompt"] },
+    { "required": ["judgeFunction"] }
+  ]
 }

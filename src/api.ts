@@ -1,5 +1,6 @@
 import { Question, JudgmentResult, TokenUsage } from './types';
 import { OpenRouterGenerationResponse } from './response';
+import { judgeFunctions } from '../data/judgeFunctions';
 
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 const DEBUG_STATS = process.env.BENCH_DEBUG_STATS === '1';
@@ -395,7 +396,7 @@ export async function judgeAnswer(
     };
   }
 
-  const judgePrompt = `${question.judgePrompt}
+  const judgePrompt = `${question.judgePrompt ?? ''}
 
 Question: ${question.question}
 Answer: ${answer}`;
@@ -415,5 +416,30 @@ Answer: ${answer}`;
     passed: parsed.passed,
     needsHumanReview: parsed.needsHumanReview,
     confidence: parsed.confidence
+  };
+}
+
+/**
+ * Judge an answer using a JavaScript function from data/judgeFunctions.ts
+ */
+export function judgeAnswerWithFunction(
+  question: Question,
+  answer: string
+): JudgmentResult {
+  const fnKey = question.judgeFunction;
+  if (!fnKey) {
+    throw new Error(`Question "${question.id}" does not have a judgeFunction defined.`);
+  }
+
+  const fn = judgeFunctions[fnKey];
+  if (!fn) {
+    throw new Error(`Judge function "${fnKey}" not found in judgeFunctions.`);
+  }
+
+  const { passed, judgment } = fn(answer);
+  return {
+    judgment,
+    passed,
+    needsHumanReview: false
   };
 }

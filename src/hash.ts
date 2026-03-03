@@ -10,7 +10,8 @@ export function generateHash(versionInfo: VersionInfo): string {
     question: versionInfo.question,
     judgePrompt: versionInfo.judgePrompt,
     judgeSystemPrompt: versionInfo.judgeSystemPrompt,
-    judgeModel: versionInfo.judgeModel
+    judgeModel: versionInfo.judgeModel,
+    judgeFunction: versionInfo.judgeFunction
   });
   
   return crypto.createHash('sha256').update(data).digest('hex').substring(0, 16);
@@ -24,11 +25,17 @@ export function createVersionInfo(
   judgeSystemPrompt: string,
   judgeModel: string
 ): VersionInfo {
-  return {
+  const versionInfo: VersionInfo = {
     questionId: question.id,
     question: question.question,
-    judgePrompt: question.judgePrompt,
-    judgeSystemPrompt,
-    judgeModel
+    judgePrompt: question.judgePrompt ?? '',
+    judgeSystemPrompt: question.judgeFunction ? '' : judgeSystemPrompt,
+    judgeModel: question.judgeFunction ? '' : judgeModel
   };
+
+  if (question.judgeFunction) {
+    versionInfo.judgeFunction = question.judgeFunction;
+  }
+
+  return versionInfo;
 }

@@ -1,5 +1,6 @@
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
-import { parseJudgment, queryModel, fetchGenerationCost, fetchGenerationStats } from '../src/api';
+import { parseJudgment, queryModel, fetchGenerationCost, fetchGenerationStats, judgeAnswerWithFunction } from '../src/api';
+import { judgeFunctions } from '../data/judgeFunctions';
 
 describe('api parsing helpers', () => {
   it('parses PASS verdicts', () => {
@@ -398,5 +399,85 @@ describe('fetchGenerationStats', () => {
 
     expect(stats).toEqual({});
     expect(fetchSpy).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('judgeFunctions - arrow-under-comma-moldova', () => {
+  const fn = judgeFunctions['arrow-under-comma-moldova'];
+
+  it('passes when arrow is placed under the comma', () => {
+    const answer = 'Moldova, the Republic of\n       ^';
+    const result = fn(answer);
+    expect(result.passed).toBe(true);
+    expect(result.judgment).toContain('PASS');
+  });
+
+  it('passes with alternative arrow characters', () => {
+    expect(fn('Moldova, the Republic of\n       ↑').passed).toBe(true);
+    expect(fn('Moldova, the Republic of\n       |').passed).toBe(true);
+    expect(fn('Moldova, the Republic of\n       *').passed).toBe(true);
+    expect(fn('Moldova, the Republic of\n       ▲').passed).toBe(true);
+  });
+
+  it('fails when only one line is provided', () => {
+    const result = fn('Moldova, the Republic of');
+    expect(result.passed).toBe(false);
+    expect(result.judgment).toContain('FAIL');
+    expect(result.judgment).toContain('two lines');
+  });
+
+  it('fails when no line contains "Moldova,"', () => {
+    const result = fn('Some text here\n       ^');
+    expect(result.passed).toBe(false);
+    expect(result.judgment).toContain('FAIL');
+    expect(result.judgment).toContain('Moldova,');
+  });
+
+  it('fails when arrow is missing after Moldova line', () => {
+    const result = fn('Moldova, the Republic of\n');
+    expect(result.passed).toBe(false);
+    expect(result.judgment).toContain('FAIL');
+  });
+
+  it('fails when arrow is at wrong column', () => {
+    // Arrow at column 0 instead of column 7
+    const result = fn('Moldova, the Republic of\n^');
+    expect(result.passed).toBe(false);
+    expect(result.judgment).toContain('FAIL');
+  });
+});
+
+describe('judgeAnswerWithFunction', () => {
+  it('delegates to the correct judge function', () => {
+    const question = {
+      id: 'moldova-arrow-comma',
+      question: 'Place an arrow under the comma in "Moldova, the Republic of"',
+      judgeFunction: 'arrow-under-comma-moldova'
+    };
+    const result = judgeAnswerWithFunction(question, 'Moldova, the Republic of\n       ^');
+    expect(result.passed).toBe(true);
+    expect(result.needsHumanReview).toBe(false);
+  });
+
+  it('throws when judgeFunction key is not defined on the question', () => {
+    const question = {
+      id: 'q-test',
+      question: 'Some question',
+      judgePrompt: 'Some prompt'
+    };
+    expect(() => judgeAnswerWithFunction(question, 'answer')).toThrow(
+      'does not have a judgeFunction defined'
+    );
+  });
+
+  it('throws when judgeFunction key does not exist in judgeFunctions', () => {
+    const question = {
+      id: 'q-test',
+      question: 'Some question',
+      judgeFunction: 'nonexistent-function'
+    };
+    expect(() => judgeAnswerWithFunction(question, 'answer')).toThrow(
+      'Judge function "nonexistent-function" not found'
+    );
   });
 });

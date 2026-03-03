@@ -1,7 +1,10 @@
 export interface Question {
   id: string;
   question: string;
-  judgePrompt: string;
+  /** Prompt for the LLM judge. Required when judgeFunction is not set. */
+  judgePrompt?: string;
+  /** Key into the judgeFunctions map in data/judgeFunctions.ts. When set, the JS function is used instead of an LLM judge. */
+  judgeFunction?: string;
   tokenLimit?: number;
 }
 
@@ -52,4 +55,5 @@ export interface VersionInfo {
   judgePrompt: string;
   judgeSystemPrompt: string;
   judgeModel: string;
+  judgeFunction?: string;
 }
