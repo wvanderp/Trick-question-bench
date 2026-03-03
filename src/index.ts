@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { loadQuestions, loadModels, saveModelResults, loadModelResults } from './loader';
-import { askQuestion, judgeAnswer, fetchGenerationStats, JUDGE_SYSTEM_PROMPT } from './api';
+import { askQuestion, judgeAnswer, judgeAnswerWithFunction, fetchGenerationStats, JUDGE_SYSTEM_PROMPT } from './api';
 import { TestResult, TokenUsage } from './types';
 import { buildPendingPairs, getModelLimitFromArgs, persistUpdatedModelResults, upsertModelResult } from './benchmark';
 
@@ -185,12 +185,28 @@ async function main() {
         }
 
         // Judge the answer
-        const { judgment, passed, needsHumanReview, confidence } = await judgeAnswer(
-          OPENROUTER_API_KEY,
-          JUDGE_MODEL,
-          question,
-          answer
-        );
+        let judgment: string;
+        let passed: boolean;
+        let needsHumanReview: boolean;
+        let confidence: string | undefined;
+
+        if (question.judgeFunction) {
+          const result = judgeAnswerWithFunction(question, answer);
+          judgment = result.judgment;
+          passed = result.passed;
+          needsHumanReview = result.needsHumanReview;
+        } else {
+          const result = await judgeAnswer(
+            OPENROUTER_API_KEY,
+            JUDGE_MODEL,
+            question,
+            answer
+          );
+          judgment = result.judgment;
+          passed = result.passed;
+          needsHumanReview = result.needsHumanReview;
+          confidence = result.confidence;
+        }
         
         console.log(`  Judge: ${judgment}`);
         console.log(`  Result: ${passed ? '✓ PASS' : '✗ FAIL'}`);
