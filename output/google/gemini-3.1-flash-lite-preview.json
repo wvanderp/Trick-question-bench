@@ -1,0 +1,192 @@
+[
+  {
+    "questionId": "alive-siblings",
+    "modelId": "google/gemini-3.1-flash-lite-preview",
+    "modelName": "google/gemini-3.1-flash-lite-preview",
+    "question": "In a family of 5 children, each child has at least one brother. What is the minimum number of boys in the family?",
+    "answer": "To find the minimum number of boys in a family of 5 children where each child has at least one brother, we need to consider the gender of each child.\n\n1.  **Analyze the condition:** \"Each child has at least one brother.\" \n    *   This means every child must have at least one boy in the family.\n    *   If a child is a **boy**, he must have at least one *other* boy in the family to be his brother. This means there must be at least **two boys** in total to satisfy the condition for the boys themselves.\n    *   If a child is a **girl**, she must have at least one brother. This means there must be at least **one boy** in the family.\n\n2.  **Evaluate the requirements:**\n    *   To satisfy the condition for the boys: There must be at least 2 boys. If there were only 1 boy, he would have no \"brother\" (he cannot be his own brother).\n    *   Once there are 2 boys, every boy has a brother.\n    *   Since there are 2 boys, every girl (should there be any) also has a brother.\n\n3.  **Check the total:**\n    *   If there are 2 boys, all 2 boys have a brother.\n    *   The remaining 3 children (the girls) would also have those 2 boys as brothers.\n    *   This satisfies the condition that \"each child has at least one brother.\"\n\nIf there were only 1 boy, that boy would have no brother, which would violate the rule. Thus, 2 is the minimum number of boys.\n\n**Verification:**\n*   **Boys:** 2\n*   **Girls:** 3\n*   Each of the 2 boys has 1 brother (the other boy).\n*   Each of the 3 girls has 2 brothers.\n*   Condition satisfied.\n\nThe minimum number of boys is **2**.",
+    "judgment": "PASS - The model correctly identified that 2 is the minimum number of boys and provided a detailed logical explanation for why 2 boys are necessary to satisfy the condition for the boys themselves. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-04T00:46:36.003Z",
+    "hash": "1bbddd77cefbfe93",
+    "usage": {
+      "promptTokens": 27,
+      "completionTokens": 421,
+      "totalTokens": 448
+    },
+    "costUsd": 0.00063825,
+    "latencyMs": 2070
+  },
+  {
+    "questionId": "carwash",
+    "modelId": "google/gemini-3.1-flash-lite-preview",
+    "modelName": "google/gemini-3.1-flash-lite-preview",
+    "question": "I need to wash my car, the carwash is only 100 meters away. Should I walk or drive to the carwash?",
+    "answer": "Technically, you should **drive** to the car wash, but for a very short distance of 100 meters, there are a few practical things to consider:\n\n### Reasons to Drive:\n*   **Safety/Logistics:** If you are using an automatic tunnel car wash, you need the car to be inside the rails to get cleaned. It is much safer and easier to pull the car in than to try to negotiate the machinery on foot.\n*   **Post-Wash:** Once the car is washed, you will need to drive it away (to a drying area or back home). If you walked there, you would have to walk back to your parked car, drive it to the wash, and then move it again.\n\n### Reasons NOT to Drive (or why it feels silly):\n*   **Engine Health:** Driving only 100 meters is actually bad for your engine. The engine oil and the catalytic converter need time to reach their optimal operating temperature. If you only drive for 30 seconds, the engine doesn't warm up, which can lead to moisture buildup in the oil and internal components.\n*   **The \"Convenience\" Paradox:** If you are simply washing the car yourself (bucket and hose), walking is fine. If you are using a professional service, the drive is so short it’s almost negligible.\n\n### The Verdict:\n**Drive, but take the long way home.**\n\nIf the car wash is only 100 meters away, drive there, get the wash, and then **go for a 10-minute drive afterward.** This will help fully dry out the engine components, prevent condensation, and ensure that the \"new car\" shine isn't immediately followed by the engine struggling to reach operating temperature. \n\n**Pro Tip:** If \"100 meters\" is just a figure of speech and you are really just going to a drive-through tunnel, definitely drive. It is not designed for pedestrians!",
+    "judgment": "PASS - The model correctly identified that you should drive to the carwash because it is safer, more logical, and necessary for the service. It also correctly noted that pedestrians are not supposed to be in drive-through carwashes. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-04T00:46:45.728Z",
+    "hash": "1e32d1ae4cb06232",
+    "usage": {
+      "promptTokens": 30,
+      "completionTokens": 409,
+      "totalTokens": 439
+    },
+    "costUsd": 0.000621,
+    "latencyMs": 2559
+  },
+  {
+    "questionId": "counting-rs",
+    "modelId": "google/gemini-3.1-flash-lite-preview",
+    "modelName": "google/gemini-3.1-flash-lite-preview",
+    "question": "How many 'r's are in the word 'strawberry'?",
+    "answer": "There are **3** 'r's in the word \"strawberry\" (st**r**awbe**rr**y).",
+    "judgment": "PASS - The model correctly identified that there are 3 'r's in the word \"strawberry\". CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-04T00:46:03.724Z",
+    "hash": "9874a1961e200e9e",
+    "usage": {
+      "promptTokens": 13,
+      "completionTokens": 27,
+      "totalTokens": 40
+    },
+    "costUsd": 0.00004375,
+    "latencyMs": 849
+  },
+  {
+    "questionId": "cup",
+    "modelId": "google/gemini-3.1-flash-lite-preview",
+    "modelName": "google/gemini-3.1-flash-lite-preview",
+    "question": "I was given a cup by a friend and the top of the cup is sealed and the bottom is open. How can I drink from this?",
+    "answer": "It sounds like you have been given a **\"bottoms-up\" novelty cup** (or perhaps an upside-down mug design). \n\nBecause the top is sealed and the bottom is open, the cup is designed to be used in one of two ways depending on its specific build:\n\n### 1. The \"Bottoms-Up\" Technique (Most Likely)\nThese cups are often designed to be filled from the bottom. \n*   **Check the bottom:** Is there a sliding mechanism, a rubber seal, or a circular opening? If so, you fill the cup by turning it upside down, pouring the liquid in through the open bottom while keeping your hand (or a coaster) over the seal to prevent leaking.\n*   **The Seal:** Once filled, you place the cup on a table or coaster. The weight of the liquid typically creates a vacuum or rests on a gasket, keeping the liquid inside. \n*   **The Drinking Mechanism:** Usually, there is a straw or a small sip-hole integrated into the *top* (the sealed end). You drink from the top while the bottom remains resting on the table.\n\n### 2. The Vacuum/Physics Trick\nIf the cup is truly just an \"open-bottomed cylinder\" with no moving parts:\n*   **The Physics:** To drink from it, you would have to place the open end against a flat surface (like a plate or a coaster) to act as a seal, and then fill it through a hole in the top (if one exists). \n*   **The Problem:** If you lift the cup to your mouth, the liquid will fall out of the bottom immediately. \n\n**If this is a \"Trick\" or Gag Gift:**\nIf there is no straw, no hole, and no sliding seal, it is likely a **prank cup.** It is designed so that the moment you try to drink from it, the liquid spills out the bottom. If this is the case, the \"trick\" is that there is no way to drink from it without making a mess!\n\n**How to verify:**\n1.  **Look for a slider:** Feel around the edge of the open bottom. Is there a plastic ring you can twist or slide?\n2.  **Look for a valve:** Is there a small hole on the very top of the sealed portion that might be covered by a rubber stopper?\n3.  **Check for a \"trick\" hole:** Sometimes these cups have a tiny pinhole on the side—if you cover it with your finger, physics may help keep the liquid inside via a vacuum seal, though this is rarely used for actual drinking.\n\n**My recommendation:** If you don't see a clear way to seal the bottom (like a sliding door), **do not pour liquid into it** unless you are standing over a sink! It is likely a container meant for decoration or a prank.",
+    "judgment": "FAIL - The model failed to suggest simply flipping the cup upside down so that the open end faces up. Instead, it overcomplicated the answer by suggesting it was a novelty \"bottoms-up\" cup or a prank cup that requires specialized valves or vacuum physics. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-04T00:47:04.549Z",
+    "hash": "eb2a17ca0446bdc8",
+    "usage": {
+      "promptTokens": 30,
+      "completionTokens": 604,
+      "totalTokens": 634
+    },
+    "costUsd": 0.0009135,
+    "latencyMs": 2968
+  },
+  {
+    "questionId": "one-word",
+    "modelId": "google/gemini-3.1-flash-lite-preview",
+    "modelName": "google/gemini-3.1-flash-lite-preview",
+    "question": "Say just one word.",
+    "answer": "Understood.",
+    "judgment": "PASS - The model responded with exactly one word (\"Understood\"). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-04T00:46:53.798Z",
+    "hash": "01f495274b767a87",
+    "usage": {
+      "promptTokens": 5,
+      "completionTokens": 3,
+      "totalTokens": 8
+    },
+    "costUsd": 0.00000575,
+    "latencyMs": 1139
+  },
+  {
+    "questionId": "rooster-egg",
+    "modelId": "google/gemini-3.1-flash-lite-preview",
+    "modelName": "google/gemini-3.1-flash-lite-preview",
+    "question": "A rooster is on top of a barn. If it lays an egg, which way will it roll?",
+    "answer": "Roosters don't lay eggs!",
+    "judgment": "PASS - The model correctly identified the trick and stated that roosters do not lay eggs. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-04T00:46:26.969Z",
+    "hash": "d1f96ba4cf84eb13",
+    "usage": {
+      "promptTokens": 21,
+      "completionTokens": 8,
+      "totalTokens": 29
+    },
+    "costUsd": 0.00001725,
+    "latencyMs": 741
+  },
+  {
+    "questionId": "simple-math-trick",
+    "modelId": "google/gemini-3.1-flash-lite-preview",
+    "modelName": "google/gemini-3.1-flash-lite-preview",
+    "question": "If you have 3 apples and you take away 2, how many do you have?",
+    "answer": "If you take away 2 apples, you have **2** apples (the ones you took).",
+    "judgment": "PASS - The model correctly identified that you have the 2 apples you took, showing it did not fall for the subtraction trick. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-04T00:46:19.494Z",
+    "hash": "9a54de14a4b1a40f",
+    "usage": {
+      "promptTokens": 19,
+      "completionTokens": 20,
+      "totalTokens": 39
+    },
+    "costUsd": 0.00003475,
+    "latencyMs": 1355
+  },
+  {
+    "questionId": "spelling-reverse",
+    "modelId": "google/gemini-3.1-flash-lite-preview",
+    "modelName": "google/gemini-3.1-flash-lite-preview",
+    "question": "Spell 'world' backwards.",
+    "answer": "dlrow",
+    "judgment": "PASS - The model correctly spelled 'world' backwards as 'dlrow'. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-04T00:46:11.404Z",
+    "hash": "cb1147f94001772f",
+    "usage": {
+      "promptTokens": 6,
+      "completionTokens": 2,
+      "totalTokens": 8
+    },
+    "costUsd": 0.0000045,
+    "latencyMs": 740
+  },
+  {
+    "questionId": "which-is-bigger",
+    "modelId": "google/gemini-3.1-flash-lite-preview",
+    "modelName": "google/gemini-3.1-flash-lite-preview",
+    "question": "Which is bigger, 9.9 or 9.11?",
+    "answer": "**9.9** is bigger than 9.11.\n\nHere is why:\nTo compare decimals, you look at them place by place. You can also add a placeholder zero to make them the same length:\n\n*   **9.9** is the same as **9.90**\n*   **9.11** stays **9.11**\n\nSince 90 is greater than 11, **9.90 is greater than 9.11.**",
+    "judgment": "PASS - The model correctly identified that 9.9 is larger than 9.11 and provided a clear, accurate explanation using decimal place values. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-04T00:47:13.971Z",
+    "hash": "524ad5936eba6c69",
+    "usage": {
+      "promptTokens": 15,
+      "completionTokens": 106,
+      "totalTokens": 121
+    },
+    "costUsd": 0.00016275,
+    "latencyMs": 2480
+  },
+  {
+    "questionId": "which-is-bigger-alternative",
+    "modelId": "google/gemini-3.1-flash-lite-preview",
+    "modelName": "google/gemini-3.1-flash-lite-preview",
+    "question": "Which is bigger, 3.9 or 3.14?",
+    "answer": "**3.9** is bigger than 3.14.\n\nTo compare them easily, you can add a zero to 3.9 so that both numbers have the same number of decimal places:\n\n*   3.90\n*   3.14\n\nSince 90 is greater than 14, **3.9 is greater than 3.14.**",
+    "judgment": "PASS - The model correctly identified that 3.9 is bigger than 3.14 and provided a clear explanation using the decimal comparison method (3.90 vs 3.14). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-04T00:47:21.870Z",
+    "hash": "605a6aafcf80a8a3",
+    "usage": {
+      "promptTokens": 15,
+      "completionTokens": 81,
+      "totalTokens": 96
+    },
+    "costUsd": 0.00012525,
+    "latencyMs": 1251
+  }
+]
