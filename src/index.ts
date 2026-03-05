@@ -79,11 +79,15 @@ async function main() {
   // Test each model with each pending question
   for (const modelId of models) {
     const modelConfig = modelConfigByName.get(modelId);
+    const apiModelId = modelConfig?.apiModel ?? modelId;
 
     console.log(`\n${'='.repeat(60)}`);
     console.log(`Testing model: ${modelId}`);
     if (modelConfig?.thinking) {
       console.log(`Thinking effort: ${modelConfig.thinking}`);
+    }
+    if (apiModelId !== modelId) {
+      console.log(`API model: ${apiModelId}`);
     }
     console.log('='.repeat(60));
 
@@ -111,7 +115,7 @@ async function main() {
           generationId,
           usageCostUsd,
           roundTripMs
-        } = await askQuestion(OPENROUTER_API_KEY, modelId, question, modelConfig?.thinking);
+        } = await askQuestion(OPENROUTER_API_KEY, apiModelId, question, modelConfig?.thinking);
         console.log(`  A: ${answer}`);
         if (reasoning) {
           console.log(`  Reasoning: ${reasoning.substring(0, 200)}${reasoning.length > 200 ? '...' : ''}`);
@@ -124,6 +128,7 @@ async function main() {
           hasUsage: Boolean(usage),
           promptTokens: usage?.promptTokens,
           completionTokens: usage?.completionTokens,
+          reasoningTokens: usage?.reasoningTokens,
           totalTokens: usage?.totalTokens,
           usageCostUsd,
           roundTripMs
@@ -171,7 +176,10 @@ async function main() {
         // Print stats summary
         const statParts: string[] = [];
         if (usage) {
-          statParts.push(`${usage.promptTokens} + ${usage.completionTokens} = ${usage.totalTokens} tokens`);
+          const tokenBreakdown = usage.reasoningTokens !== undefined
+            ? `${usage.promptTokens} + ${usage.completionTokens} + ${usage.reasoningTokens} = ${usage.totalTokens} tokens`
+            : `${usage.promptTokens} + ${usage.completionTokens} = ${usage.totalTokens} tokens`;
+          statParts.push(tokenBreakdown);
         }
         if (costUsd !== undefined) {
           statParts.push(`$${costUsd.toFixed(6)}`);

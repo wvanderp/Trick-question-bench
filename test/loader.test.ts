@@ -91,7 +91,7 @@ describe('loader data wrangling helpers', () => {
 });
 
 describe('loadModels', () => {
-  it('loads valid model config objects', () => {
+  it('loads valid model config objects and expands reasoning variants', () => {
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'loader-loadModels-valid-'));
     const filePath = path.join(tempDir, 'models.json');
 
@@ -99,15 +99,35 @@ describe('loadModels', () => {
       filePath,
       JSON.stringify([
         { name: 'openai/gpt-4o', disabled: false },
-        { name: 'qwen/qwen3-max-thinking', disabled: false, thinking: 'high', release_date: '2025-01-01' }
+        { name: 'qwen/qwen3-max-thinking', disabled: false, thinking: ['low', 'high'], release_date: '2025-01-01' },
+        { name: 'moonshotai/kimi-k2-thinking', disabled: false, thinking: 'medium' }
       ]),
       'utf-8'
     );
 
     const models = loadModels(filePath);
     expect(models).toEqual([
-      { name: 'openai/gpt-4o', disabled: false },
-      { name: 'qwen/qwen3-max-thinking', disabled: false, thinking: 'high', release_date: '2025-01-01' }
+      { name: 'openai/gpt-4o', apiModel: 'openai/gpt-4o', disabled: false },
+      {
+        name: 'qwen/qwen3-max-thinking (low reasoning)',
+        apiModel: 'qwen/qwen3-max-thinking',
+        disabled: false,
+        thinking: 'low',
+        release_date: '2025-01-01'
+      },
+      {
+        name: 'qwen/qwen3-max-thinking (high reasoning)',
+        apiModel: 'qwen/qwen3-max-thinking',
+        disabled: false,
+        thinking: 'high',
+        release_date: '2025-01-01'
+      },
+      {
+        name: 'moonshotai/kimi-k2-thinking (medium reasoning)',
+        apiModel: 'moonshotai/kimi-k2-thinking',
+        disabled: false,
+        thinking: 'medium'
+      }
     ]);
   });
 

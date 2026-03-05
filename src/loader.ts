@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import Ajv from 'ajv';
-import { ModelConfig, Question, QuestionsData, TestResult } from './types';
+import { ModelConfig, Question, QuestionsData, RawModelConfig, TestResult } from './types';
 
 const ajv = new Ajv();
 
@@ -93,7 +93,34 @@ export function loadModels(filePath: string): ModelConfig[] {
     throw new Error(`Invalid models collection: ${JSON.stringify(ajv.errors)}`);
   }
 
-  return data as ModelConfig[];
+  const models = data as RawModelConfig[];
+  const expandedModels: ModelConfig[] = [];
+
+  for (const model of models) {
+    const reasoningOptions = Array.isArray(model.thinking) ? model.thinking : model.thinking ? [model.thinking] : [];
+
+    if (reasoningOptions.length === 0) {
+      expandedModels.push({
+        name: model.name,
+        apiModel: model.name,
+        disabled: model.disabled,
+        release_date: model.release_date
+      });
+      continue;
+    }
+
+    for (const option of reasoningOptions) {
+      expandedModels.push({
+        name: `${model.name} (${option} reasoning)`,
+        apiModel: model.name,
+        disabled: model.disabled,
+        thinking: option,
+        release_date: model.release_date
+      });
+    }
+  }
+
+  return expandedModels;
 }
 
 /**

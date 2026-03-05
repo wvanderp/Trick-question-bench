@@ -17,8 +17,19 @@
         "description": "Whether this model is disabled and should be skipped"
       },
       "thinking": {
-        "type": "string",
-        "description": "Optional OpenRouter reasoning effort string"
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Optional OpenRouter reasoning effort string or array of effort options"
       },
       "release_date": {
         "type": "string",

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { BenchResult, GeneratedData } from './types';
+import { findLongestWrongAnswer, findMostCostlyWrongAnswer, getAnswerLength } from './insights';
 
 type TabId = 'correctness' | 'cost' | 'latency';
 
@@ -174,6 +175,9 @@ function App() {
       .sort((a, b) => (b.latencyMs ?? 0) - (a.latencyMs ?? 0))
       .slice(0, 15);
   }, [data]);
+
+  const longestWrongAnswer = useMemo(() => findLongestWrongAnswer(data?.results ?? []), [data]);
+  const mostCostlyWrongAnswer = useMemo(() => findMostCostlyWrongAnswer(data?.results ?? []), [data]);
 
   if (error) {
     return <div className="container">Failed to load benchmark data: {error}</div>;
@@ -561,6 +565,61 @@ function App() {
                   </button>
                 ))}
               </div>
+            </article>
+
+            <article className="panel">
+              <h2>Wrong answer highlights</h2>
+              <ul className="compact-list">
+                {longestWrongAnswer ? (
+                  <li>
+                    <button
+                      type="button"
+                      className="compact-button"
+                      onClick={() => {
+                        setSelectedModel(longestWrongAnswer.modelId);
+                        setSelectedQuestion(longestWrongAnswer.questionId);
+                        setSelectedResultId(longestWrongAnswer.id);
+                        setActiveTab('correctness');
+                      }}
+                    >
+                      <span className="truncate">
+                        Longest wrong: {longestWrongAnswer.modelName}
+                        <span className="compact-meta">
+                          {longestWrongAnswer.questionId} · {fmtNumber(getAnswerLength(longestWrongAnswer))} chars
+                        </span>
+                      </span>
+                      <span>{fmtNumber(getAnswerLength(longestWrongAnswer))}</span>
+                    </button>
+                  </li>
+                ) : (
+                  <li className="no-results">No failed answers available.</li>
+                )}
+
+                {mostCostlyWrongAnswer ? (
+                  <li>
+                    <button
+                      type="button"
+                      className="compact-button"
+                      onClick={() => {
+                        setSelectedModel(mostCostlyWrongAnswer.modelId);
+                        setSelectedQuestion(mostCostlyWrongAnswer.questionId);
+                        setSelectedResultId(mostCostlyWrongAnswer.id);
+                        setActiveTab('correctness');
+                      }}
+                    >
+                      <span className="truncate">
+                        Most costly wrong: {mostCostlyWrongAnswer.modelName}
+                        <span className="compact-meta">
+                          {mostCostlyWrongAnswer.questionId} · {fmtUsd(mostCostlyWrongAnswer.costUsd ?? 0)}
+                        </span>
+                      </span>
+                      <span>{fmtUsd(mostCostlyWrongAnswer.costUsd ?? 0)}</span>
+                    </button>
+                  </li>
+                ) : (
+                  <li className="no-results">No failed answers with cost data.</li>
+                )}
+              </ul>
             </article>
           </section>
         </>

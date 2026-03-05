@@ -13,12 +13,21 @@ export interface ModelConfig {
   name: string;
   disabled: boolean;
   thinking?: string;
+  apiModel?: string;
+  release_date?: string;
+}
+
+export interface RawModelConfig {
+  name: string;
+  disabled: boolean;
+  thinking?: string | string[];
   release_date?: string;
 }
 
 export interface TokenUsage {
   promptTokens: number;
   completionTokens: number;
+  reasoningTokens?: number;
   totalTokens: number;
 }
 

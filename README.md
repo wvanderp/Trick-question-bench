@@ -137,15 +137,17 @@ Models are defined in `data/models.json` as an array of objects:
 [ 
   { "name": "openai/gpt-4o", "disabled": false },
   { "name": "openai/gpt-4o-mini", "disabled": false },
-  { "name": "qwen/qwen3-max-thinking", "disabled": false, "thinking": "high" },
+  { "name": "qwen/qwen3-max-thinking", "disabled": false, "thinking": ["low", "high"] },
   { "name": "anthropic/claude-3.5-sonnet", "disabled": true, "release_date": "2024-06-20" }
 ]
 ```
 
 - `name` (required): OpenRouter model identifier.
 - `disabled` (required): if `true`, the benchmark skips that model.
-- `thinking` (optional): string sent to OpenRouter as reasoning effort.
+- `thinking` (optional): either a string or array of strings sent to OpenRouter as `reasoning.effort`.
 - `release_date` (optional): `YYYY-MM-DD` release date metadata.
+
+When `thinking` is configured, each reasoning option runs as a separate model variant and is displayed as `company/model (x reasoning)`.
 
 ### Adding Models via GitHub Actions
 

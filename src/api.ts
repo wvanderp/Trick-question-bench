@@ -49,12 +49,42 @@ export interface OpenRouterResponse {
     prompt_tokens: number;
     completion_tokens: number;
     total_tokens: number;
+    reasoning_tokens?: number;
+    output_tokens_details?: {
+      reasoning_tokens?: number;
+    };
+    completion_tokens_details?: {
+      reasoning_tokens?: number;
+    };
     cost?: number;
   };
 }
 
 function isFiniteNumber(value: unknown): value is number {
   return typeof value === 'number' && Number.isFinite(value);
+}
+
+function extractReasoningTokens(usage: OpenRouterResponse['usage']): number | undefined {
+  if (!usage) {
+    return undefined;
+  }
+
+  const directReasoning = usage.reasoning_tokens;
+  if (isFiniteNumber(directReasoning)) {
+    return directReasoning;
+  }
+
+  const outputDetailsReasoning = usage.output_tokens_details?.reasoning_tokens;
+  if (isFiniteNumber(outputDetailsReasoning)) {
+    return outputDetailsReasoning;
+  }
+
+  const completionDetailsReasoning = usage.completion_tokens_details?.reasoning_tokens;
+  if (isFiniteNumber(completionDetailsReasoning)) {
+    return completionDetailsReasoning;
+  }
+
+  return undefined;
 }
 
 function extractTokenUsage(usage: OpenRouterResponse['usage']): TokenUsage | undefined {
@@ -67,10 +97,14 @@ function extractTokenUsage(usage: OpenRouterResponse['usage']): TokenUsage | und
     return undefined;
   }
 
+  const reasoningTokens = extractReasoningTokens(usage);
+  const normalizedTotalTokens = total_tokens + (reasoningTokens ?? 0);
+
   return {
     promptTokens: prompt_tokens,
     completionTokens: completion_tokens,
-    totalTokens: total_tokens
+    ...(reasoningTokens !== undefined ? { reasoningTokens } : {}),
+    totalTokens: normalizedTotalTokens
   };
 }
 

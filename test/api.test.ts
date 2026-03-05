@@ -67,6 +67,58 @@ describe('queryModel usage and generationId', () => {
     expect(result.roundTripMs).toBeTypeOf('number');
   });
 
+  it('counts direct reasoning_tokens in total usage tokens', async () => {
+    fetchSpy.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        id: 'gen-reasoning-direct',
+        choices: [{ message: { content: 'Reasoning tokens direct' } }],
+        usage: {
+          prompt_tokens: 10,
+          completion_tokens: 5,
+          total_tokens: 15,
+          reasoning_tokens: 7
+        }
+      })
+    } as Response);
+
+    const result = await queryModel('test-key', 'test-model', 'Hi');
+
+    expect(result.usage).toEqual({
+      promptTokens: 10,
+      completionTokens: 5,
+      reasoningTokens: 7,
+      totalTokens: 22
+    });
+  });
+
+  it('counts nested reasoning tokens in total usage tokens', async () => {
+    fetchSpy.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        id: 'gen-reasoning-nested',
+        choices: [{ message: { content: 'Reasoning tokens nested' } }],
+        usage: {
+          prompt_tokens: 100,
+          completion_tokens: 20,
+          total_tokens: 120,
+          output_tokens_details: {
+            reasoning_tokens: 30
+          }
+        }
+      })
+    } as Response);
+
+    const result = await queryModel('test-key', 'test-model', 'Hi');
+
+    expect(result.usage).toEqual({
+      promptTokens: 100,
+      completionTokens: 20,
+      reasoningTokens: 30,
+      totalTokens: 150
+    });
+  });
+
   it('returns undefined usage when not provided in response', async () => {
     fetchSpy.mockResolvedValueOnce({
       ok: true,
