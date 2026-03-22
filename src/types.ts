@@ -44,6 +44,7 @@ export interface TestResult {
   modelName: string;
   question: string;
   answer: string;
+  retry?: boolean;
   reasoning?: string;
   judgment: string;
   passed: boolean;

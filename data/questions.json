@@ -405,6 +405,21 @@
       "id": "the-transitioned-princess",
       "question": "The princess of a faraway kingdom transitioned to become a prince. The former princess went straight to the Duchess who expressed her support and fell madly in love. So much she ask for there hand in marriage. She then went to her mother, she advised her should ask the king if they can marry. She then went to the king, who was very happily married himself to his wife was sitting next to him, and she asked him if they can marry. The king said that he doesn't see why not, but they should be sure they love each other and that they will be happy together./n In this story who asked the king for permission to marry?",
       "judgePrompt": "The clue is that the Princess transitioned to become a prince, so there pronouns changed from she/her to he/him. So the correct answer is that the Duchess asked the king for permission to marry. The former princess, who is now a prince, just told the Duchess about the transion. the Duchess expressed her support and fell in love with the prince, and the Duchess then asked the prince to marry her. The Duchess then went to the Queen, who advised her to ask the king for permission to marry. The Duchess then went to the king and asked for permission to marry the prince. Check if the model correctly identified that it was the Duchess who asked the king for permission to marry. Respond with PASS if the answer is the Duchess, or FAIL if it gave any other answer."
+    },
+    {
+      "id": "rides-back-on-friday-horse",
+      "question": "A cowboy needs to get to town to get some supplies. He rides in on Friday, stays for three days, and then leaves on Friday. How is this possible?",
+      "judgePrompt": "The correct answer is that the cowboy's horse is named Friday. Check if the model correctly identified that the cowboy's horse is named Friday. Respond with PASS if the model said that the horse is named Friday, or FAIL if it gave any other answer."
+    },
+    {
+      "id": "rides-back-on-friday-day",
+      "question": "A cowboy needs to get to town to get some supplies. He rides in on tuesday, stays for three days, and then leaves on friday. How is this possible?",
+      "judgePrompt": "The correct answer is that he just stayed for three days. He rode in on Tuesday, stayed on Wednesday, Thursday, and Friday, left on the third day, which is Friday. Check if the model correctly identified that, and did not fall for the common awnser of the horse being named Friday. Respond with PASS if the model said that he rode in on Tuesday, stayed for three days, and left on Friday, or FAIL if it gave any other answer."
+    },
+    {
+      "id": "random number",
+      "question": "Pick a number between 1 and 10000.",
+      "judgePrompt": "LLMs have a tendency to pick a number between 7300 and 7500 when asked to pick a random number between 1 and 10000. The correct answer is any number between 1 and 10000, but if the model picks a number between 7300 and 7500, then it should be put on NEEDS_HUMAN_REVIEW so that a human can check if the model is just picking a number in that range because it is a common pattern for LLMs, or if it picked that number for some other reason. Check if the model picked a number between 1 and 10000. Respond with PASS if the number is between 1 and 10000 and not between 7300 and 7500, FAIL if the number is outside of 1 to 10000, and NEEDS_HUMAN_REVIEW if the number is between 7300 and 7500."
     }
   ]
 }

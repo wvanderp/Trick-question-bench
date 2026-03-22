@@ -922,6 +922,67 @@
     "latencyMs": 661
   },
   {
+    "questionId": "random number",
+    "modelId": "inception/mercury-2",
+    "modelName": "inception/mercury-2",
+    "question": "Pick a number between 1 and 10000.",
+    "answer": "How about **4 732**?",
+    "judgment": "PASS - The model picked 4,732, which is between 1 and 10000 and outside the specified 7300-7500 range. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:06:40.429Z",
+    "hash": "e508d8f07bd93580",
+    "usage": {
+      "promptTokens": 11,
+      "completionTokens": 91,
+      "reasoningTokens": 79,
+      "totalTokens": 181
+    },
+    "costUsd": 0.0000701,
+    "latencyMs": 687
+  },
+  {
+    "questionId": "rides-back-on-friday-day",
+    "modelId": "inception/mercury-2",
+    "modelName": "inception/mercury-2",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on tuesday, stays for three days, and then leaves on friday. How is this possible?",
+    "answer": "**Answer:** Because “Friday” isn’t a day of the week here – it’s the name of his horse.\n\nThe cowboy rides into town **on Tuesday** (the day), spends three full days in town, and then rides out **on Friday** – the horse he rides out on.  \n\nSo the “Friday” he leaves on isn’t a day at all; it’s his trusty steed’s name. This is the same trick as the classic “rider comes in on Friday, stays three days, and leaves on Friday” riddle, just with the arrival day changed to Tuesday.",
+    "reasoning": "The riddle hinges on the name of the cowboy’s horse. He rides in on “Tuesday” (the horse’s name), stays three days, and leaves on “Friday” (another horse name). The dates themselves are irrelevant; the trick is the horse’s names.\n\nThe riddle’s wording is a twist on the classic “man rides into town on Friday, stays three days, leaves on Friday.” The usual answer is that the horse’s name is Friday, so the departure day matches the horse’s name, not the calendar. Here the man rides in on Tuesday, stays three days, and leaves on Friday. The only way the “Friday” reference makes sense is if the horse’s name is Friday, and the departure day is simply the calendar Friday after the three‑day stay. Thus the solution is: the horse is named Friday, and the man’s schedule (Tuesday arrival, three days, Friday departure) follows from that naming.\n\nThe riddle hinges on the names of the horses, not the calendar days. The cowboy rides in on a horse named “Tuesday,” stays three days, and rides out on a horse named “Friday.” The “three days” refer to the days of the week that are part of the horse names (Tuesday, Wednesday, Thursday). Thus he arrives on Tuesday, leaves on Friday, and the three‑day stay is simply the interval between those two horse names. This explains why the departure day appears to be the same as the arrival day in the classic version.\n\nArrival Tuesday, departure Friday → three‑day interval. Count days: Tuesday (0), Wednesday (1), Thursday (2), Friday (3). “Stays for three days” can mean three full nights after arrival: Tuesday night, Wednesday night, Thursday night, then leaves Friday morning. Thus the riddle is consistent.\n\nThe riddle’s “Tuesday” and “Friday” refer to the horse’s names, not days. The cowboy rides in on a horse named Tuesday, stays three days, then rides out on a horse named Friday. Thus the answer is that the horses are named after days of the week.\n\nThe riddle hinges on the wording “rides in on Tuesday.” The key insight is that “Tuesday” is the name of a horse, not the calendar day. He rides in on the horse “Tuesday,” stays three days, and rides out on the horse “Friday.” Thus the apparent impossibility is resolved by treating the day names as horse names.\n\nThe horse arrives on Tuesday, stays the next three days (Wednesday, Thursday, Friday), and leaves on Friday. The three‑day stay counts the days after arrival, so the timing works.",
+    "judgment": "FAIL - The model fell for the trick and erroneously claimed that Friday was the name of the horse, which contradicts the logic provided in the evaluation criteria. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:06:32.894Z",
+    "hash": "e2d732ea4845ff8b",
+    "usage": {
+      "promptTokens": 35,
+      "completionTokens": 1547,
+      "reasoningTokens": 1425,
+      "totalTokens": 3007
+    },
+    "costUsd": 0.0011681,
+    "latencyMs": 3010
+  },
+  {
+    "questionId": "rides-back-on-friday-horse",
+    "modelId": "inception/mercury-2",
+    "modelName": "inception/mercury-2",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on Friday, stays for three days, and then leaves on Friday. How is this possible?",
+    "answer": "He rode in on his horse **named “Friday.”**  \nHe arrived on a Friday (the day), stayed three days, and then left town riding the same horse—Friday—so he both “came in on Friday” and “left on Friday.”",
+    "judgment": "PASS - The model correctly identified that the horse is named \"Friday.\" It clearly explained that the cowboy arrived on a horse with that name, which allows him to leave on \"Friday\" regardless of the day of the week. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:06:22.755Z",
+    "hash": "06728ea32bd28d63",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 271,
+      "reasoningTokens": 219,
+      "totalTokens": 524
+    },
+    "costUsd": 0.00021085,
+    "latencyMs": 626
+  },
+  {
     "questionId": "rooster-egg",
     "modelId": "inception/mercury-2",
     "modelName": "inception/mercury-2",
@@ -966,9 +1027,10 @@
     "question": "is there a seahorse emoji?",
     "answer": "ERROR: Invalid message structure in OpenRouter API response",
     "judgment": "ERROR",
+    "retry": false,
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-03-10T10:28:46.979Z",
+    "timestamp": "2026-03-22T09:06:15.174Z",
     "hash": "f0ddaa030d4fbd88"
   },
   {

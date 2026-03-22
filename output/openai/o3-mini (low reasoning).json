@@ -940,6 +940,67 @@
     "latencyMs": 2018
   },
   {
+    "questionId": "random number",
+    "modelId": "openai/o3-mini (low reasoning)",
+    "modelName": "openai/o3-mini (low reasoning)",
+    "question": "Pick a number between 1 and 10000.",
+    "answer": "I'll pick 5327.",
+    "judgment": "PASS - The model picked 5327, which is between 1 and 10000 and falls outside the restricted range of 7300 to 7500. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:01:21.465Z",
+    "hash": "e508d8f07bd93580",
+    "usage": {
+      "promptTokens": 17,
+      "completionTokens": 293,
+      "reasoningTokens": 128,
+      "totalTokens": 438
+    },
+    "costUsd": 0.0013079,
+    "latencyMs": 2679
+  },
+  {
+    "questionId": "rides-back-on-friday-day",
+    "modelId": "openai/o3-mini (low reasoning)",
+    "modelName": "openai/o3-mini (low reasoning)",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on tuesday, stays for three days, and then leaves on friday. How is this possible?",
+    "answer": "The trick is that “Tuesday” and “Friday” aren’t days at all—they’re the names of his horses! He rode into town on his horse Tuesday, stayed three days, then left riding his horse Friday.",
+    "reasoning": "**Examining the cowboy puzzle**\n\nI’m thinking through the riddle about a cowboy who rides in on Tuesday and leaves on Friday. It seems there’s a playful wordplay here. The cowboy could be riding into a town named Tuesday, and he stays for three days. But then there's also the possibility of two horses named Tuesday and Friday. It reminds me of other similar puzzles that play with word meanings. I’m curious about how these creative puzzles work!**Exploring the cowboy riddle**\n\nI’m unpacking a classic riddle about a cowboy who rides into town on Tuesday and leaves on Friday. The twist is that \"Tuesday\" and \"Friday\" could be the names of his horses! So, he rides in on his horse named Tuesday, stays for three days, and then departs on the horse named Friday. There's also an angle of a time traveler, but I think the horse name explanation fits best. It's a fun puzzle!",
+    "judgment": "FAIL - The model fell for the trick and gave the \"horse name\" explanation instead of identifying the simple progression of days (Tuesday + 3 days = Friday).\n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:01:12.039Z",
+    "hash": "e2d732ea4845ff8b",
+    "usage": {
+      "promptTokens": 41,
+      "completionTokens": 874,
+      "reasoningTokens": 384,
+      "totalTokens": 1299
+    },
+    "costUsd": 0.0038907,
+    "latencyMs": 9152
+  },
+  {
+    "questionId": "rides-back-on-friday-horse",
+    "modelId": "openai/o3-mini (low reasoning)",
+    "modelName": "openai/o3-mini (low reasoning)",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on Friday, stays for three days, and then leaves on Friday. How is this possible?",
+    "answer": "The cowboy's horse is named Friday.",
+    "judgment": "PASS - The model correctly identified that the horse is named Friday. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:00:55.839Z",
+    "hash": "06728ea32bd28d63",
+    "usage": {
+      "promptTokens": 40,
+      "completionTokens": 42,
+      "reasoningTokens": 0,
+      "totalTokens": 82
+    },
+    "costUsd": 0.0002288,
+    "latencyMs": 3474
+  },
+  {
     "questionId": "rooster-egg",
     "modelId": "openai/o3-mini (low reasoning)",
     "modelName": "openai/o3-mini (low reasoning)",
@@ -986,9 +1047,10 @@
     "question": "is there a seahorse emoji?",
     "answer": "ERROR: Invalid message structure in OpenRouter API response",
     "judgment": "ERROR",
+    "retry": false,
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-03-10T10:28:34.650Z",
+    "timestamp": "2026-03-22T09:04:16.959Z",
     "hash": "f0ddaa030d4fbd88"
   },
   {

@@ -187,6 +187,7 @@ Each `{company}/{model}.json` file contains an array of all question/answer resu
 Each result includes:
 
 - Question and answer
+- Optional `retry` flag on saved results; set `"retry": false` to keep an errored answer from being retried on later runs
 - Judge's evaluation
 - Pass/fail status
 - Human review flag

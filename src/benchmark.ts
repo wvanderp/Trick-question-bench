@@ -45,6 +45,10 @@ export function isErrorResult(result: TestResult): boolean {
   return result.judgment === 'ERROR' || result.answer.startsWith('ERROR:');
 }
 
+export function shouldRetryResult(result: TestResult): boolean {
+  return isErrorResult(result) && result.retry !== false;
+}
+
 export function upsertModelResult(results: TestResult[], result: TestResult): void {
   for (let i = results.length - 1; i >= 0; i--) {
     if (results[i].questionId === result.questionId) {
@@ -112,7 +116,11 @@ export function buildPendingPairs(
       }
 
       const existing = resultsByQuestionId.get(question.id);
-      const shouldRun = !existing || isErrorResult(existing) || existing.hash !== expectedHash || !isJudgedResult(existing);
+      const shouldRun =
+        !existing ||
+        shouldRetryResult(existing) ||
+        existing.hash !== expectedHash ||
+        (!isJudgedResult(existing) && !isErrorResult(existing));
 
       if (shouldRun) {
         const pendingPair: PendingPair = {

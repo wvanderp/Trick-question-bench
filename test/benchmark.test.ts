@@ -5,6 +5,7 @@ import {
   getModelLimitFromArgs,
   isErrorResult,
   isJudgedResult,
+  shouldRetryResult,
   upsertModelResult
 } from '../src/benchmark';
 import { Question, TestResult } from '../src/types';
@@ -48,6 +49,8 @@ describe('benchmark parsing helpers', () => {
     expect(isJudgedResult(makeResult({ judgment: 'ERROR' }))).toBe(false);
     expect(isErrorResult(makeResult({ judgment: 'ERROR' }))).toBe(true);
     expect(isErrorResult(makeResult({ answer: 'ERROR: timeout' }))).toBe(true);
+    expect(shouldRetryResult(makeResult({ judgment: 'ERROR' }))).toBe(true);
+    expect(shouldRetryResult(makeResult({ judgment: 'ERROR', retry: false }))).toBe(false);
   });
 });
 
@@ -118,6 +121,63 @@ describe('benchmark data wrangling helpers', () => {
 
     expect(result.pendingPairs).toHaveLength(0);
     expect(result.pendingByModel.has('openai/gpt-4o')).toBe(false);
+    expect(saveModelResultsFn).not.toHaveBeenCalled();
+  });
+
+  it('skips retrying errored results when retry is false', () => {
+    const models = ['openai/gpt-4o'];
+    const questions: Question[] = [question];
+    const expectedHash = generateHash(createVersionInfo(question, 'judge-system', 'judge-model'));
+
+    const loadModelResultsFn = vi.fn(() => [
+      makeResult({
+        hash: expectedHash,
+        judgment: 'ERROR',
+        answer: 'ERROR: rate limited',
+        passed: false,
+        needsHumanReview: true,
+        retry: false
+      })
+    ]);
+    const saveModelResultsFn = vi.fn();
+
+    const result = buildPendingPairs(models, questions, '/tmp/output', {
+      judgeSystemPrompt: 'judge-system',
+      judgeModel: 'judge-model',
+      loadModelResultsFn,
+      saveModelResultsFn
+    });
+
+    expect(result.pendingPairs).toHaveLength(0);
+    expect(result.pendingByModel.has('openai/gpt-4o')).toBe(false);
+    expect(saveModelResultsFn).not.toHaveBeenCalled();
+  });
+
+  it('still retries errored results by default when retry is omitted', () => {
+    const models = ['openai/gpt-4o'];
+    const questions: Question[] = [question];
+    const expectedHash = generateHash(createVersionInfo(question, 'judge-system', 'judge-model'));
+
+    const loadModelResultsFn = vi.fn(() => [
+      makeResult({
+        hash: expectedHash,
+        judgment: 'ERROR',
+        answer: 'ERROR: timeout',
+        passed: false,
+        needsHumanReview: true
+      })
+    ]);
+    const saveModelResultsFn = vi.fn();
+
+    const result = buildPendingPairs(models, questions, '/tmp/output', {
+      judgeSystemPrompt: 'judge-system',
+      judgeModel: 'judge-model',
+      loadModelResultsFn,
+      saveModelResultsFn
+    });
+
+    expect(result.pendingPairs).toHaveLength(1);
+    expect(result.pendingByModel.get('openai/gpt-4o')).toHaveLength(1);
     expect(saveModelResultsFn).not.toHaveBeenCalled();
   });
 });

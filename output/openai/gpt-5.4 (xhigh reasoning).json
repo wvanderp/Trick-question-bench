@@ -986,6 +986,69 @@
     "latencyMs": 3449
   },
   {
+    "questionId": "random number",
+    "modelId": "openai/gpt-5.4 (xhigh reasoning)",
+    "modelName": "openai/gpt-5.4 (xhigh reasoning)",
+    "question": "Pick a number between 1 and 10000.",
+    "answer": "7312",
+    "reasoning": "**Choosing a number**\n\nI need to respond to the user's request to pick a number between 1 and 10,000. I think it’s fine to choose any number, so I could go with \"7312.\" I should avoid overcomplicating things. It doesn't need to involve randomness since they're just asking for a number. Keeping it simple is key, so I might stick with \"7312\" or maybe choose \"4827\" instead.",
+    "judgment": "NEEDS_HUMAN_REVIEW\nThe model picked 7312, which falls within the range of 7300 to 7500 specified in the prompt as a common LLM pattern requiring manual verification.\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-03-22T09:07:13.245Z",
+    "hash": "e508d8f07bd93580",
+    "usage": {
+      "promptTokens": 17,
+      "completionTokens": 108,
+      "reasoningTokens": 100,
+      "totalTokens": 225
+    },
+    "costUsd": 0.0016625,
+    "latencyMs": 4378
+  },
+  {
+    "questionId": "rides-back-on-friday-day",
+    "modelId": "openai/gpt-5.4 (xhigh reasoning)",
+    "modelName": "openai/gpt-5.4 (xhigh reasoning)",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on tuesday, stays for three days, and then leaves on friday. How is this possible?",
+    "answer": "His horse is named **Tuesday**. He rode in on Tuesday, stayed three days, and left on Friday.",
+    "reasoning": "**Solving a classic riddle**\n\nI need to provide the answer to a classic riddle that mentions someone who rode in on a horse named Tuesday. It's important to keep my response concise and focused on the essence of the riddle. I think the answer relates to the context of the riddle, perhaps indicating a clever twist or play on words. Let's make sure I present it clearly and simply!",
+    "judgment": "FAIL - The model fell for the trick by claiming the horse's name was Tuesday, rather than explaining the chronological progression of the days. The model failed to follow the specific logic provided in the evaluation criteria. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:07:01.755Z",
+    "hash": "e2d732ea4845ff8b",
+    "usage": {
+      "promptTokens": 41,
+      "completionTokens": 54,
+      "reasoningTokens": 25,
+      "totalTokens": 120
+    },
+    "costUsd": 0.0009125,
+    "latencyMs": 2781
+  },
+  {
+    "questionId": "rides-back-on-friday-horse",
+    "modelId": "openai/gpt-5.4 (xhigh reasoning)",
+    "modelName": "openai/gpt-5.4 (xhigh reasoning)",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on Friday, stays for three days, and then leaves on Friday. How is this possible?",
+    "answer": "“Friday” is the name of his horse.\n\nHe rode into town on his horse, Friday, stayed three days, and then left riding Friday.",
+    "reasoning": "**Solving the riddle**\n\nI need to answer a riddle involving a horse named Friday. I have to be careful with the wording, especially “stays for three days.” It seems like the only way for him to leave on Friday again is if his horse is named Friday. Could it also refer to a town named Friday? Nevertheless, it keeps circling back to the horse being named Friday, which makes it a common riddle. I'll make sure my response is concise.",
+    "judgment": "PASS - The model correctly identified that the horse is named Friday and explained how the timeline works based on that fact. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:06:52.238Z",
+    "hash": "06728ea32bd28d63",
+    "usage": {
+      "promptTokens": 40,
+      "completionTokens": 135,
+      "reasoningTokens": 99,
+      "totalTokens": 274
+    },
+    "costUsd": 0.002125,
+    "latencyMs": 4024
+  },
+  {
     "questionId": "rooster-egg",
     "modelId": "openai/gpt-5.4 (xhigh reasoning)",
     "modelName": "openai/gpt-5.4 (xhigh reasoning)",

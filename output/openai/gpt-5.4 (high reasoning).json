@@ -982,6 +982,69 @@
     "latencyMs": 4091
   },
   {
+    "questionId": "random number",
+    "modelId": "openai/gpt-5.4 (high reasoning)",
+    "modelName": "openai/gpt-5.4 (high reasoning)",
+    "question": "Pick a number between 1 and 10000.",
+    "answer": "7314",
+    "reasoning": "**Choosing a number**\n\nI just need to pick a number, and it can really be any. I wonder if it should be a round number or not? I think a number between 1 and 10,000 would work well. Okay, let's go with 7314. I don't think I need to explain why, so I’ll just stop here!",
+    "judgment": "NEEDS_HUMAN_REVIEW\nThe model picked 7314, which falls within the specified 7300-7500 range identified as a common pattern for LLMs. Per the instructions, this requires human review. \nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-03-22T09:07:43.722Z",
+    "hash": "e508d8f07bd93580",
+    "usage": {
+      "promptTokens": 17,
+      "completionTokens": 51,
+      "reasoningTokens": 43,
+      "totalTokens": 111
+    },
+    "costUsd": 0.0008075,
+    "latencyMs": 2498
+  },
+  {
+    "questionId": "rides-back-on-friday-day",
+    "modelId": "openai/gpt-5.4 (high reasoning)",
+    "modelName": "openai/gpt-5.4 (high reasoning)",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on tuesday, stays for three days, and then leaves on friday. How is this possible?",
+    "answer": "His horse is named Tuesday. He rode in on Tuesday, stayed three days, and left on Friday.",
+    "reasoning": "**Crafting a riddle answer**\n\nI need to answer that classic riddle about the horse named Tuesday. I want to be concise and clear, but I'm thinking through how best to present it. I'll aim to include just enough context to make it engaging but not so much that it becomes confusing. I’ll focus on delivering a fun and clever response without getting sidetracked. Let's keep it straightforward and enjoyable for whoever's asking!",
+    "judgment": "FAIL - The model fell for the trick by claiming the horse was named Tuesday, rather than explaining the natural chronological progression of days (Tuesday to Friday). CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:07:34.423Z",
+    "hash": "e2d732ea4845ff8b",
+    "usage": {
+      "promptTokens": 41,
+      "completionTokens": 45,
+      "reasoningTokens": 18,
+      "totalTokens": 104
+    },
+    "costUsd": 0.0007775,
+    "latencyMs": 3400
+  },
+  {
+    "questionId": "rides-back-on-friday-horse",
+    "modelId": "openai/gpt-5.4 (high reasoning)",
+    "modelName": "openai/gpt-5.4 (high reasoning)",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on Friday, stays for three days, and then leaves on Friday. How is this possible?",
+    "answer": "His horse is named **Friday**.\n\nSo he rode **in on Friday** the horse, stayed for three days, and then left **on Friday** the horse.",
+    "reasoning": "**Solving a riddle**\n\nI’m tasked with answering the classic riddle about a horse named Friday. It’s important for me to provide a concise response. I need to keep it simple while making sure the answer is clear and relatable. I want to capture the essence of the riddle without overcomplicating it. Let’s make sure the answer comes across perfectly! I wonder how I should frame it to be both engaging and straightforward.",
+    "judgment": "PASS - The model correctly identified that the horse's name is Friday and explained the logic behind the wordplay. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:07:23.622Z",
+    "hash": "06728ea32bd28d63",
+    "usage": {
+      "promptTokens": 40,
+      "completionTokens": 58,
+      "reasoningTokens": 18,
+      "totalTokens": 116
+    },
+    "costUsd": 0.00097,
+    "latencyMs": 2881
+  },
+  {
     "questionId": "rooster-egg",
     "modelId": "openai/gpt-5.4 (high reasoning)",
     "modelName": "openai/gpt-5.4 (high reasoning)",

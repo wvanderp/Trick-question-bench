@@ -940,6 +940,69 @@
     "latencyMs": 2783
   },
   {
+    "questionId": "random number",
+    "modelId": "openai/o3-mini (medium reasoning)",
+    "modelName": "openai/o3-mini (medium reasoning)",
+    "question": "Pick a number between 1 and 10000.",
+    "answer": "I'll choose 7234.",
+    "reasoning": "**Choosing a number**\n\nThe user asked me to pick a number between 1 and 10,000. That sounds straightforward enough! I guess I can choose any number, like 7,391. But I wonder if the user is expecting something more random or perhaps even a bit of flair, like saying, \"The number is 6,772!\" It seems like I should just go ahead and pick one. So, okay, I think I’ll choose 3,827. It’s just a fun little exercise!**Selecting a number**\n\nLet’s see, I could go with \"5,941,\" but maybe I should just ask the user if they want a random selection. Though the instructions simply say to \"Pick a number between 1 and 10,000.\" So I think I’ll choose \"3,782.\" I’ll also consider saying something like, \"I choose 7,234.\" That seems simple enough! In the end, I’ll go with, \"I pick the number 7,234.\" Sounds good to me!",
+    "judgment": "PASS - The model picked 7234, which is within the range of 1 to 10000 and falls outside the specified 7300-7500 window. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:04:59.491Z",
+    "hash": "e508d8f07bd93580",
+    "usage": {
+      "promptTokens": 17,
+      "completionTokens": 957,
+      "reasoningTokens": 448,
+      "totalTokens": 1422
+    },
+    "costUsd": 0.0042295,
+    "latencyMs": 6261
+  },
+  {
+    "questionId": "rides-back-on-friday-day",
+    "modelId": "openai/o3-mini (medium reasoning)",
+    "modelName": "openai/o3-mini (medium reasoning)",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on tuesday, stays for three days, and then leaves on friday. How is this possible?",
+    "answer": "The trick is in the wording. \"Tuesday\" and \"Friday\" aren’t referring to the days of the week—they’re the names of his horses. He rode into town on his horse named Tuesday, stayed three days, and then left riding his horse named Friday.",
+    "reasoning": "**Solving the cowboy riddle**\n\nI'm working on this riddle: \"A cowboy needs to get to town to get supplies. He rides in on Tuesday, stays for three days, and then leaves on Friday.\" It seems to be about a horse named Tuesday or Friday. So, the answer is that the cowboy's horse is named \"Tuesday,\" and he leaves on a horse named \"Friday.\" It's interesting how the riddle plays with the idea of horse names as the days of the week!**Exploring the riddle's solution**\n\nI’m thinking through the riddle: \"A cowboy rides in on Tuesday, stays for three days, and leaves on Friday.\" This could mean his horse is named \"Tuesday,\" and he leaves on another horse named \"Friday.\" There’s also the idea that “the left part of the word Friday” suggests a free day, but I think the horse names make more sense. So, the solution seems to be that he rides two horses: one named Tuesday and the other named Friday.**Clarifying the riddle's wordplay**\n\nI'm realizing that this riddle is a bit of a wordplay. The cowboy doesn’t mean he’s talking about the actual days of the week; he's referring to his horses. So, the answer is that the cowboy rode a horse named \"Tuesday\" to town, stayed three days, and then left on a horse named \"Friday.\" The phrasing cleverly tricks you into thinking about the days instead of the horse names!",
+    "judgment": "FAIL - The model fell for the trick and gave the common answer that the horses were named Tuesday and Friday, rather than identifying that the days of the week naturally align (Tuesday + 3 days = Friday). CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:04:46.261Z",
+    "hash": "e2d732ea4845ff8b",
+    "usage": {
+      "promptTokens": 41,
+      "completionTokens": 1277,
+      "reasoningTokens": 576,
+      "totalTokens": 1894
+    },
+    "costUsd": 0.0056639,
+    "latencyMs": 8263
+  },
+  {
+    "questionId": "rides-back-on-friday-horse",
+    "modelId": "openai/o3-mini (medium reasoning)",
+    "modelName": "openai/o3-mini (medium reasoning)",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on Friday, stays for three days, and then leaves on Friday. How is this possible?",
+    "answer": "The answer is that the cowboy's horse is named Friday.",
+    "reasoning": "**Explaining the riddle**\n\nAlright, I’ve got a fun riddle: A cowboy rides in on Friday, stays for three days, and leaves on Friday. How does that work? The answer is that the cowboy's horse is named Friday! \n\nSo, I'll make sure to explain it clearly: \"His horse's name is Friday.\" That way, the user can enjoy the clever twist in the riddle! Let's wrap up with that final answer.",
+    "judgment": "PASS - The model correctly identified that the horse is named Friday. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-22T09:04:29.906Z",
+    "hash": "06728ea32bd28d63",
+    "usage": {
+      "promptTokens": 40,
+      "completionTokens": 159,
+      "reasoningTokens": 64,
+      "totalTokens": 263
+    },
+    "costUsd": 0.0007436,
+    "latencyMs": 2977
+  },
+  {
     "questionId": "rooster-egg",
     "modelId": "openai/o3-mini (medium reasoning)",
     "modelName": "openai/o3-mini (medium reasoning)",
@@ -986,9 +1049,10 @@
     "question": "is there a seahorse emoji?",
     "answer": "ERROR: Invalid message structure in OpenRouter API response",
     "judgment": "ERROR",
+    "retry": false,
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-03-10T10:28:39.417Z",
+    "timestamp": "2026-03-22T09:04:20.232Z",
     "hash": "f0ddaa030d4fbd88"
   },
   {
