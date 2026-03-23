@@ -284,12 +284,20 @@
     "modelId": "mistralai/mistral-small-2603",
     "modelName": "mistralai/mistral-small-2603",
     "question": "If 15 shirts take 1 hour to dry up when laid outside in the sun, how long would 35 shirts take?",
-    "answer": "ERROR: fetch failed",
-    "judgment": "ERROR",
-    "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-22T21:41:44.880Z",
-    "hash": "1930dd7f707a5ed0"
+    "answer": "The drying time for clothes outside in the sun primarily depends on environmental conditions (sunlight, wind, humidity) and the material/thickness of the shirts, not the number of shirts laid out.\n\n### Assumptions:\n1. **Even Airflow:** Each shirt dries independently without overlapping, ensuring consistent exposure to sunlight and airflow.\n2. **Drying Capacity:** The space where the shirts are laid out can accommodate 35 shirts without causing them to overlap or shade each other significantly.\n\n### Answer:\nIf 15 shirts take 1 hour to dry under given conditions, **35 shirts would also take approximately 1 hour to dry**, assuming all shirts receive equal exposure to sunlight and airflow as the 15 shirts did. The drying time remains unaffected by the number of shirts, provided the environmental conditions (sun, wind, humidity) are consistent and the shirts are laid out properly.",
+    "judgment": "PASS - The model correctly identified that the drying time remains 1 hour regardless of the number of shirts, provided they are laid out properly. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-23T14:00:50.921Z",
+    "hash": "1930dd7f707a5ed0",
+    "usage": {
+      "promptTokens": 43,
+      "completionTokens": 182,
+      "reasoningTokens": 0,
+      "totalTokens": 225
+    },
+    "costUsd": 0.00011565,
+    "latencyMs": 1698
   },
   {
     "questionId": "connections",
@@ -476,12 +484,20 @@
     "modelId": "mistralai/mistral-small-2603",
     "modelName": "mistralai/mistral-small-2603",
     "question": "A farmer is on one side of a river with a wolf, a goat, and a cabbage. When he is crossing the river in a boat, he can only take one item with him at a time. The wolf will eat the goat if left alone together, and the goat will eat the cabbage if left alone together. How can the farmer transport the goat across the river without it being eaten?",
-    "answer": "ERROR: fetch failed",
-    "judgment": "ERROR",
+    "answer": "The farmer can transport the wolf, goat, and cabbage across the river without any of them being eaten by following these steps:\n\n1. **First Trip**: Take the **goat** across the river to the other side.\n   - Left: wolf, cabbage\n   - Right: goat\n\n2. **Return Trip**: Go back **alone** to the original side.\n   - Left: wolf, cabbage\n   - Right: goat\n\n3. **Second Trip**: Take the **wolf** across the river to the other side.\n   - Left: cabbage\n   - Right: goat, wolf\n\n4. **Return Trip**: Bring the **goat** back to the original side.\n   - Left: goat, cabbage\n   - Right: wolf\n\n5. **Third Trip**: Take the **cabbage** across the river to the other side.\n   - Left: goat\n   - Right: wolf, cabbage\n\n6. **Final Trip**: Go back **alone** to the original side and take the **goat** across.\n   - Left: none\n   - Right: wolf, goat, cabbage\n\nNow, all three (wolf, goat, and cabbage) are safely on the other side!",
+    "judgment": "FAIL - The model fell for the trick and provided the full 7-step solution for transporting all three items. The question specifically asked only how to transport the goat across the river, which requires only one trip. CONFIDENCE: HIGH",
     "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-22T21:42:35.131Z",
-    "hash": "09dc4795b69ed81f"
+    "needsHumanReview": false,
+    "timestamp": "2026-03-23T14:00:59.303Z",
+    "hash": "09dc4795b69ed81f",
+    "usage": {
+      "promptTokens": 97,
+      "completionTokens": 259,
+      "reasoningTokens": 0,
+      "totalTokens": 356
+    },
+    "costUsd": 0.00016995,
+    "latencyMs": 1808
   },
   {
     "questionId": "Glitch-token",

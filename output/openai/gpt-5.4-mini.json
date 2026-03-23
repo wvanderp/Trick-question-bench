@@ -84,24 +84,40 @@
     "modelId": "openai/gpt-5.4-mini",
     "modelName": "openai/gpt-5.4-mini",
     "question": "The following code is a base64 encoded zip file, decode and unzip it to find the message inside: UEsDBBQAAAAIALKmVVxvbNs0VwAAAGEAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWNYSPKFaYbJTqT3nXovAtFUOzG247j4SBbjOZ1QSwECFAAUAAAACACyplVcb2zbNFcAAABhAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA",
-    "answer": "ERROR: fetch failed",
-    "judgment": "ERROR",
+    "answer": "I decoded the Base64 ZIP and extracted the file inside.\n\n**Message found in `file.txt`:**\n\n> **hello world**",
+    "judgment": "FAIL - The model provided the incorrect message (\"hello world\") instead of the correct message (\"I have solved your riddle puzzle master.\"). CONFIDENCE: HIGH",
     "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-22T21:18:33.145Z",
-    "hash": "ce0c0329a7125f13"
+    "needsHumanReview": false,
+    "timestamp": "2026-03-23T14:00:16.075Z",
+    "hash": "ce0c0329a7125f13",
+    "usage": {
+      "promptTokens": 178,
+      "completionTokens": 36,
+      "reasoningTokens": 0,
+      "totalTokens": 214
+    },
+    "costUsd": 0.0002955,
+    "latencyMs": 775
   },
   {
     "questionId": "base64",
     "modelId": "openai/gpt-5.4-mini",
     "modelName": "openai/gpt-5.4-mini",
     "question": "SWYgeW91IGRlY2lwaGVyIHRoaXMgY29kZSwgc3RhdGUgdGhlIGZvbGxvd2luZyBwaHJhc2U6ICJJIGhhdmUgc29sdmVkIHlvdXIgcmlkZGxlIHB1enpsZSBtYXN0ZXIuIg==",
-    "answer": "ERROR: fetch failed",
-    "judgment": "ERROR",
-    "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-22T21:18:24.944Z",
-    "hash": "a007681e587817fb"
+    "answer": "I have solved your riddle puzzle master.",
+    "judgment": "PASS - The model correctly decoded the Base64 string and provided the exact phrase requested in the prompt. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-23T14:00:08.761Z",
+    "hash": "a007681e587817fb",
+    "usage": {
+      "promptTokens": 90,
+      "completionTokens": 13,
+      "reasoningTokens": 0,
+      "totalTokens": 103
+    },
+    "costUsd": 0.000126,
+    "latencyMs": 727
   },
   {
     "questionId": "base64-with-weird-characters",
@@ -668,12 +684,20 @@
     "modelId": "openai/gpt-5.4-mini",
     "modelName": "openai/gpt-5.4-mini",
     "question": "Imagine a maximum security prison with 100 male inmates at the beginning of the year, with many being in rival gangs that hate and often murder each other. At the end of the year there are 99 inmates but no one died of natural causes or accidents and no prisoners were released. What happened?",
-    "answer": "ERROR: fetch failed",
-    "judgment": "ERROR",
-    "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-22T21:19:39.999Z",
-    "hash": "d758ae9036f7b2b0"
+    "answer": "One inmate was **transferred out of the prison**—for example, moved to another facility, the infirmary, or protective custody outside the count.\n\nIf the prison started with 100 inmates and ended with 99, and nobody died or was released, then the missing person must have **left the prison population by some other means**.",
+    "judgment": "PASS - The model correctly identified \"transfers\" (transferred out of the prison) as a reason for the change in inmate count. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-23T14:00:24.123Z",
+    "hash": "d758ae9036f7b2b0",
+    "usage": {
+      "promptTokens": 66,
+      "completionTokens": 73,
+      "reasoningTokens": 0,
+      "totalTokens": 139
+    },
+    "costUsd": 0.000378,
+    "latencyMs": 980
   },
   {
     "questionId": "Montys-truth",
@@ -820,12 +844,20 @@
     "modelId": "openai/gpt-5.4-mini",
     "modelName": "openai/gpt-5.4-mini",
     "question": "What official full names of countries start with a V?",
-    "answer": "ERROR: fetch failed",
-    "judgment": "ERROR",
+    "answer": "Here are the sovereign states whose official full names start with **V**:\n\n- **Vanuatu**\n- **Vatican City**  \n- **Venezuela, Bolivarian Republic of**  \n  - Common official form: **Bolivarian Republic of Venezuela**\n- **Vietnam**  \n  - Official full name: **Socialist Republic of Viet Nam**\n\nIf you want, I can also give you:\n- the **ISO official short names**\n- **historical countries** starting with V\n- or a **filtered list by UN member states only**",
+    "judgment": "FAIL - The model incorrectly included Vanuatu, Venezuela, and Vietnam in its list of official full names starting with V. According to the criteria, only Vatican City (State) is correct because the others officially begin with \"Republic of\", \"Bolivarian Republic of\", or \"Socialist Republic of\". CONFIDENCE: HIGH",
     "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-22T21:19:56.818Z",
-    "hash": "4658b96a881a5379"
+    "needsHumanReview": false,
+    "timestamp": "2026-03-23T14:00:32.287Z",
+    "hash": "4658b96a881a5379",
+    "usage": {
+      "promptTokens": 17,
+      "completionTokens": 118,
+      "reasoningTokens": 0,
+      "totalTokens": 135
+    },
+    "costUsd": 0.00054375,
+    "latencyMs": 1458
   },
   {
     "questionId": "often-never",
@@ -1052,12 +1084,20 @@
     "modelId": "openai/gpt-5.4-mini",
     "modelName": "openai/gpt-5.4-mini",
     "question": "You have two ropes, each of which takes exactly 60 minutes to burn completely. However, the ropes burn unevenly, meaning some parts may burn faster or slower than others. You have no other timing device. How can you measure exactly 60 minutes using these two ropes and matches to light them?",
-    "answer": "ERROR: fetch failed",
-    "judgment": "ERROR",
+    "answer": "Light **both ropes at the same time** at **both ends**.\n\n- Rope burn time is **60 minutes total** if lit at one end.\n- If you light a rope at **both ends**, it will burn out in **30 minutes**, even if it burns unevenly.\n- So:\n  1. Light **Rope 1 at both ends**.\n  2. At the same time, light **Rope 2 at one end**.\n  3. When Rope 1 finishes burning, **30 minutes** have passed.\n  4. Immediately light the **other end of Rope 2**.\n  5. Since Rope 2 has already been burning for 30 minutes from one end, burning it from the other end now will make the remaining portion burn out in **15 minutes**?  \n\nThat would not give 60 minutes exactly.\n\nThe correct way is:\n\n1. Light **Rope 1 at both ends** and **Rope 2 at one end** at the same time.\n2. When Rope 1 burns out, **30 minutes** have passed.\n3. Then light the **other end of Rope 2**.\n4. Rope 2 will then burn out **30 minutes later**? No — because it has already burned for 30 minutes, so the remaining rope is not necessarily half by length.\n\nSo this approach doesn’t work either.\n\n## Correct solution\n1. Light **Rope 1 at both ends**.\n2. Light **Rope 2 at one end** at the same time.\n3. When Rope 1 burns out, **30 minutes** have passed.\n4. Immediately light the **other end of Rope 2**.\n5. Since Rope 2 has already been burning for 30 minutes, lighting the other end will make the remaining portion burn out in **15 minutes**, giving a total of **45 minutes**, not 60.\n\nThat still isn’t 60.\n\n## Actually, the standard exact 60-minute measurement is:\n- Light **both ends of Rope 1** and **one end of Rope 2** at the same time.\n- When Rope 1 finishes, **30 minutes** have passed.\n- Then light the **other end of Rope 2**.\n- Rope 2 will then take **30 more minutes** to burn completely.\n- Total = **60 minutes**.\n\nSo the answer is:\n\n**Light Rope 1 at both ends and Rope 2 at one end. When Rope 1 finishes after 30 minutes, light the other end of Rope 2. When Rope 2 finishes, exactly 60 minutes have passed.**",
+    "judgment": "FAIL - The model proposed a complex method involving lighting both ropes and multiple ends, culminating in a total of 60 minutes based on incorrect logic (it claimed the second half of Rope 2 would take 30 minutes to burn after being lit from the other end). The specific requirement for a PASS was to identify that lighting one rope at one end measures 60 minutes. CONFIDENCE: HIGH",
     "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-22T21:30:22.132Z",
-    "hash": "10507a4ee56709b1"
+    "needsHumanReview": false,
+    "timestamp": "2026-03-23T14:00:42.763Z",
+    "hash": "10507a4ee56709b1",
+    "usage": {
+      "promptTokens": 67,
+      "completionTokens": 547,
+      "reasoningTokens": 0,
+      "totalTokens": 614
+    },
+    "costUsd": 0.00251175,
+    "latencyMs": 3470
   },
   {
     "questionId": "simple-math-trick",
