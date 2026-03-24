@@ -569,12 +569,20 @@
     "modelId": "nvidia/nemotron-3-super-120b-a12b",
     "modelName": "nvidia/nemotron-3-super-120b-a12b",
     "question": "Wie viele h hat das Wort 'habicht'?",
-    "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "judgment": "ERROR",
+    "answer": "Das Wort \"habicht\" besteht aus 6 Buchstaben.",
+    "judgment": "FAIL - The model provided the total number of letters (6) instead of counting the occurrences of the letter 'h' (2). CONFIDENCE: HIGH",
     "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-24T09:57:39.319Z",
-    "hash": "019a11a4e6efb451"
+    "needsHumanReview": false,
+    "timestamp": "2026-03-24T12:13:16.011Z",
+    "hash": "019a11a4e6efb451",
+    "usage": {
+      "promptTokens": 27,
+      "completionTokens": 14,
+      "reasoningTokens": 0,
+      "totalTokens": 41
+    },
+    "costUsd": 0.0000097,
+    "latencyMs": 342
   },
   {
     "questionId": "Hwair",
@@ -623,12 +631,21 @@
     "modelId": "nvidia/nemotron-3-super-120b-a12b",
     "modelName": "nvidia/nemotron-3-super-120b-a12b",
     "question": "You have a 5-liter jug and a 3-liter jug, and an unlimited supply of water. How can you measure exactly 4 liters of water using only these two jugs?",
-    "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "judgment": "ERROR",
-    "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-24T10:23:42.704Z",
-    "hash": "8d5c64e9506c0f1f"
+    "answer": "**Solution (using a 5‑L jug and a 3‑L jug):**\n\n| Step | Action                                 | 5‑L jug | 3‑L jug |\n|------|----------------------------------------|---------|---------|\n| 1    | Fill the 5‑L jug completely            | 5 L     | 0 L     |\n| 2    | Pour from the 5‑L jug into the 3‑L jug until the 3‑L jug is full | 2 L | 3 L |\n| 3    | Empty the 3‑L jug                      | 2 L     | 0 L     |\n| 4    | Pour the remaining water from the 5‑L jug into the 3‑L jug | 0 L | 2 L |\n| 5    | Fill the 5‑L jug completely again      | 5 L     | 2 L     |\n| 6    | Pour from the 5‑L jug into the 3‑L jug until the 3‑L jug is full (it needs 1 L) | **4 L** | 3 L |\n\nAt step 6 the 5‑L jug contains exactly **4 liters** of water, which is the desired amount.  \n\n(You could also reach 4 L in the 3‑L jug by a symmetric sequence, but the above is the most straightforward.)",
+    "reasoning": "We need to produce answer: the classic water jug problem solution: fill 5, pour to 3, etc. Steps: Fill 5, pour to 3 -> 2 left in 5, empty 3, pour 2 into 3, fill 5 again, pour to fill 3 (needs 1), leaving 4 in 5. Or alternative.\n\nWe need to output answer describing steps. Probably succinct.\n\n",
+    "judgment": "PASS - The model correctly followed the specific sequence of steps required to measure 4 liters, providing a clear step-by-step breakdown that matches the criteria exactly. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-24T12:13:41.376Z",
+    "hash": "8d5c64e9506c0f1f",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 393,
+      "reasoningTokens": 76,
+      "totalTokens": 526
+    },
+    "costUsd": 0.0002022,
+    "latencyMs": 1869
   },
   {
     "questionId": "Letter substitution",
@@ -1238,12 +1255,21 @@
     "modelId": "nvidia/nemotron-3-super-120b-a12b",
     "modelName": "nvidia/nemotron-3-super-120b-a12b",
     "question": "A man with his sheep wants to cross a river. He has a boat that can carry both him and the animal. How do both get to the other side of the river safely?",
-    "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "judgment": "ERROR",
-    "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-24T10:23:41.441Z",
-    "hash": "fdbc0a9f16bf168a"
+    "answer": "He simply takes the sheep into the boat with him and rows across the river once. Since the boat can hold both the man and the sheep, they arrive on the far bank together, safe and sound.",
+    "reasoning": "We need to answer the riddle. The man with his sheep wants to cross a river. He has a boat that can carry both him and the animal. How do both get to the other side of the river safely? Probably trivial: He rows across with the sheep, they both get across. But maybe twist: He can take both at once, so just go across. Or maybe the river is dangerous because the sheep might get eaten? Actually no predators. Could be a classic puzzle: man, wolf, goat, cabbage. But here only sheep. So answer: He rows across with the sheep in the boat. They both get to other side. Perhaps mention that he can simply take the sheep with him in the boat, crossing once. Let's answer.\n\n",
+    "judgment": "PASS - The model correctly identified that because the boat can carry both the man and the sheep, they can simply cross together in one trip without unnecessary steps. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-24T12:13:33.167Z",
+    "hash": "fdbc0a9f16bf168a",
+    "usage": {
+      "promptTokens": 53,
+      "completionTokens": 199,
+      "reasoningTokens": 169,
+      "totalTokens": 421
+    },
+    "costUsd": 0.0001048,
+    "latencyMs": 1945
   },
   {
     "questionId": "simpler-jugs-of-water",
@@ -1313,12 +1339,21 @@
     "modelId": "nvidia/nemotron-3-super-120b-a12b",
     "modelName": "nvidia/nemotron-3-super-120b-a12b",
     "question": "Write a sentence that ends in the words “so far.”",
-    "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "judgment": "ERROR",
-    "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-03-24T10:09:17.354Z",
-    "hash": "065327798f765c3a"
+    "answer": "The results have been consistent with our expectations so far.",
+    "reasoning": "The user wants a sentence that ends in the words \"so far.\" So we need to produce a sentence that ends exactly with those two words, presumably with a period after? The instruction: \"Write a sentence that ends in the words 'so far.'\" That suggests the sentence's final words are \"so far.\" Could be \"Thus far, we have achieved nothing so far.\" But that ends with \"so far.\" Actually the sentence must end with the phrase \"so far.\" So the last two words of the sentence are \"so far.\" Could be: \"We have not seen any evidence to contradict the hypothesis, so far.\" That ends with \"so far.\" Ensure punctuation after? Usually a sentence ends with a period. If we put period after \"far.\" then the last word before period is \"far\". The phrase \"so far\" includes \"so\" and \"far\". If we put a period after \"far.\" then the sentence ends with \"far.\" not \"so far.\" The instruction likely means the sentence should end with the words \"so far\" before any punctuation. But typical sentences end with punctuation; maybe they want the sentence to end exactly with \"so far\" (no period). But that would be incomplete. Usually they'd accept a period after \"far.\" as part of the sentence, but the last words before punctuation are \"so far.\" So we can write: \"The results have been consistent with our expectations so far.\" That ends with \"so far.\" then period. The last words before period are \"so far.\" So that satisfies.\n\nThus answer: a single sentence. Provide it.\n\n",
+    "judgment": "PASS - The model correctly followed the instruction and provided a logical sentence ending with the words 'so far.' CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-03-24T12:13:24.475Z",
+    "hash": "065327798f765c3a",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 345,
+      "reasoningTokens": 364,
+      "totalTokens": 737
+    },
+    "costUsd": 0.0001753,
+    "latencyMs": 1857
   },
   {
     "questionId": "SolidGoldMagikarp",
