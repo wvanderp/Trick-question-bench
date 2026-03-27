@@ -2,6 +2,8 @@ import { loadModelResults, saveModelResults } from './loader';
 import { generateHash, createVersionInfo } from './hash';
 import { Question, TestResult } from './types';
 
+const MAX_ERROR_RETRY_COUNT = 3;
+
 export interface PendingPair {
   modelId: string;
   question: Question;
@@ -47,6 +49,22 @@ export function isErrorResult(result: TestResult): boolean {
 
 export function shouldRetryResult(result: TestResult): boolean {
   return isErrorResult(result) && result.retry !== false;
+}
+
+export function getErrorRetryState(previousResult?: TestResult): Pick<TestResult, 'retry' | 'retryCount'> {
+  const previousRetryCount = !previousResult || !isErrorResult(previousResult)
+    ? 0
+    : previousResult.retryCount ?? (previousResult.retry === false ? MAX_ERROR_RETRY_COUNT : 1);
+  const retryCount = previousRetryCount + 1;
+
+  if (retryCount >= MAX_ERROR_RETRY_COUNT) {
+    return {
+      retry: false,
+      retryCount
+    };
+  }
+
+  return { retryCount };
 }
 
 export function upsertModelResult(results: TestResult[], result: TestResult): void {

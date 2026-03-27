@@ -45,6 +45,7 @@ export interface TestResult {
   question: string;
   answer: string;
   retry?: boolean;
+  retryCount?: number;
   reasoning?: string;
   judgment: string;
   passed: boolean;

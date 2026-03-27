@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import { loadQuestions, loadModels, saveModelResults, loadModelResults } from './loader';
 import { askQuestion, judgeAnswer, fetchGenerationStats, JUDGE_SYSTEM_PROMPT } from './api';
 import { TestResult, TokenUsage } from './types';
-import { buildPendingPairs, getModelLimitFromArgs, persistUpdatedModelResults, upsertModelResult } from './benchmark';
+import { buildPendingPairs, getErrorRetryState, getModelLimitFromArgs, persistUpdatedModelResults, upsertModelResult } from './benchmark';
 
 // Load environment variables
 dotenv.config();
@@ -247,6 +247,8 @@ async function main() {
       } catch (error) {
         console.error(`  Error: ${error instanceof Error ? error.message : String(error)}`);
 
+        const previousResult = resultsByModel[modelId]?.find(existingResult => existingResult.questionId === question.id);
+
         // Store error result
         const result: TestResult = {
           questionId: question.id,
@@ -254,6 +256,7 @@ async function main() {
           modelName: modelId,
           question: question.question,
           answer: `ERROR: ${error instanceof Error ? error.message : String(error)}`,
+          ...getErrorRetryState(previousResult),
           judgment: 'ERROR',
           passed: false,
           needsHumanReview: true,

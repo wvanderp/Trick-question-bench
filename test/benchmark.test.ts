@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   buildPendingPairs,
   dedupeModelResults,
+  getErrorRetryState,
   getModelLimitFromArgs,
   isErrorResult,
   isJudgedResult,
@@ -51,6 +52,29 @@ describe('benchmark parsing helpers', () => {
     expect(isErrorResult(makeResult({ answer: 'ERROR: timeout' }))).toBe(true);
     expect(shouldRetryResult(makeResult({ judgment: 'ERROR' }))).toBe(true);
     expect(shouldRetryResult(makeResult({ judgment: 'ERROR', retry: false }))).toBe(false);
+  });
+
+  it('starts error retry counting at one', () => {
+    expect(getErrorRetryState()).toEqual({ retryCount: 1 });
+    expect(getErrorRetryState(makeResult())).toEqual({ retryCount: 1 });
+  });
+
+  it('caps error retries on the third failure', () => {
+    expect(getErrorRetryState(makeResult({ judgment: 'ERROR', retryCount: 1 }))).toEqual({ retryCount: 2 });
+    expect(getErrorRetryState(makeResult({ judgment: 'ERROR', retryCount: 2 }))).toEqual({ retry: false, retryCount: 3 });
+  });
+
+  it('treats legacy error results without retryCount as the first recorded failure', () => {
+    expect(
+      getErrorRetryState(
+        makeResult({
+          judgment: 'ERROR',
+          answer: 'ERROR: timeout',
+          passed: false,
+          needsHumanReview: true
+        })
+      )
+    ).toEqual({ retryCount: 2 });
   });
 });
 
