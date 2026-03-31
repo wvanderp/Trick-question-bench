@@ -3,7 +3,8 @@ import {
   buildPendingPairs,
   dedupeModelResults,
   getErrorRetryState,
-  getModelLimitFromArgs,
+  getTimeLimitMsFromArgs,
+  hasReachedTimeLimit,
   isErrorResult,
   isJudgedResult,
   shouldRetryResult,
@@ -35,14 +36,21 @@ function makeResult(overrides: Partial<TestResult> = {}): TestResult {
 }
 
 describe('benchmark parsing helpers', () => {
-  it('parses model limit from cli args', () => {
-    expect(getModelLimitFromArgs(['node', 'app.js', '--model-limit=5'])).toBe(5);
-    expect(getModelLimitFromArgs(['node', 'app.js'])).toBeUndefined();
+  it('parses time limit in hours from cli args', () => {
+    expect(getTimeLimitMsFromArgs(['node', 'app.js', '--time-limit-hours=4'])).toBe(4 * 60 * 60 * 1000);
+    expect(getTimeLimitMsFromArgs(['node', 'app.js', '--time-limit-hours=0.5'])).toBe(30 * 60 * 1000);
+    expect(getTimeLimitMsFromArgs(['node', 'app.js'])).toBeUndefined();
   });
 
-  it('throws for invalid model limit values', () => {
-    expect(() => getModelLimitFromArgs(['node', 'app.js', '--model-limit=0'])).toThrow('Invalid --model-limit value: 0');
-    expect(() => getModelLimitFromArgs(['node', 'app.js', '--model-limit=abc'])).toThrow('Invalid --model-limit value: abc');
+  it('throws for invalid time limit values', () => {
+    expect(() => getTimeLimitMsFromArgs(['node', 'app.js', '--time-limit-hours=0'])).toThrow('Invalid --time-limit-hours value: 0');
+    expect(() => getTimeLimitMsFromArgs(['node', 'app.js', '--time-limit-hours=abc'])).toThrow('Invalid --time-limit-hours value: abc');
+  });
+
+  it('detects when the time limit has been reached', () => {
+    expect(hasReachedTimeLimit(1_000, undefined, 2_000)).toBe(false);
+    expect(hasReachedTimeLimit(1_000, 3_600_000, 3_600_999)).toBe(false);
+    expect(hasReachedTimeLimit(1_000, 3_600_000, 3_601_000)).toBe(true);
   });
 
   it('detects judged/error results', () => {

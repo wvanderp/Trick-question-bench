@@ -3,7 +3,14 @@ import * as dotenv from 'dotenv';
 import { loadQuestions, loadModels, saveModelResults, loadModelResults } from './loader';
 import { askQuestion, judgeAnswer, fetchGenerationStats, JUDGE_SYSTEM_PROMPT } from './api';
 import { TestResult, TokenUsage } from './types';
-import { buildPendingPairs, getErrorRetryState, getModelLimitFromArgs, persistUpdatedModelResults, upsertModelResult } from './benchmark';
+import {
+  buildPendingPairs,
+  getErrorRetryState,
+  getTimeLimitMsFromArgs,
+  hasReachedTimeLimit,
+  persistUpdatedModelResults,
+  upsertModelResult
+} from './benchmark';
 
 // Load environment variables
 dotenv.config();
@@ -45,7 +52,8 @@ async function main() {
   const enabledModelConfigs = allModelConfigs.filter(model => !model.disabled);
   const enabledModelIds = enabledModelConfigs.map(model => model.name);
   const modelConfigByName = new Map(enabledModelConfigs.map(model => [model.name, model]));
-  const modelLimit = getModelLimitFromArgs(process.argv);
+  const timeLimitMs = getTimeLimitMsFromArgs(process.argv);
+  const runStartedAtMs = Date.now();
   const outputDir = path.join(__dirname, '../output');
   const { pendingPairs, pendingByModel, resultsByModel } = buildPendingPairs(enabledModelIds, questions, outputDir, {
     judgeSystemPrompt: JUDGE_SYSTEM_PROMPT,
@@ -54,13 +62,12 @@ async function main() {
     saveModelResultsFn: saveModelResults
   });
 
-  const modelsWithPending = enabledModelIds.filter(modelId => pendingByModel.has(modelId));
-  const models = typeof modelLimit === 'number' ? modelsWithPending.slice(0, modelLimit) : modelsWithPending;
+  const models = enabledModelIds.filter(modelId => pendingByModel.has(modelId));
 
   console.log(`Loaded ${questions.length} questions and ${enabledModelIds.length}/${allModelConfigs.length} enabled models`);
   console.log(`Pending model/question pairs: ${pendingPairs.length}`);
-  if (typeof modelLimit === 'number') {
-    console.log(`Model limit active: first ${modelLimit} models with pending work`);
+  if (typeof timeLimitMs === 'number') {
+    console.log(`Time limit active: stop asking new questions after ${(timeLimitMs / (60 * 60 * 1000)).toFixed(2)} hours`);
   }
   console.log(`Models selected for this run: ${models.length}`);
   console.log(`Using judge model: ${JUDGE_MODEL}\n`);
@@ -75,9 +82,17 @@ async function main() {
   let humanReviewCount = 0;
   let skippedCount = 0;
   let plannedPairCount = 0;
+  let stoppedDueToTimeLimit = false;
 
   // Test each model with each pending question
+  modelLoop:
   for (const modelId of models) {
+    if (hasReachedTimeLimit(runStartedAtMs, timeLimitMs)) {
+      stoppedDueToTimeLimit = true;
+      console.log('\nTime limit reached before starting another model. Finishing up current run.');
+      break;
+    }
+
     const modelConfig = modelConfigByName.get(modelId);
     const apiModelId = modelConfig?.apiModel ?? modelId;
 
@@ -102,6 +117,11 @@ async function main() {
     }
 
     for (const { question, hash } of modelPending) {
+      if (hasReachedTimeLimit(runStartedAtMs, timeLimitMs)) {
+        stoppedDueToTimeLimit = true;
+        console.log('\nTime limit reached. Stopping before asking another question.');
+        break modelLoop;
+      }
 
       console.log(`\nQuestion: ${question.id}`);
       console.log(`  Q: ${question.question}`);
@@ -285,6 +305,9 @@ async function main() {
   console.log(`  Failed: ${results.filter(r => !r.passed).length}`);
   console.log(`  Needs human review: ${humanReviewCount}`);
   console.log(`  Skipped (already up-to-date): ${skippedCount}`);
+  if (stoppedDueToTimeLimit) {
+    console.log('  Stopped early: yes (time limit reached)');
+  }
   console.log(`\nResults saved to: ${outputDir}`);
 }
 

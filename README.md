@@ -49,13 +49,13 @@ npm start
 
 `npm start` runs the full benchmark (`npm run start:all`) across all models in `data/models.json`.
 
-To run a smaller benchmark on 5 models:
+For CI/CD, use the time-limited entrypoint:
 
 ```bash
-npm run start:limited
+npm run start:cicd
 ```
 
-`start:limited` now selects the first 5 models in `data/models.json` that still have pending work (missing answer, error result, or out-of-date hash), then runs only those pending question/model pairs.
+`start:cicd` runs across all models with pending work, but stops asking new questions after 4 hours and then finishes by saving partial results and printing the final summary.
 
 This run will:
 
@@ -74,7 +74,7 @@ The benchmark can be run manually through GitHub Actions:
 1. Go to the "Actions" tab in your repository
 2. Select "Run Benchmark" workflow
 3. Click "Run workflow"
-4. Results will be automatically committed to the repository
+4. The workflow will keep processing pending work for up to 4 hours, then save and commit whatever results were collected
 
 ### Build the project
 

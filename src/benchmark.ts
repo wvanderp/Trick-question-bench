@@ -3,6 +3,7 @@ import { generateHash, createVersionInfo } from './hash';
 import { Question, TestResult } from './types';
 
 const MAX_ERROR_RETRY_COUNT = 3;
+const HOUR_IN_MS = 60 * 60 * 1000;
 
 export interface PendingPair {
   modelId: string;
@@ -17,20 +18,28 @@ export interface BuildPendingPairsOptions {
   saveModelResultsFn?: (outputDir: string, modelId: string, data: unknown) => void;
 }
 
-export function getModelLimitFromArgs(args: string[]): number | undefined {
-  const arg = args.find(value => value.startsWith('--model-limit='));
+export function getTimeLimitMsFromArgs(args: string[]): number | undefined {
+  const arg = args.find(value => value.startsWith('--time-limit-hours='));
   if (!arg) {
     return undefined;
   }
 
   const rawLimit = arg.split('=')[1];
-  const parsedLimit = Number.parseInt(rawLimit, 10);
+  const parsedLimit = Number.parseFloat(rawLimit);
 
-  if (!Number.isInteger(parsedLimit) || parsedLimit <= 0) {
-    throw new Error(`Invalid --model-limit value: ${rawLimit}`);
+  if (!Number.isFinite(parsedLimit) || parsedLimit <= 0) {
+    throw new Error(`Invalid --time-limit-hours value: ${rawLimit}`);
   }
 
-  return parsedLimit;
+  return parsedLimit * HOUR_IN_MS;
+}
+
+export function hasReachedTimeLimit(startedAtMs: number, timeLimitMs?: number, nowMs: number = Date.now()): boolean {
+  if (timeLimitMs === undefined) {
+    return false;
+  }
+
+  return nowMs - startedAtMs >= timeLimitMs;
 }
 
 export function isJudgedResult(result: TestResult): boolean {
