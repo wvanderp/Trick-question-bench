@@ -9,6 +9,7 @@ import {
   getTimeLimitMsFromArgs,
   hasReachedTimeLimit,
   persistUpdatedModelResults,
+  shuffleItems,
   upsertModelResult
 } from './benchmark';
 
@@ -62,7 +63,7 @@ async function main() {
     saveModelResultsFn: saveModelResults
   });
 
-  const models = enabledModelIds.filter(modelId => pendingByModel.has(modelId));
+  const models = shuffleItems(enabledModelIds.filter(modelId => pendingByModel.has(modelId)));
 
   console.log(`Loaded ${questions.length} questions and ${enabledModelIds.length}/${allModelConfigs.length} enabled models`);
   console.log(`Pending model/question pairs: ${pendingPairs.length}`);
@@ -70,6 +71,7 @@ async function main() {
     console.log(`Time limit active: stop asking new questions after ${(timeLimitMs / (60 * 60 * 1000)).toFixed(2)} hours`);
   }
   console.log(`Models selected for this run: ${models.length}`);
+  console.log('Model execution order: shuffled');
   console.log(`Using judge model: ${JUDGE_MODEL}\n`);
 
   if (models.length === 0) {

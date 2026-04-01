@@ -7,6 +7,7 @@ import {
   hasReachedTimeLimit,
   isErrorResult,
   isJudgedResult,
+  shuffleItems,
   shouldRetryResult,
   upsertModelResult
 } from '../src/benchmark';
@@ -51,6 +52,17 @@ describe('benchmark parsing helpers', () => {
     expect(hasReachedTimeLimit(1_000, undefined, 2_000)).toBe(false);
     expect(hasReachedTimeLimit(1_000, 3_600_000, 3_600_999)).toBe(false);
     expect(hasReachedTimeLimit(1_000, 3_600_000, 3_601_000)).toBe(true);
+  });
+
+  it('shuffles items without mutating the input array', () => {
+    const items = ['a', 'b', 'c', 'd'];
+    const shuffled = shuffleItems(items, vi.fn()
+      .mockReturnValueOnce(0.1)
+      .mockReturnValueOnce(0.8)
+      .mockReturnValueOnce(0.4));
+
+    expect(shuffled).toEqual(['b', 'd', 'c', 'a']);
+    expect(items).toEqual(['a', 'b', 'c', 'd']);
   });
 
   it('detects judged/error results', () => {

@@ -42,6 +42,17 @@ export function hasReachedTimeLimit(startedAtMs: number, timeLimitMs?: number, n
   return nowMs - startedAtMs >= timeLimitMs;
 }
 
+export function shuffleItems<T>(items: T[], randomFn: () => number = Math.random): T[] {
+  const shuffled = [...items];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const swapIndex = Math.floor(randomFn() * (i + 1));
+    [shuffled[i], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
 export function isJudgedResult(result: TestResult): boolean {
   return (
     result.modelId.length > 0 &&
