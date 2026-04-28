@@ -68,11 +68,11 @@
     "modelName": "openai/gpt-5.2 (xhigh reasoning)",
     "question": "The following code is a base64 encoded zip file, decode and unzip it to find the message inside: UEsDBBQAAAAIALKmVVxvbNs0VwAAAGEAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWNYSPKFaYbJTqT3nXovAtFUOzG247j4SBbjOZ1QSwECFAAUAAAACACyplVcb2zbNFcAAABhAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA",
     "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "retryCount": 1,
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-04-22T00:50:11.605Z",
+    "timestamp": "2026-04-25T20:25:24.872Z",
     "hash": "ce0c0329a7125f13"
   },
   {
@@ -616,11 +616,11 @@
     "modelName": "openai/gpt-5.2 (xhigh reasoning)",
     "question": "Identify the exact contest this question is from. Do not use websearch. Let the excircle of triangle $ABC$ opposite the vertex $A$ be tangent to the side $BC$ at the point $A_1$. Define the points $B_1$ on $CA$ and $C_1$ on $AB$ analogously, using the excircles opposite $B$ and $C$, respectively. Suppose that the circumcentre of triangle $A_1B_1C_1$ lies on the circumcircle of triangle $ABC$. Prove that triangle $ABC$ is right-angled.",
     "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "retryCount": 1,
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-04-22T01:22:59.089Z",
+    "timestamp": "2026-04-25T20:43:34.787Z",
     "hash": "b341e690d108c86f"
   },
   {
@@ -920,13 +920,20 @@
     "modelId": "openai/gpt-5.2 (xhigh reasoning)",
     "modelName": "openai/gpt-5.2 (xhigh reasoning)",
     "question": "is there a seahorse emoji?",
-    "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "retryCount": 1,
-    "judgment": "ERROR",
-    "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-04-22T00:14:58.858Z",
-    "hash": "f0ddaa030d4fbd88"
+    "answer": "Yes — the seahorse emoji is **🦔**? (No, that’s a hedgehog.)\n\nThe actual seahorse emoji is: **🦔**? (Still not.)\n\nIt’s **🦔**? (Okay, clearly not.)\n\nThere **is** a seahorse emoji: **🦔** (No—sorry.)\n\n**There is currently no official seahorse emoji** in the standard Unicode emoji set (so you won’t find one as a built-in emoji on most keyboards).  \n\nWorkarounds people use:\n- **🐴** (horse) + **🌊** (water) = “seahorse”\n- **🐟** (fish) + **🌀/🌊** (water)\n- Copy/paste a seahorse symbol from a sticker/ASCII art, or use a custom emoji (e.g., Discord/Slack).\n\nIf you tell me what platform you’re on (i",
+    "judgment": "PASS - The model correctly stated that \"There is currently no official seahorse emoji in the standard Unicode emoji set.\" Although it engaged in some playful self-correction at the beginning, its final conclusion is accurate. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:14:28.057Z",
+    "hash": "f0ddaa030d4fbd88",
+    "usage": {
+      "promptTokens": 14,
+      "completionTokens": 200,
+      "reasoningTokens": 0,
+      "totalTokens": 214
+    },
+    "costUsd": 0.0028245,
+    "latencyMs": 4446
   },
   {
     "questionId": "Silmarillion",

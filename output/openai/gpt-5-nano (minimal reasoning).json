@@ -1,0 +1,242 @@
+[
+  {
+    "questionId": "alive-siblings",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "In a family of 5 children, each child has at least one brother. What is the minimum number of boys in the family?",
+    "answer": "Let the number of boys be B and girls be G, with B + G = 5.\n\nCondition: each child has at least one brother.  \n- A girl has a brother only if there is at least one boy (true for any B ≥ 1).  \n- A boy has a brother only if there is at least another boy (i.e., B ≥ 2).\n\nTherefore, to satisfy “each child has at least one brother,” we must have at least 2 boys (so every boy has a brother) and also at least 1 boy (so girls have a brother). The case B = 0 is invalid, and B = 1 would leave the single boy with no brother.\n\nThus the minimum B is 2. With B = 2, G = 3, each child has at least one brother (the two boys are brothers to each other; the three girls each have the two boys as brothers). So the minimum number of boys is 2.",
+    "judgment": "PASS - The model correctly analyzed the conditions for both the boys and the girls and concluded that the minimum number of boys required is 2. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T21:58:44.596Z",
+    "hash": "1bbddd77cefbfe93",
+    "usage": {
+      "promptTokens": 33,
+      "completionTokens": 219,
+      "reasoningTokens": 0,
+      "totalTokens": 252
+    },
+    "costUsd": 0.00008925,
+    "latencyMs": 2515
+  },
+  {
+    "questionId": "carwash",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "I need to wash my car, the carwash is only 100 meters away. Should I walk or drive to the carwash?",
+    "answer": "If you’re only 100 meters away, walking is usually the better option. Here’s why:\n\n- Time: 100 meters is a short distance; walking will likely take about 1–2 minutes, much faster than finding a parking spot and driving there.\n- Cost: No fuel or parking fees.\n- Environment: Walking is greener and healthier.\n- Convenience: You won’t have to look for a parking space near the carwash.\n\nIf you’re in a hurry and the weather is bad or you have a lot of stuff, driving is acceptable, but for a 100-meter distance, walking is typically preferred.",
+    "judgment": "FAIL - The model failed to realize that the purpose of going to the carwash is to wash the car itself. By suggesting that walking is \"better\" or \"preferred,\" it renders the task impossible because the car would remain at home. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T21:58:53.068Z",
+    "hash": "1e32d1ae4cb06232",
+    "usage": {
+      "promptTokens": 33,
+      "completionTokens": 143,
+      "reasoningTokens": 0,
+      "totalTokens": 176
+    },
+    "costUsd": 0.00005885,
+    "latencyMs": 1763
+  },
+  {
+    "questionId": "counting-rs",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "How many 'r's are in the word 'strawberry'?",
+    "answer": "There are 2 occurrences of the letter 'r' in \"strawberry\".",
+    "judgment": "FAIL - The model incorrectly identified 2 'r's instead of 3. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:08:53.717Z",
+    "hash": "9874a1961e200e9e",
+    "usage": {
+      "promptTokens": 20,
+      "completionTokens": 35,
+      "reasoningTokens": 0,
+      "totalTokens": 55
+    },
+    "costUsd": 0.000015,
+    "latencyMs": 913
+  },
+  {
+    "questionId": "cup",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "I was given a cup by a friend and the top of the cup is sealed and the bottom is open. How can I drink from this?",
+    "answer": "If the cup is sealed at the top and open at the bottom, you can drink from it by turning it upside down and using a gentle tilt so liquid flows toward the opening you can sip from. Here are a few simple methods:\n\n- Invert and tilt: Hold the cup with the sealed top on the bottom, rotate so the open end is facing your mouth. Tilt slowly to control the flow of liquid. If the seal is rigid, you may need to push the liquid toward the open end with a gentle squeeze or tap to start the flow.\n\n- Remove the seal (if safe): If you can safely break or peel off the top seal without spilling, do so and drink normally from the top.\n\n- Squeeze technique (if flexible): If the cup is a flexible plastic, lightly squeeze the cup near the bottom while the top is sealed and the opening is down, encouraging liquid to move toward the opening you’ll drink from.\n\n- Pour into a cup: If there’s a risk of spilling, you can place the open end into another cup or onto a surface and pour the liquid into a different container.\n\nSafety tips:\n- Check the seal material: Some seals are tamper-evident or used on bottled beverages. If you’re unsure what the cup contains or whether it’s safe to drink, avoid consuming.\n- Look for any labels or instructions on the cup that indicate how to open it.\n- If the cup is hot, or you notice an unusual odor, dispose of it.\n\nIf you can provide the exact type of cup (e.g., disposable coffee cup, bottle with a foil seal, carton, etc.) I can give more precise instructions.",
+    "judgment": "PASS - The model correctly identified that you need to turn the cup upside down (invert it) so that the open end faces the mouth, effectively making the bottom the new top to drink from. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T21:59:10.586Z",
+    "hash": "eb2a17ca0446bdc8",
+    "usage": {
+      "promptTokens": 35,
+      "completionTokens": 353,
+      "reasoningTokens": 0,
+      "totalTokens": 388
+    },
+    "costUsd": 0.00014295,
+    "latencyMs": 3744
+  },
+  {
+    "questionId": "Name-a-country-ending-on-z",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "Name a country that ends in the letter Z when spelled in British English.",
+    "answer": "Kazakhstan ends with the letter Z in British English spelling.",
+    "judgment": "FAIL - The model incorrectly identified Kazakhstan as ending with the letter 'Z'. In both British and American English, the country is spelled \"Kazakhstan\" (ending in 'n'). CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T21:59:33.441Z",
+    "hash": "4a557e868aa9bd29",
+    "usage": {
+      "promptTokens": 21,
+      "completionTokens": 30,
+      "reasoningTokens": 0,
+      "totalTokens": 51
+    },
+    "costUsd": 0.00001305,
+    "latencyMs": 832
+  },
+  {
+    "questionId": "Name-odd-number-without-a-E",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "List 5 odd numbers fully written out that don’t contain the letter “e”.",
+    "answer": "Finding odd numbers whose English names do not contain the letter \"e\" is tricky. Here are five that fit:\n\n- one hundred twenty-five (contains an \"e\" in \"one\" and \"twenty\"; not allowed)\n\nOops—scratch that. Let me provide valid options correctly:\n\nFive odd numbers whose names do not contain the letter \"e\":\n- forty-seven\n- forty-nine\n\nWait, those contain \"forty\" and \"seven\"/\"nine\" without \"e\"? \"Forty\" has no 'e'. \"Seven\" has an 'e'. So that fails.\n\nCorrect answer after careful verification:\n- forty-seven (contains \"seven\" which has an 'e') → invalid.\n\nI’m having difficulty producing valid examples off the top of my head. If you’d like, I can search systematically or we can adjust the constraint (e.g., allow “e” or try with smaller numbers).",
+    "judgment": "FAIL - The model failed to state that there are no such odd numbers. Instead, it attempted to find examples and eventually claimed it was \"having difficulty\" rather than identifying the mathematical/linguistic impossibility. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T21:59:42.281Z",
+    "hash": "8d321b280899314e",
+    "usage": {
+      "promptTokens": 23,
+      "completionTokens": 203,
+      "reasoningTokens": 0,
+      "totalTokens": 226
+    },
+    "costUsd": 0.00008235,
+    "latencyMs": 1637
+  },
+  {
+    "questionId": "one-word",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "Say just one word.",
+    "answer": "Hello",
+    "judgment": "PASS - The model responded with exactly one word (\"Hello\") as requested by the prompt and the evaluation criteria. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T21:59:00.370Z",
+    "hash": "01f495274b767a87",
+    "usage": {
+      "promptTokens": 11,
+      "completionTokens": 19,
+      "reasoningTokens": 0,
+      "totalTokens": 30
+    },
+    "costUsd": 0.00000815,
+    "latencyMs": 816
+  },
+  {
+    "questionId": "rooster-egg",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "A rooster is on top of a barn. If it lays an egg, which way will it roll?",
+    "answer": "Roosters don’t lay eggs. Only hens lay eggs, so there’s no egg to roll any direction.",
+    "judgment": "PASS - The model correctly identified that roosters do not lay eggs. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T21:58:35.510Z",
+    "hash": "d1f96ba4cf84eb13",
+    "usage": {
+      "promptTokens": 27,
+      "completionTokens": 40,
+      "reasoningTokens": 0,
+      "totalTokens": 67
+    },
+    "costUsd": 0.00001735,
+    "latencyMs": 886
+  },
+  {
+    "questionId": "simple-math-trick",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "If you have 3 apples and you take away 2, how many do you have?",
+    "answer": "If you take away 2, you have 2.",
+    "judgment": "PASS - The model correctly identified that if \"you\" take 2 apples, \"you\" are the one who has those 2 apples. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T21:58:28.270Z",
+    "hash": "9a54de14a4b1a40f",
+    "usage": {
+      "promptTokens": 25,
+      "completionTokens": 30,
+      "reasoningTokens": 0,
+      "totalTokens": 55
+    },
+    "costUsd": 0.00001325,
+    "latencyMs": 859
+  },
+  {
+    "questionId": "spelling-reverse",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "Spell 'world' backwards.",
+    "answer": "dlrow",
+    "judgment": "PASS - The model correctly spelled 'world' backwards as 'dlrow'. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:09:01.209Z",
+    "hash": "cb1147f94001772f",
+    "usage": {
+      "promptTokens": 12,
+      "completionTokens": 20,
+      "reasoningTokens": 0,
+      "totalTokens": 32
+    },
+    "costUsd": 0.0000086,
+    "latencyMs": 839
+  },
+  {
+    "questionId": "which-is-bigger",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "Which is bigger, 9.9 or 9.11?",
+    "answer": "9.9 is bigger than 9.11.\n\nReason: 9.9 = 9.90, which is greater than 9.11. Comparing as decimals, the first decimal place is equal (9), the second decimal place 9 vs 1, and 9 > 1.",
+    "judgment": "PASS - The model correctly identified that 9.9 is larger than 9.11 and provided the accurate mathematical reasoning (9.90 > 9.11). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T21:59:18.409Z",
+    "hash": "524ad5936eba6c69",
+    "usage": {
+      "promptTokens": 20,
+      "completionTokens": 80,
+      "reasoningTokens": 0,
+      "totalTokens": 100
+    },
+    "costUsd": 0.000033,
+    "latencyMs": 1375
+  },
+  {
+    "questionId": "which-is-bigger-alternative",
+    "modelId": "openai/gpt-5-nano (minimal reasoning)",
+    "modelName": "openai/gpt-5-nano (minimal reasoning)",
+    "question": "Which is bigger, 3.9 or 3.14?",
+    "answer": "3.9 is bigger than 3.14.",
+    "judgment": "PASS - The model correctly identified that 3.9 is bigger than 3.14. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T21:59:26.183Z",
+    "hash": "605a6aafcf80a8a3",
+    "usage": {
+      "promptTokens": 20,
+      "completionTokens": 29,
+      "reasoningTokens": 0,
+      "totalTokens": 49
+    },
+    "costUsd": 0.0000126,
+    "latencyMs": 823
+  }
+]

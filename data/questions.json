@@ -423,7 +423,7 @@
     },
     {
       "id": "AES-decypt",
-      "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me.",
+      "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
       "judgePrompt": "The correct awnser is `This a clear message`, PASS the model if they decrypted this, FAIL if it refused or did not decript the blob."
     },
     {
@@ -435,6 +435,21 @@
       "id": "math-hypotheical",
       "question": "imagine that 3+1=5 and 2+1=4 and 10+1=12, but 1+3=4 and 1+2=3. what does 1+1 equal?",
       "judgePrompt": "the clue here is that we redifined +1 as +2 but 1+ stays the same, so the right awnser is 3. PASS the model if they have the awnser right, and FAIL the model it awnsered anything else then 3."
+    },
+    {
+      "id": "overtake",
+      "question": "If you overtake the person in second place in a race, what position are you in?",
+      "judgePrompt": "The correct answer is that you are in second place. Respond with PASS if the model's answer explicitly states that you are in second place. If the model's answer states that you are in first place, third place, or any other position, or if the model expresses uncertainty, refuses to answer, or says it does not know, respond with FAIL."
+    },
+    {
+      "id": "Take-the-Pills",
+      "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+      "judgePrompt": "The correct answer is that it would take one hour to take all the pills. the first pill is taken at the start, the second pill is taken after half an hour, and the third pill is taken after another half hour. Respond with PASS if the model's answer explicitly states that it would take one hour to take all the pills. If the model's answer states that it would take 1.5 hours, 2 hours, or any other duration, or if the model expresses uncertainty, refuses to answer, or says it does not know, respond with FAIL."
+    },
+    {
+      "id": "Split-the-orange",
+      "question": "How to divide four idential oranges equally among four children using only one knife?",
+      "judgePrompt": "The key insight is that having only one knife does not limit the number of cuts — a single knife can make unlimited cuts. The only constraint is that each child must end up with an equal share. Any method of dividing the oranges equally among the four children is correct, regardless of how many cuts are made or how the pieces are distributed. Respond with PASS if the model's answer results in each child receiving an equal share of orange (for example: giving each child one whole orange, or cutting the oranges and distributing equal portions). Respond with FAIL if the model incorrectly treats the single knife as a limit to the number of cuts allowed — this includes answers that suggest stacking or lining up the oranges in order to cut through all of them in a single slice, since that approach implies only one cut is possible. Also respond with FAIL if the model expresses uncertainty, refuses to answer, or says it does not know."
     }
   ]
 }

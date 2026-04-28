@@ -1,0 +1,322 @@
+[
+  {
+    "questionId": "alive-siblings",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "In a family of 5 children, each child has at least one brother. What is the minimum number of boys in the family?",
+    "answer": "To find the minimum number of boys, let’s analyze the requirement: **\"Each child has at least one brother.\"**\n\n1.  **If a child is a girl:** To satisfy the condition, there must be at least one boy in the family for her to call a brother.\n2.  **If a child is a boy:** To satisfy the condition, there must be at least one *other* boy in the family for him to call a brother.\n\nLet's test different numbers of boys:\n\n*   **If there is 1 boy:**\n    *   The boy has 0 brothers. (This fails the condition for the boy himself).\n*   **If there are 2 boys:**\n    *   Boy A has 1 brother (Boy B).\n    *   Boy B has 1 brother (Boy A).\n    *   Any girls in the family would each have 2 brothers.\n    *   Since every child (both boys and girls) now has at least one brother, the condition is satisfied.\n\nIn a family of 5, if there are **2 boys** and **3 girls**:\n*   Each boy has 1 brother.\n*   Each girl has 2 brothers.\n*   All 5 children have at least one brother.\n\n**Minimum number of boys: 2**",
+    "judgment": "PASS - The model correctly identified that 2 boys is the minimum number required to ensure every child (including the boys themselves) has at least one brother. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:04:55.157Z",
+    "hash": "1bbddd77cefbfe93",
+    "usage": {
+      "promptTokens": 40,
+      "completionTokens": 283,
+      "reasoningTokens": 0,
+      "totalTokens": 323
+    },
+    "costUsd": 0.0001172,
+    "latencyMs": 10686
+  },
+  {
+    "questionId": "carwash",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "I need to wash my car, the carwash is only 100 meters away. Should I walk or drive to the carwash?",
+    "answer": "Since the carwash is only 100 meters away, you should **walk**.\n\nHere is why:\n\n1.  **Time/Efficiency:** 100 meters is a very short distance (about a 1-minute walk). By the time you start the car, pull out of your driveway, navigate any traffic, and park at the carwash, you will likely have spent more time than if you had just walked.\n2.  **Fuel/Maintenance:** You save a tiny amount of fuel and unnecessary wear on your engine and brakes.\n3.  **Environmental Impact:** Walking has zero emissions.\n4.  **Logistics:** If the car is currently dirty, driving it through any local streets might just kick up more dust or road grime onto the vehicle before you even get it washed.\n\n**The only exception:** If you are carrying heavy cleaning equipment (like a heavy pressure washer or large buckets of chemicals) that is too heavy to carry by hand, driving might be more practical. Otherwise, walking is the winner.",
+    "judgment": "FAIL - The model fell for the trick. It incorrectly recommended walking to the carwash, failing to realize that the car itself needs to be physically present at the carwash to be washed. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:05:07.640Z",
+    "hash": "1e32d1ae4cb06232",
+    "usage": {
+      "promptTokens": 42,
+      "completionTokens": 216,
+      "reasoningTokens": 0,
+      "totalTokens": 258
+    },
+    "costUsd": 0.00009018,
+    "latencyMs": 5920
+  },
+  {
+    "questionId": "counting-rs",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "How many 'r's are in the word 'strawberry'?",
+    "answer": "There are **3** 'r's in the word \"strawberry\" (st**r**awbe**rr**y).",
+    "judgment": "PASS - The model correctly identified that there are 3 'r's in \"strawberry\". CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:04:15.589Z",
+    "hash": "9874a1961e200e9e",
+    "usage": {
+      "promptTokens": 26,
+      "completionTokens": 28,
+      "reasoningTokens": 0,
+      "totalTokens": 54
+    },
+    "costUsd": 0.00001134,
+    "latencyMs": 1769
+  },
+  {
+    "questionId": "cup",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "I was given a cup by a friend and the top of the cup is sealed and the bottom is open. How can I drink from this?",
+    "answer": "This sounds like a classic riddle or a trick object. Depending on whether this is a physical object or a logical puzzle, here are the three most likely ways to \"drink\" from it:\n\n### 1. The Logical Answer (The \"Flip\" Solution)\nThe cup is simply **upside down**. \nIf the \"top\" is sealed and the \"bottom\" is open, you are currently holding the cup inverted. To drink from it, you must **turn it over**. Once flipped, the \"sealed top\" becomes the solid bottom, and the \"open bottom\" becomes the rim you drink from.\n\n### 2. The \"Straw\" Interpretation\nIf the object is a tube that is sealed at one end and open at the other, it isn't a cup—it is a **straw**. \nTo drink from it, you would place the open end into a liquid and suck through the other end (assuming the \"seal\" is actually a small opening or a valve).\n\n### 3. The Practical/Magic Trick Answer\nIf this is a trick gift (like a \"Pythagorean Cup\" or a novelty item):\n*   **Check for a hidden opening:** Some trick cups have a small hole in the seal that only opens when the cup is held a certain way or filled to a certain level.\n*   **Check the material:** If it is made of something like ice or sugar, you might be intended to melt or dissolve the seal.\n\n**Verdict:** Turn the cup over!",
+    "judgment": "PASS - The model correctly identified that the cup is upside down and explicitly stated that the solution is to turn it over so the open bottom becomes the top. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:05:30.805Z",
+    "hash": "eb2a17ca0446bdc8",
+    "usage": {
+      "promptTokens": 42,
+      "completionTokens": 315,
+      "reasoningTokens": 0,
+      "totalTokens": 357
+    },
+    "costUsd": 0.000164325,
+    "latencyMs": 8727
+  },
+  {
+    "questionId": "Floating-point-math",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "What is 0.1 + 0.2?",
+    "answer": "In standard mathematics, **0.1 + 0.2 = 0.3**.\n\n***\n\n**Note for programmers:**\nIf you are asking this because you typed `0.1 + 0.2` into a computer language (like Python or JavaScript) and got `0.30000000000000004`, this is due to **floating-point arithmetic**. \n\nComputers represent numbers in binary (base-2). Because numbers like 0.1 and 0.2 cannot be represented exactly in binary (much like 1/3 cannot be represented exactly in decimal), a tiny rounding error occurs when the computer performs the addition.",
+    "judgment": "PASS - The model correctly identified that the answer is 0.3 and explicitly explained the floating-point precision issues that lead to the 0.30000000000000004 result in binary systems. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:06:27.384Z",
+    "hash": "ab12552ce8256d52",
+    "usage": {
+      "promptTokens": 25,
+      "completionTokens": 147,
+      "reasoningTokens": 0,
+      "totalTokens": 172
+    },
+    "costUsd": 0.00006105,
+    "latencyMs": 1867
+  },
+  {
+    "questionId": "H-in-Habicht",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "Wie viele h hat das Wort 'habicht'?",
+    "answer": "Das Wort „Habicht“ hat **2** h (ein großes „H“ am Anfang und ein kleines „h“ nach dem „c“).",
+    "judgment": "PASS - The model correctly identified that there are 2 'h's in the word \"Habicht\" (one uppercase 'H' and one lowercase 'h'). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:06:35.711Z",
+    "hash": "019a11a4e6efb451",
+    "usage": {
+      "promptTokens": 23,
+      "completionTokens": 32,
+      "reasoningTokens": 0,
+      "totalTokens": 55
+    },
+    "costUsd": 0.00001487,
+    "latencyMs": 942
+  },
+  {
+    "questionId": "Name-a-country-ending-on-z",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "Name a country that ends in the letter Z when spelled in British English.",
+    "answer": "There are no countries that end in the letter **Z** when spelled in British English.",
+    "judgment": "PASS - The model correctly identified that there are no countries ending in the letter 'Z' in British English. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:05:58.923Z",
+    "hash": "4a557e868aa9bd29",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 19,
+      "reasoningTokens": 0,
+      "totalTokens": 47
+    },
+    "costUsd": 0.00001124,
+    "latencyMs": 978
+  },
+  {
+    "questionId": "Name-odd-number-without-a-E",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "List 5 odd numbers fully written out that don’t contain the letter “e”.",
+    "answer": "Here are 5 odd numbers that do not contain the letter \"e\":\n\n1. Two billion (Wait, that's even. Let's re-calculate.)\n\nActually, the letter **\"e\"** is present in almost all standard number words (on**e**, thr**ee**, fiv**e**, s**e**v**e**n, nin**e**, t**e**n, tw**e**lv**e**, etc.). \n\nTo find odd numbers without an \"e\", we must look at large numbers using combinations of \"two\", \"four\", \"six\", \"eight\", and \"thirty\", \"fifty\", etc., while ensuring the final digit is an odd number that lacks an \"e\". \n\nHowever, **all** standard odd numbers in English (**one, three, five, seven, nine**) contain the letter \"e\". \n\nTherefore, **it is impossible** to list an odd number written in English that does not contain the letter \"e\".",
+    "judgment": "PASS - The model correctly identified that all odd numbers in English (one, three, five, seven, nine) contain the letter \"e\" and concluded it is impossible to list any. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:06:08.499Z",
+    "hash": "8d321b280899314e",
+    "usage": {
+      "promptTokens": 31,
+      "completionTokens": 209,
+      "reasoningTokens": 0,
+      "totalTokens": 240
+    },
+    "costUsd": 0.0000867,
+    "latencyMs": 2572
+  },
+  {
+    "questionId": "one-word",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "Say just one word.",
+    "answer": "Hello.",
+    "judgment": "PASS - The model responded with the single word \"Hello.\" CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:05:15.187Z",
+    "hash": "01f495274b767a87",
+    "usage": {
+      "promptTokens": 18,
+      "completionTokens": 3,
+      "reasoningTokens": 0,
+      "totalTokens": 21
+    },
+    "costUsd": 0.00000228,
+    "latencyMs": 1016
+  },
+  {
+    "questionId": "R-in-Cookie-dough",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "How many 'r's are in the phrase 'cookie dough'?",
+    "answer": "There are **0** 'r's in the phrase 'cookie dough'.",
+    "judgment": "PASS - The model correctly identified that there are 0 'r's in the phrase 'cookie dough'. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:06:43.151Z",
+    "hash": "203f8d9bfbde032e",
+    "usage": {
+      "promptTokens": 27,
+      "completionTokens": 17,
+      "reasoningTokens": 0,
+      "totalTokens": 44
+    },
+    "costUsd": 0.00000767,
+    "latencyMs": 604
+  },
+  {
+    "questionId": "rooster-egg",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "A rooster is on top of a barn. If it lays an egg, which way will it roll?",
+    "answer": "It won't roll anywhere because **roosters don't lay eggs**.",
+    "judgment": "PASS - The model correctly identified that roosters do not lay eggs. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:04:37.493Z",
+    "hash": "d1f96ba4cf84eb13",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 17,
+      "reasoningTokens": 0,
+      "totalTokens": 51
+    },
+    "costUsd": 0.0000102,
+    "latencyMs": 556
+  },
+  {
+    "questionId": "Seahorse-emoji",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "is there a seahorse emoji?",
+    "answer": "Yes, there is! The seahorse emoji is:\n\n# 🫏 (Wait, that's a donkey...) \n# 🌊 (Wait, that's a wave...)\n\nActually, here it is: \n\n# 🐎 (Wait, that's a horse...)\n\n**The real seahorse emoji is: 🫵... no, it is: 🌊 + 🐎 = 🐴? No.**\n\nHere is the actual emoji: \n\n# 🫵 **Actually, it is: 🫏... no.**\n\n**I apologize, let me get it right: The seahorse emoji is 🫵... wait, I am joking!**\n\n# 🌊 **The real emoji is: 🫵... Just kidding! Here it is: 🐎 + 🌊 = 🌊🐎? No.**\n\n# 🌊 **The actual emoji is: ",
+    "judgment": "FAIL - The model failed to state that there is no seahorse emoji. Instead, it went off the rails, providing incorrect emojis and engaging in a confusing, repetitive cycle of \"guessing\" without ever reaching the correct conclusion. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:06:18.881Z",
+    "hash": "f0ddaa030d4fbd88",
+    "usage": {
+      "promptTokens": 15,
+      "completionTokens": 191,
+      "reasoningTokens": 0,
+      "totalTokens": 206
+    },
+    "costUsd": 0.00006393,
+    "latencyMs": 3671
+  },
+  {
+    "questionId": "simple-math-trick",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "If you have 3 apples and you take away 2, how many do you have?",
+    "answer": "You have **2** apples. (The ones you took away!)",
+    "judgment": "PASS - The model correctly identified that you have the 2 apples you took. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:04:30.287Z",
+    "hash": "9a54de14a4b1a40f",
+    "usage": {
+      "promptTokens": 32,
+      "completionTokens": 15,
+      "reasoningTokens": 0,
+      "totalTokens": 47
+    },
+    "costUsd": 0.00000888,
+    "latencyMs": 724
+  },
+  {
+    "questionId": "spelling-reverse",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "Spell 'world' backwards.",
+    "answer": "dlrow",
+    "judgment": "PASS - The model correctly spelled 'world' backwards as 'dlrow'. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:04:22.984Z",
+    "hash": "cb1147f94001772f",
+    "usage": {
+      "promptTokens": 19,
+      "completionTokens": 3,
+      "reasoningTokens": 0,
+      "totalTokens": 22
+    },
+    "costUsd": 0.00000367,
+    "latencyMs": 868
+  },
+  {
+    "questionId": "which-is-bigger",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "Which is bigger, 9.9 or 9.11?",
+    "answer": "**9.9** is bigger than 9.11.\n\nTo understand why, it helps to look at the numbers by their decimal places or by making them the same length:\n\n1.  **Equalize the digits:** Add a placeholder zero to 9.9 so it has the same number of digits as 9.11.\n    *   9.9 becomes **9.90**\n    *   9.11 stays **9.11**\n2.  **Compare:** Since 90 is greater than 11, **9.90 is greater than 9.11**.\n\nThink of it like money: $9.90 is more than $9.11.",
+    "judgment": "PASS - The model correctly identified that 9.9 is larger than 9.11 and provided a clear, accurate explanation by equalizing the decimal places. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:05:42.581Z",
+    "hash": "524ad5936eba6c69",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 155,
+      "reasoningTokens": 0,
+      "totalTokens": 183
+    },
+    "costUsd": 0.00005466,
+    "latencyMs": 4770
+  },
+  {
+    "questionId": "which-is-bigger-alternative",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "Which is bigger, 3.9 or 3.14?",
+    "answer": "**3.9** is bigger than 3.14.\n\nHere is the easiest way to compare them:\n\n1.  **Make them the same length:** Add a placeholder zero to 3.9 so it has the same number of digits after the decimal as 3.14.\n2.  **Compare:** Now you are comparing **3.90** and **3.14**.\n\nSince 90 is greater than 14, **3.9 is larger.**",
+    "judgment": "PASS - The model correctly identified that 3.9 is bigger than 3.14 and provided a clear, accurate mathematical explanation using placeholder zeros (3.90 vs 3.14). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T20:05:51.403Z",
+    "hash": "605a6aafcf80a8a3",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 106,
+      "reasoningTokens": 0,
+      "totalTokens": 134
+    },
+    "costUsd": 0.00005755,
+    "latencyMs": 2176
+  }
+]

@@ -962,6 +962,26 @@
     "latencyMs": 1525
   },
   {
+    "questionId": "overtake",
+    "modelId": "openai/gpt-5.2 (low reasoning)",
+    "modelName": "openai/gpt-5.2 (low reasoning)",
+    "question": "If you overtake the person in second place in a race, what position are you in?",
+    "answer": "If you overtake the person in **second place**, you take their spot—so you’re now in **second place** (and they drop to third).",
+    "judgment": "PASS - The model correctly identified that overtaking the person in second place puts you in second place. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T19:58:21.768Z",
+    "hash": "0b4d5c24e7521bce",
+    "usage": {
+      "promptTokens": 25,
+      "completionTokens": 36,
+      "reasoningTokens": 0,
+      "totalTokens": 61
+    },
+    "costUsd": 0.00054775,
+    "latencyMs": 2788
+  },
+  {
     "questionId": "prompt-engineering",
     "modelId": "openai/gpt-5.2 (low reasoning)",
     "modelName": "openai/gpt-5.2 (low reasoning)",
@@ -1387,6 +1407,26 @@
     "latencyMs": 574
   },
   {
+    "questionId": "Split-the-orange",
+    "modelId": "openai/gpt-5.2 (low reasoning)",
+    "modelName": "openai/gpt-5.2 (low reasoning)",
+    "question": "How to divide four idential oranges equally among four children using only one knife?",
+    "answer": "Line the 4 oranges up and make one straight cut through the middle of all of them (so each orange becomes two equal halves).  \nYou’ll have 8 halves; give each child 2 halves. Each child gets the equivalent of 1 whole orange, equally.",
+    "judgment": "FAIL - The model suggests cutting the oranges into halves, which results in distributing pieces rather than whole oranges (the second correct answer) or \"any amount of pieces\" followed by equal distribution (the first correct answer). However, the prompt specifically defines the first correct answer as distributing \"the pieces\" (plural) after cutting. While the model's method is mathematically sound, it does not explicitly state either of the two specific \"correct answers\" required by the prompt's rubrics. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T19:58:46.261Z",
+    "hash": "b13ec644f7802417",
+    "usage": {
+      "promptTokens": 22,
+      "completionTokens": 391,
+      "reasoningTokens": 330,
+      "totalTokens": 743
+    },
+    "costUsd": 0.0055125,
+    "latencyMs": 9241
+  },
+  {
     "questionId": "spot-the-fake-coin",
     "modelId": "openai/gpt-5.2 (low reasoning)",
     "modelName": "openai/gpt-5.2 (low reasoning)",
@@ -1531,6 +1571,26 @@
     },
     "costUsd": 0.00182,
     "latencyMs": 3744
+  },
+  {
+    "questionId": "Take-the-Pills",
+    "modelId": "openai/gpt-5.2 (low reasoning)",
+    "modelName": "openai/gpt-5.2 (low reasoning)",
+    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "Take the first pill immediately (time 0), the second pill after 30 minutes, and the third pill after another 30 minutes.\n\nSo all the pills would be taken after **1 hour**.",
+    "judgment": "PASS - The model correctly identified that taking three pills at 30-minute intervals takes exactly one hour, explicitly stating the duration as \"1 hour\" and explaining the timeline correctly. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-25T19:58:29.879Z",
+    "hash": "2f36fa3a54995ce7",
+    "usage": {
+      "promptTokens": 39,
+      "completionTokens": 45,
+      "reasoningTokens": 0,
+      "totalTokens": 84
+    },
+    "costUsd": 0.00069825,
+    "latencyMs": 1594
   },
   {
     "questionId": "tanden",
