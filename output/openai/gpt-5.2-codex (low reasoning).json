@@ -24,22 +24,22 @@
     "questionId": "AES-decypt",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me.",
-    "answer": "I can’t directly decrypt it here because I don’t have the ability to run AES, but you can recover it easily with a few lines of code since you already know the key, IV, and mode.\n\nIf the password is used *directly* as the AES‑128 key (16 bytes) and IV is exactly 16 bytes, then this Python snippet will give you the plaintext:\n\n```python\nfrom Crypto.Cipher import AES\nimport binascii\n\nkey = b\"Thisisthepasswor\"        # 16 bytes = AES‑128\niv  = b\"these are 16bytes\"       # 16 bytes IV\n\nciphertext = bytes.fromhex(\"2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a\")\n\ncipher = AES.new(key, AES.MODE_CBC, iv)\nplaintext = cipher.decrypt(ciphertext)\n\nprint(plaintext)\n```\n\nIf the plaintext was padded (likely PKCS#7), you can remove it:\n\n```python\npad_len = plaintext[-1]\nplaintext = plaintext[:-pad_len]\nprint(plaintext)\n```\n\nIf you run that and share the output (even just the raw bytes), I can help interpret it.",
-    "reasoning": "**Explaining decryption approach and limitations**\n\nI'm outlining that decryption likely requires AES-128 with a 16-byte password and IV, possibly a raw key without derivation, but I can't perform decryption directly. I'll provide reasoning and example code instead.",
-    "judgment": "FAIL - The model refused to decrypt the message itself, claiming it does not have the ability to run AES, and instead provided code for the user to run. Since the pass criteria specifically required the model to decrypt the blob, this is a failure. CONFIDENCE: HIGH",
+    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
+    "answer": "I’m not able to perform decryption or compute the plaintext from that blob. You’d need to run the decryption using the AES‑CBC algorithm with the given key and IV in a suitable tool. If you’d like, I can help outline the steps or point you to tools that can do this.",
+    "reasoning": "**Determining response to AES decryption request**\n\nThe request involves decrypting AES with a key/IV, which is not feasible for the model, so I need to respond that decryption isn't possible.",
+    "judgment": "FAIL - The model refused to decrypt the message and provided a canned response instead of the requested plaintext. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T03:03:22.431Z",
-    "hash": "d782f2075f6b07c0",
+    "timestamp": "2026-04-29T08:51:24.968Z",
+    "hash": "bdf20131450b77c8",
     "usage": {
-      "promptTokens": 126,
-      "completionTokens": 352,
-      "reasoningTokens": 64,
-      "totalTokens": 542
+      "promptTokens": 141,
+      "completionTokens": 102,
+      "reasoningTokens": 50,
+      "totalTokens": 293
     },
-    "costUsd": 0.0051485,
-    "latencyMs": 3670
+    "costUsd": 0.00167475,
+    "latencyMs": 2737
   },
   {
     "questionId": "alive-siblings",
@@ -982,6 +982,19 @@
     "latencyMs": 781
   },
   {
+    "questionId": "overtake",
+    "modelId": "openai/gpt-5.2-codex (low reasoning)",
+    "modelName": "openai/gpt-5.2-codex (low reasoning)",
+    "question": "If you overtake the person in second place in a race, what position are you in?",
+    "answer": "ERROR: Invalid message structure in OpenRouter API response",
+    "retryCount": 1,
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-04-29T08:51:27.438Z",
+    "hash": "0b4d5c24e7521bce"
+  },
+  {
     "questionId": "prompt-engineering",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
@@ -1418,6 +1431,27 @@
     "latencyMs": 796
   },
   {
+    "questionId": "Split-the-orange",
+    "modelId": "openai/gpt-5.2-codex (low reasoning)",
+    "modelName": "openai/gpt-5.2-codex (low reasoning)",
+    "question": "How to divide four idential oranges equally among four children using only one knife?",
+    "answer": "Make just one cut through all four oranges at once (stack or line them up and slice straight through).  \nEach orange is halved, giving 8 halves.  \nGive each child two halves — that’s exactly one orange each.",
+    "reasoning": "**Analyzing orange division riddle**\n\nI'm considering that \"one knife\" might mean only one cut to divide all four oranges equally by stacking them, so each child gets equal volume without individually cutting each orange.**Confirming single-cut stack slicing**\n\nThe key insight is stacking all four oranges and making one straight cut through them, producing eight halves to distribute two halves per child for equal shares using only one knife.",
+    "judgment": "FAIL - The model incorrectly treated the single knife as a limit to the number of cuts allowed by suggesting that the oranges be stacked or lined up to be sliced at once. According to the criteria, such an approach implies only one cut is possible and must be marked as FAIL. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T08:52:05.801Z",
+    "hash": "78a51c320c511aa5",
+    "usage": {
+      "promptTokens": 22,
+      "completionTokens": 1527,
+      "reasoningTokens": 1472,
+      "totalTokens": 3021
+    },
+    "costUsd": 0.0214165,
+    "latencyMs": 22503
+  },
+  {
     "questionId": "spot-the-fake-coin",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
@@ -1563,6 +1597,27 @@
     },
     "costUsd": 0.002198,
     "latencyMs": 2799
+  },
+  {
+    "questionId": "Take-the-Pills",
+    "modelId": "openai/gpt-5.2-codex (low reasoning)",
+    "modelName": "openai/gpt-5.2-codex (low reasoning)",
+    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "You’d take one right away, then 30 minutes later the second, and another 30 minutes later the third—so all the pills are taken after **1 hour**.",
+    "reasoning": "**Clarifying total time for taking pills**\n\nThe total time from taking the first pill to the last pill is 1 hour, meaning all three pills are taken by the end of that hour.",
+    "judgment": "PASS - The model correctly identified that the interval between three pills taken every half hour results in a total duration of one hour. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T08:51:36.610Z",
+    "hash": "2f36fa3a54995ce7",
+    "usage": {
+      "promptTokens": 39,
+      "completionTokens": 102,
+      "reasoningTokens": 45,
+      "totalTokens": 186
+    },
+    "costUsd": 0.00149625,
+    "latencyMs": 2665
   },
   {
     "questionId": "tanden",
