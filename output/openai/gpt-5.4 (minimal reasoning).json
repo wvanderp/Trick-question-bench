@@ -24,22 +24,22 @@
     "questionId": "AES-decypt",
     "modelId": "openai/gpt-5.4 (minimal reasoning)",
     "modelName": "openai/gpt-5.4 (minimal reasoning)",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me.",
-    "answer": "I can help, but I can’t reliably decrypt it from just that info because there’s an important ambiguity:\n\n- AES-CBC needs:\n  - a 16/24/32-byte key\n  - a 16-byte IV\n- Your “password” is 16 ASCII characters, so it might have been used directly as an AES-128 key.\n- But your IV string `these are 16bytes` is actually **17 characters**, not 16.\n\nSo one of these must be true:\n\n1. the IV is slightly misremembered,\n2. the password was transformed first,\n3. the IV/key were hex/base64 decoded first,\n4. a KDF was used, like PBKDF2, EVP_BytesToKey, scrypt, etc.\n\n## Most likely case\nIf your old program used the password **directly as the AES key**, then the key would be:\n\n```text\nThisisthepasswor\n```\n\nBut the IV must be exactly 16 bytes. A likely typo is that the IV was intended to be one of:\n\n```text\nthese are 16byte\n```\n\nor maybe\n\n```text\nthese are 16 byt\n```\n\nIf you can confirm the exact IV, decryption becomes straightforward.\n\n## Try this in Python\nIf the key was the raw ASCII password and the IV was a raw ASCII 16-byte string:\n\n```python\nfrom Crypto.Cipher import AES\nfrom binascii import unhexlify\n\nblob_hex = \"2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a\"\nkey = b\"Thisisthepasswor\"\niv = b\"these are 16byte\"   # replace with the exact 16-byte IV\n\nct = unhexlify(blob_hex)\ncipher = AES.new(key, AES.MODE_CBC, iv)\npt = cipher.decrypt(ct)\n\nprint(\"Raw plaintext bytes:\", pt)\n\n# If PKCS#7 padded:\npad = pt[-1]\nif 1 <= pad <= 16 and pt.endswith(bytes([pad]) * pad):\n    print(\"Unpadded:\", pt[:-pad])\nelse:\n    print(\"No valid PKCS#7 padding detected\")\n```\n\n## OpenSSL version\nIf the password was used directly as the key:\n\n```bash\necho 2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a | xxd -r -p > blob.bin\n\nopenssl enc -d -aes-128-cbc \\\n  -K 54686973697374686570617373776f72 \\\n  -iv 74686573652061726520313662797465 \\\n  -in blob.bin\n```\n\nWhere:\n\n- `54686973697374686570617373776f72` = hex for `Thisisthepasswor`\n- `74686573652061726520313662797465` = hex for `these are 16byte`\n\n## What I need from you\nPlease send **one** of these:\n\n1. the exact IV, confirmed to be 16 bytes, or\n2. the old code snippet that turned password into key, or\n3. whether the password/IV were used as:\n   - raw text bytes,\n   - hex,\n   - base64,\n   - UTF-8,\n   - PBKDF2 / OpenSSL salted format / EVP_BytesToKey\n\nIf you want, I can also help you brute-check the few likely IV typos around `these are 16bytes`.",
-    "reasoning": "**Explaining decryption issues**\n\nI’m pondering the challenge of decrypting with PKCS7 padding. Actually decrypting could be impossible, so I'll provide a code snippet that can't be executed here. Instead, I’ll explain the issue and suggest commands to try. Since they asked for decryption, it’s important to clarify that I can’t compute this directly. I need specifics on the key derivation and IV bytes, especially since the current IV string is 17 characters when it should be 16 bytes. Perhaps it's in hex or base64? The blob length is 32 bytes in hex, and I can provide OpenSSL and Python snippets.",
-    "judgment": "FAIL - The model did not decrypt the blob. It identified an issue with the length of the IV provided and provided code/instructions for the user to decrypt it themselves, but failed to actually provide the decrypted message \"This a clear message\" as required by the criteria. CONFIDENCE: HIGH",
+    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
+    "answer": "I can’t reliably decrypt it from what you provided because the IV is inconsistent with AES-CBC.\n\nAES-CBC requires:\n- a 16-byte key for AES-128\n- a 16-byte IV\n\nYour password:\n- `Thisisthepasswor` = 16 bytes\n\nYour IV:\n- `these are 16bytes` = 17 bytes, not 16\n\nSo as written, those inputs don’t form a valid AES-CBC parameter set. If you can confirm the exact IV string you used, I can help further.",
+    "reasoning": "**Figuring out decryption issues**\n\nI'm contemplating if there's something significant about the guessed key. Using online memory might be an option, but I'm hesitant. I realize I can't decrypt it because the IV length is 17 bytes, while AES-CBC needs a 16-byte IV, making the parameters inconsistent. That's actually helpful to highlight. Maybe I should also mention if the IV was intended to be read as \"these are 16 bytes\" or \"theseare16bytes\" for potential retrying. Let’s make this concise.",
+    "judgment": "FAIL\nThe model failed to decrypt the message. It incorrectly claimed the IV was 17 bytes (counting spaces and characters, \"these are 16bytes\" is exactly 17 characters), but instead of attempting to correct for a possible typo or trimming the IV to 16 bytes to perform the decryption, it refused to provide the decrypted string \"This a clear message\". CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-03-27T08:57:00.459Z",
-    "hash": "d782f2075f6b07c0",
+    "timestamp": "2026-04-28T22:32:33.277Z",
+    "hash": "bdf20131450b77c8",
     "usage": {
-      "promptTokens": 126,
-      "completionTokens": 1153,
-      "reasoningTokens": 386,
-      "totalTokens": 1665
+      "promptTokens": 141,
+      "completionTokens": 716,
+      "reasoningTokens": 598,
+      "totalTokens": 1455
     },
-    "costUsd": 0.01761,
-    "latencyMs": 18913
+    "costUsd": 0.0110925,
+    "latencyMs": 13841
   },
   {
     "questionId": "alive-siblings",
@@ -974,6 +974,26 @@
     "latencyMs": 1279
   },
   {
+    "questionId": "overtake",
+    "modelId": "openai/gpt-5.4 (minimal reasoning)",
+    "modelName": "openai/gpt-5.4 (minimal reasoning)",
+    "question": "If you overtake the person in second place in a race, what position are you in?",
+    "answer": "Second place.  \nIf you pass the person who’s in second, you take their position.",
+    "judgment": "PASS - The model correctly identified that overtaking the person in second place puts you in second place. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-28T22:32:40.571Z",
+    "hash": "0b4d5c24e7521bce",
+    "usage": {
+      "promptTokens": 25,
+      "completionTokens": 23,
+      "reasoningTokens": 0,
+      "totalTokens": 48
+    },
+    "costUsd": 0.0004075,
+    "latencyMs": 1236
+  },
+  {
     "questionId": "prompt-engineering",
     "modelId": "openai/gpt-5.4 (minimal reasoning)",
     "modelName": "openai/gpt-5.4 (minimal reasoning)",
@@ -1402,6 +1422,27 @@
     "latencyMs": 749
   },
   {
+    "questionId": "Split-the-orange",
+    "modelId": "openai/gpt-5.4 (minimal reasoning)",
+    "modelName": "openai/gpt-5.4 (minimal reasoning)",
+    "question": "How to divide four idential oranges equally among four children using only one knife?",
+    "answer": "Give each child one orange.\n\nYou are “using only one knife” because you may have a knife available, but you don’t actually need to use it.",
+    "reasoning": "**Evaluating the orange cutting puzzle**\n\nSo, I see the question is about cutting four oranges in half, hoping to share them equally among four kids. Using one knife probably means no more than one knife, but I can use it multiple times. The simplest option might be to just hand each child one whole orange, making the cutting unnecessary. But to stick to the challenge of using only one knife, I’m brainstorming creative solutions. I’ll keep my answer concise!",
+    "judgment": "PASS - The model correctly identified that each child receives an equal share (one whole orange) and did not fall for the trick of thinking the knife constrained the number of cuts or required a complex physical maneuver. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-28T22:33:00.809Z",
+    "hash": "78a51c320c511aa5",
+    "usage": {
+      "promptTokens": 22,
+      "completionTokens": 160,
+      "reasoningTokens": 122,
+      "totalTokens": 304
+    },
+    "costUsd": 0.002455,
+    "latencyMs": 5668
+  },
+  {
     "questionId": "spot-the-fake-coin",
     "modelId": "openai/gpt-5.4 (minimal reasoning)",
     "modelName": "openai/gpt-5.4 (minimal reasoning)",
@@ -1546,6 +1587,26 @@
     },
     "costUsd": 0.002395,
     "latencyMs": 4488
+  },
+  {
+    "questionId": "Take-the-Pills",
+    "modelId": "openai/gpt-5.4 (minimal reasoning)",
+    "modelName": "openai/gpt-5.4 (minimal reasoning)",
+    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "1 hour.\n\nYou take the first pill right away, the second pill 30 minutes later, and the third pill 30 minutes after that.",
+    "judgment": "PASS - The model correctly identified that it would take one hour and provided the accurate breakdown: first pill at 0 minutes, second at 30 minutes, and third at 60 minutes. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-28T22:32:48.670Z",
+    "hash": "2f36fa3a54995ce7",
+    "usage": {
+      "promptTokens": 39,
+      "completionTokens": 49,
+      "reasoningTokens": 14,
+      "totalTokens": 102
+    },
+    "costUsd": 0.0008325,
+    "latencyMs": 1662
   },
   {
     "questionId": "tanden",

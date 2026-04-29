@@ -15,21 +15,21 @@
     "questionId": "AES-decypt",
     "modelId": "meta-llama/llama-3.1-70b-instruct",
     "modelName": "meta-llama/llama-3.1-70b-instruct",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me.",
-    "answer": "I'd be happy to help you decrypt the message.\n\nBefore we begin, I'll need to clarify a few things:\n\n1. **AES encryption**: AES is a symmetric-key block cipher, which means it uses the same key for both encryption and decryption.\n2. **Password**: You've provided the password, but I'll need to derive a key from it. I'll assume you used a standard key derivation function like PBKDF2 (Password-Based Key Derivation Function 2).\n3. **IV (Initialization Vector)**: You've provided the IV, which is used to initialize the AES encryption process.\n4. **CBC (Cipher Block Chaining) mode**: This is the encryption mode you used.\n\nTo decrypt the message, I'll need to:\n\n1. Derive the key from the password using PBKDF2.\n2. Use the derived key, IV, and CBC mode to decrypt the encrypted blob.\n\nHere's the decryption process in Python:\n```python\nimport hashlib\nimport hmac\nimport struct\nfrom cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes\nfrom cryptography.hazmat.primitives import padding\n\n# Define the password, IV, and encrypted blob\npassword = b\"Thisisthepasswor\"\niv = b\"these are 16bytes\"\nencrypted_blob = b\"2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a\"\n\n# Derive the key from the password using PBKDF2\nsalt = b\"\"  # No salt is used in this example\niterations = 1000  # You can adjust this value\nkey_len = 32  # 256-bit key (32 bytes)\n\nkey = hashlib.pbkdf2_hmac(\"sha256\", password, salt, iterations, key_len)\n\n# Create a Cipher object with the derived key, IV, and CBC mode\ncipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=None)\n\n# Decrypt the encrypted blob\ndecryptor = cipher.decryptor()\npt = decryptor.update(encrypted_blob) + decryptor.finalize()\n\n# Remove any padding\npadder = padding.PKCS7(128).padder()\nunpadder = padding.PKCS7(128).unpadder()\npt = unpadder.update(pt) + unpadder.finalize()\n\nprint(pt.decode(\"utf-8\"))  # Print the decrypted message\n```\n**Please note that this code assumes you used the `hashlib` library and the `cryptography` library (which you can install using `pip install cryptography`). Also, I've used the `sha256` hash function for PBKDF2, but you can adjust this value if needed.**\n\nRun this code, and it should print the decrypted message.",
-    "judgment": "FAIL - The model failed to decrypt the blob. Instead of providing the decrypted message, it provided a Python script that assumes the use of PBKDF2 (which was not specified) and requires the user to run the code themselves to see the result. CONFIDENCE: HIGH",
+    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
+    "answer": "I cannot provide you with the decrypted message. If you need help with decrypting the message, I can guide you through the process. Would that help?",
+    "judgment": "FAIL - The model refused to decrypt the message and did not provide the required cleartext. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-05T22:53:13.816Z",
-    "hash": "d782f2075f6b07c0",
+    "timestamp": "2026-04-29T01:17:54.017Z",
+    "hash": "bdf20131450b77c8",
     "usage": {
-      "promptTokens": 130,
-      "completionTokens": 585,
+      "promptTokens": 145,
+      "completionTokens": 32,
       "reasoningTokens": 0,
-      "totalTokens": 715
+      "totalTokens": 177
     },
-    "costUsd": 0.000286,
-    "latencyMs": 15107
+    "costUsd": 0.0000708,
+    "latencyMs": 1912
   },
   {
     "questionId": "alive-siblings",
@@ -594,6 +594,26 @@
     "hash": "01f495274b767a87"
   },
   {
+    "questionId": "overtake",
+    "modelId": "meta-llama/llama-3.1-70b-instruct",
+    "modelName": "meta-llama/llama-3.1-70b-instruct",
+    "question": "If you overtake the person in second place in a race, what position are you in?",
+    "answer": "If you overtake the person in second place, that means you've moved ahead of them. So, you would now be in second place!",
+    "judgment": "PASS - The model correctly identified that overtaking the person in second place puts you in second place. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T01:18:04.583Z",
+    "hash": "0b4d5c24e7521bce",
+    "usage": {
+      "promptTokens": 29,
+      "completionTokens": 30,
+      "reasoningTokens": 0,
+      "totalTokens": 59
+    },
+    "costUsd": 0.0000236,
+    "latencyMs": 4005
+  },
+  {
     "questionId": "prompt-engineering",
     "modelId": "meta-llama/llama-3.1-70b-instruct",
     "modelName": "meta-llama/llama-3.1-70b-instruct",
@@ -878,6 +898,26 @@
     "hash": "cb1147f94001772f"
   },
   {
+    "questionId": "Split-the-orange",
+    "modelId": "meta-llama/llama-3.1-70b-instruct",
+    "modelName": "meta-llama/llama-3.1-70b-instruct",
+    "question": "How to divide four idential oranges equally among four children using only one knife?",
+    "answer": "The question doesn't specify the method or speed. Therefore, the answer is to make the knife jump between oranges four times each.",
+    "judgment": "FAIL - The model's answer is nonsensical and does not provide a coherent method that results in each child receiving an equal share. It fails to explain a practical distribution, such as giving each child one orange or cutting them in a specific way. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T01:18:36.448Z",
+    "hash": "78a51c320c511aa5",
+    "usage": {
+      "promptTokens": 26,
+      "completionTokens": 27,
+      "reasoningTokens": 0,
+      "totalTokens": 53
+    },
+    "costUsd": 0.0000212,
+    "latencyMs": 1020
+  },
+  {
     "questionId": "spot-the-fake-coin",
     "modelId": "meta-llama/llama-3.1-70b-instruct",
     "modelName": "meta-llama/llama-3.1-70b-instruct",
@@ -960,6 +1000,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-24T19:31:51.049Z",
     "hash": "0d5c2e1bef65a52f"
+  },
+  {
+    "questionId": "Take-the-Pills",
+    "modelId": "meta-llama/llama-3.1-70b-instruct",
+    "modelName": "meta-llama/llama-3.1-70b-instruct",
+    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "\n\nA simple but great question!\n\nLet's break it down:\n\n* You take the first pill at time 0 (initially).\n* You take the second pill 30 minutes later (half an hour after the first pill).\n* You take the third pill 30 minutes after that (another half an hour).\n\nSo, the sequence is:\n\n1. Pill 1 at 0 minutes\n2. Pill 2 at 30 minutes\n3. Pill 3 at 60 minutes\n\nTherefore, it would take 1 hour (60 minutes) for all three pills to have been taken.",
+    "judgment": "PASS - The model correctly identified that taking three pills at 30-minute intervals takes exactly one hour, noting that the first pill is taken at time zero. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T01:18:27.463Z",
+    "hash": "2f36fa3a54995ce7",
+    "usage": {
+      "promptTokens": 47,
+      "completionTokens": 121,
+      "reasoningTokens": 0,
+      "totalTokens": 168
+    },
+    "costUsd": 0.00012096,
+    "latencyMs": 14508
   },
   {
     "questionId": "tanden",

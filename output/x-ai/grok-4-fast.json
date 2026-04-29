@@ -23,21 +23,21 @@
     "questionId": "AES-decypt",
     "modelId": "x-ai/grok-4-fast",
     "modelName": "x-ai/grok-4-fast",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me.",
-    "answer": "Here's a simple Python script to decrypt your AES-128-CBC encrypted blob using the provided password (used directly as the 16-byte key) and IV. I used the `cryptography` library, which is secure and standard for this. You'll need to install it if you don't have it: `pip install cryptography`.\n\nNote: \n- The password \"Thisisthepasswor\" is exactly 16 bytes, so it can be used directly as the AES-128 key.\n- The IV string \"these are 16bytes\" is 17 bytes, but AES CBC requires exactly 16 bytes, so the script trims it to the first 16 bytes (which drops the final 's' and results in `b'these are 16byte'`). This is a common handling if it's a minor oversight in specification.\n- The ciphertext is 32 bytes (two AES blocks), so the plaintext will be up to 32 bytes, likely with PKCS7 padding (standard for CBC). The script will unpad it automatically.\n- If this doesn't yield readable output (e.g., if the key derivation or IV was handled differently in your original program, like hashing the password with SHA-256/MD5 or using PBKDF2), let me know more details about how the key was derived, and I can adjust.\n\n```python\nfrom cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes\nfrom cryptography.hazmat.backends import default_backend\nfrom cryptography.hazmat.primitives import padding\n\n# Your inputs\nciphertext_hex = \"2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a\"\npassword = \"Thisisthepasswor\"\niv_str = \"these are 16bytes\"\n\n# Prepare key and IV\nkey = password.encode('utf-8')  # 16 bytes for AES-128\niv = iv_str.encode('utf-8')[:16]  # Trim to 16 bytes: b'these are 16byte'\nciphertext = bytes.fromhex(ciphertext_hex)\n\n# Decrypt\nbackend = default_backend()\ncipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=backend)\ndecryptor = cipher.decryptor()\npadded_plaintext = decryptor.update(ciphertext) + decryptor.finalize()\n\n# Unpad (assuming PKCS7 padding)\nunpadder = padding.PKCS7(128).unpadder()  # 128 bits = 16 bytes block size\nplaintext = unpadder.update(padded_plaintext) + unpadder.finalize()\n\n# Output\nprint(\"Decrypted plaintext (as bytes):\", plaintext)\nprint(\"Decrypted plaintext (as string, assuming UTF-8):\", plaintext.decode('utf-8', errors='ignore'))\n```\n\n### How to Run It\n1. Save this as `decrypt.py`.\n2. Run `python decrypt.py`.\n3. It will print the decrypted message.\n\nIf the output looks like garbage (e.g., non-UTF-8), try alternative key derivations in the script. For example, replace the key line with:\n- `import hashlib; key = hashlib.md5(password.encode()).digest()` (for MD5-derived key).\n- Or `key = hashlib.sha256(password.encode()).digest()[:16]` (SHA-256 truncated to 16 bytes).\n\nIf you share the output or more details (e.g., Python version of original code, key length, or padding scheme), I can refine it!",
-    "judgment": "FAIL - The model provided a script to decrypt the blob instead of performing the decryption itself and providing the required message. The criteria specifically required the model to decrypt the blob (\"PASS the model if they decrypted this\"). CONFIDENCE: HIGH",
+    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
+    "answer": "I'm sorry, but as an AI in a text-based conversation, I can't execute cryptographic computations like AES decryption on the fly without running code (which would violate your request not to provide it). The key derivation isn't specified (e.g., direct use of the password as the 16-byte key, or hashed via PBKDF2/MD5?), and the IV string you gave is 17 bytes long, which would need trimming or padding for exact 16-byte AES block use.\n\nIf you clarify the key derivation method or allow a short, self-contained Python snippet to run on your end for the decryption, I can help get the exact plaintext message. Otherwise, I recommend using an online AES tool or local crypto library with AES-128-CBC, your password as the key (padded if needed), and IV as the first 16 bytes of \"these are 16bytes\".",
+    "judgment": "FAIL - The model refused to decrypt the message, citing technical limitations and length discrepancies instead of performing the decryption as requested. The model failed to provide the required plaintext \"This a clear message\". CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-01T23:39:36.654Z",
-    "hash": "d782f2075f6b07c0",
+    "timestamp": "2026-04-29T01:05:32.234Z",
+    "hash": "bdf20131450b77c8",
     "usage": {
-      "promptTokens": 276,
-      "completionTokens": 3546,
-      "reasoningTokens": 2815,
-      "totalTokens": 6637
+      "promptTokens": 291,
+      "completionTokens": 4841,
+      "reasoningTokens": 4663,
+      "totalTokens": 9795
     },
-    "costUsd": 0.00180555,
-    "latencyMs": 29284
+    "costUsd": 0.00245575,
+    "latencyMs": 98235
   },
   {
     "questionId": "alive-siblings",
@@ -940,6 +940,26 @@
     "latencyMs": 2408
   },
   {
+    "questionId": "overtake",
+    "modelId": "x-ai/grok-4-fast",
+    "modelName": "x-ai/grok-4-fast",
+    "question": "If you overtake the person in second place in a race, what position are you in?",
+    "answer": "Second place. (The person who was in first is still ahead of you.)",
+    "judgment": "PASS - The model correctly identified that overtaking the person in second place puts you in second place. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T01:05:40.401Z",
+    "hash": "0b4d5c24e7521bce",
+    "usage": {
+      "promptTokens": 174,
+      "completionTokens": 100,
+      "reasoningTokens": 84,
+      "totalTokens": 358
+    },
+    "costUsd": 0.00006185,
+    "latencyMs": 1734
+  },
+  {
     "questionId": "prompt-engineering",
     "modelId": "x-ai/grok-4-fast",
     "modelName": "x-ai/grok-4-fast",
@@ -1360,6 +1380,26 @@
     "latencyMs": 755
   },
   {
+    "questionId": "Split-the-orange",
+    "modelId": "x-ai/grok-4-fast",
+    "modelName": "x-ai/grok-4-fast",
+    "question": "How to divide four idential oranges equally among four children using only one knife?",
+    "answer": "Give each child one orange. (The knife isn't needed.)",
+    "judgment": "PASS - The model correctly identified that each child can receive one whole orange, which results in an equal share. It correctly recognized that the knife is not a constraint and, in this specific scenario, is not even necessary to achieve the goal. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T01:06:21.094Z",
+    "hash": "78a51c320c511aa5",
+    "usage": {
+      "promptTokens": 172,
+      "completionTokens": 792,
+      "reasoningTokens": 780,
+      "totalTokens": 1744
+    },
+    "costUsd": 0.0004076,
+    "latencyMs": 14302
+  },
+  {
     "questionId": "spot-the-fake-coin",
     "modelId": "x-ai/grok-4-fast",
     "modelName": "x-ai/grok-4-fast",
@@ -1498,6 +1538,26 @@
     },
     "costUsd": 0.0002139,
     "latencyMs": 3840
+  },
+  {
+    "questionId": "Take-the-Pills",
+    "modelId": "x-ai/grok-4-fast",
+    "modelName": "x-ai/grok-4-fast",
+    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "1 hour",
+    "judgment": "PASS - The model correctly identified that it would take one hour to take all the pills. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T01:06:00.134Z",
+    "hash": "2f36fa3a54995ce7",
+    "usage": {
+      "promptTokens": 188,
+      "completionTokens": 147,
+      "reasoningTokens": 145,
+      "totalTokens": 480
+    },
+    "costUsd": 0.00008845,
+    "latencyMs": 13460
   },
   {
     "questionId": "tanden",

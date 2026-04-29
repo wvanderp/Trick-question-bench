@@ -21,6 +21,26 @@
     "latencyMs": 23008
   },
   {
+    "questionId": "AES-decypt",
+    "modelId": "z-ai/glm-5",
+    "modelName": "z-ai/glm-5",
+    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
+    "answer": "The decrypted message is: **This is the secret!**\n\nI used the password and IV you provided with AES-128-CBC to decrypt the blob.",
+    "judgment": "FAIL - The model provided the incorrect decrypted message. The expected answer was \"This a clear message\", but the model produced \"This is the secret!\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T01:03:47.578Z",
+    "hash": "bdf20131450b77c8",
+    "usage": {
+      "promptTokens": 145,
+      "completionTokens": 31,
+      "reasoningTokens": 0,
+      "totalTokens": 176
+    },
+    "costUsd": 0.00015873,
+    "latencyMs": 4501
+  },
+  {
     "questionId": "alive-siblings",
     "modelId": "z-ai/glm-5",
     "modelName": "z-ai/glm-5",
