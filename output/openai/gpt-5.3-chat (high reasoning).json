@@ -23,21 +23,21 @@
     "questionId": "AES-decypt",
     "modelId": "openai/gpt-5.3-chat (high reasoning)",
     "modelName": "openai/gpt-5.3-chat (high reasoning)",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me.",
-    "answer": "I can’t directly decrypt it for you here, but I can help you reconstruct exactly how to do it — and there’s a catch: what you’ve provided isn’t quite enough to guarantee a correct decryption.\n\nAES doesn’t use a “password” directly as a key unless you did something very specific. A few critical details are missing:\n\n- How the password was turned into a key  \n  (e.g., raw bytes? SHA-256 hash? PBKDF2 with salt?)\n- Padding scheme (likely PKCS#7, but not guaranteed)\n- Encoding of the blob (your string looks like hex, which is good)\n\nThat said, we can try the most common interpretation:\n- AES-128 (because your password is 16 bytes)\n- Key = raw UTF-8 bytes of \"Thisisthepasswor\"\n- IV = raw UTF-8 bytes of \"these are 16bytes\"\n- Mode = CBC\n- Ciphertext = hex-decoded blob\n- Padding = PKCS#7\n\nHere’s a quick Python snippet you can run locally:\n\n```python\nfrom Crypto.Cipher import AES\nfrom binascii import unhexlify\n\nkey = b'Thisisthepasswor'\niv = b'these are 16bytes'\nciphertext = unhexlify('2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a')\n\ncipher = AES.new(key, AES.MODE_CBC, iv)\nplaintext = cipher.decrypt(ciphertext)\n\n# remove PKCS#7 padding\npad_len = plaintext[-1]\nplaintext = plaintext[:-pad_len]\n\nprint(plaintext)\n```\n\nIf that doesn’t give readable output, then one of these is different:\n- The key was derived (e.g., SHA-256(password))\n- The IV or password encoding differs (UTF-16, etc.)\n- The padding is different\n- The ciphertext isn’t actually hex (but it looks like it is)\n\nIf you can remember *anything* about how you generated the key (especially if you used a library), tell me — that’s the missing piece.",
-    "judgment": "FAIL - The model refused to decrypt the message itself (\"I can't directly decrypt it for you here\") and instead provided code for the user to do it. The criteria specifically required the model to decrypt the blob to the string \"This a clear message\". CONFIDENCE: HIGH",
+    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
+    "answer": "I can’t reliably decrypt this as-is because the IV you provided isn’t 16 bytes long, which is required for AES-CBC.\n\n\"these are 16bytes\" is actually 17 characters, not 16. Even being off by one byte completely changes the result.\n\nIf you can confirm the exact IV (it must be exactly 16 bytes), I can decrypt it for you.",
+    "judgment": "FAIL\nThe model failed to decrypt the blob. It refused to perform the decryption based on a technicality regarding the IV length (counting 17 characters instead of 16), which prevented it from reaching the required answer: \"This a clear message\". \n\nCONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-01T23:59:03.484Z",
-    "hash": "d782f2075f6b07c0",
+    "timestamp": "2026-04-29T21:48:13.365Z",
+    "hash": "bdf20131450b77c8",
     "usage": {
-      "promptTokens": 126,
-      "completionTokens": 522,
-      "reasoningTokens": 64,
-      "totalTokens": 712
+      "promptTokens": 141,
+      "completionTokens": 576,
+      "reasoningTokens": 448,
+      "totalTokens": 1165
     },
-    "costUsd": 0.0075285,
-    "latencyMs": 6685
+    "costUsd": 0.00831075,
+    "latencyMs": 8522
   },
   {
     "questionId": "alive-siblings",
@@ -1384,20 +1384,20 @@
     "modelId": "openai/gpt-5.3-chat (high reasoning)",
     "modelName": "openai/gpt-5.3-chat (high reasoning)",
     "question": "How to divide four idential oranges equally among four children using only one knife?",
-    "answer": "Stack the four oranges together and cut through all of them at once with a single slice. That gives 8 halves. Give each child 2 halves—so each gets one whole orange.",
-    "judgment": "PASS - The model correctly identifies that each child receives an equal share (one whole orange's worth). It does not treat the \"one knife\" as a limit on the number of cuts and provides a logical, albeit physically ambitious, method for distribution. CONFIDENCE: HIGH",
-    "passed": true,
+    "answer": "Stack the four oranges together and use the knife to make two cuts:\n\n- First cut straight through the middle (halving all four at once).\n- Then rotate and make a second cut perpendicular to the first.\n\nYou’ll end up with 16 equal pieces. Give each child 4 pieces — that’s exactly one orange each.",
+    "judgment": "FAIL - The model incorrectly treats the single knife as a limit to the number of cuts allowed by suggesting a method (stacking/lining up oranges) designed to cut through all of them at once. The instructions specifically state to FAIL answers that suggest stacking or lining up oranges to cut through all of them in a single slice, as this implies a misunderstanding of the constraint. CONFIDENCE: HIGH",
+    "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-25T20:04:06.845Z",
-    "hash": "c0ec9d5a4d33c61b",
+    "timestamp": "2026-04-29T21:48:23.033Z",
+    "hash": "78a51c320c511aa5",
     "usage": {
       "promptTokens": 22,
-      "completionTokens": 114,
+      "completionTokens": 153,
       "reasoningTokens": 64,
-      "totalTokens": 200
+      "totalTokens": 239
     },
-    "costUsd": 0.0016345,
-    "latencyMs": 2234
+    "costUsd": 0.0021805,
+    "latencyMs": 3247
   },
   {
     "questionId": "spot-the-fake-coin",

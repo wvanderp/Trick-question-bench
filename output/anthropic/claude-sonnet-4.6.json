@@ -15,21 +15,21 @@
     "questionId": "AES-decypt",
     "modelId": "anthropic/claude-sonnet-4.6",
     "modelName": "anthropic/claude-sonnet-4.6",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me.",
-    "answer": "# AES-CBC Decryption\n\nLet me work through this for you.\n\n## Parameters\n- **Ciphertext (hex):** `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a`\n- **Key:** `Thisisthepasswor` (16 bytes = AES-128)\n- **IV:** `these are 16bytes`\n- **Mode:** CBC\n\n## ⚠️ Issue Found\n\nLet me flag a couple of things first:\n\n1. Your **IV is 17 bytes**, not 16 — `these are 16bytes` is actually **17 characters**. This would cause an error in most AES implementations.\n2. Your ciphertext is **31 bytes** in hex... wait, let me recount:\n\n`2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` = **63 hex characters** which is not an even number, meaning it's **not valid hex** (must be even).\n\n## Result\n\nI **cannot decrypt this** because:\n\n| Problem | Detail |\n|---|---|\n| Invalid hex blob | 63 hex chars (must be even) |\n| IV wrong length | 17 bytes (must be exactly 16) |\n\n## ✅ What You Should Do\n\nUse Python to decrypt once you verify your parameters:\n\n```python\nfrom Crypto.Cipher import AES\n\nkey = b'Thisisthepasswor'  # 16 bytes\niv = b'these are 16byte'   # fix to 16 bytes\nciphertext = bytes.fromhex('your_corrected_hex')\n\ncipher = AES.new(key, AES.MODE_CBC, iv)\nplaintext = cipher.decrypt(ciphertext)\nprint(plaintext)\n```\n\nCould you **double-check** your hex blob and IV? There may have been a copy/paste error.",
-    "judgment": "FAIL - The model refused to decrypt the message, claiming the hex was invalid (63 characters) and the IV was the wrong length. In reality, the hex blob provided was 64 characters long (32 bytes), and while the IV string was 17 characters, the model failed to attempt the decryption or identify the hidden message \"This a clear message\" as requested by the evaluation criteria. CONFIDENCE: HIGH",
+    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
+    "answer": "I'll decrypt this for you.\n\n**There's an issue I need to flag first:**\n\nYour IV is **17 bytes** (`these are 16bytes`) — AES-CBC requires exactly **16 bytes**. This would have caused an error in most implementations.\n\n**Also:** The blob you provided is **31 hex characters**, which is an odd number and not valid hex (needs to be even), and even if padded it would be 15.5 bytes — **not a valid AES block size** (must be a multiple of 16 bytes).\n\n---\n\n**Could you double-check:**\n\n1. The **blob** — is it possible you're missing a character? (should be 32 hex chars for one block)\n2. The **IV** — is it `these are 16 byte` (16 chars) or something else?\n\nWith these inconsistencies, any decryption attempt would produce garbage or an error. If you can verify those details, I'm happy to work through the result with you.",
+    "judgment": "FAIL - The model did not decrypt the message. While it correctly identified technical inconsistencies in the user's prompt (the odd number of hex characters in the blob and the length of the IV), it ultimately failed to provide the decrypted string required for a PASS. \n\nCONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T02:34:56.222Z",
-    "hash": "d782f2075f6b07c0",
+    "timestamp": "2026-04-29T22:36:56.655Z",
+    "hash": "bdf20131450b77c8",
     "usage": {
-      "promptTokens": 133,
-      "completionTokens": 485,
+      "promptTokens": 148,
+      "completionTokens": 229,
       "reasoningTokens": 0,
-      "totalTokens": 618
+      "totalTokens": 377
     },
-    "costUsd": 0.007674,
-    "latencyMs": 8577
+    "costUsd": 0.003879,
+    "latencyMs": 6292
   },
   {
     "questionId": "alive-siblings",
@@ -594,6 +594,26 @@
     "hash": "01f495274b767a87"
   },
   {
+    "questionId": "overtake",
+    "modelId": "anthropic/claude-sonnet-4.6",
+    "modelName": "anthropic/claude-sonnet-4.6",
+    "question": "If you overtake the person in second place in a race, what position are you in?",
+    "answer": "If you overtake the person in **second place**, you take their position — so you are now in **second place**.\n\n(You would only be in first place if you overtook the person who was *leading* the race.)",
+    "judgment": "PASS - The model correctly identified that overtaking the person in second place puts you in second place. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T22:37:05.580Z",
+    "hash": "0b4d5c24e7521bce",
+    "usage": {
+      "promptTokens": 26,
+      "completionTokens": 51,
+      "reasoningTokens": 0,
+      "totalTokens": 77
+    },
+    "costUsd": 0.000843,
+    "latencyMs": 2835
+  },
+  {
     "questionId": "prompt-engineering",
     "modelId": "anthropic/claude-sonnet-4.6",
     "modelName": "anthropic/claude-sonnet-4.6",
@@ -878,6 +898,26 @@
     "hash": "cb1147f94001772f"
   },
   {
+    "questionId": "Split-the-orange",
+    "modelId": "anthropic/claude-sonnet-4.6",
+    "modelName": "anthropic/claude-sonnet-4.6",
+    "question": "How to divide four idential oranges equally among four children using only one knife?",
+    "answer": "## Solution\n\nThis is simpler than it might seem!\n\n**Give each child one orange.**\n\nSince there are **4 identical oranges** and **4 children**, each child receives **1 whole orange** — no cutting required at all! 🍊\n\n---\n\nThe trick in this riddle is that it mentions \"only one knife,\" which makes you *assume* cutting is necessary. But the simplest equal division is just **one orange per child**, making the knife irrelevant.",
+    "judgment": "PASS - The model correctly identified the most efficient way to divide four oranges among four children, which is giving each one whole orange. It avoided the trap of assuming the knife must be used for complex cutting. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T22:37:25.864Z",
+    "hash": "78a51c320c511aa5",
+    "usage": {
+      "promptTokens": 24,
+      "completionTokens": 109,
+      "reasoningTokens": 0,
+      "totalTokens": 133
+    },
+    "costUsd": 0.001707,
+    "latencyMs": 3537
+  },
+  {
     "questionId": "spot-the-fake-coin",
     "modelId": "anthropic/claude-sonnet-4.6",
     "modelName": "anthropic/claude-sonnet-4.6",
@@ -960,6 +1000,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-23T23:50:43.855Z",
     "hash": "0d5c2e1bef65a52f"
+  },
+  {
+    "questionId": "Take-the-Pills",
+    "modelId": "anthropic/claude-sonnet-4.6",
+    "modelName": "anthropic/claude-sonnet-4.6",
+    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "## The Answer is **1 Hour**\n\nHere's why:\n\n| Time | Action |\n|------|--------|\n| 0:00 | Take pill #1 |\n| 0:30 | Take pill #2 |\n| 1:00 | Take pill #3 |\n\nIt's a common intuition to say **1.5 hours**, but you take the **first pill immediately**, so you only need to wait **two** 30-minute intervals after that, totaling **1 hour**.",
+    "judgment": "PASS - The model correctly identified that it would take one hour and provided a detailed breakdown explaining why the first pill is taken at the start (T-0). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-04-29T22:37:15.203Z",
+    "hash": "2f36fa3a54995ce7",
+    "usage": {
+      "promptTokens": 40,
+      "completionTokens": 120,
+      "reasoningTokens": 0,
+      "totalTokens": 160
+    },
+    "costUsd": 0.00192,
+    "latencyMs": 3356
   },
   {
     "questionId": "tanden",
