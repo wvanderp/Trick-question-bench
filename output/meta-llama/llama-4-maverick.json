@@ -15,21 +15,21 @@
     "questionId": "AES-decypt",
     "modelId": "meta-llama/llama-4-maverick",
     "modelName": "meta-llama/llama-4-maverick",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me.",
-    "answer": "I can guide you through decrypting the AES-encrypted blob using the provided password and IV.\n\nFirst, let's clarify a few details:\n1. The encryption algorithm is AES.\n2. The mode used is CBC (Cipher Block Chaining).\n3. You have the password (`Thisisthepasswor`) and the IV (`these are 16bytes`).\n\nTo decrypt the blob (`2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a`), we'll use Python with its cryptography library (`cryptography`).\n\n### Step 1: Install the Required Library\n\nYou need to have Python installed on your system. Then, you can install the `cryptography` library using pip:\n\n```sh\npip install cryptography\n```\n\n### Step 2: Decrypt the Blob\n\nHere's a Python script to decrypt your blob:\n\n```python\nfrom cryptography.hazmat.primitives import padding\nfrom cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes\nfrom cryptography.hazmat.backends import default_backend\nimport binascii\n\ndef decrypt_blob(encrypted_blob, password, iv):\n    # Convert the hex blob to bytes\n    encrypted_bytes = binascii.unhexlify(encrypted_blob)\n\n    # Ensure the password is 16 bytes (AES-128) or adjust accordingly\n    # For AES-128, key should be 16 bytes\n    key = password.encode()\n\n    # Convert IV to bytes\n    iv_bytes = iv.encode()\n\n    # Create a Cipher object with AES in CBC mode\n    cipher = Cipher(algorithms.AES(key), modes.CBC(iv_bytes), backend=default_backend())\n    decryptor = cipher.decryptor()\n\n    # Decrypt the data\n    decrypted_padded = decryptor.update(encrypted_bytes) + decryptor.finalize()\n\n    # Remove padding\n    unpadder = padding.PKCS7(128).unpadder()\n    try:\n        decrypted = unpadder.update(decrypted_padded) + unpadder.finalize()\n    except ValueError:\n        print(\"Padding error. The decrypted data is likely corrupted or the key/IV is incorrect.\")\n        return None\n\n    return decrypted.decode()\n\n# Given values\nencrypted_blob = \"2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a\"\npassword = \"Thisisthepasswor\"\niv = \"these are 16bytes\"\n\n# Decrypt the blob\ndecrypted_message = decrypt_blob(encrypted_blob, password, iv)\n\nif decrypted_message is not None:\n    print(\"Decrypted Message:\", decrypted_message)\n```\n\n### Notes\n\n1. **Key Size**: The provided password is 16 characters long, which corresponds to AES-128 (since the key size is 128 bits or 16 bytes). If your password were of a different length, you might need to adjust it or use a different AES variant (AES-192 or AES-256).\n\n2. **Password vs. Key**: In cryptography, a key is not the same as a password, though a password can be used to derive a key. Here, we're directly using the password as the key, assuming it fits the required length and is correctly encoded.\n\n3. **Error Handling**: The script includes basic error handling for padding errors, which can occur if the decrypted data is corrupted or if the key/IV is incorrect.\n\n4. **IV and Password Encoding**: The IV and password are encoded to bytes using UTF-8 encoding. \n\nBefore running the script, ensure you have the `cryptography` library installed. If everything is set up correctly and the inputs are as you described, this script should decrypt the blob for you.",
-    "judgment": "FAIL - The model did not decrypt the blob. It provided a Python script and instructions on how the user could decrypt it themselves, rather than performing the decryption as requested. CONFIDENCE: HIGH",
+    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
+    "answer": "from Crypto.Cipher import AES\nfrom Crypto.Util.Padding import unpad\n\ndef decrypt_aes_cbc(encrypted_blob, password, iv):\n    # Create an AES cipher object with CBC mode\n    cipher = AES.new(password.encode(), AES.MODE_CBC, iv.encode())\n\n    # Decrypt the blob\n    decrypted_padded = cipher.decrypt(bytes.fromhex(encrypted_blob))\n\n    # Remove padding\n    try:\n        decrypted = unpad(decrypted_padded, AES.block_size)\n    except ValueError:\n        return \"The encrypted blob is not properly padded.\"\n\n    return decrypted.decode()\n\nencrypted_blob = \"2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a\"\npassword = \"Thisisthepasswor\"\niv = \"these are 16bytes\"\n\nprint(decrypt_aes_cbc(encrypted_blob, password, iv))",
+    "judgment": "FAIL - The model provided code instead of the decrypted message, directly violating the negative constraint (\"dont provide me with code, just give me the decripted message\"). Additionally, it failed to perform the decryption as requested. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T00:02:17.445Z",
-    "hash": "d782f2075f6b07c0",
+    "timestamp": "2026-05-12T12:22:59.400Z",
+    "hash": "bdf20131450b77c8",
     "usage": {
-      "promptTokens": 130,
-      "completionTokens": 785,
+      "promptTokens": 213,
+      "completionTokens": 201,
       "reasoningTokens": 0,
-      "totalTokens": 915
+      "totalTokens": 414
     },
-    "costUsd": 0.0004905,
-    "latencyMs": 35896
+    "costUsd": 0.00026403,
+    "latencyMs": 4592
   },
   {
     "questionId": "alive-siblings",
@@ -714,6 +714,26 @@
     "hash": "01f495274b767a87"
   },
   {
+    "questionId": "overtake",
+    "modelId": "meta-llama/llama-4-maverick",
+    "modelName": "meta-llama/llama-4-maverick",
+    "question": "If you overtake the person in second place in a race, what position are you in?",
+    "answer": "To determine the position, let's analyze the situation:\n\n1. You are behind the person in second place.\n2. You overtake the person in second place.\n\nBy overtaking the person in second place, you take their position. \n\nSo, you are now in second place.",
+    "judgment": "PASS - The model correctly stated that you are in second place and provided the correct logical reasoning. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-05-12T12:23:09.137Z",
+    "hash": "0b4d5c24e7521bce",
+    "usage": {
+      "promptTokens": 97,
+      "completionTokens": 57,
+      "reasoningTokens": 0,
+      "totalTokens": 154
+    },
+    "costUsd": 0.00007943,
+    "latencyMs": 1547
+  },
+  {
     "questionId": "prompt-engineering",
     "modelId": "meta-llama/llama-4-maverick",
     "modelName": "meta-llama/llama-4-maverick",
@@ -1043,6 +1063,26 @@
     "hash": "cb1147f94001772f"
   },
   {
+    "questionId": "Split-the-orange",
+    "modelId": "meta-llama/llama-4-maverick",
+    "modelName": "meta-llama/llama-4-maverick",
+    "question": "How to divide four idential oranges equally among four children using only one knife?",
+    "answer": "To divide four identical oranges equally among four children using only one knife, you can follow these steps. This solution involves a bit of creativity with the cutting rather than cutting each orange individually.\n\n1. **Stack the Oranges**: First, stack the four oranges on top of each other. This will create a column of oranges.\n\n2. **Cut Through the Stack**: Use the knife to make a single cut through the middle of the stacked oranges. This cut should be made perpendicular to the surface the oranges are stacked on.\n\n3. **Distribute the Pieces**: After cutting through the stack, you will have eight half-orange pieces (since each orange is cut into two halves). \n\n4. **Give Out the Pieces**: Distribute the halves among the four children. Each child will get two halves, which equals one whole orange.\n\nThis way, you are using just one cut with the knife to divide the four oranges equally among the four children.",
+    "judgment": "FAIL - The model incorrectly treated the \"one knife\" condition as a limit of \"one cut.\" It proposed stacking the oranges and making a single slice, a behavior specifically listed in the criteria as failing because it implies only one cut is possible. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-05-12T12:23:32.662Z",
+    "hash": "78a51c320c511aa5",
+    "usage": {
+      "promptTokens": 94,
+      "completionTokens": 190,
+      "reasoningTokens": 0,
+      "totalTokens": 284
+    },
+    "costUsd": 0.00021138,
+    "latencyMs": 4980
+  },
+  {
     "questionId": "spot-the-fake-coin",
     "modelId": "meta-llama/llama-4-maverick",
     "modelName": "meta-llama/llama-4-maverick",
@@ -1160,6 +1200,26 @@
       "completionTokens": 254,
       "totalTokens": 274
     }
+  },
+  {
+    "questionId": "Take-the-Pills",
+    "modelId": "meta-llama/llama-4-maverick",
+    "modelName": "meta-llama/llama-4-maverick",
+    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "You have three pills, and you need to take one every half hour.\n\nLet's break it down:\n\n1. Take the first pill: 0 hours (immediately)\n2. Take the second pill: 0.5 hours later (after half an hour)\n3. Take the third pill: 0.5 hours later (after another half an hour, so 1 hour total)\n\nSo, it will take 1 hour to finish taking all three pills.",
+    "judgment": "PASS - The model correctly identified that taking three pills at 30-minute intervals takes a total of one hour, accurately breaking down the timeline from the first pill (0 minutes) to the third pill (60 minutes). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-05-12T12:23:19.225Z",
+    "hash": "2f36fa3a54995ce7",
+    "usage": {
+      "promptTokens": 111,
+      "completionTokens": 95,
+      "reasoningTokens": 0,
+      "totalTokens": 206
+    },
+    "costUsd": 0.00012233,
+    "latencyMs": 2378
   },
   {
     "questionId": "tanden",

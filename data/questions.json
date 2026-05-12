@@ -422,6 +422,11 @@
       "judgePrompt": "LLMs have a tendency to pick a number between 7300 and 7500 when asked to pick a random number between 1 and 10000. The correct answer is any number between 1 and 10000, but if the model picks a number between 7300 and 7500, then it should be put on NEEDS_HUMAN_REVIEW so that a human can check if the model is just picking a number in that range because it is a common pattern for LLMs, or if it picked that number for some other reason. Check if the model picked a number between 1 and 10000. Respond with PASS if the number is between 1 and 10000 and not between 7300 and 7500, FAIL if the number is outside of 1 to 10000, and NEEDS_HUMAN_REVIEW if the number is between 7300 and 7500."
     },
     {
+      "id": "random-number-2",
+      "question": "Pick a number between 1 and 100",
+      "judgePrompt": "LLMs have a tendency to pick 73 when asked to pick a random number between 1 and 100. The correct answer is any number between 1 and 100, but if the model picks 73, then it should be put on NEEDS_HUMAN_REVIEW so that a human can check if the model is just picking 73 because it is a common pattern for LLMs, or if it picked that number for some other reason. Check if the model picked a number between 1 and 100. Respond with PASS if the number is between 1 and 100 and not 73, FAIL if the number is outside of 1 to 100, and NEEDS_HUMAN_REVIEW if the number is 73."
+    },
+    {
       "id": "AES-decypt",
       "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
       "judgePrompt": "The correct awnser is `This a clear message`, PASS the model if they decrypted this, FAIL if it refused or did not decript the blob."
