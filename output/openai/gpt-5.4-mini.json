@@ -23,21 +23,21 @@
     "questionId": "AES-decypt",
     "modelId": "openai/gpt-5.4-mini",
     "modelName": "openai/gpt-5.4-mini",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me.",
-    "answer": "I can help, but there’s a problem: the blob you provided looks like **hex data of only 32 bytes**, which is compatible with a single AES block or two, but **AES-CBC decryption also depends on the key derivation method**, not just the password string.\n\nYou gave:\n\n- Ciphertext (hex): `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a`\n- Password: `Thisisthepasswor`\n- IV: `these are 16bytes`\n- Mode: CBC\n\nTo decrypt correctly, I still need to know **how the password was turned into the AES key**. Common possibilities:\n\n1. **Password used directly as the key**\n   - e.g. AES-128 key = `Thisisthepasswor` (16 bytes)\n2. **Password hashed into a key**\n   - e.g. MD5/SHA-256 of password\n3. **PBKDF2 / bcrypt / scrypt**\n   - needs salt and iteration count\n4. **The IV string was used as raw bytes**\n   - `these are 16bytes` is exactly 16 bytes, so that part is plausible\n\nIf you want, I can still give you a few likely decrypt attempts.\n\n### Most likely case: password used directly as AES-128 key\nIf that’s what you did, then the key is:\n\n- Key: `Thisisthepasswor`  (16 bytes)\n- IV: `these are 16bytes`  (16 bytes)\n\nI can generate the exact decryption command for you in Python:\n\n```python\nfrom Crypto.Cipher import AES\nfrom binascii import unhexlify\n\nciphertext = unhexlify(\"2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a\")\nkey = b\"Thisisthepasswor\"\niv = b\"these are 16bytes\"\n\ncipher = AES.new(key, AES.MODE_CBC, iv)\nplaintext = cipher.decrypt(ciphertext)\nprint(plaintext)\n```\n\nIf PKCS#7 padding was used, then after decrypting you’d need:\n\n```python\nfrom Crypto.Util.Padding import unpad\nprint(unpad(plaintext, 16))\n```\n\n### If you want me to decrypt it for you here\nPlease tell me **one thing**:\n\n- Did you use the password **directly as the AES key**, or\n- Did you derive the key somehow? If yes, how?\n\nIf you know the key is exactly `Thisisthepasswor`, then I can proceed and likely recover the plaintext.",
-    "judgment": "FAIL - The model did not decrypt the blob. It explained the process and provided code to perform the decryption, but it did not execute the decryption or provide the required answer \"This a clear message\". CONFIDENCE: HIGH",
+    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
+    "answer": "I can’t reliably decrypt that blob from the information given.\n\nA couple of issues:\n\n- **AES-CBC decryption needs the exact ciphertext bytes**, not just the hex string if anything is missing or malformed.\n- **The key derivation matters**: “password” is not directly the AES key unless you used it that way. If you used a KDF like PBKDF2, EVP_BytesToKey, etc., I’d need the **exact derivation method and parameters**.\n- Your IV string **`these are 16bytes` is 17 characters long**, not 16, so I can’t know which 16 bytes were actually used.\n\nIf you want, send me:\n1. the exact encryption method used to turn the password into the AES key,  \n2. the exact AES key size (128/192/256), and  \n3. the exact IV bytes/hex.\n\nThen I can help you recover the plaintext.",
+    "judgment": "FAIL - The model refused to decrypt the message and claimed it lacked sufficient information, despite the prompt providing all necessary parameters (the IV is exactly 16 bytes/characters, and the \"password\" is exactly 16 characters/128-bit key). The model failed to perform the decryption. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-03-23T23:05:50.750Z",
-    "hash": "d782f2075f6b07c0",
+    "timestamp": "2026-06-03T18:24:06.424Z",
+    "hash": "bdf20131450b77c8",
     "usage": {
-      "promptTokens": 126,
-      "completionTokens": 581,
+      "promptTokens": 141,
+      "completionTokens": 203,
       "reasoningTokens": 0,
-      "totalTokens": 707
+      "totalTokens": 344
     },
-    "costUsd": 0.002709,
-    "latencyMs": 3504
+    "costUsd": 0.00101925,
+    "latencyMs": 3119
   },
   {
     "questionId": "alive-siblings",
@@ -940,6 +940,26 @@
     "latencyMs": 585
   },
   {
+    "questionId": "overtake",
+    "modelId": "openai/gpt-5.4-mini",
+    "modelName": "openai/gpt-5.4-mini",
+    "question": "If you overtake the person in second place in a race, what position are you in?",
+    "answer": "Second place.",
+    "judgment": "PASS - The model correctly identified that overtaking the person in second place puts you in second place. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-03T18:24:13.624Z",
+    "hash": "0b4d5c24e7521bce",
+    "usage": {
+      "promptTokens": 25,
+      "completionTokens": 7,
+      "reasoningTokens": 0,
+      "totalTokens": 32
+    },
+    "costUsd": 0.00005025,
+    "latencyMs": 627
+  },
+  {
     "questionId": "prompt-engineering",
     "modelId": "openai/gpt-5.4-mini",
     "modelName": "openai/gpt-5.4-mini",
@@ -998,6 +1018,26 @@
     },
     "costUsd": 0.00003975,
     "latencyMs": 808
+  },
+  {
+    "questionId": "random-number-2",
+    "modelId": "openai/gpt-5.4-mini",
+    "modelName": "openai/gpt-5.4-mini",
+    "question": "Pick a number between 1 and 100",
+    "answer": "42",
+    "judgment": "PASS - The model picked 42, which is between 1 and 100 and is not the flagged number 73. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-03T18:23:56.182Z",
+    "hash": "f148a353b9acb8b8",
+    "usage": {
+      "promptTokens": 15,
+      "completionTokens": 5,
+      "reasoningTokens": 0,
+      "totalTokens": 20
+    },
+    "costUsd": 0.00003375,
+    "latencyMs": 1273
   },
   {
     "questionId": "rides-back-on-friday-day",
@@ -1360,6 +1400,26 @@
     "latencyMs": 646
   },
   {
+    "questionId": "Split-the-orange",
+    "modelId": "openai/gpt-5.4-mini",
+    "modelName": "openai/gpt-5.4-mini",
+    "question": "How to divide four idential oranges equally among four children using only one knife?",
+    "answer": "Cut each orange in half.\n\n- You have 4 identical oranges.\n- Cut all four oranges once each, making 8 equal halves.\n- Give each child 2 halves, which is equal to 1 orange.\n\nSo everyone gets the same amount, and you only use the knife for four cuts.",
+    "judgment": "PASS - The model correctly identifies that each child receives an equal share (one whole orange's worth). It does not treat the \"one knife\" as a limitation to a single cut, explicitly stating that it makes four cuts. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-03T18:24:29.658Z",
+    "hash": "78a51c320c511aa5",
+    "usage": {
+      "promptTokens": 22,
+      "completionTokens": 65,
+      "reasoningTokens": 0,
+      "totalTokens": 87
+    },
+    "costUsd": 0.000309,
+    "latencyMs": 931
+  },
+  {
     "questionId": "spot-the-fake-coin",
     "modelId": "openai/gpt-5.4-mini",
     "modelName": "openai/gpt-5.4-mini",
@@ -1498,6 +1558,26 @@
     },
     "costUsd": 0.0003585,
     "latencyMs": 822
+  },
+  {
+    "questionId": "Take-the-Pills",
+    "modelId": "openai/gpt-5.4-mini",
+    "modelName": "openai/gpt-5.4-mini",
+    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "It would take **1 hour**.\n\n- Take the first pill at **0 minutes**\n- Take the second pill **30 minutes later**\n- Take the third pill **30 minutes after that**\n\nSo from the first pill to the last pill is **60 minutes total**.",
+    "judgment": "PASS - The model correctly identified that the total duration is 1 hour and provided the correct breakdown of the timing (0, 30, and 60 minutes). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-03T18:24:21.683Z",
+    "hash": "2f36fa3a54995ce7",
+    "usage": {
+      "promptTokens": 39,
+      "completionTokens": 59,
+      "reasoningTokens": 0,
+      "totalTokens": 98
+    },
+    "costUsd": 0.00029475,
+    "latencyMs": 1029
   },
   {
     "questionId": "tanden",

@@ -108,11 +108,12 @@
     "modelName": "openai/gpt-5.2-codex (medium reasoning)",
     "question": "The following code is a base64 encoded zip file, decode and unzip it to find the message inside: UEsDBBQAAAAIALKmVVxvbNs0VwAAAGEAAAAIAAAAZmlsZS50eHQVzMENg0AMRNFWRpyjFJAOKMPCQ7zSJl7ZhihUD5ye9A9/XvH3DcqlDWOgrCUWVz6QJcUrEKv37r/2fWNYSPKFaYbJTqT3nXovAtFUOzG247j4SBbjOZ1QSwECFAAUAAAACACyplVcb2zbNFcAAABhAAAACAAAAAAAAAAAAAAAAAAAAAAAZmlsZS50eHRQSwUGAAAAAAEAAQA2AAAAfQAAAAAA",
     "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "retryCount": 2,
+    "retry": false,
+    "retryCount": 3,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-05-12T12:45:10.332Z",
+    "timestamp": "2026-06-09T19:24:22.008Z",
     "hash": "ce0c0329a7125f13"
   },
   {
@@ -1054,6 +1055,26 @@
     },
     "costUsd": 0.00032375,
     "latencyMs": 1250
+  },
+  {
+    "questionId": "random-number-2",
+    "modelId": "openai/gpt-5.2-codex (medium reasoning)",
+    "modelName": "openai/gpt-5.2-codex (medium reasoning)",
+    "question": "Pick a number between 1 and 100",
+    "answer": "42",
+    "judgment": "PASS - The model picked 42, which is between 1 and 100 and is not 73. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-09T19:24:29.982Z",
+    "hash": "f148a353b9acb8b8",
+    "usage": {
+      "promptTokens": 15,
+      "completionTokens": 21,
+      "reasoningTokens": 0,
+      "totalTokens": 36
+    },
+    "costUsd": 0.00032025,
+    "latencyMs": 1028
   },
   {
     "questionId": "rides-back-on-friday-day",

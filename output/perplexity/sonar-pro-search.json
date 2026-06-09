@@ -16,21 +16,21 @@
     "questionId": "AES-decypt",
     "modelId": "perplexity/sonar-pro-search",
     "modelName": "perplexity/sonar-pro-search",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me.",
-    "answer": "I can't directly decrypt the AES-encrypted blob for you, as I don't have the capability to execute code or perform cryptographic operations like key derivation and decryption in this environment.[1][4]\n\nThe blob appears to be a raw hex-encoded ciphertext (without prepended IV, based on its 64 hex chars = 32 bytes, a multiple of AES block size), intended for decryption with AES-CBC using the provided password-derived key and IV.[8]\n\n## Decryption Steps\nTo decrypt it yourself, install `pycryptodome` (`pip install pycryptodome`), then run Python 3 code like this (using a common legacy method to derive a 32-byte AES-256 key via MD5 hashing the password, as seen in many older AES examples):[1]\n\n```\nfrom Crypto.Cipher import AES\nfrom Crypto.Util.Padding import unpad\nimport hashlib\n\nblob_hex = '2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a'\nciphertext = bytes.fromhex(blob_hex)  # Convert hex to bytes \npassword = 'Thisisthepasswor'\niv = 'these are 16bytes'.encode('utf-8')[:16]  # Ensure exactly 16 bytes \n\n# Derive 32-byte key (common for AES-256 with short passwords): hash MD5 repeatedly \nkey = hashlib.md5(password.encode()).digest()\nwhile len(key) < 32:\n    key += hashlib.md5(key).digest()\nkey = key[:32]\n\ncipher = AES.new(key, AES.MODE_CBC, iv)\npadded_plaintext = cipher.decrypt(ciphertext)\nplaintext = unpad(padded_plaintext, AES.block_size).decode('utf-8', errors='ignore')\nprint(plaintext)\n```\n\nIf MD5 hashing doesn't work (e.g., yields garbage), try alternatives like `hashlib.pbkdf2_hmac('sha256', password.encode(), b'', 1000, 32)` or SHA-256 hashing (`hashlib.sha256(password.encode('utf-8')).digest()` padded to 32 bytes).[17]\n\n## Online Tools (Use with Caution)\nFor quick testing, paste the hex blob into tools supporting raw hex input, CBC mode, your password/IV, and manual key entry (derive key locally first). Avoid sharing sensitive data.\n\nIf this doesn't yield readable text, the key derivation may use a different method (e.g., PBKDF2 with salt/iterations) from your original program—reply with more details like the language/framework used.",
-    "judgment": "FAIL - The model refused to decrypt the message, stating it does not have the capability to perform cryptographic operations. It provided a Python script for the user to run instead of providing the decrypted text \"This a clear message\". CONFIDENCE: HIGH",
+    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
+    "answer": "I can’t reliably decrypt that blob from the information given, because CBC mode needs the exact key-derivation method and padding details, not just the password and IV [3][5][7]. Also, the value you gave looks like a hex string, but a 64-character hex string by itself is not enough to determine the plaintext without the exact AES key and how the password was turned into it [3][4].\n\n## What’s missing\nIf you used a password-based scheme, I’d need to know the KDF, such as PBKDF2, EVP_BytesToKey, or something else, plus any salt and iteration count [3][5][8]. If you used a raw AES key directly, I’d need the exact key bytes, because the password `Thisisthepasswor` is only 16 characters and may or may not be the actual key depending on how you encoded it [2][8].\n\n## IV note\nYour IV `these are 16bytes` is 17 characters as written, so it does not match the 16-byte IV size required for AES-CBC unless there was an encoding or transcription difference [5]. Without the exact 16-byte IV and the exact key derivation, any decryption result would just be guesswork [5].\n\nIf you want, send me the exact encryption format you used, especially whether the password was used directly as the key or passed through a KDF.",
+    "judgment": "FAIL - The model failed to decrypt the message. It focused on technical ambiguity and missing parameters rather than providing the decrypted string \"This a clear message\". CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T00:04:08.881Z",
-    "hash": "d782f2075f6b07c0",
+    "timestamp": "2026-06-03T18:26:10.744Z",
+    "hash": "bdf20131450b77c8",
     "usage": {
-      "promptTokens": 121,
-      "completionTokens": 554,
+      "promptTokens": 136,
+      "completionTokens": 303,
       "reasoningTokens": 0,
-      "totalTokens": 675
+      "totalTokens": 439
     },
-    "costUsd": 0.01867,
-    "latencyMs": 12496
+    "costUsd": 0.01495,
+    "latencyMs": 5220
   },
   {
     "questionId": "alive-siblings",
@@ -775,6 +775,26 @@
     "hash": "01f495274b767a87"
   },
   {
+    "questionId": "overtake",
+    "modelId": "perplexity/sonar-pro-search",
+    "modelName": "perplexity/sonar-pro-search",
+    "question": "If you overtake the person in second place in a race, what position are you in?",
+    "answer": "You would now be in **second place**.\n\n## Why it’s second place\n\nWhen you overtake the person in second place, you take *their* position in the race. [3][6]  \nThe runner who was previously second drops to third, while the original first-place runner stays ahead of you, so you are now second. [5][6]\n\nThis question is often used as a quick riddle because many people instinctively answer “first place,” forgetting that you only passed the runner in second, not the one in first. [3][6]Have you heard any similar trick questions or riddles that you want to check?",
+    "judgment": "PASS - The model correctly identified that you would be in second place and provided the accurate reasoning for why it is not first place. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-03T18:26:23.196Z",
+    "hash": "0b4d5c24e7521bce",
+    "usage": {
+      "promptTokens": 20,
+      "completionTokens": 136,
+      "reasoningTokens": 0,
+      "totalTokens": 156
+    },
+    "costUsd": 0.0121,
+    "latencyMs": 5988
+  },
+  {
     "questionId": "prompt-engineering",
     "modelId": "perplexity/sonar-pro-search",
     "modelName": "perplexity/sonar-pro-search",
@@ -825,6 +845,27 @@
     },
     "costUsd": 0.01005,
     "latencyMs": 680
+  },
+  {
+    "questionId": "random-number-2",
+    "modelId": "perplexity/sonar-pro-search",
+    "modelName": "perplexity/sonar-pro-search",
+    "question": "Pick a number between 1 and 100",
+    "answer": "73",
+    "reasoning": "Choosing a number between 1 and 100",
+    "judgment": "NEEDS_HUMAN_REVIEW\nThe model picked 73, which according to the provided instructions requires a human to verify if it is following a common LLM pattern or choosing for another reason.\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-03T18:25:57.511Z",
+    "hash": "f148a353b9acb8b8",
+    "usage": {
+      "promptTokens": 10,
+      "completionTokens": 1,
+      "reasoningTokens": 0,
+      "totalTokens": 11
+    },
+    "costUsd": 0.01005,
+    "latencyMs": 2220
   },
   {
     "questionId": "rides-back-on-friday-day",
@@ -1130,6 +1171,27 @@
     "hash": "cb1147f94001772f"
   },
   {
+    "questionId": "Split-the-orange",
+    "modelId": "perplexity/sonar-pro-search",
+    "modelName": "perplexity/sonar-pro-search",
+    "question": "How to divide four idential oranges equally among four children using only one knife?",
+    "answer": "Line up the four oranges in a straight row and make one straight cut through all of them at once; this gives eight equal halves, and each child gets two halves. [2][4]\n\n## How the method works\n\n- Place the four identical oranges so their centers lie roughly along a straight line. [2][4]  \n- Use the knife to make a single straight cut that passes through the center of each orange, slicing all four into halves in one motion. [2][4]  \n- You now have eight equal halves; give each of the four children two halves, so everyone receives the same amount of orange. [2][4]Would you like a few similar fair-division puzzles with explanations to practice?",
+    "reasoning": "Preparing a clear explanation of how to divide four identical oranges equally among four children with one knife",
+    "judgment": "FAIL - The model incorrectly treats the single knife as a limit to the number of cuts allowed by suggesting that the oranges must be lined up to be cut in a single motion. According to the criteria, this approach implies that only one cut is possible, which fails the assessment. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-03T18:26:49.176Z",
+    "hash": "78a51c320c511aa5",
+    "usage": {
+      "promptTokens": 17,
+      "completionTokens": 152,
+      "reasoningTokens": 0,
+      "totalTokens": 169
+    },
+    "costUsd": 0.01233,
+    "latencyMs": 6381
+  },
+  {
     "questionId": "spot-the-fake-coin",
     "modelId": "perplexity/sonar-pro-search",
     "modelName": "perplexity/sonar-pro-search",
@@ -1262,6 +1324,26 @@
     },
     "costUsd": 0.01366,
     "latencyMs": 6164
+  },
+  {
+    "questionId": "Take-the-Pills",
+    "modelId": "perplexity/sonar-pro-search",
+    "modelName": "perplexity/sonar-pro-search",
+    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "It would take 1 hour for all three pills to be taken. [1][2][4][6]\n\n## How the timing works\n\nYou take the first pill right away at time 0. [1][2]  \nYou take the second pill 30 minutes later, at 0:30. [1][2]  \nYou take the third pill 30 minutes after that, at 1:00. [1][2][4][6]  \n\nSo from the first pill to the third pill is a total of 1 hour. [1][4][6]Do you want to see how this changes if, instead, the doctor meant “finish all pills within a certain total time”?",
+    "judgment": "PASS - The model correctly identified that it would take one hour and provided a detailed breakdown of the timing (0, 30, and 60 minutes). CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-03T18:26:36.119Z",
+    "hash": "2f36fa3a54995ce7",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 156,
+      "reasoningTokens": 0,
+      "totalTokens": 190
+    },
+    "costUsd": 0.01244,
+    "latencyMs": 5934
   },
   {
     "questionId": "tanden",
