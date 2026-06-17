@@ -75,6 +75,26 @@
     "hash": "e962eb9f9a9a742c"
   },
   {
+    "questionId": "Balls-bouncing",
+    "modelId": "anthropic/claude-sonnet-4.5",
+    "modelName": "anthropic/claude-sonnet-4.5",
+    "question": "what if I throw a bouncing ball up and a bowling ball down and there is air resistance, which one will bounce higher",
+    "answer": "# Analysis with Air Resistance\n\n**The bowling ball thrown downward will bounce higher.**\n\nHere's why:\n\n## Key Factors\n\n1. **Initial kinetic energy at impact**\n   - The bowling ball thrown downward gains speed from both your throw AND gravity\n   - The bouncing ball thrown upward must first decelerate to zero, then accelerate back down - it only has gravitational acceleration working for it on the way down\n\n2. **Air resistance effects**\n   - Air resistance opposes motion in both directions\n   - The lighter bouncing ball loses a much larger *percentage* of its energy to air resistance (force scales with velocity², but deceleration = force/mass)\n   - The bowling ball's greater mass makes it much less affected by air resistance relative to its momentum\n\n3. **Impact velocity**\n   - The bowling ball hits the ground with much higher velocity\n   - Even though bowling balls have poor coefficients of restitution (~0.2-0.3 compared to ~0.8+ for bouncy balls), the much higher impact velocity more than compensates\n\n## The Math Sketch\n- If you throw both with equal effort (say 10 m/s), the bowling ball hits at roughly 10 m/s + falling speed\n- The bouncy ball rises, loses energy to air resistance, falls back down with less speed than if there were no air\n- Higher impact energy × even mediocre bounce efficiency > lower impact energy × good bounce efficiency",
+    "judgment": "FAIL - The model explicitly concludes that the bowling ball will bounce higher, which contradicts the provided correct answer. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-17T22:13:25.885Z",
+    "hash": "e92a9f718a0e04b2",
+    "usage": {
+      "promptTokens": 32,
+      "completionTokens": 322,
+      "reasoningTokens": 0,
+      "totalTokens": 354
+    },
+    "costUsd": 0.004926,
+    "latencyMs": 9349
+  },
+  {
     "questionId": "base-64-zip",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",

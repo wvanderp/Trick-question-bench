@@ -100,6 +100,26 @@
     "latencyMs": 28994
   },
   {
+    "questionId": "Balls-bouncing",
+    "modelId": "openai/gpt-5.3-codex (xhigh reasoning)",
+    "modelName": "openai/gpt-5.3-codex (xhigh reasoning)",
+    "question": "what if I throw a bouncing ball up and a bowling ball down and there is air resistance, which one will bounce higher",
+    "answer": "Great question. The key is:\n\n\\[\nh_{\\text{bounce}} \\propto (e\\,v_{\\text{impact}})^2\n\\]\n\n- \\(v_{\\text{impact}}\\): speed when it hits the ground  \n- \\(e\\): how “bouncy” the ball is (coefficient of restitution)\n\nWith air resistance, a ball thrown **up first** loses extra energy on the way up and down, so it usually hits slower than one thrown down (if they were the same ball).\n\nBut in your case, a **bowling ball** has a very low \\(e\\) (barely bounces), while a **bouncy ball** has a high \\(e\\). That difference usually dominates.\n\n✅ So in real life, the **bouncy ball will bounce much higher**.  \n(If both balls had the same bounciness, the one thrown downward would bounce higher with air resistance.)",
+    "judgment": "PASS - The model explicitly states that the \"bouncy ball will bounce much higher,\" which matches the correct answer criteria. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-17T22:26:05.495Z",
+    "hash": "e92a9f718a0e04b2",
+    "usage": {
+      "promptTokens": 30,
+      "completionTokens": 2655,
+      "reasoningTokens": 2459,
+      "totalTokens": 5144
+    },
+    "costUsd": 0.0372225,
+    "latencyMs": 40574
+  },
+  {
     "questionId": "base-64-zip",
     "modelId": "openai/gpt-5.3-codex (xhigh reasoning)",
     "modelName": "openai/gpt-5.3-codex (xhigh reasoning)",
