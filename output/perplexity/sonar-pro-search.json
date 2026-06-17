@@ -84,6 +84,26 @@
     "latencyMs": 10160
   },
   {
+    "questionId": "Balls-bouncing",
+    "modelId": "perplexity/sonar-pro-search",
+    "modelName": "perplexity/sonar-pro-search",
+    "question": "what if I throw a bouncing ball up and a bowling ball down and there is air resistance, which one will bounce higher",
+    "answer": "The bowling ball will almost always bounce higher than the light bouncy ball in this scenario, mainly because it loses a much smaller fraction of its energy to air resistance on the way down.\n\n## Key ideas\n\n- Bounce height is set (to first approximation) by:\n  \\[\n  h_{\\text{bounce}} \\approx e^2\\,h_{\\text{impact}}\n  \\]\n  where \\(e\\) is the coefficient of restitution (“bounciness”) of the ball–ground collision, and \\(h_{\\text{impact}}\\) is the height corresponding to the speed at impact.   \n- A typical rubber “bouncy ball” has a high \\(e\\), but it is light and has relatively large area, so air resistance removes a big fraction of its energy during flight. [4]  \n- A bowling ball has a moderate \\(e\\) (around 0.7–0.8 in sports contexts) but is very heavy for its size, so air drag is relatively small compared with its weight, and it reaches the ground with speed closer to what it would have without air resistance. [9][4]  \n\nTogether, that means the bowling ball generally hits the ground with much more kinetic energy than the bouncy ball, so even with a lower “bounciness factor” it can rebound to a higher height.\n\n## Role of air resistance\n\nFor motion in air, drag force roughly scales with cross‑sectional area and the square of speed, while weight scales with mass. [4]  \n\n- For a **small, light bouncy ball**, the drag force is a large fraction of its weight, especially when you throw it up fast, so it slows down a lot during the trip up and down. At any given height, it is significantly slower on the way down than you would expect in vacuum, so it arrives with less kinetic energy and bounces to a lower height. [7]  \n- For a **dense, heavy bowling ball**, the same sized drag force is small compared with its weight, so its speed on the way down is much closer to the ideal no‑air case. It retains more of its gravitational potential energy as kinetic energy at impact. [4]  \n\nThis “mass beats drag” effect is stronger for larger, denser spheres: mass rises roughly with radius cubed, while drag rises with radius squared, so the ratio of weight to drag gets larger for bigger, denser balls. [4]  \n\n## Bounciness (coefficient of restitution)\n\nThe coefficient of restitution \\(e\\) is defined as the ratio of speed after a bounce to speed before the bounce when hitting a surface.   \n\n- \\(e = 1\\): perfectly elastic, would bounce back to the original height (without air).   \n- Typical sports or rubber balls have fairly high \\(e\\); they are designed to be elastic. [5]  \n- Bowling balls used in play have \\(e\\) in the 0.7–0.8 range for collisions with pins; against a hard lane‑like surface the effective \\(e\\) is in that same “reasonably bouncy but not crazy” range. [9]  \n\nEven if the bouncy ball has a somewhat higher \\(e\\) than the bowling ball, the bowling ball’s much larger impact speed (due to less drag loss) can more than compensate, giving it a higher rebound.\n\n## What your setup implies\n\nYou specified:\n\n- The bouncy ball is thrown **upward**.  \n  - It fights both gravity and air resistance on the way up, losing a lot of energy to drag when its speed is high. [7]  \n  - On the way down, it is again slowed by drag, so by the time it hits the ground, its speed is notably reduced compared to vacuum.   \n\n- The bowling ball is thrown **downward**.  \n  - Gravity and your throw act in the same direction, and although air resistance opposes the motion, its effect is relatively small compared with the ball’s weight, so the ball reaches a high impact speed. [4]  \n\nBecause bounce height depends strongly on impact speed, the downward‑thrown bowling ball will generally have a much larger impact speed and thus a higher bounce, even though its material is less “bouncy” than a superball’s.   \n\n## When could the lighter ball win?\n\nYou could make the small bouncy ball bounce higher only if:\n\n- Its coefficient of restitution is **much** larger than the bowling ball’s, and  \n- You do not lose too much energy to air resistance (for example, by throwing it gently rather than very fast, or by doing the experiment in a thinner atmosphere or vacuum).   \n\nIn normal air with a hard downward throw for the bowling ball and an upward throw for the bouncy ball, the heavier bowling ball is expected to bounce higher.",
+    "judgment": "FAIL - The model explicitly states that the bowling ball will bounce higher, contradicting the required answer. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-17T23:18:47.875Z",
+    "hash": "e92a9f718a0e04b2",
+    "usage": {
+      "promptTokens": 25,
+      "completionTokens": 993,
+      "reasoningTokens": 0,
+      "totalTokens": 1018
+    },
+    "costUsd": 0.02497,
+    "latencyMs": 13527
+  },
+  {
     "questionId": "base-64-zip",
     "modelId": "perplexity/sonar-pro-search",
     "modelName": "perplexity/sonar-pro-search",

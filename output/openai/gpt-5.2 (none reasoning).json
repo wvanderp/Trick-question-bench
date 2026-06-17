@@ -100,6 +100,26 @@
     "latencyMs": 2510
   },
   {
+    "questionId": "Balls-bouncing",
+    "modelId": "openai/gpt-5.2 (none reasoning)",
+    "modelName": "openai/gpt-5.2 (none reasoning)",
+    "question": "what if I throw a bouncing ball up and a bowling ball down and there is air resistance, which one will bounce higher",
+    "answer": "With air resistance included, the **bouncing ball thrown upward will bounce higher** (all else equal: same drop/throw point, same ground, same “bounciness”/coefficient of restitution).\n\nWhy:\n\n- **Air resistance removes mechanical energy**. The amount lost depends strongly on speed and on the object’s drag relative to its weight (roughly, drag force scales like \\(v^2\\), while “ability to ignore drag” scales with mass).\n\n- **Bowling ball thrown downward hits the ground faster**, but on the way down it experiences **drag upward**, which **reduces** its speed compared with the no-air case. Still, it generally arrives with a lot of kinetic energy because it’s heavy and has a high weight-to-drag ratio.\n\n- **After the bounce, the bowling ball’s upward motion is strongly opposed by drag**, which acts downward and can remove a large amount of energy on the way up. If the bounce gives it a very high upward speed, the air drag on that fast upward leg is big, so it “bleeds off” height.\n\n- The **bouncing ball that was thrown upward** starts with energy going into gravity *and* drag (both slow it), so it comes back down with **less** speed than it would in vacuum. That means its bounce-launch speed is lower, and because drag losses grow rapidly with speed, it tends to lose **less** energy to drag on the post-bounce ascent than a very fast-rebounding heavy ball would.\n\nSo air resistance tends to penalize the case that creates the **largest speeds** around the bounce, and that’s typically the “thrown downward” case.\n\nCaveats / when the answer could flip:\n\n- If the “bouncing ball” is something like a very light, very draggy ball (e.g., a small rubber ball or ping‑pong ball) and the “bowling ball” is heavy and streamlined by comparison, then the bowling ball may be **less affected by air drag overall**, and could bounce higher depending on the actual bounce efficiency and speeds.\n- If the two objects have very different **coefficients of restitution** (how “bouncy” they are), that dominates everything: the more elastic one will bounce higher.\n- Real bowling balls don’t bounce much at all on most surfaces.\n\nIf you tell me the approximate sizes/masses (e.g., tennis ball vs bowling ball) and how hard you throw them (or the heights), I can give a more definite comparison.",
+    "judgment": "PASS - The model's answer explicitly states in the first paragraph that \"the bouncing ball thrown upward will bounce higher.\" CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-17T23:32:03.111Z",
+    "hash": "e92a9f718a0e04b2",
+    "usage": {
+      "promptTokens": 30,
+      "completionTokens": 516,
+      "reasoningTokens": 0,
+      "totalTokens": 546
+    },
+    "costUsd": 0.0072765,
+    "latencyMs": 10216
+  },
+  {
     "questionId": "base-64-zip",
     "modelId": "openai/gpt-5.2 (none reasoning)",
     "modelName": "openai/gpt-5.2 (none reasoning)",

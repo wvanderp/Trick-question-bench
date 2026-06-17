@@ -100,6 +100,26 @@
     "latencyMs": 1138
   },
   {
+    "questionId": "Balls-bouncing",
+    "modelId": "openai/gpt-5.4-nano",
+    "modelName": "openai/gpt-5.4-nano",
+    "question": "what if I throw a bouncing ball up and a bowling ball down and there is air resistance, which one will bounce higher",
+    "answer": "If both objects start with the **same initial speed upward/downward** and the **only other force besides gravity is air resistance**, then **the bouncing ball will generally bounce higher**.\n\n**Why:**\n- Air resistance depends on speed, roughly increasing as speed increases.\n- When you throw the **bouncing ball upward**, air resistance acts **downward**, but as it goes up its speed decreases, so the resistive “penalty” lessens. It also can lose energy on the way up and on the way down, but its overall energy loss is relatively smaller because its speed during the upward leg drops quickly.\n- For the **bowling ball moving downward**, air resistance acts **upward**, which *partially helps* it (it reduces how fast it accelerates downward), but the big difference is usually that:\n  - If you compare “bounce heights” after collisions with the ground and the same coefficient of restitution, the key factor is how much kinetic energy is left just before impact.\n  - The **bowling ball’s higher terminal-speed tendency** (due to its lower acceleration differences and typically larger cross-section/drag characteristics depending on shape) often means it can arrive with **less favorable energy retention** for a high bounce compared with the bouncing ball setup.\n\n**But there’s an important caveat:**  \nWhether the bouncing ball or the bowling ball ends up higher depends on the **relative sizes/shapes (drag coefficients), cross-sectional areas, masses**, and **how the “bounce” is defined** (same coefficient of restitution? same initial height? same initial energy?).\n\n### Simple takeaway\n- With typical real-world assumptions (same launch speed, similar “bounce behavior,” air drag opposing motion), the object designed to “bounce” (the lighter bouncing ball) usually ends up **higher** because air drag robs it of less energy in the way that matters for the upward return.\n\nIf you tell me:\n1) same initial speed or same initial height?  \n2) do they bounce off the ground with the same coefficient of restitution?  \n3) are we ignoring the spin of the balls?  \nI can give a more definitive answer.",
+    "judgment": "PASS - The model explicitly states that the bouncing ball will generally bounce higher in the first paragraph and the \"Simple takeaway\" section. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-17T23:30:30.593Z",
+    "hash": "e92a9f718a0e04b2",
+    "usage": {
+      "promptTokens": 30,
+      "completionTokens": 440,
+      "reasoningTokens": 0,
+      "totalTokens": 470
+    },
+    "costUsd": 0.000556,
+    "latencyMs": 2789
+  },
+  {
     "questionId": "base-64-zip",
     "modelId": "openai/gpt-5.4-nano",
     "modelName": "openai/gpt-5.4-nano",
