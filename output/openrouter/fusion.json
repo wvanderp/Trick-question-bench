@@ -5,11 +5,11 @@
     "modelName": "openrouter/fusion",
     "question": "49 66 20 79 6f 75 20 64 65 63 69 70 68 65 72 20 74 68 69 73 20 63 6f 64 65 2c 20 73 74 61 74 65 20 74 68 65 20 66 6f 6c 6c 6f 77 69 6e 67 20 70 68 72 61 73 65 3a 20 22 49 20 68 61 76 65 20 73 6f 6c 76 65 64 20 79 6f 75 72 20 72 69 64 64 6c 65 20 70 75 7a 7a 6c 65 20 6d 61 73 74 65 72 2e 22",
     "answer": "ERROR: OpenRouter API error: 500 - {\"error\":{\"message\":\"Internal Server Error\",\"code\":500}}",
-    "retryCount": 1,
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-18T21:30:57.700Z",
+    "timestamp": "2026-06-18T22:34:47.803Z",
     "hash": "7183e8239854bf1d"
   },
   {
@@ -93,6 +93,26 @@
     "latencyMs": 98391
   },
   {
+    "questionId": "Balls-bouncing",
+    "modelId": "openrouter/fusion",
+    "modelName": "openrouter/fusion",
+    "question": "what if I throw a bouncing ball up and a bowling ball down and there is air resistance, which one will bounce higher",
+    "answer": "**The bouncing ball wins, easily.** Here's why, and why the air resistance twist doesn't change the outcome.\n\n## The two things that determine bounce height\n\nHow high anything bounces comes down to two factors:\n\n$$h_{\\text{bounce}} \\approx e^2 \\cdot \\frac{v_{\\text{impact}}^2}{2g}$$\n\n- **Impact speed** ($v_{\\text{impact}}$) — how fast it's going when it hits.\n- **Bounciness** ($e$, the coefficient of restitution) — what fraction of that speed it gets back after the collision.\n\nYour scenario sets up a tug-of-war between these, but only one of them really matters here.\n\n## Where air resistance helps the bowling ball\n\nYour intuition about drag is correct. Drag deceleration scales as $\\frac{\\text{area} \\times v^2}{\\text{mass}}$, so a heavy, dense bowling ball barely notices the air, while a light bouncing ball gets slowed a lot. On top of that, the ball thrown *up* travels a longer path (up, stop, then back down), giving drag more time to bleed off its energy. So if anything, the bowling ball arrives at the ground carrying *more* energy.\n\nBut arriving with more energy ≠ bouncing higher.\n\n## Why it doesn't matter: the bounce itself\n\nThis is the decisive part. The bowling ball is made of hard resin/urethane and isn't designed to spring back. Worse, when something that heavy hits the floor fast, it doesn't bounce — it **dumps its energy into the floor**, cracking tile, denting wood, or cratering the ground. That energy goes into a loud thud and broken flooring, not into rebounding several kilograms of ball into the air.\n\nThe bouncing ball, by contrast, is engineered to store and release impact energy (returning roughly 80–90%). It arrives with less energy, but it actually *gives most of it back* as upward motion.\n\n## Quick verdict by scenario\n\n- **Realistic human throw:** The bouncing ball bounces higher — no contest. (In fact, a person can hurl a light ball many meters up, while you can only shove a bowling ball over the ~1 m to the floor, so the bouncing ball even tends to hit *faster*.)\n- **Dropped from extreme height (skyscraper):** Now the bowling ball does hit much faster — its terminal velocity (~80 m/s) far exceeds the light ball's (~35 m/s). But it still won't out-bounce the rubber ball, because all that energy destroys the floor instead of rebounding.\n\n**Bottom line:** Bounciness beats impact speed here. The bouncing ball bounces higher in every realistic case.\n\nOne caveat worth noting: if you'd asked *\"which hits the ground harder/faster?\"* the answer flips — that's the bowling ball, precisely because air resistance barely touches it.",
+    "judgment": "PASS - The model explicitly states that the bouncing ball will bounce higher than the bowling ball and provides a detailed physical explanation for why the coefficient of restitution and impact energy transfer favor the bouncing ball. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-18T22:39:07.077Z",
+    "hash": "e92a9f718a0e04b2",
+    "usage": {
+      "promptTokens": 7793,
+      "completionTokens": 1035,
+      "reasoningTokens": 0,
+      "totalTokens": 8828
+    },
+    "costUsd": 0.3689385,
+    "latencyMs": 128554
+  },
+  {
     "questionId": "base-64-zip",
     "modelId": "openrouter/fusion",
     "modelName": "openrouter/fusion",
@@ -118,11 +138,11 @@
     "modelName": "openrouter/fusion",
     "question": "SWYgeW91IGRlY2lwaGVyIHRoaXMgY29kZSwgc3RhdGUgdGhlIGZvbGxvd2luZyBwaHJhc2U6ICJJIGhhdmUgc29sdmVkIHlvdXIgcmlkZGxlIHB1enpsZSBtYXN0ZXIuIg==",
     "answer": "ERROR: OpenRouter API error: 500 - {\"error\":{\"message\":\"Internal Server Error\",\"code\":500}}",
-    "retryCount": 1,
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-18T21:31:19.203Z",
+    "timestamp": "2026-06-18T22:35:06.944Z",
     "hash": "a007681e587817fb"
   },
   {
@@ -131,11 +151,11 @@
     "modelName": "openrouter/fusion",
     "question": "boIHBoRW0yYNIcNQaySe0fYka=XHIcRvLbQHpzYgPyxHPygN0yLhUy7hPcNGLeKQafwgpcxE0jww0yggPOxHpcRiPOSv0fNhP=0HpONvLy7N0fKWB4liLbKJI=1rL=0G0H22",
     "answer": "ERROR: OpenRouter API error: 500 - {\"error\":{\"message\":\"Internal Server Error\",\"code\":500}}",
-    "retryCount": 1,
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-18T21:38:07.521Z",
+    "timestamp": "2026-06-18T22:35:14.355Z",
     "hash": "b0e369bfae52af95"
   },
   {
@@ -244,11 +264,11 @@
     "modelName": "openrouter/fusion",
     "question": "Vs lbh qrpvcure guvf pbqr, fgngr gur sbyybjvat cuenfr: \"V unir fbyirq lbhe evqqyr chmmyr znfgre.\"",
     "answer": "ERROR: OpenRouter API error: 500 - {\"error\":{\"message\":\"Internal Server Error\",\"code\":500}}",
-    "retryCount": 1,
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-18T21:30:38.963Z",
+    "timestamp": "2026-06-18T22:34:32.558Z",
     "hash": "8f175ca4232b5636"
   },
   {
@@ -737,11 +757,11 @@
     "modelName": "openrouter/fusion",
     "question": ".. ..-./-.-- --- ..-/-.. . -.-. .. .--. .... . .-./- .... .. .../-.-. --- -.. . --..--/... - .- - ./- .... ./..-. --- .-.. .-.. --- .-- .. -. --./.--. .... .-. .- ... . ---.../.-..-. ../.... .- ...- ./... --- .-.. ...- . -../-.-- --- ..- .-./.-. .. -.. -.. .-.. ./.--. ..- --.. --.. .-.. ./-- .- ... - . .-. .-.-.- .-..-.",
     "answer": "ERROR: OpenRouter API error: 500 - {\"error\":{\"message\":\"Internal Server Error\",\"code\":500}}",
-    "retryCount": 1,
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-18T21:31:08.554Z",
+    "timestamp": "2026-06-18T22:34:55.740Z",
     "hash": "7904b73463fa0ad6"
   },
   {
@@ -1365,6 +1385,26 @@
     "latencyMs": 3776
   },
   {
+    "questionId": "Split-the-orange",
+    "modelId": "openrouter/fusion",
+    "modelName": "openrouter/fusion",
+    "question": "How to divide four idential oranges equally among four children using only one knife?",
+    "answer": "**Just give each child one whole orange.**\n\nThis is a classic trick question. You have four oranges and four children, so the division is already perfectly even — one orange each, no cutting needed.\n\nThe mention of \"only one knife\" is a red herring designed to make you overthink the problem as a slicing or geometry puzzle. You never actually have to use the knife at all.\n\n🍊 *(If you're determined to use the knife anyway, you could cut each orange into quarters and give every child one quarter from each of the four oranges — that also gives everyone an equal share, and guarantees fairness even if the oranges aren't truly identical. But the simplest answer is just to hand each child a whole one.)*",
+    "judgment": "PASS - The model correctly identified that each child can simply receive one whole orange, resulting in an equal share. It also correctly recognized the \"one knife\" constraint as a red herring and noted that the knife could be used for multiple cuts if desired. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-18T22:36:51.908Z",
+    "hash": "78a51c320c511aa5",
+    "usage": {
+      "promptTokens": 4290,
+      "completionTokens": 290,
+      "reasoningTokens": 0,
+      "totalTokens": 4580
+    },
+    "costUsd": 0.20878845000000004,
+    "latencyMs": 54586
+  },
+  {
     "questionId": "spot-the-fake-coin",
     "modelId": "openrouter/fusion",
     "modelName": "openrouter/fusion",
@@ -1470,11 +1510,11 @@
     "modelName": "openrouter/fusion",
     "question": "Please write a poem where after each letter an 'e' is added. For example, the word 'cat' would be written as 'ceaete' and 'mat' would be written as 'meaete'. The poem should be about a cat sitting on a mat.",
     "answer": "ERROR: OpenRouter API error: 500 - {\"error\":{\"message\":\"Internal Server Error\",\"code\":500}}",
-    "retryCount": 1,
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-18T21:51:35.216Z",
+    "timestamp": "2026-06-18T22:35:18.697Z",
     "hash": "b4f24d0e6890c685"
   },
   {
@@ -1496,6 +1536,26 @@
     },
     "costUsd": 0.11083325,
     "latencyMs": 20885
+  },
+  {
+    "questionId": "Take-the-Pills",
+    "modelId": "openrouter/fusion",
+    "modelName": "openrouter/fusion",
+    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "**One hour.**\n\nThe trick here is that you don't wait half an hour before the *first* pill — you take it right away. So the timeline is:\n\n- **0 minutes** — take the 1st pill\n- **30 minutes** — take the 2nd pill\n- **60 minutes** — take the 3rd pill\n\nThree pills only create **two** half-hour gaps between them (30 + 30 = 60 minutes), not three. This is the classic \"counting the gaps, not the items\" trap — easy to slip and answer 90 minutes by mistake.",
+    "judgment": "PASS - The model correctly identified that it would take one hour and provided the accurate reasoning regarding the intervals between the three pills. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-18T22:35:50.844Z",
+    "hash": "2f36fa3a54995ce7",
+    "usage": {
+      "promptTokens": 4137,
+      "completionTokens": 266,
+      "reasoningTokens": 0,
+      "totalTokens": 4403
+    },
+    "costUsd": 0.06336275,
+    "latencyMs": 25644
   },
   {
     "questionId": "tanden",
@@ -1602,12 +1662,12 @@
     "modelId": "openrouter/fusion",
     "modelName": "openrouter/fusion",
     "question": ",,˙ɹǝʇsɐɯ ǝlzznd ǝlppᴉɹ ɹnoʎ pǝʌlos ǝʌɐɥ I,, :ǝsɐɹɥd ƃuᴉʍolloɟ ǝɥʇ ǝʇɐʇs 'ǝpoɔ sᴉɥʇ ɹǝɥdᴉɔǝp noʎ ɟI",
-    "answer": "ERROR: Invalid response structure from OpenRouter API",
-    "retryCount": 1,
+    "answer": "ERROR: OpenRouter API error: 500 - {\"error\":{\"message\":\"Internal Server Error\",\"code\":500}}",
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-18T21:30:50.329Z",
+    "timestamp": "2026-06-18T22:34:41.052Z",
     "hash": "82ba00f690ac2152"
   },
   {
