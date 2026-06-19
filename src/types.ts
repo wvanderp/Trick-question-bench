@@ -3,6 +3,7 @@ export interface Question {
   question: string;
   judgePrompt: string;
   tokenLimit?: number;
+  source?: string;
 }
 
 export interface QuestionsData {
