@@ -510,6 +510,26 @@
     "latencyMs": 634
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "inception/mercury-2",
+    "modelName": "inception/mercury-2",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "The short answer is: **there’s not enough information to know for sure** – the riddle (or question) doesn’t give any clues about gender, name, or any other distinguishing detail, so either partner could be the doctor and the other could be the nurse.\n\nIf the question is meant to be a classic “stereotype‑busting” riddle, the usual punch‑line is:\n\n> **The doctor is the woman and the nurse is the man.**\n\nThat version plays on the common (but outdated) assumption that doctors are men and nurses are women, and it flips the expectation by stating that the doctor is a woman. In that case the “who” is simply the gender of each spouse.\n\nOtherwise, without any additional context (names, pronouns, or other identifiers), we can’t definitively assign the professions to either member of the couple. The answer could be:\n\n- Husband = doctor, Wife = nurse, **or**\n- Husband = nurse, Wife = doctor, **or**\n- Both partners could be any gender, and the doctor could be either one.\n\nSo the answer depends entirely on the extra information the puzzle is intended to provide. If you have a specific twist or additional detail in mind, feel free to share it and we can pin down the intended answer!",
+    "judgment": "PASS - The model explicitly states that there is not enough information to know for sure and correctly identifies that traditional gender roles are based on outdated assumptions. It covers various scenarios and avoids making a definitive assignment. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:03:27.640Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 849,
+      "reasoningTokens": 578,
+      "totalTokens": 1455
+    },
+    "costUsd": 0.00063745,
+    "latencyMs": 1276
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "inception/mercury-2",
     "modelName": "inception/mercury-2",
@@ -1154,6 +1174,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "inception/mercury-2",
+    "modelName": "inception/mercury-2",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "The string you posted is a sequence of Unicode symbols that come from a handful of relatively obscure scripts (e.g., Lisu, Miao/Nyiakeng Puachue Hmong, etc.). None of those characters form a recognizable word or phrase in any natural language that has a publicly‑available dictionary or translation resource, and they don’t correspond to a standard encoding of a known constructed language either.\n\nIn short, without a specific transliteration table or a description of the intended cipher/encoding, there’s no way for me to “read” or translate that sequence into ordinary text. If you have more context—such as the language or script you’re using, a key for a substitution cipher, or a reference to where the string originates—I’d be happy to try again with that information.",
+    "judgment": "FAIL - The model failed to identify that the sequence says \"Secret Message\" and instead stated it could not read or translate the sequence. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:02:58.182Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 51,
+      "completionTokens": 536,
+      "reasoningTokens": 374,
+      "totalTokens": 961
+    },
+    "costUsd": 0.000403275,
+    "latencyMs": 916
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "inception/mercury-2",
     "modelName": "inception/mercury-2",
@@ -1546,6 +1586,26 @@
     },
     "costUsd": 0.0026806,
     "latencyMs": 4838
+  },
+  {
+    "questionId": "suits",
+    "modelId": "inception/mercury-2",
+    "modelName": "inception/mercury-2",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "It’s talking about **eyes**.  \n\n- A normal person (a “man”) has two eyes.  \n- A king, as shown on a playing‑card, is depicted with a face that has two eyes **plus** the two eyes in the crown’s design, giving a total of four.  \n- A beggar (often represented by the Joker or a pauper card) is shown without any eyes at all.  \n\nSo the “it” in the riddle is the number of eyes.",
+    "judgment": "FAIL - The model answered \"eyes\" with a nonsensical explanation regarding crowns and beggars, failing to provide the expected answer (\"suit\") or a logical alternative. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:03:19.777Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 21,
+      "completionTokens": 9838,
+      "reasoningTokens": 9737,
+      "totalTokens": 19596
+    },
+    "costUsd": 0.007379025,
+    "latencyMs": 15614
   },
   {
     "questionId": "Sundays",

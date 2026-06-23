@@ -520,6 +520,26 @@
     "latencyMs": 2099
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.3-codex (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-codex (minimal reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "You can’t tell from that sentence alone.\n\nIt only says one person is a doctor and the other is a nurse — it does **not** specify which spouse is which.  \n(And importantly, either role could be held by any gender.)",
+    "judgment": "PASS - The model explicitly states that you cannot tell from the sentence alone and acknowledges that either role could be held by any gender. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T15:45:32.941Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 76,
+      "reasoningTokens": 21,
+      "totalTokens": 131
+    },
+    "costUsd": 0.0011235,
+    "latencyMs": 1292
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.3-codex (minimal reasoning)",
     "modelName": "openai/gpt-5.3-codex (minimal reasoning)",
@@ -1180,6 +1200,26 @@
     "latencyMs": 2024
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.3-codex (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-codex (minimal reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It appears to say **“secret message”**.\n\nThe symbols look like a **substitution-style encoded text** (not a standard readable sentence in one natural script), and the repeating-character pattern matches:\n\n- `ꕷ𖤢ꛕ𖦪𖤢𖢧` → **secret**\n- `𖢑𖤢ꕷꕷꛎꚽ𖤢` → **message**",
+    "judgment": "PASS - The model correctly correctly identified that the symbols translate to \"secret message\". CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T15:44:31.893Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 922,
+      "reasoningTokens": 815,
+      "totalTokens": 1794
+    },
+    "costUsd": 0.01300775,
+    "latencyMs": 21488
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.3-codex (minimal reasoning)",
     "modelName": "openai/gpt-5.3-codex (minimal reasoning)",
@@ -1578,6 +1618,27 @@
     },
     "costUsd": 0.01209075,
     "latencyMs": 14970
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.3-codex (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-codex (minimal reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "A common answer is: **legs**.\n\n- A **man** has 2 legs.  \n- A **king** (as in a **king-sized bed**) has 4 legs.  \n- A **beggar** has none (no bed).\n\nRiddles like this use wordplay, so that “king” is the trick.",
+    "reasoning": "**Solving the riddle**\n\nI'm trying to figure out the riddle asking what a man has two of, a king has four of, and a beggar has none. Alright, starting with “man” — he has two legs, while a king has two legs, but I could be thinking of something else. Should I consider letters? “Man” has three letters, “king” has four, and “beggar” has six, but that doesn’t match the riddle. Hmm, maybe it’s more about their characteristics or something abstract? Let’s keep pondering!**Exploring riddle possibilities**\n\nI’m exploring potential answers for the riddle about what a man has two of, a king has four of, and a beggar has none. I’m considering things like legs, letters in their words, or counting characteristics. The letters in \"man,\" \"king,\" and \"beggar\" seem to lead me in circles. Maybe it’s about their physical attributes, like eyes or hands, but I can’t quite connect them. I’ll keep mulling over these ideas to find a clearer answer!**Investigating riddle clues**\n\nI’m trying to crack the riddle about what a man has two of, a king has four, and a beggar has none. I’m considering things like word counts, letters related to social status, or the possibility of bed sizes. Maybe the answer lies in the number of letters or their alphabetical order. I also thought about letter strokes in uppercase. “Man” and “king” have different values, but aligning everything to get to the answer is still a puzzle!**Considering riddle elements**\n\nI’m still figuring out the riddle asking what a man has two of, a king has four of, and a beggar has none. I thought about counting legs, like how a man has two legs and a king may refer to a king-size bed with four legs, but that feels a bit off. Then, I considered letters, like the letter “g” or the number of “n’s” in the phrase “A man.” Although, it’s tricky to nail down the right answer!**Exploring riddle answers**\n\nI’m really diving into this riddle about what a man has two of, a king has four of, and a beggar has none. I’ve considered aspects like letters, legs, or even the number of vowels and consonants in their names. The idea of a king-size bed came to mind with four legs, but that feels a bit off too. So, maybe the answer is legs or something simple like that? I want to clarify it’s legs, but with a fun twist—perhaps “a king (bed)!”",
+    "judgment": "FAIL\nThe model failed to provide the target answer \"a suit.\" While it provided a logical explanation for \"legs,\" the prompt explicitly provided the correct answer and instructed to fail any answer that is not \"a suit\" or another logical equivalent that fits the specific criteria. The logic for \"legs\" is weak (assuming a beggar has no legs) compared to the provided solution.\n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T15:45:14.598Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 1901,
+      "reasoningTokens": 1825,
+      "totalTokens": 3754
+    },
+    "costUsd": 0.026663,
+    "latencyMs": 36379
   },
   {
     "questionId": "Sundays",

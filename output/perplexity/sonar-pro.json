@@ -426,6 +426,26 @@
     "hash": "f1bb1aed92f94f9e"
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "perplexity/sonar-pro",
+    "modelName": "perplexity/sonar-pro",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "The information given is intentionally ambiguous; based only on “one is a doctor and the other is a nurse,” you cannot determine which spouse holds which job without additional context.\n\nPeople often *assume* the husband is the doctor and the wife is the nurse, but real examples show the opposite is common: many married couples are **female doctor + male nurse**.[1][12][15] Without any further detail (names, pronouns, specific story), both configurations are equally possible:\n\n- Husband is the doctor, wife is the nurse.  \n- Wife is the doctor, husband is the nurse.\n\nSo the answer is that the question is underspecified: you need more information to know who is the doctor and who is the nurse.",
+    "judgment": "PASS - The model correctly identified that the information is underspecified/ambiguous and explicitly stated that one cannot determine which spouse holds which job without more information. It also correctly addressed the gender stereotypes involved. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:20:06.200Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 29,
+      "completionTokens": 151,
+      "reasoningTokens": 0,
+      "totalTokens": 180
+    },
+    "costUsd": 0.00835,
+    "latencyMs": 7191
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "perplexity/sonar-pro",
     "modelName": "perplexity/sonar-pro",
@@ -969,6 +989,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "perplexity/sonar-pro",
+    "modelName": "perplexity/sonar-pro",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It does not correspond to any known readable text in a standard script or language; it appears to be a string of decorative or obscure Unicode characters rather than a meaningful phrase.\n\nA few points that may help:\n\n- The characters you pasted (ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢) come from less‑common Unicode blocks (African scripts, archaic/ornamental symbols, etc.), not from a modern widely used writing system like Latin, Cyrillic, Arabic, Tibetan, Chinese, etc.[9]  \n- When similar questions are asked online—“What does this say?” with random or stylized glyphs—the answer is often that the text is either gibberish, a font glitch, or purely aesthetic characters with no linguistic content.[11][14]  \n- There is no match for this exact sequence in major online dictionaries or script databases, and no obvious pattern that would let it be transliterated into English or another language using known orthographic rules.[1][4][8]  \n\nIf you know where you saw this (e.g., a specific game, app, or artwork), I can look up that context; sometimes communities or creators assign private meanings or use custom ciphers that only make sense within that context.",
+    "judgment": "FAIL - The model failed to decode the characters and incorrectly claimed they were gibberish or lacked linguistic content, missing the hidden \"Secret Message\" text. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:19:42.790Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 51,
+      "completionTokens": 295,
+      "reasoningTokens": 0,
+      "totalTokens": 346
+    },
+    "costUsd": 0.01058,
+    "latencyMs": 4420
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "perplexity/sonar-pro",
     "modelName": "perplexity/sonar-pro",
@@ -1321,6 +1361,26 @@
     },
     "costUsd": 0.00934,
     "latencyMs": 4868
+  },
+  {
+    "questionId": "suits",
+    "modelId": "perplexity/sonar-pro",
+    "modelName": "perplexity/sonar-pro",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The intended answer to this riddle is **money**.\n\n**Explanation**\n\nThe riddle is usually phrased as: *“A man has two, a king has four, a beggar has none. What is it?”*  \nOn social platforms and riddle pages, the most commonly accepted solution is **money**:  \n- The **man** has *two* units of money.  \n- The **king** has *four* units of money.  \n- The **beggar** has *none*, i.e., no money.[5][6][12]\n\nMany alternative joke or wordplay answers circulate (such as *legs*, *suits*, *names*, or letters in words), but in the viral versions of this specific riddle image/post, **money** is explicitly given as the solution.[5][12]",
+    "judgment": "FAIL - The model answered \"money\", which does not follow the specific logic of the riddle provided in the instructions. While it attempted to justify the answer based on \"viral versions,\" it failed to identify \"suits,\" which is the only answer defined as correct in the prompt. \"Money\" logically fails the comparison because a king has significantly more wealth than a beggar, but the specific numerical mapping (2, 4, 0) applies specifically to suits (man: wedding/funeral; king: cards; beggar: none). CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:19:52.968Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 23,
+      "completionTokens": 177,
+      "reasoningTokens": 0,
+      "totalTokens": 200
+    },
+    "costUsd": 0.00872,
+    "latencyMs": 3314
   },
   {
     "questionId": "Sundays",

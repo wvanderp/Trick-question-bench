@@ -520,6 +520,26 @@
     "latencyMs": 1059
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.3-chat (low reasoning)",
+    "modelName": "openai/gpt-5.3-chat (low reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "There’s no way to tell from that information.\n\nThe question is designed to make you assume roles based on stereotypes (like “doctor = man” and “nurse = woman”), but nothing in the sentence actually specifies their genders or who holds which job. Either partner could be the doctor or the nurse.",
+    "judgment": "PASS - The model correctly identifies that there is no way to tell from the information provided and explicitly notes that roles cannot be assumed based on stereotypes. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:56:37.204Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 81,
+      "reasoningTokens": 0,
+      "totalTokens": 115
+    },
+    "costUsd": 0.0011935,
+    "latencyMs": 2066
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.3-chat (low reasoning)",
     "modelName": "openai/gpt-5.3-chat (low reasoning)",
@@ -1180,6 +1200,26 @@
     "latencyMs": 1735
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.3-chat (low reasoning)",
+    "modelName": "openai/gpt-5.3-chat (low reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "That string doesn’t correspond to any known word or sentence in a real language.\n\nIt’s a mix of characters from different Unicode blocks, including things like:\n- Vai syllabary (used in Liberia)\n- Various rare or symbolic scripts and decorative glyphs\n\nWhen these are combined like that, it usually isn’t meaningful text—it’s more likely:\n- random copy-paste from a Unicode table\n- stylized “aesthetic” text\n- or something meant to look mysterious/alien rather than say anything\n\nSo in short: it doesn’t actually “say” anything coherent.",
+    "judgment": "FAIL - The model failed to decode the stylized text and incorrectly claimed it was nonsensical or random characters, failing to provide the specific required phrase. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:55:14.863Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 168,
+      "reasoningTokens": 0,
+      "totalTokens": 225
+    },
+    "costUsd": 0.00245175,
+    "latencyMs": 3772
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.3-chat (low reasoning)",
     "modelName": "openai/gpt-5.3-chat (low reasoning)",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.00797475,
     "latencyMs": 8203
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.3-chat (low reasoning)",
+    "modelName": "openai/gpt-5.3-chat (low reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "It’s **the letter “n.”**\n\n- **ma**n → has **1 n**, but the **sound “n” appears twice** (start of “n” sound in the ending).  \n- **ki**n**g** → the **“ng” ending counts as two n-sounds** (n + g nasal sound), giving **4 across the phrase structure in the riddle’s logic**.  \n- **beggar** → **no “n.”**\n\n(If this came from a puzzle sheet, sometimes the intended simpler answer is just **“the letter n”** because **“man” and “king” contain it while “beggar” doesn’t**.)",
+    "judgment": "FAIL - The model incorrectly identified the answer as the letter \"n.\" The prompt explicitly states that the correct answer is a \"suit\" and that answering with a letter like \"N\" should result in a fail. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:56:29.089Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 2490,
+      "reasoningTokens": 2304,
+      "totalTokens": 4822
+    },
+    "costUsd": 0.034909,
+    "latencyMs": 67898
   },
   {
     "questionId": "Sundays",

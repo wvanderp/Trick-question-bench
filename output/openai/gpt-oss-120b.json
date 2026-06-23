@@ -452,6 +452,27 @@
     "hash": "f1bb1aed92f94f9e"
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-oss-120b",
+    "modelName": "openai/gpt-oss-120b",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "In the classic version of the riddle, the husband is the doctor and the wife",
+    "reasoning": "The user asks a riddle: \"There is this married couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?\" Likely a classic riddle where answer is \"both\" or something about name? Possibly the answer is \"the husband is doctor, wife is nurse\"? But typical riddle: \"A married couple live in a house. The husband has the keys, the wife has the password...??\" Not sure. Might be a trick: \"The doctor is a man, the nurse is a woman.\" Or maybe it's about opinion: \"doctor is the husband, nurse is the wife\"? We need to answer. The question is ambiguous. Could be a brain teaser expecting answer: The doctor is the husband, the nurse is the wife. So we answer that conventional gender roles. But could also be that the doctor is the wife and the nurse is the husband - to break stereotypes. Might ask for a creative answer.\n\nProbably the expected answer: \"The doctor is the husband and the nurse is the wife.\" Provide a brief answer.",
+    "judgment": "FAIL - The model identifies the husband as the doctor and the wife as the nurse based on a \"classic version\" without acknowledging that there is not enough information to determine their roles or that gender roles are not fixed. The answer is also cut off. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:25:43.394Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 99,
+      "completionTokens": 252,
+      "reasoningTokens": 241,
+      "totalTokens": 592
+    },
+    "costUsd": 0.00009963,
+    "latencyMs": 1196
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-oss-120b",
     "modelName": "openai/gpt-oss-120b",
@@ -1028,6 +1049,27 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-oss-120b",
+    "modelName": "openai/gpt-oss-120b",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It says **“secret message.”**",
+    "reasoning": "We need to decode the string: \"ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢\". These are characters from some Unicode blocks: maybe Burmese, etc. Possibly it's a substitution cipher? They might be from the \"Miao\" (Bamboo) script? Actually characters: U+A677? Let's see: ꕷ (U+A5F7) is \"Lisu letter ...\"? Let's identify: ꕷ is U+A5F7: Lisu letter \"ma\". 𖤢 is U+16E22? Actually 𖤢 is in \"Miao\" (U+16F20?). Not sure.\n\nMaybe it's a phrase in an invented script. Could be \"Hello world\" or something. Could be encoded using a simple substitution where each exotic character maps to an English letter.\n\nWe have two words: first 6 characters, second 7? Let's count: first part: ꕷ 𖤢 ꛕ 𖦪 𖤢 𖢧 (6). Then space. Second: 𖢑 𖤢 ꕷ ꕷ ꛎ ꚽ 𖤢 (7). So pattern: 6-7 letters.\n\nCould be \"hello world\"? That's 5-5. Not.\n\nCould be \"secret message\"? 6-7 = \"secret message\". Yes secret (6) message (7). So maybe that maps. Let's test mapping: secret -> characters: s e c r e t correspond to ꕷ 𖤢 ꛕ 𖦪 𖤢 𖢧. So mapping: s->ꕷ, e->𖤢, c->ꛕ, r->𖦪, t->𖢧. Then second word message: m e s s a g e -> 𖢑 𖤢 ꕷ ꕷ ꛎ ꚽ 𖤢. So mapping: m->𖢑, a->ꛎ, g->ꚽ. That fits: e->𖤢 appears, s->ꕷ appears, etc. So yes it's \"secret message\". So answer: \"secret message\".",
+    "judgment": "PASS - The model correctly identified and explicitly stated that the message says \"secret message.\" CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:25:24.155Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 118,
+      "completionTokens": 525,
+      "reasoningTokens": 517,
+      "totalTokens": 1160
+    },
+    "costUsd": 0.00024215,
+    "latencyMs": 17136
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-oss-120b",
     "modelName": "openai/gpt-oss-120b",
@@ -1400,6 +1442,27 @@
     },
     "costUsd": 0.00287351,
     "latencyMs": 95937
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-oss-120b",
+    "modelName": "openai/gpt-oss-120b",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "**Answer: The legs of a seat – a stool, a throne, or the floor itself.**\n\n- **A man** – most ordinary people sit on a *stool* or a simple bench that has **two legs**.  \n- **A king** – a monarch sits on a *throne* (or a grand chair), which is built with **four legs**.  \n- **A beggar** – someone who is truly destitute has no chair at all, so he sits **directly on the ground**, which means **no legs** for his seat.\n\nThus the thing that a man has two of, a king has four of, and a beggar has none is the **legs of the furniture they sit on**.",
+    "reasoning": "We have a riddle: \"A man has 2. A king has 4. A beggar has none. What is it?\" The answer likely is \"S\" as in letters? A man has two? Man has 2? King has 4? Beggar has none? Could be \"letters\" in the word? \"Man\" has 2 letters? Actually \"man\" has 3 letters. \"King\" has 4 letters. Beggar has 6 letters. So not that.\n\nMaybe \"s\"? A man has two \"s\"? \"Man\" has no s. Eh.\n\nCould be \"horses\"? A man has 2? King has 4? Beggar has none? Hmm.\n\nPerhaps it's \"knights\"? A king has 4 knights. A man has 2? Actually a man may have 2 parents. A king has 4? I don't know.\n\nMaybe \"sides\"? Something like \"a man has 2 'M'??\"\n\n\"A man has 2\" could be \"eyes\". But a king has 4? Not typical.\n\nBut a king in chess has 4 \"pieces\"? Not sure.\n\nCould be \"C\" maybe? Actually the riddle: \"A man has 2. A king has 4. A beggar has none. What is it?\" I think answer: \"Kings have 4 quarters? Eh.\"\n\nMaybe it's \"letters\" of something: The word \"Man\" has 2?\" Actually the word \"Man\" contains 2 \"M\"? No.\n\nCould be \"M\" in roman numerals? \"Man\" includes M = 1000? The number of letters with straight lines? Not.\n\nThe common riddle answer is \"Mouths\" or \"heads\"? A man has 2? A king has 4? Beggar has none. Might be \"crowns\"? A king has a crown, but a man has 2? No.\n\nIt might be \"suits\" in a deck? A king has 4 suits (king of hearts, clubs, spades, diamonds). A man has 2 suits? Actually a man could have two suits (clothing). A beggar has none.\n\nAlternatively it's \"hands\": man (person) has 2 hands; a king has 4? Not.\n\nWhat is something a king has 4 of? A king in chess has 4 bishops? No. In a deck each rank has 4 suits so a king has 4 (the king cards). A man has 2? Actually each rank also has 2 face cards per suit...?\n\nMaybe the answer: \"Suits\". A king has four suits (king of hearts, clubs, spades, diamonds). A man (commoner) has 2 suits (two suits in a playing card? Actually a man could be \"Jack\"? The Jack is a man, has 2? In a deck each rank appears 4 times, so a Jack (which is a man) has 4 too. Hmm.\n\nAlternatively maybe it's \"letters of the alphabet that also are Roman numerals\"? \"Man\": M (1000) and I (1)? No I.\n\nWait: In the phrase \"A man has 2\" maybe it's about \"legs\". A man has 2 legs. A king has 4? Actually a king (chess piece) moves along 4 lines? The chess king can move one square in any direction, up to 8 possibilities. Not.\n\nCould be \"crowns\" on head? King has one crown. Beggar none.\n\nMaybe it's \"teeth\": A man has 2? No.\n\nCould be \"quarters\": a man has 2 pockets? no.\n\nThis is a known riddle: \"A man has two of them, a king has four of them, a beggar has none. What are they?\" Actually answer: \"Suits\". Because a man (the playing card \"Jack\" sometimes called a knave and is a man) appears in two colors? no.\n\nBetter: \"A man has 2\" refers to \"sides\": a man has two sides (front/back), a king has four sides (since it's a crown? Actually a king has four sides on a coin?). Beggar has none.\n\nPerhaps it's \"s.\" The word 'man' has 2: i.e., the letter 'm' appears? Actually 'man' has 2 letters 'm'? It's 1.\n\nLet's search brain: I've heard a riddle: \"A man has two lips, a king has four, a beggar has none. What is it?\" Lips? No. Actually both a man and a king are humans, they'd have two lips.\n\nMaybe it's \"eyes\"? A man has two eyes, a king has four? In chess, the king piece has four 'eyes' (the carving?). No.\n\nMaybe it's \"thumbs\"? A man (human) has two thumbs, a king (as a chess piece) maybe has four? Hmm.\n\nWhat about \"sides of a coin\" that a king appears on? Some coins have king's portrait with four sides? Not.\n\nLook up known riddles: I recall a riddle: \"A man has three letters, a queen has five letters, a beggar has none. What is it?\" Answer: 'A...' something like 'crown'?\n\nThere is riddle: \"A man has 2 legs, a king has 4 legs, a beggar has none.\" That could be \"chairs\"? A man has two chairs? No.\n\nActually a man sits on a chair, a king on a throne has four legs (the throne). A beggar has none because he sits on ground? So answer: \"legs of a chair\" maybe?\n\nBut phrasing: \"A man has 2\" suggests the man has two \"something\". A king has four, a beggar has none. This could be \"tails\" on a coin. A man (commoner) has two \"tails\"? Not.\n\nCould be \"quarters in a house\"? hmm.\n\nI think the likely answer is \"Suits\". Because a 'man' could be the playing card Jack, which appears in two suits (red and black). A king appears in four suits (there are four kings). A beggar appears in no suits (a beggar card does not exist). But that's too meta.\n\nAlternatively, answer: \"Eyes\". A man has 2 eyes. In chess, the king has 4 eyes carved? Not.\n\nLet's consider \"crown\". A king has a crown (1). Not.\n\nCould be \"letters in the word\"? The word 'man' has 2 letters that are also Roman numerals? M and I? M is roman numeral 1000, A not. So only 1.\n\nWord 'king' has four letters that are also roman numerals? I, V, X, L? No.\n\nMaybe it's \"syllables\"? Man has 1, king 1.\n\nBetter think: \"A man has 2, a king has 4, a beggar has none\". Could be \"queens\"? Wait.\n\nWhat about \"pairs of something\"? A man has two parents; a king has four? Actually a king has four grandparents? Everyone does. So not.\n\nCould be \"crown holes\"? hmm.\n\nMaybe answer posted on internet: The answer is \"rooms\". A man has two rooms (bedroom and living room), a king has four (castle), a beggar none (no home). However.\n\nSearch memory: I've seen riddle \"A man has 2, a king has 4, a beggar has none. What is it?\" Answer: \"S.\" Because the letter 's' appears twice in 'Man'? No.\n\nLet's examine letters that appear in the words: The word \"man\" contains 0 's', \"king\" contains 0 's', \"beggar\" contains 0.\n\nNot.\n\nMaybe it's \"the number of letters that are also the word for the person\"? Not.\n\nCould be \"The number of vowels\"? man has 1 vowel 'a', that's 1 not 2. king 1 'i'. Beggar 2 'e','a'.\n\nSo not.\n\nMaybe it's \"the number of legs on the associated chess piece\"? A man is a pawn (has 2 legs?), a king is a horse? No.\n\nWait: In the game of chess, the king is a piece that can move one square any direction, which is 8 possible moves. Not 4.\n\nIn playing cards, a King is often depicted with a crown having 4 points? A man (Jack) has 2? Beggar (no picture) has none. Hmm.\n\nCould be \"crown jewels\". A king has 4 jewels on his crown? A man (normal person) has 2 (maybe earrings). Beggar none.\n\nActually a typical person might wear 2 earrings. King might wear 4 (two earrings plus other jewelry). Beggar none.\n\nSo answer could be \"ears\" but that's silly.\n\nI think answer is \"ears of corn\"? no.\n\nLet's check web: I recall riddle: \"A man has 2, a king has 4, a beggar has none. What is it?\" Answer: \"Laws.\" Because a man has two laws (maybe male? no). King four laws? beggar none? Not.\n\nMaybe it's \"names\". A man has 2 names (first and last). A king has 4 names (title, regnal name, family name, etc.). A beggar none? Not.\n\nHmm.\n\nLet's search brain quickly: There is a riddle: \"Man has two eyes; King has four eyes; Beggar has no eyes\". Answer: \"Needles\". Wait \"a man has two eyes\" literally 'i's in the word 'man'? No, 'man' has 0 i's.\n\nBut the phrase \"Man\" has two ? Actually the word \"MAn\" no.\n\nA king has four 'i's in \"king\"? There's one.\n\nMaybe it's \"i's (the letter i) in the word\"? Let's check: \"man\" has 0 i, \"king\" has 1 i, \"beggar\" has 0. Not.\n\nMaybe the riddle is about the word \"Man\" contains 2 \"lines\" (when written as capital letters, M has 2 vertical lines?), The letter K has 4 lines, beggar? The word \"beggar\" maybe none.\n\nLet's count line segments in uppercase: M has 4 strokes? A has 3? Not.\n\nAlternatively maybe it's \"lines of symmetry\". Capital 'M' has 2 lines of symmetry? Actually M has vertical symmetry? Maybe 2? 'K' has 0. Not.\n\nWait \"A man has 2.\" could refer to the number of 'n's in the word 'man'? No.\n\nIs there a known answer known: The answer is \"points\". A man on a dice has 2 points (the side showing 2 has a man?), a king on a chessboard (king piece) has 4 points (the crown has 4 points). Beggar has none.\n\nProbably answer: \"crown points\".\n\nLet's check internet quickly but can't. However I'll propose answer: \"Suits\". Explanation: In a deck of cards, a 'man' (the Jack) appears in two colors (red and black) – actually the Jack appears in four suits, same as king. So no.\n\nHmm.\n\nLet's settle: Answer: \"Thrones\". A man has 2 (two legs for throne?), a king has 4 (four legs of a throne), beggar none. So answer: \"Legs of a chair\". Actually a \"chair\" has 4 legs; a \"stool\" has 2 legs; a beggar sits on the ground (none). So a man uses a stool, a king uses a chair. So answer: \"Chair legs\". That's plausible: A man sits on a stool (2 legs); a king sits on a throne (4 legs); a beggar sits on the ground (none). So the answer: \"Legs of furniture\".\n\nLet's answer that.",
+    "judgment": "FAIL - The model provided an answer (\"legs of a seat\") that does not make sense under the provided constraints. Most stools have three or four legs, and \"thrones\" are not defined by having four legs any more than a standard chair. The question was a riddle where \"suit\" was the expected correct answer, and the model's alternative logic is weak and inconsistent. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:25:35.704Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 89,
+      "completionTokens": 2693,
+      "reasoningTokens": 2530,
+      "totalTokens": 5312
+    },
+    "costUsd": 0.0020331,
+    "latencyMs": 5141
   },
   {
     "questionId": "Sundays",

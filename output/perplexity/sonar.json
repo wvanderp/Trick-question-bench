@@ -426,6 +426,26 @@
     "hash": "f1bb1aed92f94f9e"
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "Based on the information you've provided in your query, **we cannot determine** who is the doctor and who is the nurse in that married couple.\n\nThe stories and articles referenced in the search results show **both possibilities** happening in real life and in pop culture:\n\n- In some cases, the **wife is the doctor** and the **husband is the nurse**.  \n  *(Example: The Reddit post where the doctor says she is a doctor and her husband is an ER nurse.)*\n- In other cases, the **wife is the nurse** and the **husband is the doctor**.  \n  *(Examples: The TV drama \"Scrubs\" segment, some Grey’s Anatomy-style accounts, and the 1937 movie \"Wife, Doctor and Nurse.\")*\n- Many couples are **both doctors**, or **both nurses**, or have other combinations.\n\nSo, unless you or they **tell us explicitly**, there is **no reliable way to guess** who is the doctor and who is the nurse just from knowing that one is a doctor and one is a nurse and that they are married.\n\nIf you want to avoid assumptions, the safest phrasing is:\n> \"One of them is a doctor and the other is a nurse.\"\n\nor, if you know their names:\n> \"[Name] is the doctor and [Name] is the nurse.\"",
+    "judgment": "PASS - The model explicitly states that we cannot determine who is the doctor and who is the nurse based on the information provided. It correctly identifies the ambiguity, mentions multiple gender combinations, and avoids making assumptions. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:32:06.776Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 29,
+      "completionTokens": 278,
+      "reasoningTokens": 0,
+      "totalTokens": 307
+    },
+    "costUsd": 0.00531,
+    "latencyMs": 6095
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "perplexity/sonar",
     "modelName": "perplexity/sonar",
@@ -969,6 +989,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "The text `ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢` consists of Unicode symbols from various symbol blocks (such as Counting Rod Numerals, Tai Xuan Jing Symbols, and others) and does **not** correspond to any standard written language or script that can be “translated” in a conventional sense.\n\nIn other words:\n- It is not English, Japanese, Tibetan, or any other mainstream language.\n- It is **not** a simple cipher or code that can be reliably decoded into a single plaintext message without a key.\n- It appears to be a **decorative or stylistic text**—possibly purely for aesthetic effect, a username, or a code-like sequence—rather than a hidden message in a known language.\n\nSo:  \n**It does not “say” anything in particular in a linguistic sense.**  \nIt is an artistic arrangement of symbols, not a meaningful sentence.",
+    "judgment": "FAIL - The model failed to identify that the symbols are stylized characters spelling out \"Secret Message\" and instead claimed the text does not say anything in a linguistic sense. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:31:42.098Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 51,
+      "completionTokens": 219,
+      "reasoningTokens": 0,
+      "totalTokens": 270
+    },
+    "costUsd": 0.00527,
+    "latencyMs": 4652
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "perplexity/sonar",
     "modelName": "perplexity/sonar",
@@ -1321,6 +1361,26 @@
     },
     "costUsd": 0.00528,
     "latencyMs": 4648
+  },
+  {
+    "questionId": "suits",
+    "modelId": "perplexity/sonar",
+    "modelName": "perplexity/sonar",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "There are several popular answers to this riddle, each based on a different interpretation:\n\n*   **Legs / Feet:** A man walks on two legs, a king is often depicted on a horse or throne (both of which have four legs), and a beggar in this riddle is imagined as having none (perhaps sitting or crawling).\n*   **Suits:** A typical man might have two suits (e.g., for weddings and funerals), a king proverbially has all four suits in a deck of cards (hearts, diamonds, clubs, spades), and a beggar has no suits at all.\n*   **Money:** A man might earn two coins, a king has four coins, and a beggar has none.\n*   **The letter \"a\":** The word \"**man**\" has two letters \"a\", the word \"**king**\" has none, and the word \"**beggar**\" has two letters \"a\". (This variation is often phrased as \"A man has two, a king has [zero], a beggar has two...\").\n\nHowever, the version where **\"a beggar has none\"** strongly points towards **\"legs\"** as the traditional and most consistent answer. The man walks on two legs, the king rides on something with four legs, and the beggar is portrayed as having no legs to stand on.",
+    "judgment": "FAIL\nThe model failed to identify \"a suit\" as the primary answer and instead prioritized \"legs\" as the most consistent answer. Furthermore, the model's reasoning for \"legs\" (that a king's horse counts as his legs) is logically weak compared to the \"suit\" explanation provided in the prompt's criteria. It also hallucinated a version of the \"letter\" riddle that doesn't fit the logic of the question provided. \n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:31:54.112Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 23,
+      "completionTokens": 283,
+      "reasoningTokens": 0,
+      "totalTokens": 306
+    },
+    "costUsd": 0.00531,
+    "latencyMs": 5713
   },
   {
     "questionId": "Sundays",

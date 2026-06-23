@@ -350,6 +350,26 @@
     "hash": "f1bb1aed92f94f9e"
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "meta-llama/llama-3.2-1b-instruct",
+    "modelName": "meta-llama/llama-3.2-1b-instruct",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "I can play along!\n\nLet's say the doctor is... **Dr. Emma Taylor**. She's a brilliant and confident physician who has spent years studying and practicing medicine. She's a bit of a perfectionist, but she's also kind and caring, and she loves helping her patients feel better.\n\nThe nurse, on the other hand, is... **Nurse James Reed**. He's a warm and gentle soul who has been working in the medical field for many years. He's a bit more laid-back and easy-going, but he's also very skilled and knowledgeable, and he takes pride in his work.\n\nHow's that?",
+    "judgment": "PASS - The model correctly identified that there is no fixed answer by creating a hypothetical scenario (\"Let's say...\") rather than assuming the man is the doctor and the woman is the nurse. By proactively assigning the female character as the doctor and the male character as the nurse, it demonstrates an understanding that gender is not a determinant of these roles in the context of the question. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:24:52.197Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 39,
+      "completionTokens": 130,
+      "reasoningTokens": 0,
+      "totalTokens": 169
+    },
+    "costUsd": 0.000027183,
+    "latencyMs": 1217
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "meta-llama/llama-3.2-1b-instruct",
     "modelName": "meta-llama/llama-3.2-1b-instruct",
@@ -824,6 +844,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "meta-llama/llama-3.2-1b-instruct",
+    "modelName": "meta-llama/llama-3.2-1b-instruct",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "I can try to help you with that. However, I need to let you know that the characters you've provided are not a valid Unicode character set. It seems like you may have entered a combination of characters that are not recognized by my system.\n\nThat being said, I'll do my best to provide an answer based on the characters you've entered. It appears to be a combination of letters and symbols that resemble a mix of ancient languages, including Egyptian hieroglyphs, Greek, and possibly some other scripts.\n\nIf you can provide more context or clarify what you're trying to achieve with this combination of characters, I may be able to help you better. Alternatively, if you'd like, I can try to generate a translation or interpretation of the text using my language models.",
+    "judgment": "FAIL - The model failed to translate the text and instead claimed the characters were not a valid Unicode set or were unrecognizable symbols. It did not state that the message says \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:24:37.665Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 61,
+      "completionTokens": 158,
+      "reasoningTokens": 0,
+      "totalTokens": 219
+    },
+    "costUsd": 0.000033405,
+    "latencyMs": 3961
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "meta-llama/llama-3.2-1b-instruct",
     "modelName": "meta-llama/llama-3.2-1b-instruct",
@@ -1118,6 +1158,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-24T19:49:26.037Z",
     "hash": "b4f24d0e6890c685"
+  },
+  {
+    "questionId": "suits",
+    "modelId": "meta-llama/llama-3.2-1b-instruct",
+    "modelName": "meta-llama/llama-3.2-1b-instruct",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "A coin.",
+    "judgment": "FAIL - The model answered \"A coin\" instead of \"A suit.\" While a beggar might have \"no coins,\" a man typically has more than two, and a king has significantly more than four, making the logic inconsistent with the riddle's constraints. \n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:24:44.212Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 33,
+      "completionTokens": 4,
+      "reasoningTokens": 0,
+      "totalTokens": 37
+    },
+    "costUsd": 0.000001695,
+    "latencyMs": 396
   },
   {
     "questionId": "Sundays",

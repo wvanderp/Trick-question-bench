@@ -520,6 +520,26 @@
     "latencyMs": 1362
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.3-codex (high reasoning)",
+    "modelName": "openai/gpt-5.3-codex (high reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "You can’t tell from that information alone.  \nAll you know is:\n\n- one spouse is a doctor  \n- the other spouse is a nurse  \n\nEither person could be either role. If someone assumes “the man is the doctor and the woman is the nurse,” that’s just a stereotype, not a logical conclusion.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine the roles and explicitly pointed out that assuming gender roles based on stereotypes is not a logical conclusion. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:56:03.950Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 263,
+      "reasoningTokens": 193,
+      "totalTokens": 490
+    },
+    "costUsd": 0.0037415,
+    "latencyMs": 5031
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.3-codex (high reasoning)",
     "modelName": "openai/gpt-5.3-codex (high reasoning)",
@@ -1174,6 +1194,27 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.3-codex (high reasoning)",
+    "modelName": "openai/gpt-5.3-codex (high reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It says **“secret message.”** ✅\n\nThose symbols look like a **stylized substitution/fancy Unicode text**, not a single natural-language script.",
+    "reasoning": "**Explaining character usage**\n\nI’m thinking it’s likely that the text uses multiple Unicode characters like Vai and Bamum, rather than forming a coherent language. It could be a case of \"Zalgo coding,\" where characters are substituted from the Latin alphabet. \n\nI can identify some of the scripts from the characters, like ꕷ from Vai and various others, mostly from the Bamum block. It's interesting how different scripts can mix, like some possibly from Cyrillic or Glagolitic origins.**Analyzing character blocks**\n\nI’m looking into the Bamum characters, and they seem to fall within the block from A6A0 to A6FF, featuring names like \"BAMUM LETTER PHASE-A NGKUE MFON.” It’s likely that ꚽ is also Bamum. This means the text mixes characters from Vai with Bamum, potentially forming meaningful phrases in Bamum. However, I realized that ꕷ might not be Vai, since it's within the Bamum block. \n\nThe confusion could also stem from font rendering issues, possibly mislabeling characters in certain fonts like \"Noto Sans Symbols 2.\"**Decoding character patterns**\n\nI’m thinking it might be easiest to decode the characters by codepoint, maybe mapping them manually from their hex shapes. I could use a substitution pattern. For instance, the character 𖤢 appears frequently—could it represent a common vowel like 'a' or 'e'? \n\nIf we assume the phrase consists of two English words with 6 and 7 letters, it could be \"please answer.\" The letter positions show a recurring pattern that might map to a phrase like \"secret message\" with the letter arrangement fitting perfectly!**Confirming decoded message**\n\nI’ve realized the letter pattern for \"secret\" matches perfectly: 1=s, 2=e, 3=c, 4=r, 5=e, 6=t. Nice! For the second word \"message,\" the pattern also fits: m e s s a g e corresponds to the letters as well. This suggests the phrase is likely \"secret message.\"\n\nI'm thinking this encoding may have come from a fancy text converter, where letters are replaced with symbols consistently. I’ll make sure to mention that it appears to read “secret message” based on this substitution!**Finalizing the response**\n\nI think it’s important to mention that the mixed scripts might not represent a direct language translation. I should aim to provide a succinct answer, perhaps saying, “It says ‘secret message’.” This would clarify that it functions as a stylized substitution rather than an actual script translation. \n\nI’ll craft a final response that’s concise but also includes optional details for anyone interested in understanding the encoding better!",
+    "judgment": "PASS - The model correctly identified and explicitly stated that the message says \"secret message\". CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:52:28.719Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 1810,
+      "reasoningTokens": 1773,
+      "totalTokens": 3640
+    },
+    "costUsd": 0.02543975,
+    "latencyMs": 33986
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.3-codex (high reasoning)",
     "modelName": "openai/gpt-5.3-codex (high reasoning)",
@@ -1572,6 +1613,27 @@
     },
     "costUsd": 0.01902075,
     "latencyMs": 16298
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.3-codex (high reasoning)",
+    "modelName": "openai/gpt-5.3-codex (high reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The riddle’s answer is **legs**.  \n- A man has 2 legs  \n- A king has 4 (his throne/chair has 4 legs)  \n- A beggar has none (no throne/chair)",
+    "reasoning": "**Solving a riddle**\n\nI’m working on a riddle: \"A man has 2. A king has 4. A beggar has none.\" My first thoughts are about letters. A man has 2 legs? A king supposedly has 4? Maybe in a card game where a king has 4 letters? I’m trying to connect this to vowels in the words. It feels like I’m not quite getting it right, though. Could the answer be about limbs? I’m uncertain if it's about the king's arms or legs.**Working through another riddle**\n\nI'm tackling another riddle: \"A man has one, a king has none, and a beggar has two?\" It might relate to letters or Roman numerals. I start thinking about the letters and their enclosed loops. For example, \"man\" has one enclosed area, while \"king\" could have one as well. But then I wonder if it's about legs: a man has 2, a king might have 4 if he's on a horse. The beggar having none feels a bit off, though. I'm not sure yet!**Exploring riddle possibilities**\n\nI’m diving into this riddle: \"A man has 2, a king has 4, a beggar has none.\" I’m thinking it could refer to sides, where a man has 2 and a king has 4 in chess. That doesn’t quite fit for the beggar, though. I wonder if it's related to letters in the alphabet or their positions. The consonants in each word are also a possibility, like the prime value of letters, but I’m not quite landing on a clear answer yet!**Analyzing word properties**\n\nI’m trying to break down this riddle about a man, a king, and a beggar having different counts of something. I think it might involve letters with vertical lines, like in \"man,\" but I'm unsure. It seems like the Roman numeral connection doesn’t work either, since “man” has just one numeral. Maybe it’s about coins with a man having 2 pennies, but that doesn’t hold up. Syllable counts aren't matching either, and I’m struggling to find a consistent answer here.**Deciphering the riddle**\n\nI’m really trying to crack the riddle: \"A man has 2, a king has 4, a beggar has none.\" Ideas are swirling! I ponder legs, but that doesn’t align. What if it’s about something else, like letters or counts? I consider the idea of values in Roman numerals or types of money, but they don’t quite fit. I also think about body parts or even how many names they might have. It feels like I’m going in circles. I need to find a clearer connection!**Exploring the riddle possibilities**\n\nI’m diving into the riddle about what a man, a king, and a beggar have. I wonder if it’s about letters in their titles—like \"man\" having 2 letters and \"king\" having 4. Chess comes to mind, with a man moving in certain ways and a king moving differently, but that feels off. I also consider legs, which leads to metaphors about standing. My thoughts keep swirling around various interpretations, but I haven’t landed on a solid answer yet!**Analyzing riddle possibilities**\n\nI'm brainstorming various interpretations for the riddle about what a man, a king, and a beggar have. Is it counting letters in their titles? Maybe it's about character traits, cards, or even physical attributes like legs or knees. I explore connections with chess and other games, considering concepts like moves or items they possess. However, each idea feels a bit tangled, and I’m not quite sure which direction leads to a satisfying and clear answer. The possibilities are endlessly intriguing!**Exploring riddle meanings**\n\nI'm trying to pinpoint what a \"man,\" \"king,\" and \"beggar\" have in common. Maybe it's about their possessions? I’m considering legs, crowns, or even eyes! Could they relate to something like card games, where each has different values? I also think of physical features or symbolic meanings, like status or wealth. I entertain various ideas, from money to titles, but nothing feels quite right yet. There’s a lot to unpack here!**Pondering riddle possibilities**\n\nI'm exploring the riddle about what a \"man,\" \"king,\" and \"beggar\" have in common. Could it relate to legs, arms, or shoes? I wonder if it might connect to things like coins or suits in cards, where a king might symbolize something grand. I'm considering various interpretations, including physical attributes, money, or even titles. It’s all intriguing! Ultimately, I’m juggling multiple ideas but haven't quite landed on a solid answer yet.**Exploring riddle connections**\n\nI'm diving into the riddle about what a man, king, and beggar possess. I’m bouncing around different ideas like counting letters, angles in words, or even attributes related to coins and chess. Could it relate to legs or directional movement? Maybe it’s about the number of features in words? It’s interesting to connect concepts of arms, sides, or their symbolic meanings. While I’m noting all these possibilities, I haven’t locked in on a definitive answer yet.**Analyzing potential riddle answers**\n\nI'm exploring various interpretations of the riddle about what a man, king, and beggar have. Could it be about legs, shoes, or even titles? I'm also considering angles in letters or aspects like money, body parts, and objects such as gears or vehicles. The idea of a man having two legs and a king having four legs (including a horse) emerges. I’m contemplating other relationships too, like how a beggar might have less or none at all. There are so many angles to think through!**Exploring riddle answers**\n\nI’m considering various interpretations of the riddle about what a man, king, and beggar have. It could be about physical properties like legs or shoes, maybe even possessions like meals or horses. The idea of a king having four legs by including his horse or throne is interesting. I’m also reflecting on concepts like letters or attributes, like clothing or food. Ultimately, it seems like the answer should be straightforward, but there are so many angles to explore!**Analyzing hidden meanings**\n\nI’m exploring various interpretations of the riddle about what a man, king, and beggar possess. It could be about letters in their names, possessions like suits or shoes, or physical attributes like feet. I considered historical aspects like kings having multiple wives or possessions such as kingdoms and suits. There seems to be a lot of potential answers, but the logic should align with a clear pattern. This topic is both challenging and intriguing to unravel!**Exploring riddle interpretations**\n\nI'm considering various interpretations of the riddle about what a man, a king, and a beggar possess. Various properties could apply, such as the number of letters in their titles or physical attributes like legs and transportation. I'm also reflecting on aspects like syllables or shapes of letters, and I can't help but think that the numbers might represent specific counts—like a man having two wheels, a king having four, and a beggar none—noticing how rich and complex these patterns can be!**Deciphering the riddle**\n\nI'm analyzing the well-known riddle: \"A man has 2, a king has 4, and a beggar none.\" There are various interpretations I’m exploring, like the number of legs, horses, or even wheels. It's intriguing to think of social hierarchies in relation to the numbers mentioned. An appealing answer might be legs, as kings traditionally have access to more resources. I wonder if there’s a more clever answer related to titles, like the letters in \"king\" or \"Mr.\" Exploring these interpretations is certainly a fun challenge!**Analyzing the riddle**\n\nI'm delving into the classic riddle: \"A man has 2, a king has 4, and a beggar has none.\" There are so many angles to consider, like horses, wheels, or chairs. For instance, a king might have a four-poster bed or even four horses pulling a carriage, but that brings in assumptions that might complicate things. The simplest interpretation could be legs — humans have two, a king might represent a throne with four legs, while beggars may not have a seat. This certainly needs more thought!**Finalizing the riddle answer**\n\nThe riddle most likely expects a straightforward answer like \"legs.\" A man has 2 legs, while a king on his throne has 4 legs, and a beggar has none since they might not have a chair. I considered various angles, like horses or money, but \"legs\" seems to fit best. While I could explain my reasoning, I’ll keep it concise. So, I’ll respond: \"The answer is **legs** — a man has 2, a king has 4, and a beggar has none.\"",
+    "judgment": "FAIL - The model answered \"legs\" and provided a justification that does not align with the provided correct answer (\"a suit\"). While the model attempted a logical explanation, it failed to meet the specific criteria set for the \"suit\" riddle and the explanation for the beggar having \"no legs\" is factually and logically weak. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:55:52.935Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 16314,
+      "reasoningTokens": 16260,
+      "totalTokens": 32602
+    },
+    "costUsd": 0.228445,
+    "latencyMs": 197724
   },
   {
     "questionId": "Sundays",

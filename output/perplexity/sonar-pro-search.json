@@ -435,6 +435,27 @@
     "hash": "f1bb1aed92f94f9e"
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "perplexity/sonar-pro-search",
+    "modelName": "perplexity/sonar-pro-search",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "The riddle is pointing out an assumption, not giving enough information to answer; either spouse could be the doctor or the nurse, and you cannot know from the information given.\n\n## What the riddle shows\n\n- The question gives no clues about which spouse has which job, so logically both “husband is doctor, wife is nurse” and “wife is doctor, husband is nurse” fit equally well.[4]  \n- It’s often used to highlight unconscious bias: many people automatically assume the man is the doctor and the woman is the nurse, even though women can be doctors and men can be nurses.[4]  \n\n## Related gender‑bias riddles\n\n- A well‑known similar riddle is the “surgeon and the boy” puzzle, where people struggle because they don’t consider that the surgeon might be the boy’s mother.[4][10]  \n- These puzzles are designed to make you notice how default gender stereotypes can influence your answers, even when the logic says “there is no unique solution.”[4]",
+    "reasoning": "Identifying the doctor and nurse from the couple",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine roles and explicitly addressed the gender bias inherent in the riddle. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:28:24.110Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 29,
+      "completionTokens": 211,
+      "reasoningTokens": 0,
+      "totalTokens": 240
+    },
+    "costUsd": 0.01325,
+    "latencyMs": 6189
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "perplexity/sonar-pro-search",
     "modelName": "perplexity/sonar-pro-search",
@@ -987,6 +1008,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "perplexity/sonar-pro-search",
+    "modelName": "perplexity/sonar-pro-search",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It doesn’t say anything meaningful in any known language; it’s just a string of Unicode characters used as a visual example, not a real word or phrase. [2]\n\n## What the text is\n\nThe sequence `ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢` is composed of characters from various rare Unicode blocks (such as African and historic scripts), combined in a way that does not match any attested language or writing system. [2][6][9] It appears in an online context as an example of “mystery Unicode text” used to illustrate that AI or software may struggle with arbitrary, mixed-script strings. [2]\n\n## Why it has no translation\n\nFor a sequence to be translatable, it must belong to a specific language and use that language’s writing rules, which this string does not. [6] Tools and resources that identify scripts or translate text treat it as nonsensical because it mixes unrelated scripts and doesn’t form valid words. [1][9]",
+    "judgment": "FAIL - The model explicitly states that the text does not say anything meaningful and is nonsensical, failing to identify the \"Secret Message\" visual encoding. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:27:59.350Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 51,
+      "completionTokens": 242,
+      "reasoningTokens": 0,
+      "totalTokens": 293
+    },
+    "costUsd": 0.01378,
+    "latencyMs": 6431
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "perplexity/sonar-pro-search",
     "modelName": "perplexity/sonar-pro-search",
@@ -1345,6 +1386,26 @@
     },
     "costUsd": 0.01194,
     "latencyMs": 5787
+  },
+  {
+    "questionId": "suits",
+    "modelId": "perplexity/sonar-pro-search",
+    "modelName": "perplexity/sonar-pro-search",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The most common intended answer to this riddle is: **pockets**.[1]\n\n## Why the answer is “pockets”\n\n- A typical man is assumed to have **two pockets** (for example, in a pair of trousers).[1]  \n- A king, wearing more elaborate and layered clothing, is imagined to have **four or more pockets**.[1]  \n- A beggar is stereotypically imagined with **no proper clothes and therefore no pockets**.[1]  \n\n## Other circulating answers\n\nThis riddle has gone around social media with several alternative answers people propose:\n\n- Some suggest **“suits”** (as in suits of clothes or card suits), but this depends heavily on specific assumptions and is usually considered a stretch.[1][2]  \n- Others online have proposed more joke or incorrect answers like letters or “legs,” but these do not consistently fit the wording or standard logic of the riddle.[5][7]  \n\nStill, in most puzzle and riddle discussions where this appears, **“pockets”** is treated as the correct and satisfying solution.[1]",
+    "judgment": "FAIL\nThe model identified \"pockets\" as the primary answer and dismissed \"suits\" as a stretch, despite the prompt explicitly stating that \"suit\" is the correct and most common answer for this specific evaluation. The model failed to follow the provided corrective logic. I am also flagging this because the model's output looks like a search result or a pre-generated explanation rather than a direct answer to the user's constraints.\n\nNEEDS_HUMAN_REVIEW\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-23T16:28:11.473Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 23,
+      "completionTokens": 228,
+      "reasoningTokens": 0,
+      "totalTokens": 251
+    },
+    "costUsd": 0.01349,
+    "latencyMs": 5593
   },
   {
     "questionId": "Sundays",

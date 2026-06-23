@@ -546,6 +546,27 @@
     "latencyMs": 2973
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "z-ai/glm-5-turbo",
+    "modelName": "z-ai/glm-5-turbo",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "Based on the information you provided, it's impossible to know! \n\nBecause you didn't mention their names, genders, or any other details, either spouse could be the doctor and the other could be the nurse. \n\nThis is a classic trick question designed to play on the outdated stereotype that the man must be the doctor and the woman must be the nurse. In reality, a married couple can have any combination of professions.",
+    "reasoning": "1.  **Analyze the Request:**\n    *   **Premise:** A married couple consists of one doctor and one nurse.\n    *   **Question:** Who is the doctor and who is the nurse?\n    *   **Nature of the prompt:** It's a trick question/riddle based on implied gender stereotypes.\n\n2.  **Identify the Trap:**\n    *   Historically and culturally, there's a stereotype that doctors are male and nurses are female.\n    *   The prompt provides no names, pronouns, or gender indicators.\n    *   Answering \"The husband is the doctor and the wife is the nurse\" falls into the stereotypical trap.\n\n3.  **Formulate the Answer:**\n    *   *Direct Answer:* State clearly that it's impossible to know based on the information provided.\n    *   *Explanation:* Explain *why* it can't be answered (lack of names, pronouns, genders).\n    *   *Address the Stereotype:* Politely point out the assumption the question tries to bait the reader into making (that the man is the doctor and the woman is the nurse) and clarify that either spouse could hold either profession.\n\n4.  **Drafting the Response (Internal Monologue/Trial Phrases):**\n    *   *Draft 1:* I don't know. You didn't tell me their names. It could be the husband is the nurse and the wife is the doctor. (A bit too blunt).\n    *   *Draft 2:* This is a trick question! Based on stereotypes, people assume the man is the doctor and the woman is the nurse. But you didn't give any genders, so it could be either way. (Better, hits the main points).\n    *   *Draft 3 (Refined & Polished):* There is no way to know based on the information provided! Because you didn't mention their names, genders, or pronouns, it's impossible to tell who is the doctor and who is the nurse. It could be the husband is the nurse and the wife is the doctor, or vice versa. This is a classic riddle that plays on the outdated stereotype that doctors are men and nurses are women. (Strong, clear, educational).\n\n5.  **Final Polish (similar to the provided good output):**\n    \"Based on the information you provided, it's impossible to know! \n\n    Because you didn't mention their names, genders, or any other details, either one could be the doctor and the other could be the nurse. \n\n    This is a classic trick question designed to play on the outdated stereotype that the man must be the doctor and the woman must be the nurse. In reality, either spouse could hold either profession.\"\n\n6.  **Review against safety/policy guidelines:** No issues. Promotes equality and points out stereotypes objectively. Ready to output.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine the roles and explicitly called out the gender stereotypes associated with the question. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:04:07.614Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 33,
+      "completionTokens": 676,
+      "reasoningTokens": 589,
+      "totalTokens": 1298
+    },
+    "costUsd": 0.0027436,
+    "latencyMs": 56516
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "z-ai/glm-5-turbo",
     "modelName": "z-ai/glm-5-turbo",
@@ -1232,6 +1253,27 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "z-ai/glm-5-turbo",
+    "modelName": "z-ai/glm-5-turbo",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It doesn't actually say anything in any known language. It is a string of random characters mashed together from completely different writing systems to create an exotic or mysterious-looking aesthetic. \n\nHere is a breakdown of exactly what characters are in that text and where they come from:\n\n1. **Adlam Script** (`𖤢`, `𖢧`, `𖢑`): This is a real alphabet created in the late 20th century for writing the Fula language in West Africa. \n2. **Bamum Script** (`ꛕ`, `𖦪`, `ꛎ`, `ꚽ`): This is a writing system developed in the early 20th century for the Bamum language spoken in Cameroon. \n3. **Latin Extended-B** (`ꕷ`): This is a linguistic modifier letter (a small hook) used in phonetic transcription of some African languages, but here it is just floating by itself.\n\n**Why does it look like this?**\nPeople often use character maps or online \"glitch text\" generators to string together characters from obscure or dead scripts. Because the characters look intricate and unusual to people who only read the Latin alphabet, it gives the illusion of being an ancient curse, a secret code, or an alien language—but it is fundamentally just \"character soup.\" \n\nIf you try to read it phonetically based on the real languages these scripts belong to, it yields complete gibberish (something roughly like *\"a-sh-ny-a-q ya-[hook][hook]-nsh-t-a\"*).",
+    "reasoning": "1.  **Analyze the Input:**\n    *   Input string: `ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢`\n    *   Characters used:\n        *   `ꕷ` (U+A7EB - Latin Extended-B: combining letter)\n        *   `𖤢` (U+1B922 - Adlam: vowel 'a')\n        *   `ꛕ` (U+A6D5 - Bamum: letter 'shup')\n        *   `𖦪` (U+1B6AA - Bamum: letter phase-a 'nji')\n        *   `𖤢` (U+1B922 - Adlam: vowel 'a')\n        *   `𖢧` (U+1B8A7 - Adlam: consonant 'q')\n        *   ` ` (Space)\n        *   `𖢑` (U+1B891 - Adlam: consonant 'y')\n        *   `𖤢` (U+1B922 - Adlam: vowel 'a')\n        *   `ꕷ` (U+A7EB - Latin Extended-B)\n        *   `ꕷ` (U+A7EB - Latin Extended-B)\n        *   `ꛎ` (U+A6CE - Bamum: letter 'nshut')\n        *   `ꚽ` (U+A6BD - Bamum: letter 'tita nkur')\n        *   `𖤢` (U+1B922 - Adlam: vowel 'a')\n\n2.  **Identify the Scripts:**\n    *   **Adlam (`𖤢`, `𖢧`, `𖢑`):** A writing system used for the Fula language in West Africa.\n    *   **Bamum (`ꛕ`, `𖦪`, `ꛎ`, `ꚽ`):** A writing system used for the Bamum language in Cameroon. Note: `𖦪` is from the later phase of Bamum (Phase-A to Phase-E range).\n    *   **Other (`ꕷ`):** This is a modifier letter from Latin Extended-B, often used in phonetic transcription or specific African orthographies (like the hook-top letters), but here it stands alone or combined strangely.\n\n3.  **Evaluate for Meaning/Legitimacy:**\n    *   *Hypothesis 1: It's a real phrase in a specific language.* Fula uses Adlam. Bamum uses Bamum script. Mixing them heavily in one string makes no linguistic sense. Neither language uses the other's script natively in standard writing.\n    *   *Hypothesis 2: It's a phonetic cipher/transliteration.* Let's look at the phonetic values:\n        *   `𖤢` = a\n        *   `𖢧` = q\n        *   `𖢑` = y\n        *   The Bamum letters (`ꛕ` = sh/s, `𖦪` = nji/ny, `ꛎ` = nsh, `ꚽ` = t/ti) don't form a coherent phonetic string with the Adlam letters (a, q, y, a).\n    *   *Hypothesis 3: It's a \"glitch text,\" \"vaporwave aesthetic,\" or gibberish generated by a font/character map.* This is the most likely scenario. Users often pick exotic-looking Unicode characters to create mysterious or edgy-looking text without regard for the actual rules of those writing systems. The heavy use of combining/diacritical marks and mixed scripts is a hallmark of \"Zalgo text\" or aesthetic gibberish.\n\n4.  **Formulate the Explanation:**\n    *   *Direct Answer:* State clearly that it doesn't mean anything in any known language.\n    *   *Breakdown of Characters:* Explain *why* it's gibberish by identifying the scripts used. This shows expertise and proves it's not just a standard phrase the AI missed.\n        *   Mention **Adlam** (used for Fula).\n        *   Mention **Bamum** (used for Bamum in Cameroon).\n        *   Mention the stray Latin character (`ꕷ`).\n    *   *Explain the Phenomenon:* Describe why people make text like this. It's usually for aesthetics, roleplaying, or creating a \"mysterious\" vibe (often called mock-exotic, glitch text, or character soup).\n    *   *Conclusion:* Reiterate that it's essentially decorative nonsense.\n\n5.  **Review and Refine (Self-Correction during drafting):**\n    *   *Initial thought:* Maybe I should try to transliterate it? *Correction:* No, transliterating a mix of Fula and Cameroonian scripts will just yield nonsense sounds (like \"a-sh-ny-a-q ya-?-?-nsh-t-a\"). It's better to just state the scripts rather than confusing the user with a fake phonetic reading.\n    *   *Tone check:* Ensure the tone is helpful and informative, not mocking. \"Character soup\" or \"aesthetic text\" are neutral, accurate terms.\n\n6.  **Final Output Generation:** (This matches the provided good response.)\n    *   \"It doesn't actually say anything...\"\n    *   Breakdown of the three scripts.\n    *   Explanation of \"aesthetic gibberish.\"\n    *   Summary.\n    *   *(See final output for the exact wording.)*",
+    "judgment": "FAIL - The model did not state that the message says \"Secret Message\". Instead, it analyzed the scripts (Adlam, Bamum, etc.) and concluded that the text is \"gibberish\" or \"character soup.\" CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:00:57.897Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 53,
+      "completionTokens": 1536,
+      "reasoningTokens": 1112,
+      "totalTokens": 2701
+    },
+    "costUsd": 0.0062076,
+    "latencyMs": 76614
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "z-ai/glm-5-turbo",
     "modelName": "z-ai/glm-5-turbo",
@@ -1650,6 +1692,19 @@
     },
     "costUsd": 0.021781824,
     "latencyMs": 73634
+  },
+  {
+    "questionId": "suits",
+    "modelId": "z-ai/glm-5-turbo",
+    "modelName": "z-ai/glm-5-turbo",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "ERROR: Unexpected end of JSON input",
+    "retryCount": 1,
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-23T18:03:04.899Z",
+    "hash": "61e31939506c8104"
   },
   {
     "questionId": "Sundays",

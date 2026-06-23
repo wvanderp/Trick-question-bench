@@ -525,6 +525,27 @@
     "latencyMs": 2034
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.2-codex (high reasoning)",
+    "modelName": "openai/gpt-5.2-codex (high reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "There isn’t enough information to tell. Either spouse could be the doctor and the other the nurse (they could even be the same gender). The riddle is meant to catch the assumption that the doctor must be the man.",
+    "reasoning": "**Addressing gender bias in the riddle**\n\nThe riddle challenges gender stereotypes by not specifying roles or genders, so the doctor and nurse could be either spouse regardless of sex; the key point is to avoid assumptions based on traditional roles.**Confirming ambiguity in roles**\n\nThe information given doesn’t specify which spouse holds which role, so the doctor could be either partner; this highlights how assumptions about roles can reflect stereotypes rather than facts.",
+    "judgment": "PASS - The model correctly identified that there isn't enough information to determine their roles and explicitly noted that assumptions about gender (or the couple being heterosexual) are the basis of the trick. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:45:49.519Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 854,
+      "reasoningTokens": 768,
+      "totalTokens": 1656
+    },
+    "costUsd": 0.0120155,
+    "latencyMs": 7608
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.2-codex (high reasoning)",
     "modelName": "openai/gpt-5.2-codex (high reasoning)",
@@ -1210,6 +1231,27 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.2-codex (high reasoning)",
+    "modelName": "openai/gpt-5.2-codex (high reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It’s just a substitution in fancy Unicode characters.  \nIf you map them back to Latin letters, it reads:\n\n**“secret message.”**\n\n(Each symbol stands for a letter: ꕷ=S, 𖤢=E, ꛕ=C, 𖦪=R, 𖢧=T, 𖢑=M, ꛎ=A, ꚽ=G.)",
+    "reasoning": "**Identifying script as Mende Kikakui**\n\nThe string mixes Vai syllabary and Mende Kikakui characters, with key characters falling in the Mende Kikakui Unicode block (U+1E800–1E8DF), clarifying it’s a Mende Kikakui script text possibly combined with Vai.**Considering Bamum script possibility**\n\nThe presence of \"ꛕ\" (U+A6D5) suggests the string may include Bamum script characters, refining the script identification beyond just Mende Kikakui or Vai.",
+    "judgment": "PASS - The model correctly identified and explicitly stated that the message says \"secret message\". CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:34:00.916Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 12223,
+      "reasoningTokens": 12096,
+      "totalTokens": 24376
+    },
+    "costUsd": 0.17122175,
+    "latencyMs": 97176
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.2-codex (high reasoning)",
     "modelName": "openai/gpt-5.2-codex (high reasoning)",
@@ -1627,6 +1669,19 @@
     },
     "costUsd": 0.09616075,
     "latencyMs": 51604
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.2-codex (high reasoning)",
+    "modelName": "openai/gpt-5.2-codex (high reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "ERROR: Unexpected end of JSON input",
+    "retryCount": 1,
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-23T16:45:34.831Z",
+    "hash": "61e31939506c8104"
   },
   {
     "questionId": "Sundays",

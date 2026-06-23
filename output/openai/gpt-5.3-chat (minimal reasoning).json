@@ -520,6 +520,26 @@
     "latencyMs": 1001
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "There isn’t enough information to tell.\n\nThe question is nudging you to assume roles based on stereotypes, but nothing in the sentence specifies which person is which. Either partner could be the doctor or the nurse.",
+    "judgment": "PASS - The model correctly identified that there isn't enough information to determine the roles and explicitly noted that the question relies on stereotypes rather than facts. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:46:28.844Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 112,
+      "reasoningTokens": 64,
+      "totalTokens": 210
+    },
+    "costUsd": 0.0016275,
+    "latencyMs": 3138
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
     "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
@@ -1180,6 +1200,26 @@
     "latencyMs": 2408
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "Those characters are from several different rare scripts (like Vai, Mende Kikakui, and some other historic/obscure Unicode blocks), and they’re mixed together in a way that doesn’t form a coherent word or sentence in any known language.\n\nSo as written, it doesn’t “say” anything meaningful—it’s essentially decorative or random text rather than a translatable phrase.",
+    "judgment": "FAIL - The model failed to identify the phrase \"Secret Message\" and instead claimed the text was a random collection of characters with no meaningful translation. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:45:26.989Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 164,
+      "reasoningTokens": 64,
+      "totalTokens": 285
+    },
+    "costUsd": 0.00239575,
+    "latencyMs": 3616
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
     "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.01531075,
     "latencyMs": 13620
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "Legs.\n\nA man has 2 legs.  \nA king sits on a throne with 4 legs.  \nA beggar has none (he sits or lies on the ground).",
+    "judgment": "FAIL - The model provided an answer (\"Legs\") that does not make sense under scrutiny. While a man has 2 legs, a king (the person) has 2 legs, not 4, and the claim that a beggar has no legs is a baseless generalization. The model failed to provide the target answer (\"Suit\") or a logical alternative. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:46:19.555Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 1717,
+      "reasoningTokens": 1664,
+      "totalTokens": 3409
+    },
+    "costUsd": 0.024087,
+    "latencyMs": 45178
   },
   {
     "questionId": "Sundays",

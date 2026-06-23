@@ -539,6 +539,26 @@
     "latencyMs": 916
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.2 (medium reasoning)",
+    "modelName": "openai/gpt-5.2 (medium reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "You can’t tell from the information given. Either spouse could be the doctor and the other the nurse—nothing in the statement specifies which is which.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine their roles and explicitly stated that either spouse could be the doctor or the nurse. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:51:00.022Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 58,
+      "reasoningTokens": 22,
+      "totalTokens": 114
+    },
+    "costUsd": 0.0008715,
+    "latencyMs": 2606
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.2 (medium reasoning)",
     "modelName": "openai/gpt-5.2 (medium reasoning)",
@@ -1213,6 +1233,27 @@
     "latencyMs": 1794
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.2 (medium reasoning)",
+    "modelName": "openai/gpt-5.2 (medium reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It reads: **“secret message”**.\n\nThose are just *look‑alike Unicode characters* from various scripts used to visually spell English letters (a “homoglyph”/stylized text), not a single coherent writing system.",
+    "reasoning": "**Decoding the message**\n\nI’m testing out some characters to decode a phrase, starting with 𖢑 for \"m,\" 𖤢 for \"e,\" and then matching them to others. It seems the whole phrase might be “sorrow message” or perhaps “secret message.” After mapping it out, it looks like \"secret message\" fits perfectly! I should explain that these characters are merely lookalike symbols and not part of a meaningful language—they're more like stylized representations. I’ll provide the decoded text clearly!",
+    "judgment": "PASS - The model correctly identified that the message says \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:50:12.436Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 557,
+      "reasoningTokens": 502,
+      "totalTokens": 1116
+    },
+    "costUsd": 0.00789775,
+    "latencyMs": 12045
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.2 (medium reasoning)",
     "modelName": "openai/gpt-5.2 (medium reasoning)",
@@ -1627,6 +1668,27 @@
     },
     "costUsd": 0.04003475,
     "latencyMs": 57526
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.2 (medium reasoning)",
+    "modelName": "openai/gpt-5.2 (medium reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "**Wheels** — a man might ride a **2‑wheeled** bicycle, a king rides in a **4‑wheeled** carriage, and a beggar has **none**.",
+    "reasoning": "**Exploring a riddle**\n\nI’m playing around with this classic riddle: \"A man has two, a king has four; a beggar has none.\" My first thoughts are about letters or even arms, but that doesn’t fit. I wonder if it refers to things like wives or coins. But then I think of legs too, which doesn't really work either. Eventually, I’m led to the answer: \"the letter E,\" since \"man\" has one, \"king\" has two, and \"beggar\" has none!**Analyzing a riddle**\n\nI'm trying to decode this riddle: \"A man has 2, a king has 4, a beggar has none.\" I wonder if it refers to the number of letters, or maybe heirs? Then I think about plurals—like legs, where a man has two, a king could have four sitting on a throne, and a beggar crawls. Still, that feels forced. I then consider money and coin sides, but those options don't quite fit either. It's a tricky puzzle!**Decoding the riddle**\n\nI'm exploring this riddle: \"A man has 2; a king has 4; a beggar has none.\" I start wondering if it’s about pockets, shoes, or rooms. Maybe it refers to wheels? Each option seems to have its flaws. I'm also thinking about letters in the words, like how \"man\" might have two \"A\"s, but that doesn't fit either. Then I consider rings or thrones, and even the metaphor of eyes, like a king having \"four eyes,\" but I'm not quite landing on anything solid yet.**Examining a riddle’s meaning**\n\nI'm looking at this riddle: \"A man has 2, a king has 3, and God has 1.\" My first thought is about the letters in each word, but that doesn’t quite fit. I consider the idea that \"a man has 2 eyes, a king has 4 (two eyes and two spies), and a beggar has none.\" But that seems off—everyone has eyes! Then I think about the concept of wheels: a man has 2 (like a bike), a king has 4 (like a carriage), and a beggar has none. Still, I'm left searching for a solid answer.**Exploring riddle possibilities**\n\nI'm delving into the riddle: \"A man has 2, a king has 4, and a beggar has none.\" I've considered various interpretations like doors, legs, suits, and even parents, but they don’t quite fit. I keep circling back to ideas about wheels—where a man has 2 on a bicycle, a king has 4 on a carriage, and a beggar has none, since they might walk. This seems the most plausible! I think I'll go with that for a concise response.",
+    "judgment": "FAIL - The model answered \"Wheels\", which contradicts the specific logic provided in the prompt and does not fit the riddle as well as the intended answer \"suit\". While the model attempted to justify its logic, it fell for the trick and failed to provide the correct answer or a more sensible alternative. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:50:51.408Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 1851,
+      "reasoningTokens": 1803,
+      "totalTokens": 3682
+    },
+    "costUsd": 0.025963,
+    "latencyMs": 32105
   },
   {
     "questionId": "Sundays",

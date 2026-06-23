@@ -520,6 +520,26 @@
     "latencyMs": 616
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.4-nano",
+    "modelName": "openai/gpt-5.4-nano",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "It’s a trick riddle—there’s **no way to tell** from the information given. The riddle doesn’t specify which person is which (it just says *one* is a doctor and *the other* is a nurse).",
+    "judgment": "PASS - The model correctly identified that there is no way to tell which person holds which profession from the information provided, avoiding the gendered stereotypes the trick question implies. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:30:13.966Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 53,
+      "reasoningTokens": 0,
+      "totalTokens": 87
+    },
+    "costUsd": 0.00007305,
+    "latencyMs": 749
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.4-nano",
     "modelName": "openai/gpt-5.4-nano",
@@ -1180,6 +1200,26 @@
     "latencyMs": 1124
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.4-nano",
+    "modelName": "openai/gpt-5.4-nano",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "I can’t determine that reliably from the characters alone.\n\nThose symbols (ꕷ, 𖤢, ꛕ, 𖦪, ꛎ, etc.) look like **Unicode “ornamental/derangement” letters** (decorative glyphs) or symbols from a **stylized cipher/font**, not a standard alphabet with a one-to-one meaning. Without knowing the exact source/font/cipher system they come from, there’s no consistent way to translate them into readable text.\n\nIf you tell me one of the following, I can help decode it:\n1) Where you saw it (game/app/book/website), or paste a link/screenshot.  \n2) Whether the text has a known mapping/cipher (e.g., a specific “ornamental script” used by a community).  \n3) The *exact* characters as copied (sometimes fonts change the glyphs even if they look similar).  \n\nIf you want, paste the exact string again and also any surrounding text/meaning you suspect, and I’ll try to identify the script/mapping.",
+    "judgment": "FAIL - The model failed to identify that the message says \"Secret Message\" and instead claimed it could not determine the meaning of the characters. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:29:59.209Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 226,
+      "reasoningTokens": 0,
+      "totalTokens": 283
+    },
+    "costUsd": 0.0002939,
+    "latencyMs": 1936
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.4-nano",
     "modelName": "openai/gpt-5.4-nano",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.00010095,
     "latencyMs": 703
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.4-nano",
+    "modelName": "openai/gpt-5.4-nano",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "It’s **the “letters” in a word**:\n\n- **“man”** has **2** letters that are **curved** (m, a)  \n- **“king”** has **4** letters that are **curved** (k, i, n, g have curved parts)  \n- **“beggar”** has **none** (the letters are all straight/only have no “curved-only” letters by the riddle’s convention)\n\n*(This riddle’s answer depends on the specific counting rule the setter intended; if you tell me where you found it, I can match the exact letter-shape criterion they used.)*",
+    "judgment": "FAIL\nThe model failed to identify the intended answer \"a suit\". Instead, it provided a convoluted and incorrect explanation involving the shapes of letters, which the prompt explicitly warned against (specifically naming letter-based answers as incorrect). The model's reasoning about curved letters also does not logically hold up (e.g., claiming 'm' and 'a' are curved but 'g' and 'b' in beggar are not). \n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:30:06.902Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 141,
+      "reasoningTokens": 0,
+      "totalTokens": 169
+    },
+    "costUsd": 0.00018185,
+    "latencyMs": 1366
   },
   {
     "questionId": "Sundays",

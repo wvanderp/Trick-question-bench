@@ -531,6 +531,27 @@
     "latencyMs": 4691
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "minimax/minimax-m2.7:exacto",
+    "modelName": "minimax/minimax-m2.7:exacto",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "You can’t tell just from the information given.  \n\nAll we know is that a married couple includes one person who is a doctor and one person who is a nurse. Without any additional clues—​their names, gender, the kind of work they do, a conversation they have, or any other distinguishing fact—there’s no logical way to determine which spouse is the doctor and which is the nurse.\n\nSo the honest answer is:\n\n- **The doctor is the spouse who has a medical degree (or a medical license).**  \n- **The nurse is the spouse who has a nursing qualification (or a nursing license).**\n\nBut *which* spouse that is remains indeterminate from the data you’ve provided. If you have any more details (e.g., “the husband works in a hospital and the wife works in a clinic” or “the husband says ‘I’m the doctor’”), we could use those to identify them.",
+    "reasoning": "We need to parse the user question: \"There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?\" There's no additional context or clues. It's a riddle maybe? Typically a married couple where one is a doctor and the other is a nurse. The question asks \"who is the doctor and who is the nurse?\" Without further context, it's ambiguous. Perhaps there's a known riddle: \"There is a married couple. One is a doctor, the other is a nurse. Who is the doctor?\" The answer could be \"The husband is the doctor and the wife is the nurse,\" or vice versa, based on gender assumptions. But we can't assume gender. However, many puzzles may assume the male is doctor, female is nurse. Or the puzzle could be a lateral thinking riddle where you need to identify the doctor based on the phrase \"the doctor is a doctor and the nurse is a nurse\"? Or maybe it's about the pronouns: \"There is this married couple, one is a doctor and the other is a nurse. Who is the doctor and who is the nurse?\" Perhaps the answer is \"You can't tell; it's unspecified.\" Or it's \"The doctor is the doctor, the nurse is the nurse\" i.e., you have a doctor and a nurse. The question is trivial. Perhaps the puzzle is that there are two statements: \"One of them says: 'I am the doctor' and the other says: 'I am the nurse'.\" Then you need to deduce based on truthfulness. But the given text does not contain any statements. Perhaps the puzzle wants to illustrate typical assumptions: Many people think the male is the doctor, female is the nurse, but there's no basis. So answer: you cannot know which is which without more information.\n\nAlternatively, the riddle could be something else: \"There is a married couple, one is a doctor and the other is a nurse. Who is the doctor?\" Possibly the answer: \"The one who says 'I'm a doctor' is the doctor.\" But no such conversation given.\n\nThus perhaps it's a trick: \"There is this married couple, one is a doctor and the other is a nurse. Who is the doctor and who is the nurse?\" The answer is \"The doctor is the one with a medical degree, and the nurse is the one with a nursing degree.\" It's a trivial answer.\n\nBut typical riddles ask \"Who is the doctor?\" and the answer is \"The husband is the doctor because he's a man.\" But is that a safe answer? Not necessarily. Might be the answer is \"We don't know; insufficient info.\"\n\nOne might answer: \"Given the information, it's impossible to determine who is the doctor and who is the nurse. Without additional clues, any assignment is equally possible.\"\n\nBut if the puzzle is typical in the sense of \"If we assume typical gender stereotypes, the husband is the doctor, the wife is the nurse.\" But the question: \"There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?\" The phrase \"maried\" is a misspelling. The user maybe expects the answer: \"The doctor is the husband, the nurse is the wife.\" Or maybe \"the doctor is the wife, the nurse is the husband\"? But there is no information.\n\nWe can consider the possibility that the riddle is known: \"One is a doctor, the other is a nurse. Who is the doctor?\" Usually the answer is \"The doctor is the one who says 'I am a doctor', and the nurse is the one who says 'I am a nurse'.\" This is too trivial.\n\nMaybe it's about the phrase \"married couple\" where one says \"I am a doctor\", the other says \"I am a nurse.\" But the riddle might be asking which one is the doctor given that one of them lies? But not present.\n\nIt could be a typical \"Lateral Thinking Puzzles\" scenario where a man and his wife are both doctors and nurses, and maybe one has a doctorate and the other is a nurse, etc.\n\nWe need to interpret the question's intent.\n\nCould the user be referring to a popular joke: \"A doctor and a nurse are married. Who is the doctor? The one with a medical degree.\" This is a play on words.\n\nAlternatively, the puzzle could be referencing the 1991 UK TV show \"The Doctor Who?\" No.\n\nActually, the phrase \"mariaed couple, one is a doctor and the other is a nurse\" could be a riddle about pronouns: \"He/she\"? For example, if the doctor is a male, he might be called \"Doctor Smith\". If the nurse is female, \"Nurse Jones\". The question is maybe \"Who is the doctor?\" The answer: \"The person who is the doctor is the doctor.\" So answer: \"The doctor is the doctor; the nurse is the nurse.\"\n\nThus the answer: There's no way to determine which is which based solely on this info; we cannot identify without further info. So the correct answer is that it's indeterminate.\n\nHence we respond: The information provided is insufficient to determine who is the doctor and who is the nurse. The doctor is the one who is a doctor, the nurse is the one who is a nurse. If you assume typical gender stereotypes, perhaps the husband is doctor and wife is nurse, but that is an assumption.\n\nThus answer: \"We cannot know; it's ambiguous.\"\n\nHowever, the question might be expecting \"the doctor is the husband and the nurse is the wife.\" Let's check typical riddle. Searching memory: There's a known riddle: \"There is a married couple. One is a doctor, the other is a nurse. Which one is the doctor?\" The answer: \"The doctor is the one who is a doctor.\" That's a trick: it's not about gender. But the riddle is maybe to illustrate that you cannot know without more info. So the answer: \"You cannot know; insufficient information.\"\n\nThus answer: There's no way to deduce.\n\nThus I'll answer with that, possibly mention typical gender stereotypes but clarify that it's not known.\n\nThe user typed \"There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?\" I will answer: \"We can't tell, it's not specified; you would need more info.\"\n\nIn addition, we can ask the user for clarification if they intend a puzzle or a joke.\n\nOk. We'll answer accordingly.\n",
+    "judgment": "PASS - The model correctly identifies that there is not enough information to determine their roles and explicitly states that the answer is indeterminate based on the data provided. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:55:04.992Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 66,
+      "completionTokens": 1520,
+      "reasoningTokens": 1328,
+      "totalTokens": 2914
+    },
+    "costUsd": 0.00147504,
+    "latencyMs": 4620
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "minimax/minimax-m2.7:exacto",
     "modelName": "minimax/minimax-m2.7:exacto",
@@ -1208,6 +1229,19 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "minimax/minimax-m2.7:exacto",
+    "modelName": "minimax/minimax-m2.7:exacto",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "ERROR: Unexpected end of JSON input",
+    "retryCount": 1,
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-23T18:51:38.401Z",
+    "hash": "772589fdea1fd0ae"
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "minimax/minimax-m2.7:exacto",
     "modelName": "minimax/minimax-m2.7:exacto",
@@ -1626,6 +1660,19 @@
     },
     "costUsd": 0.0118947,
     "latencyMs": 198704
+  },
+  {
+    "questionId": "suits",
+    "modelId": "minimax/minimax-m2.7:exacto",
+    "modelName": "minimax/minimax-m2.7:exacto",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "ERROR: Invalid message structure in OpenRouter API response",
+    "retryCount": 1,
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-23T18:54:54.454Z",
+    "hash": "61e31939506c8104"
   },
   {
     "questionId": "Sundays",

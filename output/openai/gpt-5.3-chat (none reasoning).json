@@ -520,6 +520,26 @@
     "latencyMs": 2243
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.3-chat (none reasoning)",
+    "modelName": "openai/gpt-5.3-chat (none reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "There’s no way to tell. The question doesn’t give any information that distinguishes which person is the doctor and which is the nurse—either one could be either role.",
+    "judgment": "PASS - The model correctly identified that there is no information provided to distinguish between the roles of the two individuals. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:21:03.240Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 77,
+      "reasoningTokens": 0,
+      "totalTokens": 111
+    },
+    "costUsd": 0.0011375,
+    "latencyMs": 2074
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.3-chat (none reasoning)",
     "modelName": "openai/gpt-5.3-chat (none reasoning)",
@@ -1180,6 +1200,26 @@
     "latencyMs": 2935
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.3-chat (none reasoning)",
+    "modelName": "openai/gpt-5.3-chat (none reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "That string doesn’t match any known natural language or standard writing system in a meaningful way. The characters look like a mix of symbols from several Unicode blocks (some resemble Vai, Bamum, or decorative symbols), but together they don’t form recognizable words or grammar.\n\nIn practice, stuff like this is usually:\n- stylized “aesthetic” text made with random Unicode symbols  \n- used for usernames, bios, or “mysterious” posts  \n- sometimes meant to imitate a fictional or “ancient” script  \n\nSo it doesn’t actually “say” anything unless the person who wrote it assigned it a custom meaning.",
+    "judgment": "FAIL - The model failed to identify that the symbols are a stylized representation of the phrase \"Secret Message\" and instead claimed the string doesn't say anything. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:20:31.617Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 210,
+      "reasoningTokens": 64,
+      "totalTokens": 331
+    },
+    "costUsd": 0.00303975,
+    "latencyMs": 4262
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.3-chat (none reasoning)",
     "modelName": "openai/gpt-5.3-chat (none reasoning)",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.01468075,
     "latencyMs": 28844
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.3-chat (none reasoning)",
+    "modelName": "openai/gpt-5.3-chat (none reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "A **title**.\n\nA man might have the title **“Mr.”** (2 letters).  \nA king has the title **“King”** (4 letters).  \nA beggar has **no title**.",
+    "judgment": "FAIL - The model provided the answer \"title\" based on a letter-counting logic, but the prompt explicitly stated that the most common and correct answer is a \"suit.\" Furthermore, the logic for \"title\" is flawed (it counts letters in specific words rather than defining the object itself) and fails to meet the criteria provided in the instruction. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:20:55.004Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 435,
+      "reasoningTokens": 384,
+      "totalTokens": 847
+    },
+    "costUsd": 0.006139,
+    "latencyMs": 16138
   },
   {
     "questionId": "Sundays",

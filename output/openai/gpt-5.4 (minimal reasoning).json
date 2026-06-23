@@ -537,6 +537,27 @@
     "latencyMs": 795
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.4 (minimal reasoning)",
+    "modelName": "openai/gpt-5.4 (minimal reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "You can’t tell from that sentence alone.\n\nThe doctor could be either spouse, and the nurse could be the other. Nothing in the wording identifies which is which. If someone assumes the man is the doctor and the woman is the nurse, that’s just a stereotype.",
+    "reasoning": "**Addressing stereotypes**\n\nI think it's essential to acknowledge that sometimes we can't know everything about a person's experiences or background. It's important to challenge stereotypes since they can be limiting and misleading. By approaching individuals with an open mind and willingness to listen, I believe we can foster better understanding and empathy, which helps break down those stereotypes. It's a valuable perspective to have in our diverse world.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine their roles and explicitly called out the stereotyping involved in assuming roles based on gender. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T15:38:04.112Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 76,
+      "reasoningTokens": 16,
+      "totalTokens": 126
+    },
+    "costUsd": 0.001225,
+    "latencyMs": 2250
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.4 (minimal reasoning)",
     "modelName": "openai/gpt-5.4 (minimal reasoning)",
@@ -1218,6 +1239,27 @@
     "latencyMs": 2435
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.4 (minimal reasoning)",
+    "modelName": "openai/gpt-5.4 (minimal reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It doesn’t appear to “say” anything in a standard language or script.\n\nThe text:\n\n**ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢**\n\nlooks like a mix of characters from different Unicode scripts/symbol blocks, not a normal writing system. That usually means one of these:\n\n1. **A custom substitution cipher**  \n   - each symbol stands for a letter\n\n2. **A decorative/fancy font encoding**  \n   - someone replaced normal letters with unusual Unicode symbols\n\n3. **Random aesthetic symbols**  \n   - meant to look mysterious, not actually readable\n\nSo I can’t directly translate it reliably without a key or context.\n\nIf you want, I can help by:\n- trying to **decode it as a substitution cipher**\n- identifying the **Unicode characters one by one**\n- checking if it matches a known “fancy alphabet” style\n\nIf you send where you found it, I may be able to narrow it down.",
+    "reasoning": "**Identifying custom scripts**\n\nI'm noticing a mix of symbols here with U+A577 (Vai), U+A6D5 (Bamum), and U+169AA, which might not relate to any standard language. It looks like they’re being used in a custom substitution cipher, possibly for stylization. I’ll clarify that this text isn't standard and might include random Unicode symbols. It would be helpful if there's a source or a key to decode it properly.",
+    "judgment": "FAIL - The model failed to identify that the text says \"Secret Message\" and instead claimed it didn't appear to say anything in a standard language. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T15:37:24.778Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 630,
+      "reasoningTokens": 395,
+      "totalTokens": 1082
+    },
+    "costUsd": 0.0095925,
+    "latencyMs": 8225
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.4 (minimal reasoning)",
     "modelName": "openai/gpt-5.4 (minimal reasoning)",
@@ -1628,6 +1670,27 @@
     },
     "costUsd": 0.0165625,
     "latencyMs": 22851
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.4 (minimal reasoning)",
+    "modelName": "openai/gpt-5.4 (minimal reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The answer is **the letter “g.”**\n\n- **man** has **0** g’s — hmm, so that doesn’t fit.\n\nA better-known answer to this riddle is:\n\n**“The word ‘man’ has 2 letters? The word ‘king’ has 4? The word ‘beggar’ has none?”**\n\nThat version usually points to **“money”** or **“legs”**, but neither fits cleanly.\n\nSo the intended answer is most likely:\n\n**“A man has 2 legs, a king has 4 horses, a beggar has none.”**\n\nBut as written, the riddle is ambiguous/inconsistent.\n\nIf you want, I can help identify the *most likely intended* version.",
+    "reasoning": "**Analyzing riddle clues**\n\nI'm working through this classic riddle about letters. I think \"A man has 2\" might refer to the word \"man\" itself, which has 3 letters. The king possibly has 4, but I'm leaning towards the idea that \"beggar has none\" suggests it has no title. I also considered legs, but that doesn’t seem right. The vowels in the words don't match up either. Maybe it’s about the phrases like \"a man\" all having 2 words? I'm still figuring this out!**Exploring riddle options**\n\nI'm considering this riddle and thinking it might relate to letters in Roman numerals, but that doesn't seem right. \"Legs\" don’t fit since a king has 2 legs. I wonder if it's about \"heirs,\" but it asks for a singular answer. Maybe \"man\" has 2 letters with straight lines, while a king has 4 letters. However, I'm also thinking about names or possessions, like \"pennies\" or \"quarters,\" but those don't quite fit either. The chess aspect is interesting, though—hmm, still puzzling!**Examining riddle elements**\n\nI’m thinking about the riddle again and considering if it could involve \"sides\" on a card, since a king has 4 suits while a beggar has none. But that doesn’t quite fit either. So, I focus back on the phrases: \"A man has 2,” “A king has 4,” and “A beggar has none.\" There’s definitely something key here, but I'm not quite grasping it yet. Let’s keep analyzing!",
+    "judgment": "FAIL - The model failed to provide the correct answer (\"a suit\") and instead provided several incorrect and nonsensical explanations, such as the letter 'g', legs/horses, or word lengths that don't even match the counts given in the riddle. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T15:37:55.790Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 673,
+      "reasoningTokens": 516,
+      "totalTokens": 1217
+    },
+    "costUsd": 0.010165,
+    "latencyMs": 24588
   },
   {
     "questionId": "Sundays",

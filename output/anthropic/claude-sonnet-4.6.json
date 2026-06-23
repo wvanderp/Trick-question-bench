@@ -335,6 +335,26 @@
     "hash": "f1bb1aed92f94f9e"
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "anthropic/claude-sonnet-4.6",
+    "modelName": "anthropic/claude-sonnet-4.6",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "You haven't given me enough information to determine who is the doctor and who is the nurse. You've only told me they are a married couple where one is a doctor and the other is a nurse, but you haven't specified which person holds which role.\n\nCould you provide more details? For example, their names or other identifying information?",
+    "judgment": "PASS - The model correctly identified that there was not enough information to determine roles based on the details provided and did not fall for gender stereotypes. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:37:03.470Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 35,
+      "completionTokens": 72,
+      "reasoningTokens": 0,
+      "totalTokens": 107
+    },
+    "costUsd": 0.001185,
+    "latencyMs": 1832
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "anthropic/claude-sonnet-4.6",
     "modelName": "anthropic/claude-sonnet-4.6",
@@ -794,6 +814,19 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "anthropic/claude-sonnet-4.6",
+    "modelName": "anthropic/claude-sonnet-4.6",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "ERROR: Invalid message structure in OpenRouter API response",
+    "retryCount": 1,
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-23T18:36:41.375Z",
+    "hash": "772589fdea1fd0ae"
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "anthropic/claude-sonnet-4.6",
     "modelName": "anthropic/claude-sonnet-4.6",
@@ -1048,6 +1081,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-23T23:49:40.541Z",
     "hash": "b4f24d0e6890c685"
+  },
+  {
+    "questionId": "suits",
+    "modelId": "anthropic/claude-sonnet-4.6",
+    "modelName": "anthropic/claude-sonnet-4.6",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "## The Answer: **Legs**\n\nWait, let me reconsider...\n\n- A man has **2** legs ✓\n- A king has **4**? ✗ (a king also has 2 legs)\n\nThe real answer is: **Daughters** or more classically...\n\n## **The letter \"E\"**... no.\n\n## Actually: **Syllables** in the word... no.\n\n## The Answer is: **Children** ... no.\n\n## ✅ The correct answer is: **\"The letter N\"**... \n\n- **\"Man\"** - has 2 N's... no.\n\n## The answer is: **Quarters** — no.\n\n### ✅ Final Answer: **The letter \"G\"**\n- Ma**n** ... \n\n## The classic answer: **Legs on their title/word** — no.\n\n## ✅ **SYLLABLES isn't it either.**\n\nThe well-known answer to this riddle is: **\"Nothing\" / the word contains it** — \n\n### The answer is **\"N\"** — no letters...\n\n**The answer is DAUGHTERS** - or the classic is **LEGS on a coat of arms/throne.**\n\nDo you want to share the answer? 😄",
+    "judgment": "FAIL - The model provided multiple incorrect answers, including \"Legs\", \"Daughters\", \"The letter E\", \"Syllables\", \"Children\", \"The letter N\", \"Quarters\", and \"The letter G\". It failed to identify \"a suit\" as the correct answer and instead cycled through various incorrect tropes. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:36:55.668Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 29,
+      "completionTokens": 290,
+      "reasoningTokens": 0,
+      "totalTokens": 319
+    },
+    "costUsd": 0.004437,
+    "latencyMs": 8145
   },
   {
     "questionId": "Sundays",

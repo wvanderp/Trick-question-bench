@@ -520,6 +520,26 @@
     "latencyMs": 1497
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.3-codex (none reasoning)",
+    "modelName": "openai/gpt-5.3-codex (none reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "I can’t determine that from the sentence alone.\n\n“Married couple, one is a doctor and the other is a nurse” gives two roles, but no clue about which person has which role.  \nIf this is meant as a trick question, it’s often used to reveal assumptions (e.g., about gender), but logically either spouse could be either profession.",
+    "judgment": "PASS - The model correctly identifies that there is not enough information to determine roles and explicitly notes that logically either spouse could be either profession, directly addressing the underlying assumptions. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:48:41.281Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 77,
+      "reasoningTokens": 0,
+      "totalTokens": 111
+    },
+    "costUsd": 0.0011375,
+    "latencyMs": 1958
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.3-codex (none reasoning)",
     "modelName": "openai/gpt-5.3-codex (none reasoning)",
@@ -1180,6 +1200,26 @@
     "latencyMs": 1917
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.3-codex (none reasoning)",
+    "modelName": "openai/gpt-5.3-codex (none reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "Those characters look like a mix of symbols from **different scripts** (including Vai and some decorative/rare Unicode blocks), not standard text in one language.\n\nSo as written, **ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢** doesn’t map cleanly to a readable phrase I can confidently translate.\n\nIf you want, I can try to:\n1. Identify each character’s script/name,\n2. Check if it’s likely a cipher/transliteration,\n3. Help decode it if you share where you found it.",
+    "judgment": "FAIL - The model's answer did not state that the message says \"Secret Message\". Instead, it stated that the characters do not map to a readable phrase. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:48:21.231Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 146,
+      "reasoningTokens": 0,
+      "totalTokens": 203
+    },
+    "costUsd": 0.00214375,
+    "latencyMs": 2451
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.3-codex (none reasoning)",
     "modelName": "openai/gpt-5.3-codex (none reasoning)",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.00129675,
     "latencyMs": 3185
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.3-codex (none reasoning)",
+    "modelName": "openai/gpt-5.3-codex (none reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "It’s the letter **“g.”**\n\n- **man** has no “g” (hmm) — wait, that doesn’t fit.  \nA better-known answer to this riddle is usually:\n\n👉 **The letter “a”**?  \n- m**a**n = 1, king = 0, beggar = 1 — also not right.\n\nGiven your exact counts:\n- **man** has **2**\n- **king** has **4**\n- **beggar** has **0**\n\nThis fits **“legs”** in a classic riddle sense:\n- a **man** has 2 legs  \n- a **king** (man + throne?) sometimes said to have 4 (including throne/chair legs)  \n- a **beggar** has none (figuratively, “has no leg to stand on”).\n\nBut if this is a strict word-letter puzzle, the counts don’t cleanly match common letters.  \nIf you want, I can list the most likely intended versions and their standard answers.",
+    "judgment": "FAIL - The model provided several incorrect guesses (the letter \"g\", the letter \"a\", and \"legs\") and failed to identify the correct answer, which is a suit. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:48:33.136Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 217,
+      "reasoningTokens": 0,
+      "totalTokens": 245
+    },
+    "costUsd": 0.003087,
+    "latencyMs": 5532
   },
   {
     "questionId": "Sundays",

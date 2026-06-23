@@ -496,6 +496,26 @@
     "latencyMs": 10521
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "anthropic/claude-opus-4.8",
+    "modelName": "anthropic/claude-opus-4.8",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "Based on the information you've given me, there's no way to determine who is the doctor and who is the nurse! You haven't told me anything that would distinguish them—like their names or any other identifying details.\n\nI suspect this might be a riddle, though. The classic version goes something like: \"A father and son are in a car accident. The father dies, and the son is rushed to the hospital. The surgeon says, 'I can't operate on this boy, he's my son.' How is this possible?\" The answer being that the surgeon is the boy's *mother*—a riddle designed to challenge assumptions that doctors are male.\n\nIf you're going for a similar twist, the point would be that either spouse could be the doctor or the nurse regardless of gender. A woman could be the doctor, a man could be the nurse, or in a same-sex marriage either partner could hold either role.\n\nIs there a specific riddle you had in mind, or were you testing assumptions? Let me know and I'm happy to play along! 😊",
+    "judgment": "PASS - The model correctly identified that there is no way to determine who is the doctor and who is the nurse based on the information provided. It explicitly acknowledges that gender does not determine these roles and mentions the possibility of same-sex marriage. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:21:08.159Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 43,
+      "completionTokens": 307,
+      "reasoningTokens": 0,
+      "totalTokens": 350
+    },
+    "costUsd": 0.00789,
+    "latencyMs": 5106
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "anthropic/claude-opus-4.8",
     "modelName": "anthropic/claude-opus-4.8",
@@ -1150,6 +1170,19 @@
     "latencyMs": 4482
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "anthropic/claude-opus-4.8",
+    "modelName": "anthropic/claude-opus-4.8",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "ERROR: Invalid message structure in OpenRouter API response",
+    "retryCount": 1,
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-23T18:20:43.599Z",
+    "hash": "772589fdea1fd0ae"
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "anthropic/claude-opus-4.8",
     "modelName": "anthropic/claude-opus-4.8",
@@ -1548,6 +1581,26 @@
     },
     "costUsd": 0.003875,
     "latencyMs": 3937
+  },
+  {
+    "questionId": "suits",
+    "modelId": "anthropic/claude-opus-4.8",
+    "modelName": "anthropic/claude-opus-4.8",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The answer is **the letter \"A\"**!\n\nHere's how it works:\n- The word \"m**a**n\" has 1 \"A\"... \n\nWait, let me reconsider this classic riddle. The traditional answer relates to counting letters:\n\n- \"m**a**n\" — but this only has 1 letter A\n\nThe classic version of this riddle is:\n\n**\"What comes once in a minute, twice in a moment, but never in a thousand years?\"** — The letter **M**.\n\nFor your specific riddle, the answer is the **letter \"E\"**:\n- B**e**ggar... no.\n\nLet me give you the proper classic answer. The well-known riddle goes:\n\n**\"The poor have it, the rich need it, and if you eat it you die.\"** — **Nothing**.\n\nHonestly, your riddle as worded doesn't map cleanly to a standard answer. If you can confirm the exact wording, I'd be happy to crack it! The \"man/king/beggar\" structure suggests it's likely a **letter-counting riddle**, but the numbers (2 and 4) don't match a single common letter in those words.\n\nCould you double-check the riddle?",
+    "judgment": "FAIL - The model failed to provide the correct answer (\"suit\") and instead went on a tangent about letter-counting and other riddles that did not fit the criteria provided. It explicitly failed to solve the riddle presented. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:20:56.711Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 29,
+      "completionTokens": 355,
+      "reasoningTokens": 0,
+      "totalTokens": 384
+    },
+    "costUsd": 0.00902,
+    "latencyMs": 6509
   },
   {
     "questionId": "Sundays",

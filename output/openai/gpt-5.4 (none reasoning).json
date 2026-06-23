@@ -520,6 +520,26 @@
     "latencyMs": 812
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.4 (none reasoning)",
+    "modelName": "openai/gpt-5.4 (none reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "You haven’t given enough information to determine which spouse is which.\n\nA married couple could be:\n- the husband is the doctor and the wife is the nurse,\n- the wife is the doctor and the husband is the nurse,\n- or in some contexts, any gender combination.\n\nSo the correct answer is: **it cannot be determined from the information given**.\n\nIf you want, I can also explain why this is often used as a bias/riddle question.",
+    "judgment": "PASS - The model accurately states that there is not enough information to determine their roles and explicitly identifies various gender and professional combinations. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:04:57.975Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 96,
+      "reasoningTokens": 0,
+      "totalTokens": 130
+    },
+    "costUsd": 0.001525,
+    "latencyMs": 1793
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.4 (none reasoning)",
     "modelName": "openai/gpt-5.4 (none reasoning)",
@@ -1180,6 +1200,26 @@
     "latencyMs": 4979
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.4 (none reasoning)",
+    "modelName": "openai/gpt-5.4 (none reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "I can help try to identify it, but that exact string —\n\n**ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢**\n\n— appears to be a mix of characters from multiple scripts/symbol blocks rather than a normal readable phrase in one standard language.\n\nA few of the characters look like they come from:\n- **Vai** (e.g. ꕷ, ꛕ, ꛎ, ꚽ)\n- assorted **historic or symbol Unicode blocks** for the others (the 𖤢 / 𖦪 / 𖢧 / 𖢑 characters)\n\nBecause of that, it likely is one of these:\n1. **Stylized/encoded text**\n2. **A font-cipher or substitution alphabet**\n3. **Random Unicode decorative characters**\n4. Text from a niche conlang/game/fandom encoding\n\nSo I can’t reliably “read” or translate it as-is.\n\nIf you want, I can do one of these next:\n- **identify each character by Unicode name**\n- **try to detect whether it encodes English with a substitution cipher**\n- **help decode it if you tell me where you found it**",
+    "judgment": "FAIL - The model failed to identify that the text says \"Secret Message\" and instead stated that it could not reliably read or translate it. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:04:40.588Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 281,
+      "reasoningTokens": 0,
+      "totalTokens": 338
+    },
+    "costUsd": 0.0043575,
+    "latencyMs": 4099
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.4 (none reasoning)",
     "modelName": "openai/gpt-5.4 (none reasoning)",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.0023725,
     "latencyMs": 7019
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.4 (none reasoning)",
+    "modelName": "openai/gpt-5.4 (none reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The answer is **letters**.\n\n- **man** has **3** letters, though — so this version doesn’t fit perfectly.\n- But the classic riddle is usually:\n\n> **A man has 2, a king has 4, and a beggar has none. What is it?**  \n> **The answer: legs**  \n> - a man has 2 legs  \n> - a king has 2 as well, so this also doesn’t fit\n\nSo the intended answer is most likely **the letter “g”** or **letters in the word**, but the counts don’t fully match.\n\nLet’s check the words:\n\n- **man** → 3 letters\n- **king** → 4 letters\n- **beggar** → 6 letters\n\nThat doesn’t work either.\n\nA better-known version is:\n\n> **A dog has 4. A man has 2. A beggar has none.**\n\nThen the answer is **legs**.\n\nSo: **this riddle as written is inconsistent**, but it was probably meant to be **“legs.”**",
+    "judgment": "FAIL\nThe model failed to identify \"a suit\" as the answer. It attempted to analyze the riddle based on letters and legs, ultimately concluding that the answer was \"legs\" despite noting the inconsistency. The model did not find the \"suit\" (clothing/playing cards) logic. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:04:49.948Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 234,
+      "reasoningTokens": 0,
+      "totalTokens": 262
+    },
+    "costUsd": 0.00358,
+    "latencyMs": 2950
   },
   {
     "questionId": "Sundays",

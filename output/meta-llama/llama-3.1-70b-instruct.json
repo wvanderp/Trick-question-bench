@@ -335,6 +335,26 @@
     "hash": "f1bb1aed92f94f9e"
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "meta-llama/llama-3.1-70b-instruct",
+    "modelName": "meta-llama/llama-3.1-70b-instruct",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "\n\nClever trick question!\n\nThe information provided doesn't specify the gender of the doctor or the nurse, so I'll give the most inclusive answer:\n\nOne of the spouses is a doctor, and the other spouse is a nurse. Without additional information, it's impossible to determine who is the doctor and who is the nurse.\n\nPerhaps the husband is the doctor, and the wife is the nurse... or maybe the wife is the doctor, and the husband is the nurse... or maybe it's a same-sex couple, and either partner could be the doctor or the nurse!\n\nThe point is, we can't make assumptions based on traditional gender roles.",
+    "judgment": "PASS - The model correctly identified that there isn't enough information to determine the roles. It explicitly rejected gender stereotypes and acknowledged that the couple's gender and specific roles are unknown. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:46:23.607Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 42,
+      "completionTokens": 130,
+      "reasoningTokens": 0,
+      "totalTokens": 172
+    },
+    "costUsd": 0.00012384,
+    "latencyMs": 4498
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "meta-llama/llama-3.1-70b-instruct",
     "modelName": "meta-llama/llama-3.1-70b-instruct",
@@ -794,6 +814,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "meta-llama/llama-3.1-70b-instruct",
+    "modelName": "meta-llama/llama-3.1-70b-instruct",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "That text appears to be written in a non-standard script. It doesn't resemble any common language that I can recognize.\n\nCould you please provide more context or information about where you encountered this text? Is it a code, a language, or a script that you're familiar with? I'd be happy to help you decipher its meaning if you provide more context.",
+    "judgment": "FAIL - The model failed to decipher the text and did not state that the message says \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:45:57.581Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 60,
+      "completionTokens": 73,
+      "reasoningTokens": 0,
+      "totalTokens": 133
+    },
+    "costUsd": 0.0000532,
+    "latencyMs": 2198
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "meta-llama/llama-3.1-70b-instruct",
     "modelName": "meta-llama/llama-3.1-70b-instruct",
@@ -1048,6 +1088,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-24T19:31:02.088Z",
     "hash": "b4f24d0e6890c685"
+  },
+  {
+    "questionId": "suits",
+    "modelId": "meta-llama/llama-3.1-70b-instruct",
+    "modelName": "meta-llama/llama-3.1-70b-instruct",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The answer is: \"A corner\" or \"A side\" or, more specifically, the number of sides of a bed that a person has.\n\n* A man has 2 sides of a bed.\n* A king has 4 sides of a bed (a king-size bed).\n* A beggar has none, because a beggar typically sleeps on the ground or doesn't have a bed.\n\nAm I correct?",
+    "judgment": "FAIL\nThe model provided a convoluted explanation about bed sides that does not logically hold up (a man has two sides of a bed, but a king has four?). It failed to identify \"a suit\" as requested by the prompt's criteria and instead offered a nonsensical alternative. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:46:06.195Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 32,
+      "completionTokens": 85,
+      "reasoningTokens": 0,
+      "totalTokens": 117
+    },
+    "costUsd": 0.0000468,
+    "latencyMs": 2215
   },
   {
     "questionId": "Sundays",

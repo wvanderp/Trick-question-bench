@@ -450,6 +450,26 @@
     "hash": "f1bb1aed92f94f9e"
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "perplexity/sonar-reasoning-pro",
+    "modelName": "perplexity/sonar-reasoning-pro",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "You can’t tell from the information given; either spouse could be the **doctor** and either could be the **nurse**.  \n\nThe question is a riddle that exposes our tendency to assume roles based on gender (e.g., “husband = doctor, wife = nurse”), even though in reality both patterns exist: there are doctor–nurse couples with a male doctor and female nurse, and also couples with a female doctor and male nurse.[1][2]  \n\nSo the only correct answer with what you’ve told me is: *you don’t have enough information to know who is which.*",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine the roles and explicitly pointed out the gender bias flaw in the riddle. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:02:51.272Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 29,
+      "completionTokens": 128,
+      "reasoningTokens": 0,
+      "totalTokens": 157
+    },
+    "costUsd": 0.00708,
+    "latencyMs": 5387
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "perplexity/sonar-reasoning-pro",
     "modelName": "perplexity/sonar-reasoning-pro",
@@ -1019,6 +1039,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "perplexity/sonar-reasoning-pro",
+    "modelName": "perplexity/sonar-reasoning-pro",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It does not correspond to any recognizable word, emoji string, or standard phrase in the sources available, so I cannot reliably say what it “says” or means.[8][9]\n\nFrom the search results:\n\n- Online dictionary and translation resources that normally surface for unfamiliar text strings do not show any entry or match for this exact sequence, which strongly suggests it is not a standard word or phrase in major languages indexed there.[8]  \n- The characters are not regular emojis or common symbol sets described in typical emoji/Unicode overviews; they appear to be letters from less‑commonly used Unicode script blocks rather than decorative icons.[9][11]  \n- There is a broader pattern online where people use unusual Unicode characters or exotic scripts purely for aesthetic/username purposes, rather than to convey readable text.[2][3][13]\n\nGiven that:\n\n- I cannot identify a specific language for this sequence from the provided results.  \n- No source gives a mapping or translation for any of these exact characters.  \n\nAny attempt to “translate” it would be guesswork. If you have context (where you saw it, what language it was supposed to be, or a screenshot showing surrounding text), that could make it possible to narrow down the script and at least say what alphabet it comes from, but with the current information its meaning is indeterminate.",
+    "judgment": "FAIL - The model failed to identify that the text says \"Secret Message\" and instead claimed the meaning was indeterminate. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:02:21.566Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 51,
+      "completionTokens": 285,
+      "reasoningTokens": 0,
+      "totalTokens": 336
+    },
+    "costUsd": 0.00838,
+    "latencyMs": 20488
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "perplexity/sonar-reasoning-pro",
     "modelName": "perplexity/sonar-reasoning-pro",
@@ -1389,6 +1429,26 @@
     },
     "costUsd": 0.01444,
     "latencyMs": 13479
+  },
+  {
+    "questionId": "suits",
+    "modelId": "perplexity/sonar-reasoning-pro",
+    "modelName": "perplexity/sonar-reasoning-pro",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The intended answer to this riddle is **money**.[5][10][6]\n\nIn the viral version of this puzzle, the numbers (2 for a man, 4 for a king, 0 for a beggar) are just used to suggest *relative* amounts of wealth: a regular man has some money, a king has more, and a beggar has none.[5][10]",
+    "judgment": "FAIL\nThe model identified the answer as \"money,\" which does not align with the specific criteria provided. The instructions explicitly state that the correct answer is a \"suit\" (referring to clothing/deck of cards) and that common alternative answers like letters should be failed. \"Money\" is an illogical answer for a King having exactly \"4\" unless referring to a very specific, non-standard context, whereas \"suit\" (card suits) fits the numerical logic provided in the prompt.\n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:02:39.710Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 23,
+      "completionTokens": 87,
+      "reasoningTokens": 0,
+      "totalTokens": 110
+    },
+    "costUsd": 0.00674,
+    "latencyMs": 11520
   },
   {
     "questionId": "Sundays",

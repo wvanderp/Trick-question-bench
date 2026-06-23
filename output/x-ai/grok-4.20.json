@@ -520,6 +520,26 @@
     "latencyMs": 490
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "x-ai/grok-4.20",
+    "modelName": "x-ai/grok-4.20",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "**The doctor is the wife, and the nurse is the husband.**\n\nThis is a classic riddle that plays on gender stereotypes.\n\nMost people automatically assume the doctor is the man and the nurse is the woman. But the question says \"a married couple,\" so one of them is male and one is female.\n\nThe only way the riddle makes sense is if **the doctor is the wife** and **the nurse is the husband**.",
+    "judgment": "FAIL - The model expressed certainty about who holds which role (\"The doctor is the wife, and the nurse is the husband\") instead of acknowledging that there is not enough information to determine the roles. By claiming this is the \"only way the riddle makes sense,\" the model failed to recognize that roles are not gender-dependent and that the couple's composition was not specified. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:26:05.187Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 150,
+      "completionTokens": 85,
+      "reasoningTokens": 0,
+      "totalTokens": 235
+    },
+    "costUsd": 0.0003328,
+    "latencyMs": 716
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "x-ai/grok-4.20",
     "modelName": "x-ai/grok-4.20",
@@ -1180,6 +1200,26 @@
     "latencyMs": 5180
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "x-ai/grok-4.20",
+    "modelName": "x-ai/grok-4.20",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "**\"I love you\"** (in the Valley Yokuts language, an endangered indigenous language of California).\n\nThe script is a stylized/transliterated form sometimes used in online indigenous language revitalization communities. The exact spelling ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 is a playful or artistic rendering of the Valley Yokuts phrase for \"I love you.\"",
+    "judgment": "FAIL - The model's answer states \"I love you\" instead of \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:25:50.536Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 173,
+      "completionTokens": 77,
+      "reasoningTokens": 0,
+      "totalTokens": 250
+    },
+    "costUsd": 0.00034155,
+    "latencyMs": 748
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "x-ai/grok-4.20",
     "modelName": "x-ai/grok-4.20",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.0015168,
     "latencyMs": 3696
+  },
+  {
+    "questionId": "suits",
+    "modelId": "x-ai/grok-4.20",
+    "modelName": "x-ai/grok-4.20",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "**A beard.**\n\n- A man (typically) has 2 (a mustache and a beard, or just his own facial hair).\n- A king has 4 (in many classic riddles and depictions, this plays on having a beard plus mustache, or sometimes \"two on his face and two in his portraits/statues\").\n- A beggar has none (because he's too poor to grow or maintain one, or simply doesn't have one).\n\nIt's a classic lateral-thinking riddle!",
+    "judgment": "FAIL - The model answered \"A beard\" instead of \"A suit\". The provided logic for \"A beard\" is weak and does not align with the standard riddle answer or the specific criteria provided. Specifically, the explanation for why a King has 4 and a beggar has none is nonsensical compared to the \"suit\" explanation. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:25:58.043Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 143,
+      "completionTokens": 95,
+      "reasoningTokens": 0,
+      "totalTokens": 238
+    },
+    "costUsd": 0.00034905,
+    "latencyMs": 957
   },
   {
     "questionId": "Sundays",

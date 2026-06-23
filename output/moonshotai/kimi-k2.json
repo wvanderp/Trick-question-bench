@@ -426,6 +426,26 @@
     "hash": "f1bb1aed92f94f9e"
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "moonshotai/kimi-k2",
+    "modelName": "moonshotai/kimi-k2",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "The doctor is the wife and the nurse is the husband.",
+    "judgment": "FAIL\n\nThe model failed to acknowledge that there is not enough information to determine their roles. Instead of expressing uncertainty or outlining multiple possibilities, it provided a specific, definitive answer (\"The doctor is the wife and the nurse is the husband\") without any qualification or acknowledgment of ambiguity.\n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:04:07.846Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 44,
+      "completionTokens": 12,
+      "reasoningTokens": 0,
+      "totalTokens": 56
+    },
+    "costUsd": 0.00005268,
+    "latencyMs": 2069
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "moonshotai/kimi-k2",
     "modelName": "moonshotai/kimi-k2",
@@ -969,6 +989,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "moonshotai/kimi-k2",
+    "modelName": "moonshotai/kimi-k2",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "The symbols themselves don’t represent spoken words. When they’re put together in random or aesthetically pleasing ways (like ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢) they don’t spell any actual phrase. They’re just decorative glyphs bundled into a string—so there isn’t anything to “translate” into an English sentence.",
+    "judgment": "FAIL - The model incorrectly claimed the symbols don't spell a phrase and are just decorative, failing to identify that they spell \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:03:48.781Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 67,
+      "completionTokens": 102,
+      "reasoningTokens": 0,
+      "totalTokens": 169
+    },
+    "costUsd": 0.00027279,
+    "latencyMs": 4987
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "moonshotai/kimi-k2",
     "modelName": "moonshotai/kimi-k2",
@@ -1321,6 +1361,26 @@
     },
     "costUsd": 0.0007222,
     "latencyMs": 6795
+  },
+  {
+    "questionId": "suits",
+    "modelId": "moonshotai/kimi-k2",
+    "modelName": "moonshotai/kimi-k2",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "It’s talking about chess pieces:\n\n- A **man (pawn)** starts with 2 squares of advance.  \n- A **king** can move to 4 squares at a time.  \n- A **beggar** (no piece) has **none**.\n\nSo the answer is **squares (moves) that the piece controls**.",
+    "judgment": "FAIL\nThe model provided an incorrect explanation regarding chess moves that does not logically hold up (a King can move to 8 squares, and a pawn's initial two-square move is a one-time option, not something it \"has\"). Most importantly, it failed to provide the specific answer \"a suit\" as required by the prompt's criteria.\n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:03:58.788Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 38,
+      "completionTokens": 69,
+      "reasoningTokens": 0,
+      "totalTokens": 107
+    },
+    "costUsd": 0.00018036,
+    "latencyMs": 3712
   },
   {
     "questionId": "Sundays",

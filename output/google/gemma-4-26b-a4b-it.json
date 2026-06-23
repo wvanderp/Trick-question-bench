@@ -520,6 +520,26 @@
     "latencyMs": 271
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "Based on the information provided, it is **impossible to tell** which person is which.\n\nThe sentence describes their professions but does not assign a specific gender or name to either role. Therefore, there is no way to distinguish between them.",
+    "judgment": "PASS - The model correctly identified that there is insufficient information to distinguish between the two individuals and explicitly stated it is impossible to tell. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:01:54.888Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 41,
+      "completionTokens": 49,
+      "reasoningTokens": 0,
+      "totalTokens": 90
+    },
+    "costUsd": 0.00002452,
+    "latencyMs": 3055
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "google/gemma-4-26b-a4b-it",
     "modelName": "google/gemma-4-26b-a4b-it",
@@ -1180,6 +1200,26 @@
     "latencyMs": 3671
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "The text you provided does not belong to any known human language or standard alphabet. It is a collection of **Unicode symbols** drawn from various ancient, decorative, and specialized scripts.\n\nSpecifically, these characters come from scripts such as:\n*   **Vai script** (an African syllabary)\n*   **Bamum script**\n*   **Yi script**\n*   **Miscellaneous decorative/ornamental symbols**\n\nBecause these characters are being used out of their original linguistic context and mixed together, they do not form words or sentences. This is a style often referred to as **\"Zalgo\"** or **\"Aesthetic Text,\"** which people use on social media (like TikTok or Discord) to create a \"mystical,\" \"glitchy,\" or \"cryptic\" visual effect.\n\n**In short: It doesn't \"say\" anything; it is a visual pattern used for decoration or an aesthetic vibe.**",
+    "judgment": "FAIL - The model failed to decode the characters and explicitly stated that the text \"doesn't 'say' anything,\" missing the visual \"Secret Message\" encoded in the symbols. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:01:30.763Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 65,
+      "completionTokens": 194,
+      "reasoningTokens": 0,
+      "totalTokens": 259
+    },
+    "costUsd": 0.0000647,
+    "latencyMs": 4234
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "google/gemma-4-26b-a4b-it",
     "modelName": "google/gemma-4-26b-a4b-it",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.00002516,
     "latencyMs": 2003
+  },
+  {
+    "questionId": "suits",
+    "modelId": "google/gemma-4-26b-a4b-it",
+    "modelName": "google/gemma-4-26b-a4b-it",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The answer is **syllables**.\n\nHere is the breakdown:\n* **Man** (1 syllable) — *Wait, let's look at the word counts:*\n* **Man** has 1 syllable.\n* **King** has 1 syllable.\n* **Beggar** has 2 syllables.\n\nActually, the classic answer to this specific riddle is **syllables**, but the numbers in your version are slightly different. Based on the structure of your riddle, the answer is the **number of syllables in the words themselves**:\n\n* **A man** (2 syllables: \"A\" + \"man\")\n* **A king** (2 syllables... wait, your riddle says 4)\n\nLet's look at the words again. If the answer is **syllables**, the riddle usually goes: *\"A man has one, a woman has two, and a beggar has none.\"*\n\nHowever, if we follow your specific numbers (**2, 4, 0**), the answer is **letters in the words**:\n* **\"A man\"** has 4 letters (too many).\n* **\"Man\"** has 3 letters.\n\n**The most accurate answer to your specific riddle is: Syllables (based on the word count of the phrases):**\n* **\"A man\"** (2 syllables)\n* **\"A king\"** (2 syllables... still doesn't fit 4)\n\n**Let's try one more logic: The word \"A\" + the subject.**\n* **\"A man\"** = 2 syllables.\n* **\"A king\"** = 2 syllables.\n\n**The intended answer is Syllables**, even if the numbers in your specific version are slightly non-standard!",
+    "judgment": "FAIL \nThe model failed to identify \"a suit\" as the answer and instead incorrectly concluded that the answer is \"syllables.\" Furthermore, its own logic for \"syllables\" did not even match the numbers provided in the question (2 and 4), yet it still insisted on that answer. The model fell for the trick and failed to provide the correct reasoning or the correct answer. \nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:01:45.374Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 375,
+      "reasoningTokens": 0,
+      "totalTokens": 409
+    },
+    "costUsd": 0.0001159,
+    "latencyMs": 7896
   },
   {
     "questionId": "Sundays",

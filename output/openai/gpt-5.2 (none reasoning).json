@@ -520,6 +520,26 @@
     "latencyMs": 812
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.2 (none reasoning)",
+    "modelName": "openai/gpt-5.2 (none reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "There isn’t enough information to tell.\n\nEither spouse could be the doctor and the other the nurse—the riddle is meant to highlight that you can’t assume the doctor is the husband or the nurse is the wife.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine their roles and explicitly noted that assumptions based on gender should not be made. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:13:49.133Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 47,
+      "reasoningTokens": 0,
+      "totalTokens": 81
+    },
+    "costUsd": 0.0007175,
+    "latencyMs": 1720
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.2 (none reasoning)",
     "modelName": "openai/gpt-5.2 (none reasoning)",
@@ -1180,6 +1200,26 @@
     "latencyMs": 3359
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.2 (none reasoning)",
+    "modelName": "openai/gpt-5.2 (none reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "I can’t reliably translate that as-is, because it’s a mix of multiple rare scripts/symbol blocks rather than a single standard writing system, and without knowing the intended language/font/encoding it could just be decorative “pseudo-text”.\n\nThat said, it very closely resembles the common placeholder phrase **“your message”**:\n- the second word ends with a sequence that looks like **“…essage”** (often encoded with faux/ornamental characters),\n- and the overall two-word pattern matches “your message” used in stylized text generators.\n\nIf you tell me **where you saw it** (website/app), or paste the **plain-text version** (or a screenshot showing surrounding context), I can confirm more confidently.",
+    "judgment": "FAIL - The model failed to identify that the text says \"Secret Message\" and instead incorrectly guessed it said \"your message.\" CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:13:30.951Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 150,
+      "reasoningTokens": 0,
+      "totalTokens": 207
+    },
+    "costUsd": 0.00219975,
+    "latencyMs": 3171
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.2 (none reasoning)",
     "modelName": "openai/gpt-5.2 (none reasoning)",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.00157675,
     "latencyMs": 4034
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.2 (none reasoning)",
+    "modelName": "openai/gpt-5.2 (none reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "It’s **letters in the word “it”**:\n\n- **man** has 2 letters after “it” → *m**a n***?* (doesn’t fit)\n\nThe intended classic answer is:\n\n**“A man has 2, a king has 4, a beggar has none” = “legs.”**\n\n- A man: **2 legs**\n- A king: **4 legs** (king + horse)\n- A beggar: **none** (stereotypically depicted as having no legs)",
+    "judgment": "FAIL\nThe model failed to provide the correct answer (\"a suit\") and instead provided incorrect logic about letters and \"legs.\" The model's explanation for \"legs\" is inconsistent and does not align with the provided criteria. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:13:41.089Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 114,
+      "reasoningTokens": 0,
+      "totalTokens": 142
+    },
+    "costUsd": 0.001645,
+    "latencyMs": 3470
   },
   {
     "questionId": "Sundays",

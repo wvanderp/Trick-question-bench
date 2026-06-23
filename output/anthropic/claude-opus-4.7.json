@@ -484,6 +484,26 @@
     "latencyMs": 1901
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "anthropic/claude-opus-4.7",
+    "modelName": "anthropic/claude-opus-4.7",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "There's no way to determine that from the information you've given! Either spouse could be the doctor and either could be the nurse, regardless of gender or any other factor.\n\nIf this is meant to be the classic riddle (where a father and son are in a car accident, the father dies, and the surgeon says \"I can't operate on this boy, he's my son\" — with the answer being that the surgeon is the boy's mother), then the point of the riddle is to challenge the assumption that doctors are male and nurses are female.\n\nSo the honest answer is: it could be either one. Did you have a specific version of the puzzle in mind?",
+    "judgment": "PASS - The model correctly states that there is no way to determine who is the doctor and who is the nurse from the information provided. It explicitly avoids making gender-based assumptions and acknowledges that either spouse could fill either role. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T15:50:13.007Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 48,
+      "completionTokens": 189,
+      "reasoningTokens": 0,
+      "totalTokens": 237
+    },
+    "costUsd": 0.004965,
+    "latencyMs": 4896
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "anthropic/claude-opus-4.7",
     "modelName": "anthropic/claude-opus-4.7",
@@ -1138,6 +1158,19 @@
     "latencyMs": 3254
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "anthropic/claude-opus-4.7",
+    "modelName": "anthropic/claude-opus-4.7",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "ERROR: Invalid message structure in OpenRouter API response",
+    "retryCount": 1,
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-23T15:49:45.015Z",
+    "hash": "772589fdea1fd0ae"
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "anthropic/claude-opus-4.7",
     "modelName": "anthropic/claude-opus-4.7",
@@ -1530,6 +1563,26 @@
     "needsHumanReview": true,
     "timestamp": "2026-05-11T20:29:08.210Z",
     "hash": "b4f24d0e6890c685"
+  },
+  {
+    "questionId": "suits",
+    "modelId": "anthropic/claude-opus-4.7",
+    "modelName": "anthropic/claude-opus-4.7",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "**The letter \"N\"**\n\n- The word \"ma**n**\" has 2 N's? Wait, let me reconsider...\n\nThe classic answer: The word \"ma**n**\" has 1 N, but the riddle works like this:\n- \"Man\" contains the letter... \n\nActually, the correct answer is the **letter \"N\"**:\n- Wait — \"man\" has one N.\n\nLet me give the proper classic answer: **Nothing!**\n\n- A man has 2 (legs/eyes/etc.)... hmm, that doesn't fit either.\n\nThe true classic answer is: **The letter \"G\"** — no...\n\n🎯 **The real answer: Nothing.**\n- A poor man has nothing, a rich man needs nothing, and if you eat nothing you'll die. \n\nBut for *your* specific riddle, the answer is the **letter \"E\"**... no.\n\n✅ Correct answer: **The letter \"N\"** doesn't fit. The intended answer is:\n\n**\"Nothing\"** — though the numbers are a twist. More likely your riddle's answer is a play on letters in the words themselves: \n- \"ma**n**\" → contains certain letters\n- \"ki**ng**\" → 4 letters\n- \"beggar\" → has none of something\n\nI'd need to know the exact source, but the most fitting answer is: **the letter that appears 2 times in \"man,\" 4 times in \"king,\" and 0 times in \"beggar\"** — though no single letter fits perfectly. \n\nCould you double-check the riddle's wording? It may be: *\"What does a poor man have, a rich man need, and if you eat it you'll die?\"* → **Nothing.** 🙂",
+    "judgment": "FAIL - The model failed to identify the correct answer \"a suit\". Instead, it guessed \"the letter N\", \"nothing\", \"the letter G\", and \"the letter E\", showing a complete lack of understanding of the riddle's logic regarding suits in a deck of cards or formal attire. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T15:50:02.081Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 522,
+      "reasoningTokens": 0,
+      "totalTokens": 556
+    },
+    "costUsd": 0.01322,
+    "latencyMs": 11021
   },
   {
     "questionId": "Sundays",

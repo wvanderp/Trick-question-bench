@@ -520,6 +520,26 @@
     "latencyMs": 1112
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.3-chat (medium reasoning)",
+    "modelName": "openai/gpt-5.3-chat (medium reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "You don’t have enough information to tell.\n\nPeople often assume the doctor is the man and the nurse is the woman, but the sentence never says anything about gender. It could be a woman doctor and a male nurse, or a same‑sex couple, or either way around.\n\nSo the correct answer is: it’s not specified.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine their roles and explicitly challenged the gender stereotypes associated with the professions. It also correctly noted that the genders of the individuals in the couple were never specified. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:13:21.204Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 119,
+      "reasoningTokens": 0,
+      "totalTokens": 153
+    },
+    "costUsd": 0.0017255,
+    "latencyMs": 3145
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.3-chat (medium reasoning)",
     "modelName": "openai/gpt-5.3-chat (medium reasoning)",
@@ -1180,6 +1200,26 @@
     "latencyMs": 1232
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.3-chat (medium reasoning)",
+    "modelName": "openai/gpt-5.3-chat (medium reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "Those characters don’t form a known readable sentence in any standard language. They look like a mix of rare or decorative Unicode symbols (some from scripts like Vai, Bamum, or ornamental/extended symbol blocks), but strung together in a way that doesn’t correspond to actual words or grammar.\n\nSo most likely it’s:\n- stylized or aesthetic text (like “fancy font” output), or  \n- random/constructed symbols meant to look mysterious\n\nIf you got it from somewhere specific (a game, post, or image), I can try to trace the exact source or style 👍",
+    "judgment": "FAIL - The model failed to decode the symbols and explicitly stated that the characters do not form a readable sentence, rather than identifying that they spell out \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:12:11.487Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 160,
+      "reasoningTokens": 0,
+      "totalTokens": 217
+    },
+    "costUsd": 0.00233975,
+    "latencyMs": 3862
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.3-chat (medium reasoning)",
     "modelName": "openai/gpt-5.3-chat (medium reasoning)",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.01571675,
     "latencyMs": 18089
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.3-chat (medium reasoning)",
+    "modelName": "openai/gpt-5.3-chat (medium reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "Legs.\n\nA man has 2 legs.  \nA king can be seen with 4 when he’s riding a horse.  \nA beggar (in the riddle’s sense) may have none, implying someone who has lost or cannot use their legs.",
+    "judgment": "FAIL - The model answered \"Legs\" instead of \"a suit\". This does not match the specific logic required by the prompt, particularly the explanation regarding a king in a deck of cards having four suits. The explanation provided for \"Legs\" (a king riding a horse) is also highly situational and does not fit the riddle's traditional logic. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:13:10.468Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 2049,
+      "reasoningTokens": 1984,
+      "totalTokens": 4061
+    },
+    "costUsd": 0.028735,
+    "latencyMs": 51257
   },
   {
     "questionId": "Sundays",

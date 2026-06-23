@@ -520,6 +520,26 @@
     "latencyMs": 628
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "ibm-granite/granite-4.1-8b",
+    "modelName": "ibm-granite/granite-4.1-8b",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "The information provided does not specify which spouse is the doctor and which is the nurse. Without additional context or details, it is impossible to determine who is the doctor and who is the nurse in this married couple. Both individuals could potentially be a doctor and a nurse, respectively, or the roles could be reversed.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine the roles and explicitly stated that both individuals could hold either position. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:26:13.799Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 36,
+      "completionTokens": 63,
+      "reasoningTokens": 0,
+      "totalTokens": 99
+    },
+    "costUsd": 0.0000081,
+    "latencyMs": 625
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "ibm-granite/granite-4.1-8b",
     "modelName": "ibm-granite/granite-4.1-8b",
@@ -1180,6 +1200,26 @@
     "latencyMs": 1701
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "ibm-granite/granite-4.1-8b",
+    "modelName": "ibm-granite/granite-4.1-8b",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "The string of characters you provided appears to be a sequence of Unicode symbols drawn from various writing systems and decorative scripts, such as:\n\n- Hangul (Korean) characters: ꕷ, ꛕ, 𖦪, 𖤢 (repeated), 𖢧, 𖢑\n- Cirth (Tolkien's Elvish alphabet): 𝓇, 𝓗\n- Braille patterns: ⠼\n- Miscellaneous decorative symbols: ꚽ, ⠀, others\n\nThese symbols do not form a coherent message in any known natural language. They seem to be a random or artistic arrangement of characters rather than a meaningful statement. Without additional context about the intent or source of this string, it is impossible to interpret any specific meaning or purpose behind it. It likely serves as an example of text composed solely from visually diverse Unicode characters rather than conveying any linguistic content.",
+    "judgment": "FAIL - The model failed to identify that the symbols spell out \"Secret Message\" and instead claimed they do not form a coherent message. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:25:55.035Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 59,
+      "completionTokens": 192,
+      "reasoningTokens": 0,
+      "totalTokens": 251
+    },
+    "costUsd": 0.00002215,
+    "latencyMs": 1625
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "ibm-granite/granite-4.1-8b",
     "modelName": "ibm-granite/granite-4.1-8b",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.000034,
     "latencyMs": 2365
+  },
+  {
+    "questionId": "suits",
+    "modelId": "ibm-granite/granite-4.1-8b",
+    "modelName": "ibm-granite/granite-4.1-8b",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The question is a classic riddle. The answer to the riddle \"A man has 2. A king has 4. A beggar has none. What is it?\" is **pairs of shoes** (or \"shoes\" in plural).\n\nHere's the reasoning:\n\n- A man typically owns two shoes (one for each foot).\n- A king, having more wealth and possibly larger feet or more footwear, might own four pairs of shoes.\n- A beggar, lacking resources, would have none.\n\nThus, the common element among these descriptions is \"pairs of shoes.\" Therefore, the answer is **shoes**.",
+    "judgment": "FAIL - The model answered \"shoes\" and provided a logical justification that fails to meet the specific criteria provided. The reasoning for \"shoes\" is weak (stating a man has 2 shoes/1 pair, while a king has 4 pairs/8 shoes is inconsistent), and it missed the intended answer of \"suits\" (referencing wedding/funeral suits vs. card suites). According to the instructions, any answer other than \"suit\" or a different answer that makes sense should fail; the model's explanation for a King having 4 shoes does not make logical sense compared to the card suite pun. \n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:26:03.304Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 30,
+      "completionTokens": 129,
+      "reasoningTokens": 0,
+      "totalTokens": 159
+    },
+    "costUsd": 0.0000144,
+    "latencyMs": 1476
   },
   {
     "questionId": "Sundays",

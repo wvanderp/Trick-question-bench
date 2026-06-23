@@ -520,6 +520,26 @@
     "latencyMs": 1005
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.3-chat (high reasoning)",
+    "modelName": "openai/gpt-5.3-chat (high reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "There’s no information that tells us which is which.\n\nThe question is a classic setup that tries to make you assume roles based on stereotypes, but logically, either person could be the doctor or the nurse.",
+    "judgment": "PASS - The model correctly identified that there is no information provided to determine their roles and explicitly debunked the underlying gender stereotypes. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:04:39.057Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 91,
+      "reasoningTokens": 0,
+      "totalTokens": 125
+    },
+    "costUsd": 0.0013335,
+    "latencyMs": 2194
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.3-chat (high reasoning)",
     "modelName": "openai/gpt-5.3-chat (high reasoning)",
@@ -1180,6 +1200,26 @@
     "latencyMs": 1973
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.3-chat (high reasoning)",
+    "modelName": "openai/gpt-5.3-chat (high reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "That string isn’t a standard written language I can translate. It’s made up of decorative or symbolic Unicode characters (often pulled from things like the Vai script, Bamum, or various ornamental symbol blocks), and people usually combine them to create an aesthetic “cipher” rather than actual readable text.\n\nSo unless the person who wrote it provided a custom meaning or key, it doesn’t have a fixed translation. It’s more like stylized gibberish or a vibe than a real sentence.\n\nIf you saw it somewhere specific (bio, post, etc.), I can try to guess the intended meaning from context 👍",
+    "judgment": "FAIL - The model failed to identify the text and instead claimed it was stylized gibberish or untranslatable, failing to state that the message says \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:03:38.050Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 165,
+      "reasoningTokens": 0,
+      "totalTokens": 222
+    },
+    "costUsd": 0.00240975,
+    "latencyMs": 3994
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.3-chat (high reasoning)",
     "modelName": "openai/gpt-5.3-chat (high reasoning)",
@@ -1578,6 +1618,26 @@
     },
     "costUsd": 0.00884275,
     "latencyMs": 8115
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.3-chat (high reasoning)",
+    "modelName": "openai/gpt-5.3-chat (high reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "Legs.\n\n- A man has **2 legs**.  \n- A **king (king-size bed)** typically has **4 legs**.  \n- A **beggar** may have **no bed**, so **no bed legs**.",
+    "judgment": "FAIL - The model provided \"Legs\" as the answer. While the model attempted to justify it, the logic that a beggar has no legs (or no bed legs) is flawed and does not meet the criteria of a sensible alternative to the intended answer \"A suit.\" CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T19:04:30.762Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 1572,
+      "reasoningTokens": 1472,
+      "totalTokens": 3072
+    },
+    "costUsd": 0.022057,
+    "latencyMs": 46091
   },
   {
     "questionId": "Sundays",

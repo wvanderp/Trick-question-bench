@@ -335,6 +335,26 @@
     "hash": "f1bb1aed92f94f9e"
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "anthropic/claude-3-haiku",
+    "modelName": "anthropic/claude-3-haiku",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "The information provided in the question does not specify which member of the married couple is the doctor and which is the nurse. Without additional details, it is impossible to determine the professions of the two individuals. The question simply states that one is a doctor and the other is a nurse, but does not indicate which spouse holds each role.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine the roles of each spouse, explicitly stating it is impossible to determine without additional details. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:30:44.833Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 35,
+      "completionTokens": 70,
+      "reasoningTokens": 0,
+      "totalTokens": 105
+    },
+    "costUsd": 0.00009625,
+    "latencyMs": 1504
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
@@ -794,6 +814,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "anthropic/claude-3-haiku",
+    "modelName": "anthropic/claude-3-haiku",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "I'm sorry, but the characters you provided do not seem to be standard Unicode characters that I can interpret. The sequence appears to be a mix of various scripts and symbols that do not form any recognizable word or phrase that I can translate. Without more context or information about the meaning or origin of these characters, I am unable to determine what they are intended to convey. My language understanding is limited to standard human written languages.",
+    "judgment": "FAIL - The model failed to identify and decode the text, stating instead that it could not interpret the characters. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:30:28.298Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 65,
+      "completionTokens": 90,
+      "reasoningTokens": 0,
+      "totalTokens": 155
+    },
+    "costUsd": 0.00012875,
+    "latencyMs": 2324
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "anthropic/claude-3-haiku",
     "modelName": "anthropic/claude-3-haiku",
@@ -1048,6 +1088,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-23T23:21:16.471Z",
     "hash": "b4f24d0e6890c685"
+  },
+  {
+    "questionId": "suits",
+    "modelId": "anthropic/claude-3-haiku",
+    "modelName": "anthropic/claude-3-haiku",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "Based on the context provided, the \"it\" being referred to is likely the number of hands.\n\nThe riddle states:\n- A man has 2 (hands)\n- A king has 4 (hands)\n- A beggar has none (hands)\n\nSo the answer to the question \"What is it?\" is hands.\n\nThe riddle is using the concept of hands to make a comparison between different people - a regular man, a king, and a beggar. The number of hands they possess is the key factor being highlighted.",
+    "judgment": "FAIL - The model correctly identified \"hands\" as an answer, but according to the specific criteria provided, the correct answer is a \"suit\". The model failed to provide the required answer. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T18:30:36.719Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 29,
+      "completionTokens": 119,
+      "reasoningTokens": 0,
+      "totalTokens": 148
+    },
+    "costUsd": 0.000156,
+    "latencyMs": 2225
   },
   {
     "questionId": "Sundays",

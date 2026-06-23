@@ -496,6 +496,26 @@
     "latencyMs": 266
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "liquid/lfm-2-24b-a2b",
+    "modelName": "liquid/lfm-2-24b-a2b",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "The question is a classic riddle that plays on assumptions about gender roles. Here's the breakdown:\n\n- The couple consists of **one doctor** and **one nurse**.\n- The question asks: *\"Who is the doctor and who is the nurse?\"*\n\n### Key Insight:\nThe riddle does not specify the genders of the individuals in the couple. While it mentions \"a doctor\" and \"a nurse,\" these titles are not inherently tied to specific genders. Historically, certain professions (like nursing) have been stereotypically associated with women, but this is a social construct, not a rule.\n\n### Answer:\nThe riddle is designed to trick you into assuming the doctor is male and the nurse is female. However, **the actual answer depends on the identities of the individuals**. Since the question does not provide explicit information about their genders, the most accurate response is:\n\n> **The doctor and nurse could be either gender.** The riddle relies on stereotypes, but there is no definitive answer without additional context.\n\nIf forced to assign based on common stereotypes (which is not a valid logical conclusion), one might say:  \n- The **doctor** is the **male**, and the **nurse** is the **female**.  \n\nBut this is an assumption, not a fact. The riddle highlights how language can lead to biased interpretations. \n\n**Final Answer:**  \nThe riddle is a trick question. Without explicit information about the couple's genders, we cannot determine who is the doctor or nurse. The answer hinges on challenging stereotypes rather than providing a factual conclusion.",
+    "judgment": "PASS - The model explicitly states that there is not enough information to determine their roles and that the answer depends on the identities of the individuals. It identifies the question as a trick designed to exploit gender stereotypes and refuses to provide a definitive answer, only mentioning stereotypes to explain the trick. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:08:46.893Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 37,
+      "completionTokens": 340,
+      "reasoningTokens": 0,
+      "totalTokens": 377
+    },
+    "costUsd": 0.00004191,
+    "latencyMs": 4727
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "liquid/lfm-2-24b-a2b",
     "modelName": "liquid/lfm-2-24b-a2b",
@@ -1130,6 +1150,26 @@
     "latencyMs": 1805
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "liquid/lfm-2-24b-a2b",
+    "modelName": "liquid/lfm-2-24b-a2b",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "The string **\"ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢\"** appears to be written in **Hangul** (Korean script), but it contains some unusual or non-standard characters. Let's break it down:\n\n---\n\n### Step 1: Identify Valid Hangul Characters\nThe standard Hangul syllables are composed of combinations of:\n- **Consonants (자음)**: 14 basic consonants like ㄱ, ㄴ, ㄷ, etc.\n- **Vowels (모음)**: 10 basic vowels like ㅏ, ㅑ, ㅓ, etc.\n\nSome of the characters in your input are not standard Hangul syllables or jamo (individual consonant/vowel letters). For example:\n- **ꕷ**, **𖤢**, **𖦪**, **ꛎ**, **ꚽ**, **𖢑** — these are **not valid Hangul syllables** and may be:\n  - **Typographical errors**\n  - **Custom/artistic fonts**\n  - **Encoded or obfuscated text**\n  - **Non-Korean scripts rendered as Hangul-like shapes**\n\n---\n\n### Step 2: Attempt Decoding\nLet’s try to interpret the string using Unicode values for Hangul Jamo (U+AC00–U+D7AF):\n\n| Character | Hex Value | Meaning (if valid Hangul) |\n|-----------|-----------|----------------------------|\n| ꕷ       | U+D55C    | Not a valid Hangul syllable |\n| 𖤢      | U+1102D   | Not standard Hangul |\n| 𖕕      | U+1105D   | Not standard Hangul |\n| 𖦪      | U+1109E   | Not standard Hangul |\n| 𖤢      | U+1102D   | Same as above |\n| 𖢑      | U+1102B   | Not standard Hangul |\n| 𖤢      | U+1102D   | Same as above |\n| ꕷ       | U+D55C    | Same as first |\n| ꕷ       | U+D55C    | Same |\n| ꛎ       | U+1106D   | Not standard Hangul |\n| ꚽ       | U+1102D   | Not standard Hangul |\n| 𖤢      | U+1102D   | Same |\n| 𖢑      | U+1102B   | Same |\n| ꛎ       | U+1106D   | Same |\n| ꚽ       | U+1102D   | Same |\n| 𖤢      | U+1102D   | Same |\n\nNone of these characters form valid Hangul syllables. They may be:\n- **Artistic or stylized versions** of Hangul\n- **Corrupted or encoded text**\n- **Random or symbolic characters**\n\n---\n\n### Step 3: Possible Interpretations\nIf this is meant to represent Korean text, it might be:\n- A **misrendered or corrupted message**\n- A **cipher or code**\n- A **visual puzzle or art piece**\n\nWithout more context, it's hard to determine the intended meaning.\n\n---\n\n### Final Answer:\n**The string \"ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢\" does not appear to be valid Korean text.**  \nIt likely contains:\n- Non-Hangul characters\n- Possibly corrupted or artistic rendering\n- Or an intentional cipher\n\nIf you have more context (e.g., where this came from), I can help further!",
+    "judgment": "FAIL - The model failed to identify that the text says \"Secret Message\". Instead, it incorrectly identified the characters as related to Hangul and concluded the text was invalid or a cipher. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:08:25.253Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 60,
+      "completionTokens": 885,
+      "reasoningTokens": 0,
+      "totalTokens": 945
+    },
+    "costUsd": 0.000108,
+    "latencyMs": 8632
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "liquid/lfm-2-24b-a2b",
     "modelName": "liquid/lfm-2-24b-a2b",
@@ -1510,6 +1550,26 @@
     },
     "costUsd": 0.00353463,
     "latencyMs": 259203
+  },
+  {
+    "questionId": "suits",
+    "modelId": "liquid/lfm-2-24b-a2b",
+    "modelName": "liquid/lfm-2-24b-a2b",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "This riddle plays with the concept of **\"having\"** in different contexts:\n\n- **A man has 2.**  \n  (He owns two things — perhaps \"two eyes,\" or simply \"two\" as a quantity.)\n\n- **A king has 4.**  \n  (He might have four crowns, or four titles, or four responsibilities.)\n\n- **A beggar has none.**  \n  (He has nothing — literally zero.)\n\n### The answer is:\n**The number 2.**\n\nWhy? Because the riddle says:\n\n> \"A man has 2.\"\n\nSo the answer is **2** — the only number explicitly stated to be \"had\" by someone. The rest are either metaphorical or playful interpretations.\n\nAlternatively, some versions of this riddle go like this:\n\n> \"A man has 2. A king has 4. A beggar has none. What is it?\"  \n> **Answer:** *The number 2.*\n\nBecause it's the only one who \"has\" something specific and concrete — the number 2.\n\nLet me know if you'd like a deeper philosophical or linguistic breakdown!",
+    "judgment": "FAIL - The model incorrectly identified the answer as \"the number 2\" based on a circular logic loop rather than solving the riddle. It failed to identify \"suits\" as required by the prompt and offered a nonsensical explanation. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T16:08:35.276Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 32,
+      "completionTokens": 249,
+      "reasoningTokens": 0,
+      "totalTokens": 281
+    },
+    "costUsd": 0.00003084,
+    "latencyMs": 3418
   },
   {
     "questionId": "Sundays",

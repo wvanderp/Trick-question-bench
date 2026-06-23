@@ -532,6 +532,26 @@
     "latencyMs": 587
   },
   {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.2 (low reasoning)",
+    "modelName": "openai/gpt-5.2 (low reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "You can’t determine it from the information given.\n\nThe riddle is pointing out an assumption people often make (that the doctor is the husband and the nurse is the wife), but nothing in the statement specifies genders or roles beyond “one is a doctor and the other is a nurse.” Either spouse could be either profession.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine their roles and explicitly pointed out that the answer depends on avoiding gender-based assumptions. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:20:14.457Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 68,
+      "reasoningTokens": 0,
+      "totalTokens": 102
+    },
+    "costUsd": 0.0010115,
+    "latencyMs": 2029
+  },
+  {
     "questionId": "get-the-goat",
     "modelId": "openai/gpt-5.2 (low reasoning)",
     "modelName": "openai/gpt-5.2 (low reasoning)",
@@ -1204,6 +1224,27 @@
     "latencyMs": 3158
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.2 (low reasoning)",
+    "modelName": "openai/gpt-5.2 (low reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It says **“secret message.”**\n\nThe characters are from a mix of scripts, but they’re being used as lookalike symbols to spell the English words:\n\n- ꕷ𖤢ꛕ𖦪𖤢𖢧 → **secret**\n- 𖢑𖤢ꕷꕷꛎꚽ𖤢 → **message**",
+    "reasoning": "**Decoding mixed scripts**\n\nI need to identify a script that seems to mix Vai with some decorative elements. The character ꕷ is definitely from Vai, while others are possibly from Adlam. I wonder if some parts could also be Bamum. I'm thinking the second word could be attempting to spell out \"your message\" stylized, since it’s a response to the user's question, “What does ... say?” After analyzing, I believe it decodes to \"your message.\" That feels like a solid conclusion!**Mapping letters to words**\n\nI've got a good hunch that the first word is likely \"your.\" If I map some letters, ꕷ could stand for \"y,\" 𖤢 for \"o,\" and 𖛕 for \"u,\" giving me a fill-in for \"your,\" but it has six glyphs while \"your\" has four letters. Then I think maybe \"secret\" fits as a possible six-letter match. Since the user asked about \"your message,\" I believe the first word could indeed be \"secret\" from my analysis. That feels solid!**Confirming the decoding**\n\nSo, I’ve confirmed that ꕷ maps to \"s,\" which I've already established. The third character ꛕ is \"c,\" the fourth 𖦪 is \"r,\" and the sixth 𖢧 is \"t.\" Putting those together, I conclude that the first word is \"secret.\" This leads me to the phrase \"secret message.\" I think I’ve got it all figured out now, and I'm ready to provide that answer! This feels satisfying!",
+    "judgment": "PASS - The model correctly identified and explicitly stated that the message says \"secret message.\" CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:19:56.694Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 729,
+      "reasoningTokens": 633,
+      "totalTokens": 1419
+    },
+    "costUsd": 0.01030575,
+    "latencyMs": 26721
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.2 (low reasoning)",
     "modelName": "openai/gpt-5.2 (low reasoning)",
@@ -1612,6 +1653,26 @@
     },
     "costUsd": 0.01015875,
     "latencyMs": 14685
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.2 (low reasoning)",
+    "modelName": "openai/gpt-5.2 (low reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "It refers to **letters in the word**:\n\n- **mAn** has **2** (two “A” letters? actually one) — so this isn’t about “A”.\n- The classic riddle answer is: **“legs”**:\n  - A **man** has **2** legs  \n  - A **king** (on a throne) has **4** legs (the throne/chair has 4)  \n  - A **beggar** has **none** (no chair/throne)\n\nSo the intended answer is **legs**.",
+    "judgment": "FAIL\nThe model failed to identify \"a suit\" as the answer. Instead, it provided a convoluted explanation regarding the word \"legs,\" which does not fit the specific logic provided in the prompt (specifically, the king in a deck of cards having four suits). The model explicitly ignored the \"suit\" logic in favor of a weak \"legs\" metaphor. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T17:20:06.387Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 120,
+      "reasoningTokens": 0,
+      "totalTokens": 148
+    },
+    "costUsd": 0.001729,
+    "latencyMs": 3185
   },
   {
     "questionId": "Sundays",
