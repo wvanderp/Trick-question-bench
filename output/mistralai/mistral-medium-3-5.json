@@ -20,26 +20,6 @@
     "latencyMs": 857
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "mistralai/mistral-medium-3-5",
-    "modelName": "mistralai/mistral-medium-3-5",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "The decrypted message is: **\"This is a secret message\"**",
-    "judgment": "FAIL - The model provided the incorrect decrypted message. The expected answer was \"This a clear message\", but the model output \"This is a secret message\". CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-05-18T22:57:07.164Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 168,
-      "completionTokens": 14,
-      "reasoningTokens": 0,
-      "totalTokens": 182
-    },
-    "costUsd": 0.000357,
-    "latencyMs": 541
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "mistralai/mistral-medium-3-5",
     "modelName": "mistralai/mistral-medium-3-5",
@@ -518,6 +498,26 @@
     },
     "costUsd": 0.0001725,
     "latencyMs": 373
+  },
+  {
+    "questionId": "gender-bias",
+    "modelId": "mistralai/mistral-medium-3-5",
+    "modelName": "mistralai/mistral-medium-3-5",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "The question presents a classic example of implicit gender bias. Traditionally, doctors were more often men, and nurses were more often women, so many people might assume the husband is the doctor and the wife is the nurse. However, this is based on outdated stereotypes.\n\nIn reality:\n- **The doctor could be the husband or the wife** (gender does not determine profession).\n- **The nurse could be the husband or the wife** (nursing is not limited to one gender).\n\nToday, both men and women work in all healthcare roles, so the answer depends on the specific couple, not assumptions. The only fair response is: **We cannot know without more information—either could be the doctor or the nurse.**\n\nWould you like to explore why such stereotypes persist or how they affect perceptions?",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine the roles and explicitly stated that either person could be the doctor or the nurse. It successfully avoided falling for the gender stereotype trick. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:43:16.179Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 43,
+      "completionTokens": 161,
+      "reasoningTokens": 0,
+      "totalTokens": 204
+    },
+    "costUsd": 0.001272,
+    "latencyMs": 2822
   },
   {
     "questionId": "get-the-goat",
@@ -1180,6 +1180,26 @@
     "latencyMs": 1333
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "mistralai/mistral-medium-3-5",
+    "modelName": "mistralai/mistral-medium-3-5",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "The text you provided appears to be written in a fictional or constructed script, possibly inspired by **Tengwar** (the Elvish script from J.R.R. Tolkien's works) or another fantasy alphabet. Since it doesn’t correspond to any known real-world language, it doesn’t have a direct translation.\n\nIf this is from a specific fictional universe (like a game, book, or fandom), you might need to check the original source for its meaning. Alternatively, if you're looking for a **Tengwar transliteration**, I could attempt to interpret it as such—let me know!\n\nWould you like help deciphering it as Tengwar, or are you referring to another script?",
+    "judgment": "FAIL - The model failed to identify the message and instead incorrectly claimed it was a fictional script or Tengwar without providing the translation \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:42:32.676Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 65,
+      "completionTokens": 142,
+      "reasoningTokens": 0,
+      "totalTokens": 207
+    },
+    "costUsd": 0.0011625,
+    "latencyMs": 4364
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "mistralai/mistral-medium-3-5",
     "modelName": "mistralai/mistral-medium-3-5",
@@ -1578,6 +1598,26 @@
     },
     "costUsd": 0.0013665,
     "latencyMs": 2390
+  },
+  {
+    "questionId": "suits",
+    "modelId": "mistralai/mistral-medium-3-5",
+    "modelName": "mistralai/mistral-medium-3-5",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "Let's think through this step by step. We are given three clues:\n\n1. A man has 2.\n2. A king has 4.\n3. A beggar has none.\n\nWe need to find out what \"it\" is that fits all these descriptions.\n\n### Step 1: Analyze the first clue - \"A man has 2\"\nWhat does a man have 2 of? Possible answers:\n- Eyes\n- Ears\n- Arms\n- Legs\n- Hands\n- Feet\n- Letters in the word \"man\" (but \"man\" has 3 letters, so this doesn't fit)\n\n### Step 2: Analyze the second clue - \"A king has 4\"\nWhat does a king have 4 of? Possible answers:\n- Letters in the word \"king\" (but \"king\" has 4 letters)\n- Limbs (but humans generally have 4 limbs: 2 arms and 2 legs)\n- Other possibilities like heads (but that doesn't fit as humans have 1 head)\n\n### Step 3: Analyze the third clue - \"A beggar has none\"\nWhat does a beggar have none of? Possible answers:\n- Letters in the word \"beggar\" (but \"beggar\" has 6 letters)\n- Money (but this doesn't fit the previous clues)\n- Other possibilities like limbs (but beggars have the same number of limbs as other humans)\n\n### Step 4: Combine the clues\nFrom the first clue, we have possible answers like eyes, ears, arms, legs, hands, feet.\nFrom the second clue, the word \"king\" has 4 letters, which fits the clue \"A king has 4.\"\nFrom the third clue, the word \"beggar\" has 6 letters, which doesn't fit \"none.\"\n\nBut if we consider the number of letters in each word:\n- \"man\" has 3 letters, but the clue says a man has 2.\n- \"king\" has 4 letters, which fits.\n- \"beggar\" has 6 letters, but the clue says a beggar has none.\n\nThis doesn't seem to fit perfectly.\n\n### Step 5: Consider alternative interpretations\nAnother approach is to think about the number of letters in the word when written in a different language or context. However, this seems unlikely.\n\nAlternatively, think about the number of syllables:\n- \"man\" has 1 syllable.\n- \"king\" has 1 syllable.\n- \"beggar\" has 2 syllables.\n\nThis doesn't fit the clues either.\n\n### Step 6: Think about physical attributes\nLet's revisit the physical attributes:\n- A man has 2 eyes, 2 ears, 2 arms, 2 legs, 2 hands, 2 feet.\n- A king has the same physical attributes as a man, so this doesn't explain why a king has 4.\n- A beggar also has the same physical attributes, so this doesn't explain why a beggar has none.\n\n### Step 7: Consider the word \"letters\"\nIf we think about the number of letters in the word:\n- \"man\" has 3 letters, but the clue says a man has 2.\n- \"king\" has 4 letters, which fits.\n- \"beggar\" has 6 letters, but the clue says a beggar has none.\n\nThis doesn't fit the first and third clues.\n\n### Step 8: Think about the word \"syllables\"\n- \"man\" has 1 syllable.\n- \"king\" has 1 syllable.\n- \"beggar\" has 2 syllables.\n\nThis doesn't fit the clues either.\n\n### Step 9: Consider the word \"limbs\"\n- A man has 4 limbs (2 arms and 2 legs), but the clue says a man has 2.\n- A king has 4 limbs, which fits.\n- A beggar has 4 limbs, but the clue says a beggar has none.\n\nThis doesn't fit the first and third clues.\n\n### Step 10: Think about the word \"letters in the word when written in French\"\n- \"man\" in French is \"homme,\" which has 5 letters.\n- \"king\" in French is \"roi,\" which has 3 letters.\n- \"beggar\" in French is \"mendiant,\" which has 8 letters.\n\nThis doesn't fit the clues.\n\n### Step 11: Consider the word \"letters in the word when written in Spanish\"\n- \"man\" in Spanish is \"hombre,\" which has 6 letters.\n- \"king\" in Spanish is \"rey,\" which has 3 letters.\n- \"beggar\" in Spanish is \"mendigo,\" which has 7 letters.\n\nThis doesn't fit the clues.\n\n### Step 12: Think about the word \"letters in the word when written in German\"\n- \"man\" in German is \"Mann,\" which has 4 letters.\n- \"king\" in German is \"König,\" which has 5 letters.\n- \"beggar\" in German is \"Bettler,\" which has 7 letters.\n\nThis doesn't fit the clues.\n\n### Step 13: Re-examining the physical attributes\nPerhaps the answer is related to the number of letters in the word that represent the item.\nFor example, the word \"eye\" has 3 letters, but a man has 2 eyes. This doesn't fit.\n\n### Step 14: Consider the word \"legs\"\n- A man has 2 legs.\n- A king has 2 legs (but the clue says 4).\n- A beggar has 2 legs (but the clue says none).\n\nThis doesn't fit.\n\n### Step 15: Think about the word \"arms\"\n- A man has 2 arms.\n- A king has 2 arms (but the clue says 4).\n- A beggar has 2 arms (but the clue says none).\n\nThis doesn't fit.\n\n### Step 16: Consider the word \"hands\"\n- A man has 2 hands.\n- A king has 2 hands (but the clue says 4).\n- A beggar has 2 hands (but the clue says none).\n\nThis doesn't fit.\n\n### Step 17: Think about the word \"feet\"\n- A man has 2 feet.\n- A king has 2 feet (but the clue says 4).\n- A beggar has 2 feet (but the clue says none).\n\nThis doesn't fit.\n\n### Step 18: Consider the word \"ears\"\n- A man has 2 ears.\n- A king has 2 ears (but the clue says 4).\n- A beggar has 2 ears (but the clue says none).\n\nThis doesn't fit.\n\n### Step 19: Think about the word \"eyes\"\n- A man has 2 eyes.\n- A king has 2 eyes (but the clue says 4).\n- A beggar has 2 eyes (but the clue says none).\n\nThis doesn't fit.\n\n### Step 20: Reconsider the word \"letters\"\nPerhaps the answer is the number of letters in the word that represent the item.\nFor example, the word \"man\" has 3 letters, but the clue says a man has 2. This doesn't fit.\n\n### Step 21: Think about the word \"syllables\" again\n- \"man\" has 1 syllable.\n- \"king\" has 1 syllable.\n- \"beggar\" has 2 syllables.\n\nThis doesn't fit.\n\n### Step 22: Consider the word \"limbs\" again\n- A man has 4 limbs (2 arms and 2 legs), but the clue says a man has 2.\n- A king has 4 limbs, which fits.\n- A beggar has 4 limbs, but the clue says a beggar has none.\n\nThis doesn't fit the first and third clues.\n\n### Step 23: Think about the word \"wheels\"\n- A man doesn't have wheels.\n- A king doesn't have wheels.\n- A beggar doesn't have wheels.\n\nThis doesn't fit.\n\n### Step 24: Consider the word \"letters in the word 'man'\"\n- \"man\" has 3 letters, but the clue says a man has 2.\n\nThis doesn't fit.\n\n### Step 25: Final consideration\nAfter considering various options, the most plausible answer is the number of letters in the word that represent the item. However, none of the physical attributes or word lengths seem to fit all the clues perfectly.\n\nUpon re-reading the riddle, it seems the answer is related to the number of letters in the word that represent the item. The word \"man\" has 3 letters, but the clue says a man has 2. The word \"king\" has 4 letters, which fits the clue. The word \"beggar\" has 6 letters, but the clue says a beggar has none.\n\nThis doesn't fit, so perhaps the answer is something else.\n\n### Step 26: Think about the word \"shoes\"\n- A man has 2 shoes.\n- A king has 4 shoes (perhaps he has more shoes).\n- A beggar has none (as he is poor and may not have shoes).\n\nThis seems to fit all the clues:\n- A man has 2 shoes.\n- A king has 4 shoes (maybe he has more pairs).\n- A beggar has none (as he is poor).\n\nHowever, this is a bit of a stretch.\n\n### Step 27: Consider the word \"letters in the word 'man' when written in lowercase\"\n- \"man\" has 3 letters.\n\nThis doesn't fit.\n\n### Step 28: Final answer\nAfter careful consideration, the most likely answer is the number of letters in the word that represent the item. However, this doesn't fit all the clues perfectly.\n\nUpon further reflection, the answer is likely the number of letters in the word that represent the item. The word \"man\" has 3 letters, but the clue says a man has 2. The word \"king\" has 4 letters, which fits. The word \"beggar\" has 6 letters, but the clue says a beggar has none.\n\nThis doesn't fit, so perhaps the answer is something else entirely.\n\n### Conclusion\nAfter considering various options, the most plausible answer is that \"it\" refers to the number of letters in the word that represent the item. However, this doesn't fit all the clues perfectly.\n\nUpon re-reading the riddle, it seems the answer is related to the number of letters in the word that represent the item. The word \"man\" has 3 letters, but the clue says a man has 2. The word \"king\" has 4 letters, which fits. The word \"beggar\" has 6 letters, but the clue says a beggar has none.\n\nThis doesn't fit, so perhaps the answer is something else.\n\n### Final Answer\nAfter careful consideration, the answer is likely the number of letters in the word that represent the item. However, this doesn't fit all the clues perfectly.\n\nUpon further reflection, the answer is:\n\n**The answer is \"letters in the word.\"**\n\nBut this doesn't fit all the clues.\n\n### Correct Answer\nThe correct answer is \"letters in the word 'man' is 3, but the clue says a man has 2. This doesn't fit.\"\n\nAfter re-evaluating, the correct answer is:\n\n**The answer is \"shoes.\"**\n\nBut this is not a perfect fit either.\n\n### Final Conclusion\nThe most likely answer that fits all the clues is:\n\n**The answer is \"letters in the word.\"**\n\nBut this doesn't fit perfectly.\n\nAfter much deliberation, the correct answer is:\n\n**The answer is \"letters.\"**",
+    "judgment": "FAIL - The model failed to provide the correct answer (\"suit\") or a logical alternative. It went through an extensive but flawed reasoning process and eventually guessed \"letters,\" which the prompt specifically identified as an incorrect answer to fail. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:42:57.652Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 38,
+      "completionTokens": 2494,
+      "reasoningTokens": 0,
+      "totalTokens": 2532
+    },
+    "costUsd": 0.018762,
+    "latencyMs": 13356
   },
   {
     "questionId": "Sundays",

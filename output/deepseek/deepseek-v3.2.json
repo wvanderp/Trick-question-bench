@@ -12,26 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "deepseek/deepseek-v3.2",
-    "modelName": "deepseek/deepseek-v3.2",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "Looking at the provided details:\n\n- Blob (hex): `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a`\n- Password: `Thisisthepasswor` (16 bytes — exactly AES-128 key length)\n- IV: `these are 16bytes` (16 bytes)\n- Mode: CBC\n\nSince you used the password directly as the key (no key derivation), CBC mode, and no mention of padding, I'll assume PKCS#7 padding was used.\n\n**Decrypted message:**\n\n```\nthe secret is 42\n```",
-    "judgment": "FAIL - The model provided the incorrect decrypted message \"the secret is 42\" instead of \"This a clear message\". CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-04-28T20:50:31.946Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 141,
-      "completionTokens": 141,
-      "reasoningTokens": 0,
-      "totalTokens": 282
-    },
-    "costUsd": 0.00009024,
-    "latencyMs": 8751
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "deepseek/deepseek-v3.2",
     "modelName": "deepseek/deepseek-v3.2",
@@ -333,6 +313,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-21T20:58:20.596Z",
     "hash": "f1bb1aed92f94f9e"
+  },
+  {
+    "questionId": "gender-bias",
+    "modelId": "deepseek/deepseek-v3.2",
+    "modelName": "deepseek/deepseek-v3.2",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "That can’t be determined from the information given.  \n\nEither the husband could be the doctor and the wife the nurse, or the wife could be the doctor and the husband the nurse — or both could be doctors, or both nurses, but the statement says “one is a doctor and the other is a nurse,” so they have different professions.  \n\nStill, their genders are not specified, so we can’t assume which partner has which profession without additional information.",
+    "judgment": "PASS - The model correctly identified that the roles cannot be determined from the information provided and explicitly avoided making gender-based assumptions. It directly addresses the ambiguity of the situation. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:44:29.689Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 38,
+      "completionTokens": 95,
+      "reasoningTokens": 0,
+      "totalTokens": 133
+    },
+    "costUsd": 0.00004598,
+    "latencyMs": 16334
   },
   {
     "questionId": "get-the-goat",
@@ -794,6 +794,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "deepseek/deepseek-v3.2",
+    "modelName": "deepseek/deepseek-v3.2",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "Based on the characters you've provided, the text appears to be a mix of symbols from various scripts and decorative elements, including:\n\n*   **ꕷ, ꛕ, ꕷ, ꛎ, ꚽ:** Letters from the **Vai** script, used for the Vai language in Liberia and Sierra Leone.\n*   **𖤢, 𖦪, 𖤢, 𖢧, 𖢑, 𖤢:** Symbols from **Bamum** script supplement characters, an alphabet used for the Bamum language in Cameroon.\n\nThis is **not a coherent sentence** in any known language that uses these scripts. The combination is likely:\n\n1.  **Aesthetic/Artistic:** Randomly chosen for their visual appearance to create a decorative or \"magical\" looking text.\n2.  **Encoding Attempt:** Possibly an attempt to encode a message using the Unicode values of these characters, but presented as text itself.\n3.  **Placeholder or Glitch:** Sometimes such mixes appear due to font rendering issues or data corruption.\n\nIf this was meant to be a translatable phrase, it would need to be composed of valid words in either the Vai or Bamum language, which this is not. It is essentially a string of symbolic characters.",
+    "judgment": "FAIL - The model failed to identify that the symbols are a stylized representation of the words \"Secret Message\". Instead, it provided a technical breakdown of the scripts (Vai and Bamum) and concluded that the text was incoherent. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:43:34.013Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 60,
+      "completionTokens": 272,
+      "reasoningTokens": 0,
+      "totalTokens": 332
+    },
+    "costUsd": 0.0001095444,
+    "latencyMs": 11081
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "deepseek/deepseek-v3.2",
     "modelName": "deepseek/deepseek-v3.2",
@@ -1048,6 +1068,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-24T10:31:27.605Z",
     "hash": "b4f24d0e6890c685"
+  },
+  {
+    "questionId": "suits",
+    "modelId": "deepseek/deepseek-v3.2",
+    "modelName": "deepseek/deepseek-v3.2",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "Let’s break this riddle down:\n\n- \"A man has 2\" — Could mean a man has 2 legs.  \n- \"A king has 4\" — A king might have 4 legs if sitting on a throne (the chair has 4 legs, plus maybe the king’s own 2? Or perhaps “king” referring to a four-poster bed or something). But the number doesn’t match the man’s 2 if counting only human legs.  \n- \"A beggar has none\" — This hints that it's not about actual human legs because beggars also have 2 legs.  \n\nA common answer to this riddle is **\"feet\"** in the sense of poetic/literal \"feet\" in a meter (in poetry) or perhaps feet as in \"foot of a bed/table\". But that doesn't fit quite well with the numbers.  \n\nAnother known version of this riddle says:  \n\n> \"A man has 2, a horse has 4, a centipede has 100, but a widow has none.\"  \nAnswer: *Legs* (a widow stands alone without her husband’s legs beside her).  \n\nHere: \"A man has 2\" → legs.  \n\"A king has 4\" → perhaps \"king\" means a king’s throne (chair with 4 legs) or a king in chess (moves 1 square but not relevant).  \nOr: maybe a “king” bed has 4 posts/legs.  \n\"A beggar has none\" → because he has no chair/bed/furniture of his own, perhaps?  \n\nBut the consistent classic answer to this exact phrasing I’ve seen before is **\"legs\"** — not the person’s own legs, but **legs of furniture** or **supports**:  \n- A man might have a chair with 2 legs (e.g., a stool sometimes has 2 supports? Actually most chairs have 4 legs, but maybe a \"man\" here is just standing on his own 2 legs). But beggar has none (no furniture legs).  \n\nAnother possibility: It’s **“a bed”** —  \nNo, that doesn't fit because “a man has 2” doesn’t match.\n\nWait — I recall a known riddle:  \n\"What has 4 legs in the morning, 2 at noon, and 3 in the evening?\" (Man’s life stages — crawling, walking, cane). But here we have man, king, beggar — different subjects.\n\nGiven standard versions of this riddle, the intended answer is:  \n**\"Legs (or Feet)\"** meaning:  \n- A man has 2 legs (his own).  \n- A king has 4 legs (his throne has 4 legs).  \n- A beggar has no legs (of furniture or maybe meaning “no leg to stand on” metaphorically — literally he may lack chairs or beds, so 0 legs of furniture).  \n\nBut there’s a simpler known answer that fits:  \n**\"A man has 2 (feet), a king has 4 (feet of his bed), a beggar has none (no bed/chair to have feet).\"**\n\nSo the final answer is:  \n**Feet (or legs of furniture/objects).**\n\nBut in concise riddle form, the most common single-word answer I’ve seen is **\"legs\"** or sometimes **\"feet\"**.",
+    "judgment": "FAIL - The model failed to identify \"a suit\" as the correct answer. It incorrectly settled on \"legs\" or \"feet\" and provided a convoluted explanation that did not match the logic of the specific riddle provided. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:44:06.798Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 32,
+      "completionTokens": 726,
+      "reasoningTokens": 0,
+      "totalTokens": 758
+    },
+    "costUsd": 0.000277956,
+    "latencyMs": 21875
   },
   {
     "questionId": "Sundays",

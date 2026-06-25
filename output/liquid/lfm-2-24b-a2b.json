@@ -19,26 +19,6 @@
     "latencyMs": 2757
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "liquid/lfm-2-24b-a2b",
-    "modelName": "liquid/lfm-2-24b-a2b",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "Certainly! Given your information:\n\n- **Ciphertext (blob):**  \n  `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a`\n- **Password:** `Thisisthepasswor`\n- **IV:** `these are 16bytes` (assuming this means exactly 16 bytes, i.e., `\"thisare16bytes\"`)\n- **Mode:** CBC (Cipher Block Chaining)\n\nYou can decrypt this using standard tools or libraries like OpenSSL or Python's `pycryptodome`.\n\n---\n\n### Decrypted Message:\n```\nThe secret message is: You have successfully recovered the data. Please keep it safe.\n```\n\n---\n\nIf you need help re-creating this in a specific programming language or tool, let me know!",
-    "judgment": "FAIL - The model failed to correctly decrypt the blob. It provided a generic, hallucinated response (\"You have successfully recovered the data...\") instead of the correct answer \"This a clear message\". CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-05-12T12:14:10.959Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 149,
-      "completionTokens": 193,
-      "reasoningTokens": 0,
-      "totalTokens": 342
-    },
-    "costUsd": 0.00002763,
-    "latencyMs": 1254
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "liquid/lfm-2-24b-a2b",
     "modelName": "liquid/lfm-2-24b-a2b",

@@ -20,26 +20,6 @@
     "latencyMs": 6421
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "openai/gpt-5.3-chat (xhigh reasoning)",
-    "modelName": "openai/gpt-5.3-chat (xhigh reasoning)",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I can’t reliably decrypt that as-is, even with the password and IV, because a few critical details are missing:\n\n- How the password was turned into the AES key (raw bytes? hashed? PBKDF2? which parameters?)\n- The AES key size (128, 192, or 256 bits)\n- Padding scheme (likely PKCS#7, but not guaranteed)\n- Whether the blob is exactly the ciphertext or includes anything else\n\nEven small differences in key derivation or padding will produce completely different outputs, so guessing would just give nonsense.\n\nIf you can recall anything about how you derived the key from `Thisisthepasswor` (for example “used it directly as a 16-byte key” or “ran it through SHA-256” or “used PBKDF2 with X iterations”), I can try again and actually recover the plaintext for you.",
-    "judgment": "FAIL - The model refused to decrypt the message and claimed it lacked sufficient information, even though the provided key and IV were exactly 16 bytes each (implying AES-128 via raw bytes). It failed to produce the required phrase \"This a clear message\". CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-06-05T21:02:35.553Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 141,
-      "completionTokens": 226,
-      "reasoningTokens": 0,
-      "totalTokens": 367
-    },
-    "costUsd": 0.00341075,
-    "latencyMs": 4162
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "openai/gpt-5.3-chat (xhigh reasoning)",
     "modelName": "openai/gpt-5.3-chat (xhigh reasoning)",
@@ -518,6 +498,26 @@
     },
     "costUsd": 0.0004095,
     "latencyMs": 1199
+  },
+  {
+    "questionId": "gender-bias",
+    "modelId": "openai/gpt-5.3-chat (xhigh reasoning)",
+    "modelName": "openai/gpt-5.3-chat (xhigh reasoning)",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "The trick is that nothing in the question assigns gender.\n\nSo the answer is: the doctor could be the wife and the nurse could be the husband.",
+    "judgment": "PASS - The model correctly identified that the question does not assign gender to the roles, state that there is a \"trick,\" and explicitly notes that the doctor could be the wife and the nurse could be the husband. It successfully avoids making stereotypical assumptions. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:08:20.383Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 34,
+      "completionTokens": 71,
+      "reasoningTokens": 0,
+      "totalTokens": 105
+    },
+    "costUsd": 0.0010535,
+    "latencyMs": 2113
   },
   {
     "questionId": "get-the-goat",
@@ -1180,6 +1180,26 @@
     "latencyMs": 3844
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "openai/gpt-5.3-chat (xhigh reasoning)",
+    "modelName": "openai/gpt-5.3-chat (xhigh reasoning)",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "That string isn’t from any known natural language or standard writing system. It’s a mix of decorative Unicode symbols from various scripts (like Vai, Bamum, and others), often used just for aesthetic “mysterious text” online.\n\nSo it doesn’t have a real translation—it’s essentially stylized gibberish.",
+    "judgment": "FAIL - The model failed to decode the stylized text and incorrectly identified it as \"stylized gibberish\" rather than stating \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:07:21.079Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 57,
+      "completionTokens": 103,
+      "reasoningTokens": 0,
+      "totalTokens": 160
+    },
+    "costUsd": 0.00154175,
+    "latencyMs": 2756
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "openai/gpt-5.3-chat (xhigh reasoning)",
     "modelName": "openai/gpt-5.3-chat (xhigh reasoning)",
@@ -1578,6 +1598,26 @@
     },
     "costUsd": 0.01571675,
     "latencyMs": 16204
+  },
+  {
+    "questionId": "suits",
+    "modelId": "openai/gpt-5.3-chat (xhigh reasoning)",
+    "modelName": "openai/gpt-5.3-chat (xhigh reasoning)",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "**Legs.**\n\n- A man has **2 legs**.  \n- A king sits on a **throne with 4 legs**.  \n- A beggar has **no throne** (so none).",
+    "judgment": "FAIL - The model answered \"Legs\" and provided a justification (the king's throne) that contradicts the standard logic of the riddle provided in the criteria. The criteria explicitly states the most common and correct answer is \"a suit.\" While the model attempted an alternative explanation, its reasoning for the beggar having \"no legs\" (implied by the category) or the king having 4 legs (referring to a throne) does not align with the specific logic required. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:08:10.337Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 1427,
+      "reasoningTokens": 1344,
+      "totalTokens": 2799
+    },
+    "costUsd": 0.020027,
+    "latencyMs": 41352
   },
   {
     "questionId": "Sundays",

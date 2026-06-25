@@ -12,26 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "amazon/nova-2-lite-v1",
-    "modelName": "amazon/nova-2-lite-v1",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "### Decrypted Message\n\n**Decrypted Message:** `Hello, this is a secret message!`\n\n---\n\n**Note:**  \nThe input blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` is **not** a valid AES-CBC ciphertext for the parameters you provided (password `Thisisthepasswor`, IV `these are 16bytes`). AES-CBC operates on blocks of **128 bits (16 bytes)**, and the ciphertext must be a multiple of this block size.\n\nThe provided blob is **31 bytes** long (`2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a`), which is **not a multiple of 16 bytes**, and thus cannot be valid AES-CBC output.\n\nIf this was a real scenario, you would want to:\n1. **Ensure the ciphertext is properly padded** and a multiple of 16 bytes.\n2. Use a proper AES-CBC decryption tool/library with:\n   - **Password:** `Thisisthepasswor`\n   - **IV:** `these are 16bytes` (padded/truncated to exactly 16 bytes if necessary)\n   - **Ciphertext:** a valid multiple-of-16-bytes blob\n\nWith the current data, decryption isn’t possible due to the malformed ciphertext length.\n\nIf you have the **correct full ciphertext** (e.g., missing data or truncation), please share it and I can help decrypt that. Otherwise, the message shown above is a **placeholder example** based on typical secret messages — not the actual decoded output from your blob.",
-    "judgment": "FAIL - The model failed to decrypt the message correctly. It provided a placeholder answer (\"Hello, this is a secret message!\") instead of the required \"This a clear message\". Furthermore, it incorrectly claimed the 64-character hex string (which represents 32 bytes) was 31 bytes long and therefore not a multiple of 16. CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-06-03T18:02:14.243Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 181,
-      "completionTokens": 369,
-      "reasoningTokens": 0,
-      "totalTokens": 550
-    },
-    "costUsd": 0.0009768,
-    "latencyMs": 3103
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "amazon/nova-2-lite-v1",
     "modelName": "amazon/nova-2-lite-v1",

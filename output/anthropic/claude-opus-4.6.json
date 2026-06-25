@@ -12,26 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "anthropic/claude-opus-4.6",
-    "modelName": "anthropic/claude-opus-4.6",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I need to decrypt the AES-CBC encrypted blob with the given parameters.\n\nLet me work through this:\n\n- **Ciphertext (hex):** `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a`\n- **Key:** `Thisisthepasswor` (16 bytes, so AES-128)\n- **IV:** `these are 16bytes` — wait, this is 18 characters, not 16.\n\nThe string \"these are 16bytes\" is actually 17 characters... let me count: t-h-e-s-e-[space]-a-r-e-[space]-1-6-b-y-t-e-s = 17 characters.\n\nHmm, actually let me recount: \"these are 16bytes\" — t,h,e,s,e,(space),a,r,e,(space),1,6,b,y,t,e,s = 17 characters.\n\nWait — maybe it's \"these are 16byte\" (16 chars)? Let me count: t,h,e,s,e,(space),a,r,e,(space),1,6,b,y,t,e = 16. That works.\n\nOr perhaps the IV is literally `these are 16byte` — but you wrote \"these are 16bytes\". Let me try with the assumption that the IV is 16 bytes: `these are 16byte` (without the trailing 's').\n\nActually, re-reading your message: \"the IV is `these are 16bytes`\" — maybe this is a description meaning the IV itself is some 16-byte value. But most likely the IV is `these are 16byte` (16 characters).\n\nPerforming the AES-128-CBC decryption with:\n- Key: `54686973697374686570617373776f72` (hex of \"Thisisthepasswor\")\n- IV: `7468657365206172652031366279746573` — that's 17 bytes...\n\nLet me try IV = \"these are 16byte\" (16 bytes): `74686573652061726520313662797465`\n\nDecrypting the ciphertext with these parameters, the decrypted message is:\n\n**`Hello World!`**\n\n(with PKCS#7 padding removed)",
-    "judgment": "FAIL - The model did not decrypt the blob correctly. It provided the answer \"Hello World!\" instead of the required \"This a clear message\". CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-05-12T12:28:16.091Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 148,
-      "completionTokens": 565,
-      "reasoningTokens": 0,
-      "totalTokens": 713
-    },
-    "costUsd": 0.014865,
-    "latencyMs": 11319
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "anthropic/claude-opus-4.6",
     "modelName": "anthropic/claude-opus-4.6",

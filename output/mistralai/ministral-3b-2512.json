@@ -12,26 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "mistralai/ministral-3b-2512",
-    "modelName": "mistralai/ministral-3b-2512",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I'll decrypt the AES-256-CBC encrypted blob using the provided password (`Thisisthepasswor`) and IV (`these are 16bytes`). Here's the decrypted message:\n\n**Decrypted text:**\n*\"The quick brown fox jumps over the lazy dog. This is a test of the AES decryption process.\"*\n\n*(Note: The IV was padded to 16 bytes with zeros, so \"these are 16bytes\" was effectively `these are 16bytes\\x00\\x00\\x00\\x00`.)*",
-    "judgment": "FAIL - The model provided a completely different decrypted message (\"The quick brown fox...\") instead of the correct phrase \"This a clear message\". It failed to actually decrypt the provided hex blob. CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-06-05T18:38:07.253Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 156,
-      "completionTokens": 117,
-      "reasoningTokens": 0,
-      "totalTokens": 273
-    },
-    "costUsd": 0.0000273,
-    "latencyMs": 829
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "mistralai/ministral-3b-2512",
     "modelName": "mistralai/ministral-3b-2512",

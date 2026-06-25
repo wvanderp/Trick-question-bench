@@ -12,26 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "anthropic/claude-sonnet-4.6",
-    "modelName": "anthropic/claude-sonnet-4.6",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I'll decrypt this for you.\n\n**There's an issue I need to flag first:**\n\nYour IV is **17 bytes** (`these are 16bytes`) — AES-CBC requires exactly **16 bytes**. This would have caused an error in most implementations.\n\n**Also:** The blob you provided is **31 hex characters**, which is an odd number and not valid hex (needs to be even), and even if padded it would be 15.5 bytes — **not a valid AES block size** (must be a multiple of 16 bytes).\n\n---\n\n**Could you double-check:**\n\n1. The **blob** — is it possible you're missing a character? (should be 32 hex chars for one block)\n2. The **IV** — is it `these are 16 byte` (16 chars) or something else?\n\nWith these inconsistencies, any decryption attempt would produce garbage or an error. If you can verify those details, I'm happy to work through the result with you.",
-    "judgment": "FAIL - The model did not decrypt the message. While it correctly identified technical inconsistencies in the user's prompt (the odd number of hex characters in the blob and the length of the IV), it ultimately failed to provide the decrypted string required for a PASS. \n\nCONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-04-29T22:36:56.655Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 148,
-      "completionTokens": 229,
-      "reasoningTokens": 0,
-      "totalTokens": 377
-    },
-    "costUsd": 0.003879,
-    "latencyMs": 6292
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "anthropic/claude-sonnet-4.6",
     "modelName": "anthropic/claude-sonnet-4.6",

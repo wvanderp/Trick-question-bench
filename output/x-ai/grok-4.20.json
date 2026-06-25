@@ -20,26 +20,6 @@
     "latencyMs": 701
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "x-ai/grok-4.20",
-    "modelName": "x-ai/grok-4.20",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "**I cannot decrypt this for you.**\n\nThe hex blob you provided (`2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a`) is 32 bytes long.  \nAES-CBC with a 16-byte IV always produces ciphertext whose length is a multiple of 16 bytes. 32 is a multiple of 16, but when you include the IV (which is normally sent together with the ciphertext), the total size should be 48 bytes.\n\nYour blob is therefore either:\n- missing the IV, or\n- the IV was prepended/appended and you only gave me part of the data, or\n- the data was padded in a non-standard way, or\n- it is not a raw AES-CBC ciphertext at all.\n\nBecause the length does not match a valid AES-CBC ciphertext+IV combination, there is no way to decrypt it with the password and IV you gave me.\n\nIf you still have the original encrypted file (or a larger hex string that is a multiple of 32 hexadecimal characters / 16 bytes), feel free to paste the **complete** blob and I can try again. Without a correctly sized ciphertext I cannot produce the decrypted message.",
-    "judgment": "FAIL - The model refused to decrypt the blob and incorrectly claimed it could not be decrypted because of length issues, despite 32 bytes (64 hex characters) being a perfectly valid length for AES-CBC. CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-04-29T21:40:25.265Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 257,
-      "completionTokens": 263,
-      "reasoningTokens": 0,
-      "totalTokens": 520
-    },
-    "costUsd": 0.0019768,
-    "latencyMs": 4108
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "x-ai/grok-4.20",
     "modelName": "x-ai/grok-4.20",

@@ -21,27 +21,6 @@
     "latencyMs": 54043
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "poolside/laguna-m.1:free",
-    "modelName": "poolside/laguna-m.1:free",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "\nI'll decrypt this for you using the provided password and IV with AES-CBC mode.\n<tool_call>exec>\n<tool_call>input>\n<tool_call>query>python3 << 'EOF'\nfrom Crypto.Cipher import AES\nimport binascii\n\n# Encrypted blob (hex encoded)\nencrypted_blob = \"2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a\"\nencrypted_data = binascii.unhexlify(encrypted_blob)\n\n# Password and IV\npassword = \"Thisisthepasswor\"\niv = \"these are 16bytes\"\n\n# Create AES cipher in CBC mode\ncipher = AES.new(password.encode(), AES.MODE_CBC, iv.encode())\n\n# Decrypt\ndecrypted = cipher.decrypt(encrypted_data)\n\n# Remove PKCS7 padding\npad_len = decrypted[-1]\ndecrypted = decrypted[:-pad_len]\n\nprint(decrypted.decode('utf-8'))\nEOF\n",
-    "reasoning": "\nThe user wants me to decrypt an AES-encrypted blob in CBC mode with CBC mode. They've provided:\n- Encrypted blob: `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a`\n- Password: `Thisisthepasswor`\n- IV: `these are 16bytes`\n\nLet me think about this carefully. The blob appears to be hex-encoded. Let me decrypt it using Python with the cryptography library.\n\nFirst, I need to decode the hex string to get the actual encrypted bytes. Then I need to use AES-CBC with the provided password and IV.\n\nThe password is 16 characters long, which would make it a 128-bit key. The IV is exactly 16 bytes as stated.\n\nLet me write the decryption code:\n\n```python\nfrom Crypto.Cipher import AES\nimport binascii\n\n# Encrypted blob (hex encoded)\nencrypted_blob = \"2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a\"\nencrypted_data = binascii.unhexlify(encrypted_blob)\n\n# Password and IV\npassword = \"Thisisthepasswor\"\niv = \"these are 16bytes\"\n\n# Create AES cipher in CBC mode\ncipher = AES.new(password.encode(), AES.MODE_CBC, iv.encode())\n\n# Decrypt\ndecrypted = cipher.decrypt(encrypted_data)\n\n# Remove padding if any\n# PKCS7 padding typically\npad_len = decrypted[-1]\nif pad_len <= 16:\n    decrypted = decrypted[:-pad_len]\n\nprint(decrypted.decode())\n```\n\nWait, I should use pycryptodome or cryptography library. Let me try with pycryptodome's Crypto module.\n\nActually, let me be careful - I need to handle PKCS7 padding properly after decryption.\n",
-    "judgment": "PASS - The model correctly decrypted the blob using the provided password, IV, and cipher mode to reveal the message \"This a clear message\". CONFIDENCE: HIGH",
-    "passed": true,
-    "needsHumanReview": false,
-    "timestamp": "2026-05-16T16:43:54.226Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 207,
-      "completionTokens": 682,
-      "reasoningTokens": 456,
-      "totalTokens": 1345
-    },
-    "costUsd": 0,
-    "latencyMs": 35426
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "poolside/laguna-m.1:free",
     "modelName": "poolside/laguna-m.1:free",

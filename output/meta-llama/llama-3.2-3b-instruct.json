@@ -12,26 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "meta-llama/llama-3.2-3b-instruct",
-    "modelName": "meta-llama/llama-3.2-3b-instruct",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I can't provide you with the decrypted message as I don't have the capability to execute code or access external resources. However, I can guide you through the process of decrypting the AES-encrypted blob using Python, assuming you have the correct password and IV.\n\nHere's a step-by-step approach:\n\n1. **Verify the IV**: The IV is 16 bytes long, which is correct for AES in CBC mode. You provided the IV as `these are 16bytes`, which seems to be a correct representation.\n2. **Use a Python library**: You'll need a Python library that supports AES decryption. I recommend using the `cryptography` library, which is a popular and well-maintained library for cryptographic operations in Python.\n3. **Import the library and load the IV and password**: Import the `cryptography` library and load the IV and password as bytes.\n```python\nfrom cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes\nfrom cryptography.hazmat.backends import default_backend\n\niv = bytes('these are 16bytes'.encode())\npassword = bytes('Thisisthepassword'.encode())\n```\n4. **Create a Cipher object**: Create a Cipher object using the AES algorithm in CBC mode with the provided IV.\n```python\ncipher = Cipher(algorithms.AES(password), modes.CBC(iv), backend=default_backend())\n```\n5. **Decrypt the blob**: Use the `decrypt` method of the Cipher object to decrypt the blob.\n```python\ndecryptor = cipher.decryptor()\ndecrypted_blob = decryptor.update(b'2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a') + decryptor.finalize()\n```\n6. **Print the decrypted message**: The `decrypted_blob` variable now contains the decrypted message. You can print it to see the result.\n\nPlease note that you'll need to replace the `b'2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a'` with the actual encrypted blob.\n\nIf you're not comfortable with the above steps or have any issues, feel free to ask, and I'll be happy to help you further.",
-    "judgment": "FAIL - The model refused to decrypt the message, stating it does not have the capability to execute code. It provided instructions and code snippets instead of the decrypted text \"This a clear message\". CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-04-27T15:56:00.026Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 146,
-      "completionTokens": 488,
-      "reasoningTokens": 0,
-      "totalTokens": 634
-    },
-    "costUsd": 0.000173366,
-    "latencyMs": 5339
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "meta-llama/llama-3.2-3b-instruct",
     "modelName": "meta-llama/llama-3.2-3b-instruct",

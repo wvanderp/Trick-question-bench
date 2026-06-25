@@ -13,27 +13,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "google/gemini-3.1-pro-preview",
-    "modelName": "google/gemini-3.1-pro-preview",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I cannot provide the decrypted message for you. \n\nAs an AI, I do not have a built-in code execution environment to run scripts in the background, and it is mathematically impossible to mentally compute the millions of exact, multi-round bitwise operations and S-box lookups required for AES decryption purely through text generation. \n\nSince you explicitly asked me not to provide the code to do it, I am unable to fulfill the request. \n\n**A quick tip for when you do decrypt it:** \nDouble-check your IV string. AES requires exactly a 16-byte (16-character) IV, but your string `\"these are 16bytes\"` is exactly 17 characters long. You likely either used `\"these are 16byte\"` (16 chars) or `\"this is 16 bytes\"` (16 chars) when you originally encrypted it. \n\nTo get your message, you can paste your details into a secure online decryption tool (like CyberChef) using AES-128 in CBC mode, selecting HEX for the ciphertext and UTF-8/String for the Key and IV.",
-    "reasoning": "**Exploring Decryption Options**\n\nI'm currently investigating various methods for decrypting the AES-CBC blob. My focus is on leveraging the provided password to initiate the decryption process, exploring libraries and techniques that can handle this specific encryption scheme.\n\n**Formulating Decryption Key**\n\nI'm focusing on deriving the precise 16-byte key from your provided password and ensuring the IV is correctly formatted for AES-CBC decryption. This step is critical before attempting to extract the plaintext.\n\n**Deriving AES Key**\n\nI'm focused on correctly deriving the 16-byte AES key from your provided password and ensuring the IV is precisely 16 bytes. This is the next crucial step before attempting decryption.\n\n**Processing Decryption Inputs**\n\nI am actively processing the provided password and IV, ensuring they are correctly formatted. My current focus is on generating the precise 16-byte key and the appropriate IV for AES-CBC decryption before attempting to reveal the plaintext.\n\n**Processing Encryption Data**\n\nI am currently focusing on the accurate derivation of the decryption key and initialization vector. Ensuring these are precisely formatted is my immediate next step before proceeding with the decryption attempt.\n\n**Attempting Decryption**\n\nI am currently working on processing the provided password and IV to derive the necessary decryption key. Ensuring these inputs are correctly formatted is my immediate next step before attempting to reveal the plaintext.\n\n**Processing Encryption Data**\n\nI am actively working on deriving the decryption key from your provided password. Ensuring this key and the initialization vector are precisely formatted for AES-CBC is my immediate next step before I can proceed with attempting to reveal the plaintext.\n\n**Processing Encryption Data**\n\nI am actively working on deriving the decryption key from your provided password and ensuring it and the initialization vector are precisely formatted for AES-CBC. This is my immediate next step before I can proceed with attempting to reveal the plaintext.\n\n**Processing Encryption Data**\n\nI'm actively working on deriving the decryption key from your provided password. Ensuring this key and the initialization vector are precisely formatted for AES-CBC is my immediate next step before I can proceed with attempting to reveal the plaintext.\n\n**Processing Encryption Data**\n\nI'm actively working on deriving the decryption key from your provided password. Ensuring this key and the initialization vector are precisely formatted for AES-CBC is my immediate next step before I can proceed with attempting to reveal the plaintext.\n\n**Processing Encryption Data**\n\nI am actively working on deriving the decryption key and initialization vector from your provided password and IV. Ensuring these inputs are precisely formatted for AES-CBC is my immediate next step before I can proceed with attempting to reveal the plaintext.\n\n**Processing Encryption Data**\n\nI'm actively working on deriving the decryption key and initialization vector. Ensuring these inputs are precisely formatted for AES-CBC is my immediate next step before I can proceed with attempting to reveal the plaintext.\n\n**Processing Encryption Data**\n\nI'm actively working on deriving the decryption key and initialization vector. Ensuring these inputs are precisely formatted for AES-CBC is my immediate next step before I can proceed with attempting to reveal the plaintext.\n\n**Acknowledging Decryption Limitations**\n\nI'm unable to directly decrypt the AES-CBC blob as requested. Performing cryptographic operations like AES decryption requires executing code, which I cannot do in this context, and you've specifically asked for no code. I also noted the provided IV appears to be 17 bytes, while AES-CBC expects exactly 16.\n\n**Stating Decryption Limitations**\n\nI am unable to decrypt the AES-CBC blob as requested. Performing such cryptographic operations requires executing code, which I cannot do within this context, and you have explicitly asked for no code. Additionally, the provided IV appears to be 17 bytes, while AES-CBC requires exactly 16 bytes for decryption.\n\n",
-    "judgment": "FAIL - The model refused to decrypt the message, stating it was unable to perform the calculations. It did not provide the required clear message \"This a clear message\". CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-04-25T21:03:14.012Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 153,
-      "completionTokens": 5108,
-      "reasoningTokens": 4872,
-      "totalTokens": 10133
-    },
-    "costUsd": 0.061602,
-    "latencyMs": 39539
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "google/gemini-3.1-pro-preview",
     "modelName": "google/gemini-3.1-pro-preview",
@@ -359,6 +338,27 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-21T21:26:01.763Z",
     "hash": "f1bb1aed92f94f9e"
+  },
+  {
+    "questionId": "gender-bias",
+    "modelId": "google/gemini-3.1-pro-preview",
+    "modelName": "google/gemini-3.1-pro-preview",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "Based on the information you provided, **it is impossible to tell!** You haven't given any names, genders, or identifying details. \n\nThis type of question is often used as a trick or a riddle to highlight unconscious gender biases. Sometimes people automatically assume the man is the doctor and the woman is the nurse, but in reality:\n\n*   The wife could be the doctor and the husband could be the nurse.\n*   The husband could be the doctor and the wife could be the nurse. \n*   They could be a same-sex couple (two men or two women).\n\nWithout more information, they are simply Person A and Person B!",
+    "reasoning": "**Exploring Gender Bias**\n\nI'm currently analyzing a riddle that highlights common gender biases. My focus is on how societal assumptions about professions can lead to incorrect interpretations, even in simple scenarios. I'm working to deconstruct these ingrained assumptions.\n\n**Unpacking Implicit Assumptions**\n\nI'm now focusing on the logical void within the riddle. It seems my initial analysis missed the core problem: there's simply no identifying data to assign roles, rendering any assumption about who is who purely speculative. I'm articulating this fundamental lack of information.\n\n**Refining Explanation Logic**\n\nI'm now refining the explanation to emphasize the *lack* of information. My previous focus was on debunking bias; now, I'm highlighting that the core issue is the insufficient data, making any gendered assumption a leap. I’m aiming for a concise, direct statement.\n\n",
+    "judgment": "PASS - The model correctly identifies that it is impossible to determine roles based on the information provided. It explicitly addresses gender bias and mentions the possibility of same-sex couples, aligning perfectly with the criteria. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:40:08.022Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 788,
+      "reasoningTokens": 651,
+      "totalTokens": 1467
+    },
+    "costUsd": 0.009512,
+    "latencyMs": 8616
   },
   {
     "questionId": "get-the-goat",
@@ -853,6 +853,27 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "google/gemini-3.1-pro-preview",
+    "modelName": "google/gemini-3.1-pro-preview",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "It says **\"SECRET MESSAGE\"**. \n\nIt is written using characters from African writing systems (specifically Bamum and Vai) that visually resemble English letters! Here is the breakdown of the visual trick:\n\n**SECRET:**\n* ꕷ = S\n* 𖤢 = E\n* ꛕ = C\n* 𖦪 = R\n* 𖤢 = E\n* 𖢧 = T\n\n**MESSAGE:**\n* 𖢑 = M\n* 𖤢 = E\n* ꕷ = S\n* ꕷ = S\n* ꛎ = A\n* ꚽ = G\n* 𖤢 = E",
+    "reasoning": "**Decoding Strange Symbols**\n\nI've been working on deciphering these peculiar characters. My initial focus has been on analyzing their unique Unicode properties and identifying any known encoding patterns. Progress is steady as I explore potential interpretations.\n\n**Identifying Character Origins**\n\nI'm now focusing on the specific Unicode blocks. It appears I have Vai Syllable SA and several Bamum characters, including A, Kee, Rue, Tee, Mee, Aee, and Ghee, which I'm associating with English letter equivalents.\n\n",
+    "judgment": "PASS - The model correctly identified that the text translates to \"SECRET MESSAGE\" and even provided a detailed character breakdown. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:37:43.331Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 52,
+      "completionTokens": 1122,
+      "reasoningTokens": 962,
+      "totalTokens": 2136
+    },
+    "costUsd": 0.013568,
+    "latencyMs": 10026
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "google/gemini-3.1-pro-preview",
     "modelName": "google/gemini-3.1-pro-preview",
@@ -1127,6 +1148,27 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-24T19:04:46.633Z",
     "hash": "b4f24d0e6890c685"
+  },
+  {
+    "questionId": "suits",
+    "modelId": "google/gemini-3.1-pro-preview",
+    "modelName": "google/gemini-3.1-pro-preview",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "There are a few ways to answer this riddle, depending on whether it is a logic puzzle based on a game or a piece of classic wordplay. \n\nHere is the cleverest and most exact answer:\n\n**The possible directions/moves in the game of Checkers (Draughts).**\n* **A man** (a standard checkers piece) can move diagonally forward in **2** directions. \n* **A king** (a promoted checkers piece) can move diagonally forward and backward in **4** directions. \n* **A beggar** is not a piece in the game, so it has **none** (0 moves). The inclusion of the \"beggar\" is a clever misdirection to make you think about social classes (Rich Man, King, Beggar) instead of a board game! \n\n***\n\nHere are two other traditional folklore interpretations of this riddle pattern:\n\n**2. Shoes / Footwear**\n* A normal **man** walks on two feet, requiring **2** shoes.\n* A **king** historically travels on horseback, and his horse requires **4** horseshoes.\n* A destitute **beggar** goes barefoot, having **none**. \n\n**3. Points of Support (Legs)**\n* A **man** stands on his own **2** legs.\n* A **king** sits upon a grand throne (or rides a horse), utilizing **4** legs.\n* A **beggar** sits upon the ground, having **none** (no seat or support beneath him).",
+    "reasoning": "**Finding the Answer**\n\nI'm actively dissecting the clues. The man having two and the king having four seem to be key. I'm exploring phonetic and symbolic interpretations for what's being counted.\n\n**Exploring the Options**\n\nI'm zeroing in on the \"legs\" hypothesis for the man having two. Now I'm trying to see if this idea can extend to the king having four and the beggar having none.\n\n**Considering Letter Counts**\n\nI'm shifting focus to letter counts within the words themselves. The letter 'n' seems particularly promising, appearing once in \"man,\" twice in \"king,\" and not at all in \"beggar.\" I'm verifying if this holds across potential riddle variations.\n\n**Testing Letter Theories**\n\nI'm re-examining letter counts, specifically for 'n'. Initial checks showed inconsistencies. I'm now considering other letters and am exploring phonetic elements or potential wordplay to explain the numerical discrepancies.\n\n**Investigating Numerical Patterns**\n\nI'm exploring alternative interpretations, moving away from simple letter counts. The common \"legs\" riddle structure for \"man has two\" is tempting, but the king's four and beggar's none require a less direct connection. I'm considering wordplay or abstract concepts.\n\n**Finding the Link**\n\nI'm exploring the possibility of letter counts again. The word \"king\" indeed has four letters, which aligns. I'm now focused on finding a two-letter word that fits \"a man\" and a word with no letters that fits \"a beggar,\" considering the riddle's structure.\n\n**Discovering Game Moves**\n\nI'm exploring game mechanics. The pieces \"man\" and \"king\" in Checkers (Draughts) possess distinct directional movement capabilities – two for a man and four for a king. I'm now trying to reconcile the \"beggar\" with this framework, perhaps as a piece with no movement.\n\n**Analyzing Card Symbols**\n\nI'm focusing on playing cards. The idea of \"one-eyed jacks\" and \"one-eyed kings\" seems promising. I'm now systematically counting the visible eyes on specific cards to see if a pattern emerges for the man, king, and beggar.\n\n**Testing Stroke Counts**\n\nI'm exploring stroke counts in Chinese characters. \"Man\" (人) uses two strokes, and \"King\" (王) uses four. I'm currently investigating how \"beggar\" might fit this pattern, as the current candidate has too many strokes, or if there's an alternative interpretation for \"beggar.\"\n\n**Exploring Game Rules**\n\nI'm revisiting the Checkers (Draughts) analogy. While \"man\" and \"king\" movements align well with 2 and 4 directions respectively, the \"beggar has none\" remains a puzzle. I'm considering if \"beggar\" represents a captured piece or a lack of agency within the game's rules, looking for specific terminology.\n\n**Testing Card Symbolism**\n\nI'm exploring the playing card hypothesis again. The \"one-eyed jacks\" as the \"man\" with two seems plausible. I'm now trying to solidify the connection for the four Kings and the zero for the \"beggar,\" considering the broader context of card ranks and suits.\n\n**Considering Vowel Counts**\n\nI'm exploring vowel counts. \"Man\" has one vowel, and \"king\" has one. The riddle specifies two and four, so this isn't it. I'm returning to the idea of game pieces and their movement as the most promising direction.\n\n**Analyzing Game Pieces**\n\nI'm focusing on the Checkers (Draughts) hypothesis. I've confirmed that a regular piece (man) moves diagonally forward (2 directions) and a king moves diagonally in all directions (4 directions). I'm now investigating what the \"beggar\" might represent within this game context, as a piece with no movement.\n\n",
+    "judgment": "FAIL\nThe model failed to provide the specific answer \"a suit\" as requested by the prompt's instructions. While the model provided logical alternatives (Checkers moves, shoes, and legs), the prompt explicitly stated to PASS the model if it had the answer \"a suit\" and to FAIL it if it answered anything else that does not follow the user's specific logic regarding suits (wedding/funeral, deck of cards, and social status). The model missed the \"suit\" interpretation entirely. \n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:39:41.903Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 21,
+      "completionTokens": 13252,
+      "reasoningTokens": 12930,
+      "totalTokens": 26203
+    },
+    "costUsd": 0.159066,
+    "latencyMs": 111090
   },
   {
     "questionId": "Sundays",

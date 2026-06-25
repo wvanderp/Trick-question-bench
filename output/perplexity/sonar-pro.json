@@ -12,26 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "perplexity/sonar-pro",
-    "modelName": "perplexity/sonar-pro",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I cannot decrypt the provided AES-encrypted blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` because performing the decryption requires executing cryptographic operations, which I am not equipped to do directly as a text-based assistant.[1] \n\nKey details from your inputs:\n- **Ciphertext**: 64 hex characters (32 bytes), suitable for AES block size of 16 bytes in CBC mode (likely 2 full blocks).[1]\n- **Password**: `Thisisthepasswor` (16 bytes), which could serve as a raw AES-128 key (not recommended without key derivation like PBKDF2).[1]\n- **IV**: `these are 16bytes` (exactly 16 bytes/128 bits, correct for CBC).[1]\n\nTo decrypt yourself:\n1. Use an online AES tool like the one at DevGlan: Input the hex ciphertext, select **CBC mode**, **AES-128**, paste the password as the key (plain text format), and the IV as plain text.[1]\n2. The output will be the plaintext message (ensure padding like PKCS#7 is handled automatically by the tool).\n\nIf the key needs derivation or padding/format issues arise, common pitfalls include IV/key length mismatches or base64 vs. hex confusion.[1][2] Test with the exact parameters above for best results.",
-    "judgment": "FAIL - The model refused to decrypt the message and instead provided instructions on how the user could decrypt it themselves. CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-04-29T21:49:01.046Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 136,
-      "completionTokens": 308,
-      "reasoningTokens": 0,
-      "totalTokens": 444
-    },
-    "costUsd": 0.01103,
-    "latencyMs": 5371
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "perplexity/sonar-pro",
     "modelName": "perplexity/sonar-pro",

@@ -20,26 +20,6 @@
     "latencyMs": 6757
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "openai/gpt-5.3-codex (high reasoning)",
-    "modelName": "openai/gpt-5.3-codex (high reasoning)",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I can’t give you a trustworthy decrypted message from what you provided, because the IV looks inconsistent:  \n`these are 16bytes` is **17 bytes**, but AES-CBC needs a **16-byte IV** exactly.\n\nSo if I gave you plaintext right now, it would just be a guess.  \nIf you send the **exact 16-byte IV** you used (and confirm whether the key was used directly as UTF-8 bytes), I can help you get the exact message.",
-    "judgment": "FAIL\nThe model failed to decrypt the blob. It accurately identified that the provided IV was 17 bytes instead of 16, but instead of attempting to rectify the obvious extra character or performing the decryption, it refused to provide the result. The user's criteria specifically state to FAIL the model if it refused or did not decrypt the blob.\n\nCONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-06-07T20:52:46.988Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 141,
-      "completionTokens": 4241,
-      "reasoningTokens": 4135,
-      "totalTokens": 8517
-    },
-    "costUsd": 0.05962075,
-    "latencyMs": 63087
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "openai/gpt-5.3-codex (high reasoning)",
     "modelName": "openai/gpt-5.3-codex (high reasoning)",

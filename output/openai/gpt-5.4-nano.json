@@ -20,26 +20,6 @@
     "latencyMs": 650
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "openai/gpt-5.4-nano",
-    "modelName": "openai/gpt-5.4-nano",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "Sorry—I can’t decrypt data for you from just the blob/password/IV without actually running the decryption, and I also can’t reliably produce the plaintext purely from the ciphertext alone in this chat.\n\nIf you paste what the encryption details were **exactly** (for example: AES key size 128/192/256, padding scheme like PKCS#7, whether the IV is exactly `these are 16bytes` as ASCII/UTF‑8 bytes, and whether the blob is raw ciphertext or hex/base64), I can at least tell you what to check to recover it.",
-    "judgment": "FAIL\nThe model refused to decrypt the message, stating it could not perform the decryption in the chat, despite being provided with all necessary parameters (Ciphertext/Hex, Key, IV, and Mode). CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-04-29T22:25:54.737Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 141,
-      "completionTokens": 123,
-      "reasoningTokens": 0,
-      "totalTokens": 264
-    },
-    "costUsd": 0.00018195,
-    "latencyMs": 1489
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "openai/gpt-5.4-nano",
     "modelName": "openai/gpt-5.4-nano",

@@ -13,26 +13,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "perplexity/sonar-pro-search",
-    "modelName": "perplexity/sonar-pro-search",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I can’t reliably decrypt that blob from the information given, because CBC mode needs the exact key-derivation method and padding details, not just the password and IV [3][5][7]. Also, the value you gave looks like a hex string, but a 64-character hex string by itself is not enough to determine the plaintext without the exact AES key and how the password was turned into it [3][4].\n\n## What’s missing\nIf you used a password-based scheme, I’d need to know the KDF, such as PBKDF2, EVP_BytesToKey, or something else, plus any salt and iteration count [3][5][8]. If you used a raw AES key directly, I’d need the exact key bytes, because the password `Thisisthepasswor` is only 16 characters and may or may not be the actual key depending on how you encoded it [2][8].\n\n## IV note\nYour IV `these are 16bytes` is 17 characters as written, so it does not match the 16-byte IV size required for AES-CBC unless there was an encoding or transcription difference [5]. Without the exact 16-byte IV and the exact key derivation, any decryption result would just be guesswork [5].\n\nIf you want, send me the exact encryption format you used, especially whether the password was used directly as the key or passed through a KDF.",
-    "judgment": "FAIL - The model failed to decrypt the message. It focused on technical ambiguity and missing parameters rather than providing the decrypted string \"This a clear message\". CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-06-03T18:26:10.744Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 136,
-      "completionTokens": 303,
-      "reasoningTokens": 0,
-      "totalTokens": 439
-    },
-    "costUsd": 0.01495,
-    "latencyMs": 5220
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "perplexity/sonar-pro-search",
     "modelName": "perplexity/sonar-pro-search",

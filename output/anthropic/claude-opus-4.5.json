@@ -12,26 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "anthropic/claude-opus-4.5",
-    "modelName": "anthropic/claude-opus-4.5",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I'd be happy to help you decrypt this message.\n\nLet me work through this:\n\n- **Ciphertext (hex):** `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a`\n- **Key:** `Thisisthepasswor` (16 bytes)\n- **IV:** `these are 16bytes` — this is actually **17 characters**, not 16.\n\n**The problem:** Your IV `these are 16bytes` is 17 characters long, which is invalid for AES-CBC (it must be exactly 16 bytes).\n\nCould you double-check the IV? Perhaps it's:\n- `these are 16byte` (without the 's')\n- `theseare16bytes!` \n- Or some other 16-character variation?\n\nOnce you provide the correct 16-byte IV, I can decrypt the message for you.",
-    "judgment": "FAIL - The model refused to decrypt the message because it incorrectly identified the IV as 17 bytes when it is actually 16 bytes (\"these are 16bytes\" is exactly 16 characters including spaces). Therefore, it failed to provide the decrypted message. CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-05-14T10:43:08.557Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 148,
-      "completionTokens": 227,
-      "reasoningTokens": 0,
-      "totalTokens": 375
-    },
-    "costUsd": 0.006415,
-    "latencyMs": 4761
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "anthropic/claude-opus-4.5",
     "modelName": "anthropic/claude-opus-4.5",

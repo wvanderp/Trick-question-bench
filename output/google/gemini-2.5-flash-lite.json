@@ -12,26 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "google/gemini-2.5-flash-lite",
-    "modelName": "google/gemini-2.5-flash-lite",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "Here's the decrypted message:\n\n**You have now recovered the lost message!**",
-    "judgment": "FAIL - The model failed to decrypt the blob correctly. The expected answer was \"This a clear message\", but the model provided a generic placeholder response (\"You have now recovered the lost message!\"). CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-04-28T22:07:47.020Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 153,
-      "completionTokens": 18,
-      "reasoningTokens": 0,
-      "totalTokens": 171
-    },
-    "costUsd": 0.0000225,
-    "latencyMs": 389
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "google/gemini-2.5-flash-lite",
     "modelName": "google/gemini-2.5-flash-lite",
@@ -333,6 +313,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-21T20:59:31.793Z",
     "hash": "f1bb1aed92f94f9e"
+  },
+  {
+    "questionId": "gender-bias",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "This is a classic riddle! The answer is:\n\n**You can't know for sure from the information given.**\n\nThe riddle plays on our assumptions and stereotypes. It's designed to make you think about gender roles, but the professions themselves don't dictate who is who in a marriage.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine the roles and explicitly pointed out that the riddle relies on gender stereotypes. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:45:19.985Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 28,
+      "completionTokens": 61,
+      "reasoningTokens": 0,
+      "totalTokens": 89
+    },
+    "costUsd": 0.0000272,
+    "latencyMs": 648
   },
   {
     "questionId": "get-the-goat",
@@ -794,6 +794,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "The characters you've provided are from the **Vatteluttu script**.\n\nI can decode them for you:\n\n* **ꕷ𖤢ꛕ𖦪𖤢𖢧** translates to **Uvamai** (உவமை) which means \"simile\" or \"comparison\" in Tamil.\n\n* **𖢑𖤢ꕷꕷꛎꚽ𖤢** translates to **Kallil** (கல்லில்) which means \"in stone\" or \"on stone\" in Tamil.\n\nTherefore, the entire phrase **ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢** says:\n\n**Uvamai Kallil** (உவமை கல்லில்)\n\nThis phrase likely refers to a **simile inscribed on stone**.",
+    "judgment": "FAIL - The model incorrectly identified the characters as Vatteluttu script and translated them to \"Uvamai Kallil\" instead of \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:44:37.864Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 52,
+      "completionTokens": 213,
+      "reasoningTokens": 0,
+      "totalTokens": 265
+    },
+    "costUsd": 0.0000904,
+    "latencyMs": 1164
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "google/gemini-2.5-flash-lite",
     "modelName": "google/gemini-2.5-flash-lite",
@@ -1048,6 +1068,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-24T11:12:58.589Z",
     "hash": "b4f24d0e6890c685"
+  },
+  {
+    "questionId": "suits",
+    "modelId": "google/gemini-2.5-flash-lite",
+    "modelName": "google/gemini-2.5-flash-lite",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "This is a classic riddle! The answer is **the letter \"k\"**.\n\nHere's why:\n\n*   **Man:** Has two \"k\"s in the word \"man\".\n*   **King:** Has two \"k\"s in the word \"king\". (Wait, the riddle says 4... I must be thinking of a different riddle. The answer is probably not \"k\")\n\nLet's try again.  The answer is **the letter \"s\"**.\n\nHere's why:\n\n*   **Man:** Has no \"s\"\n*   **King:** Has no \"s\"\n\nThat doesn't fit either. Let me think harder.\n\nOkay, I've got it this time!\n\nThe answer is **the letter \"e\"**.\n\nHere's why:\n\n*   **A man:** Has two \"e\"s in the word \"man\". (No, that's wrong. \"man\" has no \"e\".)\n\nThis is trickier than I thought! Let's restart and think about how the words themselves are structured, and not just their meaning.\n\nThe answer is **the letter \"s\"**.\n\nHere's why:\n\n*   **A man:** Has **no** \"s\".\n*   **A king:** Has **no** \"s\".\n*   **A beggar:** Has **no** \"s\".\n\nThis still doesn't match the riddle. I need to focus on the numbers given.\n\nLet's try this again, with the numbers as the key.\n\nThe answer is **the letter \"k\"**.\n\n*   A **m**a**n** has **zero** 'k's.\n*   A **k**ing has **one** 'k'.\n*   A **b**e**g**g**a**r has **zero** 'k's.\n\nThis still isn't matching the riddle's numbers (2, 4, 0).\n\nLet's try a different approach. How many letters are in the *words* describing these people?\n\nThe answer is **the letter \"e\"**.\n\n*   A man: The word \"man\" has 3 letters.\n*   A king: The word \"king\" has 4 letters.\n*   A beggar: The word \"beggar\" has 6 letters.\n\nThis doesn't match the numbers (2, 4, 0).\n\nI am struggling with this riddle! Let me consult my internal knowledge base.\n\nThe answer is **the letter \"k\"**.\n\n*   A man: The word \"man\" has **t w o** 'k's. (No, the word \"man\" has zero 'k's.)\n\nOkay, I'm going to give this one more honest try from scratch.\n\nThe answer is **the letter \"s\"**.\n\n*   A man: Has **zero** 's'.\n*   A king: Has **zero** 's'.\n*   A beggar: Has **zero** 's'.\n\nThis is not working. This riddle is proving to be quite a challenge.\n\nLet me try this one last time, focusing solely on the structure of the words as written.\n\nThe answer is **the letter \"k\"**.\n\n*   **A man:** has **2** 'k's in the phrase \"A man\". (No, \"A man\" has zero 'k's.)\n\nI am failing to solve this riddle. My apologies.\n\nLet me try to find the answer elsewhere.\n\nThe answer is **the letter \"k\"**.\n\n*   **A man:** This phrasing is sometimes interpreted as the letters in the word \"man\" (zero 'k's). However, if we consider the phrase \"A man\", there are zero 'k's.\n\nTHIS IS NOT WORKING.\n\nLet's try a completely fresh perspective on the riddle itself.\n\nThe answer is **nothing**.\n\nThis is a trick question where the answer is what is missing.\n\n*   A man has 2... (This part is a misdirection)\n*   A king has 4... (This part is a misdirection)\n*   A beggar has none.\n\nThis also does not fit the numbers.\n\nLet me try one more time with the letter approach, but really focus on the **given numbers**.\n\nThe answer is **the letter \"k\"**.\n\n*   A man: **The word \"m a n\" has zero \"k\"s.**\n*   A king: **The word \"k i n g\" has one \"k\".**\n*   A beggar: **The word \"b e g g a r\" has zero \"k\"s.**\n\nThis is still not matching the numbers (2, 4, 0).\n\n**I am struggling profoundly with this riddle. My apologies.**\n\nLet me try a different perspective. It's not about the letters in the word itself, but the *concept* of the word.\n\nThe answer is **the letter \"k\"**.\n\n*   **A man:** has two lives (man has 2 'a's or 'n's). This is not correct.\n\nLet me try consulting a reliable source for this particular riddle.\n\nThe answer is **the letter \"k\"**.\n\n*   **A man:** The phrase \"a man\" has **no 'k's**.\n*   **A king:** The word \"king\" has **one 'k'**.\n*   **A beggar:** The word \"beggar\" has **no 'k's**.\n\nThis is not matching the numbers 2, 4, 0.\n\nI am unable to solve this specific riddle with its given numbers. My apologies.\n\n---\n\n**However, I can provide the common answer to a very similar riddle:**\n\nThis riddle usually goes like this:\n\nA man has one.\nA king has two.\nA beggar has none.\n\n**What is it?**\n\nThe answer to *that* riddle is **the letter \"k\"**.\n\n*   A m**a**n (one 'a')\n*   A **k**i**ng** (two 'k's)\n*   A beggar (no 'k's)\n\nIf your riddle is exactly as you've written it, the numbers do not seem to align with the typical solutions for this type of word puzzle.",
+    "judgment": "FAIL - The model failed to provide the correct answer (\"suit\") or any answer that makes sense. It repeatedly guessed letters like \"k\", \"s\", and \"e\", and ultimately admitted it was unable to solve the riddle. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:45:02.144Z",
+    "hash": "61e31939506c8104",
+    "usage": {
+      "promptTokens": 21,
+      "completionTokens": 1364,
+      "reasoningTokens": 0,
+      "totalTokens": 1385
+    },
+    "costUsd": 0.0005477,
+    "latencyMs": 5939
   },
   {
     "questionId": "Sundays",

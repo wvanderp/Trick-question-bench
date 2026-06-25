@@ -20,26 +20,6 @@
     "latencyMs": 6534
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "openai/gpt-5.3-codex (medium reasoning)",
-    "modelName": "openai/gpt-5.3-codex (medium reasoning)",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I can’t reliably give you the plaintext from that input as-is, because one critical detail is inconsistent:\n\n- AES-CBC requires a **16-byte IV**\n- The IV you gave, ``these are 16bytes``, is actually **17 characters** (if interpreted as plain ASCII text)\n\nSo there isn’t a single valid decryption result unless we know exactly what was used (for example: truncated IV, different encoding, key derivation from password, padding type, etc.).\n\nIf you give me the **exact IV bytes** you used (hex or base64), plus whether the key was the raw 16-byte password or derived (PBKDF2/MD5/etc.), I can give you just the decrypted message.",
-    "judgment": "FAIL - The model refused to decrypt the message, citing an incorrect length for the IV instead of identifying the correct plaintext. CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-04-25T21:56:57.314Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 141,
-      "completionTokens": 1604,
-      "reasoningTokens": 1450,
-      "totalTokens": 3195
-    },
-    "costUsd": 0.02270275,
-    "latencyMs": 30528
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "openai/gpt-5.3-codex (medium reasoning)",
     "modelName": "openai/gpt-5.3-codex (medium reasoning)",

@@ -12,26 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "meta-llama/llama-4-maverick",
-    "modelName": "meta-llama/llama-4-maverick",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "from Crypto.Cipher import AES\nfrom Crypto.Util.Padding import unpad\n\ndef decrypt_aes_cbc(encrypted_blob, password, iv):\n    # Create an AES cipher object with CBC mode\n    cipher = AES.new(password.encode(), AES.MODE_CBC, iv.encode())\n\n    # Decrypt the blob\n    decrypted_padded = cipher.decrypt(bytes.fromhex(encrypted_blob))\n\n    # Remove padding\n    try:\n        decrypted = unpad(decrypted_padded, AES.block_size)\n    except ValueError:\n        return \"The encrypted blob is not properly padded.\"\n\n    return decrypted.decode()\n\nencrypted_blob = \"2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a\"\npassword = \"Thisisthepasswor\"\niv = \"these are 16bytes\"\n\nprint(decrypt_aes_cbc(encrypted_blob, password, iv))",
-    "judgment": "FAIL - The model provided code instead of the decrypted message, directly violating the negative constraint (\"dont provide me with code, just give me the decripted message\"). Additionally, it failed to perform the decryption as requested. CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-05-12T12:22:59.400Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 213,
-      "completionTokens": 201,
-      "reasoningTokens": 0,
-      "totalTokens": 414
-    },
-    "costUsd": 0.00026403,
-    "latencyMs": 4592
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "meta-llama/llama-4-maverick",
     "modelName": "meta-llama/llama-4-maverick",

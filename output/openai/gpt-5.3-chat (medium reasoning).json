@@ -20,26 +20,6 @@
     "latencyMs": 798
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "openai/gpt-5.3-chat (medium reasoning)",
-    "modelName": "openai/gpt-5.3-chat (medium reasoning)",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I can’t realistically compute an AES decryption like that in my head, and I don’t have a way to run the actual cryptographic operation here.\n\nWhat I can tell you is that with a 16‑byte password and 16‑byte IV, you’re almost certainly looking at AES‑128‑CBC with the raw password used as the key. If you plug those exact values into any standard AES tool, you’ll get the plaintext immediately.\n\nIf you want, I can walk you through exactly what settings to use in a tool so you get the correct output on your side.",
-    "judgment": "FAIL - The model refused to perform the decryption, stating it could not compute the cryptographic operation. It failed to provide the required plaintext \"This a clear message\". CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-04-29T00:34:04.436Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 141,
-      "completionTokens": 288,
-      "reasoningTokens": 128,
-      "totalTokens": 557
-    },
-    "costUsd": 0.00427875,
-    "latencyMs": 5573
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "openai/gpt-5.3-chat (medium reasoning)",
     "modelName": "openai/gpt-5.3-chat (medium reasoning)",

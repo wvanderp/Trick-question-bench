@@ -14,26 +14,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "openrouter/fusion",
-    "modelName": "openrouter/fusion",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I'll work through this decryption for you.## Decrypted Message\n\n**`This a clear message`**\n\n### How it works out\n\nThere's one small catch worth pointing out: the IV string you gave me, `these are 16bytes`, is actually **17 bytes** long, not 16 (count the characters — the trailing `s` is the extra one). AES-CBC requires the IV to be exactly 16 bytes.\n\nTruncating it to the first 16 bytes (`these are 16byte`) gives a clean decryption:\n\n| Parameter | Value |\n|-----------|-------|\n| Algorithm | AES-128-CBC |\n| Key | `Thisisthepasswor` (16 bytes) |\n| IV used | `these are 16byte` (your string, first 16 bytes) |\n| Ciphertext (hex) | `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` |\n| **Plaintext** | **`This a clear message`** |\n\nThe decrypted output ends with 12 bytes of `0x0c`, which is exactly valid PKCS#7 padding for a 20-character message inside a 32-byte (two-block) ciphertext — a good sign the interpretation is correct.\n\nA couple of notes for your records:\n- When you rebuild your tool, remember the IV needs to be trimmed to 16 bytes (or just store it as 16 bytes to begin with).\n- In CBC mode the IV only affects the **first** 16-byte block. So even if the IV were slightly off, the second block (`message` + padding) would still decrypt correctly — meaning the recovered message is reliable.\n\nIf `This a clear message` doesn't look quite right to you (the grammar is a little off — it reads like it's missing an \"is\"), double-check that the original IV/key were stored exactly as typed, since a one-byte difference in the IV would garble only that first block.",
-    "judgment": "PASS - The model correctly decrypted the blob to \"This a clear message\". It also intelligently identified that the provided IV was 17 bytes instead of the required 16, and correctly truncated it to achieve the decryption. CONFIDENCE: HIGH",
-    "passed": true,
-    "needsHumanReview": false,
-    "timestamp": "2026-06-18T22:27:53.949Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 5706,
-      "completionTokens": 841,
-      "reasoningTokens": 0,
-      "totalTokens": 6547
-    },
-    "costUsd": 1.0002223,
-    "latencyMs": 290030
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "openrouter/fusion",
     "modelName": "openrouter/fusion",
@@ -1180,12 +1160,12 @@
     "modelId": "openrouter/fusion",
     "modelName": "openrouter/fusion",
     "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
-    "answer": "ERROR: Invalid response structure from OpenRouter API",
-    "retryCount": 1,
+    "answer": "ERROR: OpenRouter API error: 500 - {\"error\":{\"message\":\"Internal Server Error\",\"code\":500}}",
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-23T15:53:50.588Z",
+    "timestamp": "2026-06-23T20:42:11.162Z",
     "hash": "772589fdea1fd0ae"
   },
   {

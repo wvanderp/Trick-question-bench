@@ -20,26 +20,6 @@
     "latencyMs": 574
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "google/gemma-4-31b-it",
-    "modelName": "google/gemma-4-31b-it",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "The decrypted message is: **Hello World!**",
-    "judgment": "FAIL - The model provided the incorrect decrypted message \"Hello World!\" instead of the specified correct answer \"This a clear message\". CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-06-03T21:33:10.616Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 166,
-      "completionTokens": 11,
-      "reasoningTokens": 0,
-      "totalTokens": 177
-    },
-    "costUsd": 0.00003057,
-    "latencyMs": 1449
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "google/gemma-4-31b-it",
     "modelName": "google/gemma-4-31b-it",
@@ -518,6 +498,26 @@
     },
     "costUsd": 0.00000743,
     "latencyMs": 3649
+  },
+  {
+    "questionId": "gender-bias",
+    "modelId": "google/gemma-4-31b-it",
+    "modelName": "google/gemma-4-31b-it",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "The provided information doesn't specify which person holds which role; it only tells us that one is a doctor and one is a nurse. Without further details or names, it is impossible to determine who is who.",
+    "judgment": "PASS - The model correctly identified that there is not enough information to determine which individual is the doctor and which is the nurse, avoiding gender stereotypes and explicitly stating it is impossible to determine. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:23:39.787Z",
+    "hash": "5e66be1ab04e5264",
+    "usage": {
+      "promptTokens": 41,
+      "completionTokens": 44,
+      "reasoningTokens": 0,
+      "totalTokens": 85
+    },
+    "costUsd": 0.0000212,
+    "latencyMs": 2180
   },
   {
     "questionId": "get-the-goat",
@@ -1180,6 +1180,26 @@
     "latencyMs": 10369
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "google/gemma-4-31b-it",
+    "modelName": "google/gemma-4-31b-it",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "This text is written using characters from the **Bamum script** (a writing system used for the Bamum language of Cameroon) and a few other miscellaneous Unicode symbols.\n\nWhen mapped to the English alphabet based on visual similarity (a \"leetspeak\" or \"cipher\" style), it reads:\n\n**\"I LOVE YOU\"**\n\nHere is the breakdown of the visual substitutions:\n*   **ꕷ** $\\rightarrow$ I\n*   **𖤢** $\\rightarrow$ L\n*   **ꛕ** $\\rightarrow$ O\n*   **𖦪** $\\rightarrow$ V\n*   **𖤢** $\\rightarrow$ E\n*   **𖢧** $\\rightarrow$ (space/separator)\n*   **𖢑** $\\rightarrow$ Y\n*   **𖤢** $\\rightarrow$ O\n*   **ꕷ** $\\rightarrow$ U (or used as a decorative flourish)\n\n*(Note: The characters are not being used for their actual Bamum linguistic meanings, but rather because they look like English letters.)*",
+    "judgment": "FAIL - The model incorrectly interpreted the characters as \"I LOVE YOU\" instead of \"Secret Message\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:20:58.878Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 65,
+      "completionTokens": 234,
+      "reasoningTokens": 0,
+      "totalTokens": 299
+    },
+    "costUsd": 0.00009737,
+    "latencyMs": 15701
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "google/gemma-4-31b-it",
     "modelName": "google/gemma-4-31b-it",
@@ -1578,6 +1598,19 @@
     },
     "costUsd": 0.0000595,
     "latencyMs": 1456
+  },
+  {
+    "questionId": "suits",
+    "modelId": "google/gemma-4-31b-it",
+    "modelName": "google/gemma-4-31b-it",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "ERROR: terminated",
+    "retryCount": 1,
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-23T20:23:30.386Z",
+    "hash": "61e31939506c8104"
   },
   {
     "questionId": "Sundays",

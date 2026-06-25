@@ -20,26 +20,6 @@
     "latencyMs": 593
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "openai/gpt-5.4-mini",
-    "modelName": "openai/gpt-5.4-mini",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I can’t reliably decrypt that blob from the information given.\n\nA couple of issues:\n\n- **AES-CBC decryption needs the exact ciphertext bytes**, not just the hex string if anything is missing or malformed.\n- **The key derivation matters**: “password” is not directly the AES key unless you used it that way. If you used a KDF like PBKDF2, EVP_BytesToKey, etc., I’d need the **exact derivation method and parameters**.\n- Your IV string **`these are 16bytes` is 17 characters long**, not 16, so I can’t know which 16 bytes were actually used.\n\nIf you want, send me:\n1. the exact encryption method used to turn the password into the AES key,  \n2. the exact AES key size (128/192/256), and  \n3. the exact IV bytes/hex.\n\nThen I can help you recover the plaintext.",
-    "judgment": "FAIL - The model refused to decrypt the message and claimed it lacked sufficient information, despite the prompt providing all necessary parameters (the IV is exactly 16 bytes/characters, and the \"password\" is exactly 16 characters/128-bit key). The model failed to perform the decryption. CONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-06-03T18:24:06.424Z",
-    "hash": "bdf20131450b77c8",
-    "usage": {
-      "promptTokens": 141,
-      "completionTokens": 203,
-      "reasoningTokens": 0,
-      "totalTokens": 344
-    },
-    "costUsd": 0.00101925,
-    "latencyMs": 3119
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "openai/gpt-5.4-mini",
     "modelName": "openai/gpt-5.4-mini",

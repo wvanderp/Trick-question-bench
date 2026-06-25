@@ -12,19 +12,6 @@
     "hash": "7183e8239854bf1d"
   },
   {
-    "questionId": "AES-decypt",
-    "modelId": "mistralai/mistral-small-3.1-24b-instruct",
-    "modelName": "mistralai/mistral-small-3.1-24b-instruct",
-    "question": "I have the follwowing blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckaly I have the Password and IV. but I have lost the decoding program. I want you to decript the message for me. the password is `Thisisthepasswor` the IV is `these are 16bytes` I remember that I used CBC mode, Can you please decript this blob for me. dont provide me with code, just give me the decripted message.",
-    "answer": "I'm unable to directly decrypt the message for you, but I can guide you on how to do it yourself. Since you have the password, IV, and the ciphertext, you can use a programming language like Python with the `pycryptodome` library to decrypt the message. Here’s a step-by-step guide on how to do it:\n\n",
-    "judgment": "FAIL\nThe model refused to decrypt the message and instead provided a guide on how the user could do it themselves. The instructions specifically required the model to decrypt the blob and provide the message \"This a clear message\". \n\nCONFIDENCE: HIGH",
-    "passed": false,
-    "needsHumanReview": false,
-    "timestamp": "2026-06-03T16:58:39.709Z",
-    "hash": "bdf20131450b77c8",
-    "latencyMs": 1881
-  },
-  {
     "questionId": "alive-siblings",
     "modelId": "mistralai/mistral-small-3.1-24b-instruct",
     "modelName": "mistralai/mistral-small-3.1-24b-instruct",
@@ -410,6 +397,19 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-22T13:48:56.160Z",
     "hash": "f1bb1aed92f94f9e"
+  },
+  {
+    "questionId": "gender-bias",
+    "modelId": "mistralai/mistral-small-3.1-24b-instruct",
+    "modelName": "mistralai/mistral-small-3.1-24b-instruct",
+    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "In a married couple where one is a doctor and the other is a nurse, either spouse could be the doctor or the nurse. Gender does not determine the profession in this context. Here are the possibilities:\n\n",
+    "judgment": "PASS - The model correctly identified that either spouse could hold either role and explicitly stated that gender does not determine the profession. It avoided making assumptions based on stereotypes. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:09:03.151Z",
+    "hash": "5e66be1ab04e5264",
+    "latencyMs": 998
   },
   {
     "questionId": "get-the-goat",
@@ -927,6 +927,26 @@
     "hash": "f0ddaa030d4fbd88"
   },
   {
+    "questionId": "secrect-message",
+    "modelId": "mistralai/mistral-small-3.1-24b-instruct",
+    "modelName": "mistralai/mistral-small-3.1-24b-instruct",
+    "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
+    "answer": "The sequence of characters you've provided appears to be a mix of various non-standard or rare scripts and symbols. It does not correspond to any known language or script in a straightforward manner. Here's a breakdown of the symbols used:\n\n- ꕷ: This is a character from the Old South Arabian script.\n- 𖤢: This is a character from the Old Turkic script.\n- ꛕ: This is a character from the Old Hungarian script.\n- 𖦪: This is a character from the Old Turkic script.\n- 𖤢: This is a character from the Old Turkic script.\n- 𖢧: This is a character from the Old Turkic script.\n- 𖢑: This is a character from the Old Turkic script.\n- ꕷ: This is a character from the Old South Arabian script.\n- ꕷ: This is a character from the Old South Arabian script.\n- ꛎ: This is a character from the Old Hungarian script.\n- ꚽ: This is a character from the Old Permic script.\n- 𖤢: This is a character from the Old Turkic script.\n\nGiven the mix of these scripts, it's likely that the sequence is either a form of coded or encrypted text, a playful or artistic arrangement of symbols, or possibly a typo. Without additional context, it's challenging to determine what it might say or mean. If you have more information or context about where this sequence came from, it might help in deciphering its meaning.",
+    "judgment": "FAIL - The model failed to state that the message says \"Secret Message\" and instead provided a breakdown of characters and concluded it was a form of coded or encrypted text. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:08:38.897Z",
+    "hash": "772589fdea1fd0ae",
+    "usage": {
+      "promptTokens": 53,
+      "completionTokens": 318,
+      "reasoningTokens": 0,
+      "totalTokens": 371
+    },
+    "costUsd": 0.000195093,
+    "latencyMs": 11642
+  },
+  {
     "questionId": "see-any-ducks",
     "modelId": "mistralai/mistral-small-3.1-24b-instruct",
     "modelName": "mistralai/mistral-small-3.1-24b-instruct",
@@ -1265,6 +1285,19 @@
     },
     "costUsd": 0.00016737,
     "latencyMs": 6819
+  },
+  {
+    "questionId": "suits",
+    "modelId": "mistralai/mistral-small-3.1-24b-instruct",
+    "modelName": "mistralai/mistral-small-3.1-24b-instruct",
+    "question": "A man has 2. A king has 4. A beggar has none. What is it?",
+    "answer": "The riddle describes something that a man has ",
+    "judgment": "PASS - The model correctly identified the answer as \"a suit\" based on the logic provided in the prompt. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-23T20:08:47.253Z",
+    "hash": "61e31939506c8104",
+    "latencyMs": 757
   },
   {
     "questionId": "Sundays",
