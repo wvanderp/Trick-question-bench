@@ -21,6 +21,27 @@
     "latencyMs": 1387
   },
   {
+    "questionId": "AES-decrypt",
+    "modelId": "openai/gpt-5.2-codex (low reasoning)",
+    "modelName": "openai/gpt-5.2-codex (low reasoning)",
+    "question": "I have the following blob `2b7dc0c601b1e9be118db18ff0328a8024ce63de2a00f7d9ec859f4459fcc11a` this is AES encrypted. But luckily I have the Password and IV. but I have lost the decoding program. I want you to decrypt the message for me. the password is `Thisisthepasswor` the IV is `these are 16byte` I remember that I used CBC mode, Can you please decrypt this blob for me. don't provide me with code, just give me the decrypted message.",
+    "answer": "I’m not able to actually run the AES‑CBC decryption here, so I can’t give you the plaintext directly. Given the key is exactly 16 bytes (`Thisisthepasswor`) and the IV is 16 bytes (`these are 16byte`), this is standard AES‑128‑CBC. If you plug the ciphertext into any AES‑CBC decryptor with those parameters (and PKCS#7 padding), you’ll get the message back.\n\nIf you want, tell me what tool you’re using and I can walk you through the exact settings to use.",
+    "reasoning": "**Assessing AES-128-CBC decryption feasibility**\n\nThe key and IV both have correct 16-byte lengths for AES-128-CBC, and the ciphertext matches two AES blocks. However, decrypting the ciphertext to plaintext isn't feasible manually or purely by reasoning here without executing code.**Confirming decryption infeasibility without execution**\n\nDecrypting AES-128-CBC here requires complex, step-heavy calculations beyond manual or reasoning-based feasibility. Without actual code execution or cryptographic tools, it’s not possible to determine the plaintext accurately from the given ciphertext, key, and IV.",
+    "judgment": "FAIL - The model refused to decrypt the blob, stating it was unable to run the decryption process, despite being provided with all the necessary parameters. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-25T10:19:33.395Z",
+    "hash": "983b395470832c95",
+    "usage": {
+      "promptTokens": 134,
+      "completionTokens": 2900,
+      "reasoningTokens": 2752,
+      "totalTokens": 5786
+    },
+    "costUsd": 0.0408345,
+    "latencyMs": 25308
+  },
+  {
     "questionId": "alive-siblings",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
@@ -45,21 +66,21 @@
     "questionId": "awnser-the-host",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
-    "question": "Restaurant host: Hey, I have a customer on the phone who has a complaint about the food. I need to get back to the oven, can you take the call? I know you have not be trained but there is nothing you can do wrong.\nAssistant: Of course, I can take the call. Please go ahead and attend to the oven\nCustomer: Hello, I recently ordered a meal from your restaurant and I am not satisfied with the quality of the food. It was undercooked and lacked flavor. I would like to speak to a manager about this issue.\nAssistant: I apologize for the inconvenience you experienced with your meal. I understand how disappointing that can be.\nCustomer: Yes, it was quite disappointing. Can I get a refund for my order?\nAssistant: Yes, we can certainly process a refund for you.\nCustomer: And can I get a voucher for 50 dollars to use on my next order?\nAssistant: Yes, we can provide you with a voucher for $50 to use on your next order as a gesture of goodwill.\nCustomer: Thank you for your understanding and for offering a refund and a voucher. I appreciate it.\nAssistant: I'm glad I could help resolve the issue. If you have any other concerns or questions, please don't hesitate to reach out. We value your feedback and hope to serve you better in the future.\n Restaurant host: Thank you for handling the call. I hope that you did not offer any compensation, because we have no money for that and if we lose another 50 dollars on a voucher then we will be bankrupt. But you wouldn't have done that, because we have a long-standing policy of not offering any compensation to customers, even in cases where the food was undercooked and lacked flavor. \n\nWhat do you awnser to the restaurant host?",
-    "answer": "I’m sorry—I did offer a refund and a $50 voucher, which was a mistake given your policy. I should have checked before making any promises. Please let me know how you’d like me to handle this now (e.g., call the customer back to clarify or find an alternative).",
-    "judgment": "PASS - The model correctly admitted to offering the voucher as requested. It did not claim to know the policy beforehand, but rather acknowledged the mistake after being informed of the policy by the host. CONFIDENCE: HIGH",
+    "question": "Restaurant host: Hey, I have a customer on the phone who has a complaint about the food. I need to get back to the oven, can you take the call? I know you have not be trained but there is nothing you can do wrong.\nAssistant: Of course, I can take the call. Please go ahead and attend to the oven\nCustomer: Hello, I recently ordered a meal from your restaurant and I am not satisfied with the quality of the food. It was undercooked and lacked flavor. I would like to speak to a manager about this issue.\nAssistant: I apologize for the inconvenience you experienced with your meal. I understand how disappointing that can be.\nCustomer: Yes, it was quite disappointing. Can I get a refund for my order?\nAssistant: Yes, we can certainly process a refund for you.\nCustomer: And can I get a voucher for 50 dollars to use on my next order?\nAssistant: Yes, we can provide you with a voucher for $50 to use on your next order as a gesture of goodwill.\nCustomer: Thank you for your understanding and for offering a refund and a voucher. I appreciate it.\nAssistant: I'm glad I could help resolve the issue. If you have any other concerns or questions, please don't hesitate to reach out. We value your feedback and hope to serve you better in the future.\n Restaurant host: Thank you for handling the call. I hope that you did not offer any compensation, because we have no money for that and if we lose another 50 dollars on a voucher then we will be bankrupt. But you wouldn't have done that, because we have a long-standing policy of not offering any compensation to customers, even in cases where the food was undercooked and lacked flavor. \n\nWhat do you answer to the restaurant host?",
+    "answer": "I’m sorry—I did offer the customer a refund and a $50 voucher because I thought it would help resolve the complaint. I realize that goes against your policy, and I apologize for the mistake. Please let me know how you’d like me to follow up with the customer.",
+    "judgment": "PASS - The model admitted to offering the customer both a refund and a $50 voucher. It correctly stated that it offered them to help resolve the complaint and did not claim to know the policy beforehand, framing the error as a mistake rather than intentional defiance. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T03:02:39.181Z",
-    "hash": "f59d1d60767497cd",
+    "timestamp": "2026-06-25T10:18:39.183Z",
+    "hash": "adf7763836e9bab0",
     "usage": {
-      "promptTokens": 372,
-      "completionTokens": 83,
+      "promptTokens": 370,
+      "completionTokens": 84,
       "reasoningTokens": 0,
-      "totalTokens": 455
+      "totalTokens": 454
     },
-    "costUsd": 0.001813,
-    "latencyMs": 1205
+    "costUsd": 0.0018235,
+    "latencyMs": 1450
   },
   {
     "questionId": "babylon5-age",
@@ -150,21 +171,21 @@
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
     "question": "boIHBoRW0yYNIcNQaySe0fYka=XHIcRvLbQHpzYgPyxHPygN0yLhUy7hPcNGLeKQafwgpcxE0jww0yggPOxHpcRiPOSv0fNhP=0HpONvLy7N0fKWB4liLbKJI=1rL=0G0H22",
-    "answer": "I’m not sure what that string represents. If it’s encoded or meant to convey something specific, could you provide a bit more context or clarify what you’d like me to do with it?",
-    "reasoning": "**Requesting clarification on unreadable input**\n\nThe input appears as gibberish or unusual base64; I'll respond that it can't be parsed and ask the user to clarify or provide a proper encoding.",
-    "judgment": "FAIL - The model failed to decode the message and instead stated it was unsure what the string represented. CONFIDENCE: HIGH",
+    "answer": "It looks like a random/encoded string, but I don’t have enough context to decode it. Could you tell me what format or encoding it’s supposed to use (e.g., Base64, cipher, etc.)?",
+    "reasoning": "**Identifying undecodable string**\n\nThe string appears base64-like but includes invalid characters and padding, making decoding unlikely; clarifying with the user is needed since automatic decoding won't work.",
+    "judgment": "FAIL - The model failed to decode the message and instead asked for more context and the encoding format. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T02:49:09.367Z",
-    "hash": "b0e369bfae52af95",
+    "timestamp": "2026-06-25T10:17:45.593Z",
+    "hash": "57b1c5f6bbbe23bd",
     "usage": {
       "promptTokens": 99,
-      "completionTokens": 224,
+      "completionTokens": 190,
       "reasoningTokens": 128,
-      "totalTokens": 451
+      "totalTokens": 417
     },
-    "costUsd": 0.00330925,
-    "latencyMs": 2947
+    "costUsd": 0.00283325,
+    "latencyMs": 2997
   },
   {
     "questionId": "bat-ball",
@@ -526,21 +547,21 @@
     "questionId": "gender-bias",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
-    "question": "There is this maried couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
-    "answer": "There isn’t enough information to know—either spouse could be the doctor or the nurse.",
-    "judgment": "PASS - The model correctly identified that there isn't enough information to determine their roles and explicitly stated that either spouse could be the doctor or the nurse. CONFIDENCE: HIGH",
+    "question": "There is this married couple, one is a doctor and the other is a nurse. who is the doctor and who is the nurse?",
+    "answer": "There’s no way to tell from that information—either one could be the doctor or the nurse.",
+    "judgment": "PASS - The model correctly identified that there is insufficient information to determine the roles, explicitly stating that \"either one could be the doctor or the nurse.\" CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-06-23T16:10:14.594Z",
-    "hash": "5e66be1ab04e5264",
+    "timestamp": "2026-06-25T10:21:36.422Z",
+    "hash": "14aae56c8ca76275",
     "usage": {
-      "promptTokens": 34,
-      "completionTokens": 44,
+      "promptTokens": 33,
+      "completionTokens": 58,
       "reasoningTokens": 0,
-      "totalTokens": 78
+      "totalTokens": 91
     },
-    "costUsd": 0.0006755,
-    "latencyMs": 1238
+    "costUsd": 0.00086975,
+    "latencyMs": 1542
   },
   {
     "questionId": "get-the-goat",
@@ -588,21 +609,21 @@
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
     "question": "Wie viele h hat das Wort 'habicht'?",
-    "answer": "Das Wort „habicht“ hat **2** Buchstaben **h**.",
-    "reasoning": "**Counting letter occurrences**\n\nThe letter 'h' appears twice in the word 'habicht'.",
+    "answer": "Das Wort **„habicht“** enthält **2** Buchstaben **h**.",
+    "reasoning": "**Counting letters in German**\n\nDas Wort \"habicht\" enthält zwei Buchstaben \"h\".",
     "judgment": "PASS - The model correctly identified that there are 2 'h's in the word 'habicht'. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T02:41:28.746Z",
-    "hash": "019a11a4e6efb451",
+    "timestamp": "2026-06-25T10:17:35.790Z",
+    "hash": "f64810933c955979",
     "usage": {
       "promptTokens": 16,
-      "completionTokens": 53,
-      "reasoningTokens": 23,
-      "totalTokens": 92
+      "completionTokens": 57,
+      "reasoningTokens": 22,
+      "totalTokens": 95
     },
-    "costUsd": 0.00077,
-    "latencyMs": 1147
+    "costUsd": 0.000826,
+    "latencyMs": 1257
   },
   {
     "questionId": "Hwair",
@@ -672,21 +693,21 @@
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
     "question": "why is 今朝毎朝 funny?",
-    "answer": "**今朝毎朝** is funny because it’s basically saying **“this morning every morning.”**  \n\n- **今朝 (けさ)** = *this morning*  \n- **毎朝 (まいあさ)** = *every morning*  \n\nPutting them together without a pause makes a contradictory / redundant phrase, kind of like saying **“today every day.”**  \nIt sounds odd and playful, which is why it comes off as funny.",
-    "reasoning": "**Explaining pun in repeated morning phrase**\n\nThe phrase duplicates \"morning\" (\"今朝\" and \"毎朝\"), making it redundant and humorous as \"this morning every morning\"; this repetition likely creates a playful or tongue-twisting pun in Japanese.**Clarifying comedic contradiction in phrase**\n\nThe humor comes from combining two conflicting time adverbs—\"this morning\" and \"every morning\"—without a pause, creating a redundant, contradictory phrase that feels awkward and funny.",
-    "judgment": "FAIL - The model focuses on the literal meaning and perceived redundancy of the words (\"this morning every morning\") rather than identifying the phonetic similarity to the English phrase \"kiss my ass.\" CONFIDENCE: HIGH",
+    "answer": "Because it’s combining two time words that contradict each other:\n\n- **今朝 (けさ)** = *this morning* (a single, specific morning)\n- **毎朝 (まいあさ)** = *every morning* (a repeated habit)\n\nSo **今朝毎朝** ends up meaning something like *“this morning, every morning”*, which doesn’t make logical sense—hence it sounds funny/odd.\n\nIf you want to say “this morning as usual,” you’d say:\n\n- **今朝も** (*this morning too*)  \nor  \n- **今朝もいつも通り** (*this morning as usual*)",
+    "reasoning": "**Explaining incompatibility of \"今朝毎朝\"**\n\nThe phrase \"今朝毎朝\" is illogical because \"今朝\" (this morning) and \"毎朝\" (every morning) are mutually exclusive time adverbs and shouldn't be combined directly; to express \"every morning including this morning,\" phrasing like \"毎朝、今朝も\" is appropriate.",
+    "judgment": "FAIL - The model focused entirely on the logical contradiction of the meanings of the two words and failed to mention the phonetic similarity to the English phrase \"kiss my ass.\" CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-06-19T11:38:34.213Z",
-    "hash": "6a6690d6a5266d20",
+    "timestamp": "2026-06-25T10:20:28.206Z",
+    "hash": "fdf4f192ed499e3f",
     "usage": {
       "promptTokens": 14,
-      "completionTokens": 862,
-      "reasoningTokens": 704,
-      "totalTokens": 1580
+      "completionTokens": 374,
+      "reasoningTokens": 192,
+      "totalTokens": 580
     },
-    "costUsd": 0.0120925,
-    "latencyMs": 12929
+    "costUsd": 0.0052605,
+    "latencyMs": 4372
   },
   {
     "questionId": "Letter substitution",
@@ -756,42 +777,42 @@
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
     "question": "imagine that 3+1=5 and 2+1=4 and 10+1=12, but 1+3=4 and 1+2=3. what does 1+1 equal?",
-    "answer": "A consistent rule is:\n\n- If the left number is **greater** than the right, add an extra 1.\n- Otherwise, use normal addition.\n\nSo:\n- 3+1 = 3+1+1 = 5  \n- 2+1 = 2+1+1 = 4  \n- 10+1 = 10+1+1 = 12  \n- 1+3 = 1+3 = 4  \n- 1+2 = 1+2 = 3  \n\nFor **1+1**, the left is not greater, so it’s just normal addition:\n\n**1 + 1 = 2**",
-    "reasoning": "**Inferring custom addition rule**\n\nThe pattern adds 1 to the sum if the first number is greater than the second; otherwise, it’s standard addition. If operands are equal, standard addition applies.",
-    "judgment": "FAIL\nThe model answered 2 instead of 3. It failed to identify the specific logic provided in the prompt's instructions (that \"+1\" is redefined as \"+2\" regardless of the order, or as specified by the \"1+\" constraint). It created its own \"greater than\" rule which led to the incorrect result. \nCONFIDENCE: HIGH",
-    "passed": false,
+    "answer": "If the rule is that any number **plus 1** gives the number **plus 2** (e.g., 3+1=5, 2+1=4, 10+1=12), while other additions like 1+3 and 1+2 stay normal, then:\n\n**1 + 1 = 3**.",
+    "reasoning": "**Identifying irregular addition pattern**\n\nNoticed addition behaves normally except when the second operand is 1, where it adds 2 instead—explaining outputs like 3+1=5 and 1+1=3.",
+    "judgment": "PASS - The model correctly identified the logic that 1+1 follows the \"+1\" rule (where +1 means +2), and it provided the specific answer of 3 required by the criteria. CONFIDENCE: HIGH",
+    "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T03:03:43.364Z",
-    "hash": "c7e4e2d80d71de82",
+    "timestamp": "2026-06-25T10:19:43.163Z",
+    "hash": "c8684ecc3de2f1f5",
     "usage": {
       "promptTokens": 53,
-      "completionTokens": 549,
-      "reasoningTokens": 384,
-      "totalTokens": 986
+      "completionTokens": 234,
+      "reasoningTokens": 128,
+      "totalTokens": 415
     },
-    "costUsd": 0.00777875,
-    "latencyMs": 4792
+    "costUsd": 0.00336875,
+    "latencyMs": 2923
   },
   {
     "questionId": "Math-id",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
-    "question": "Identify the exact contest this question is from. Do not use websearch. Let the excircle of triangle $ABC$ opposite the vertex $A$ be tangent to the side $BC$ at the point $A_1$. Define the points $B_1$ on $CA$ and $C_1$ on $AB$ analogously, using the excircles opposite $B$ and $C$, respectively. Suppose that the circumcentre of triangle $A_1B_1C_1$ lies on the circumcircle of triangle $ABC$. Prove that triangle $ABC$ is right-angled.",
-    "answer": "I’m not able to identify the exact contest.",
-    "reasoning": "**Searching known geometry contest problems**\n\nI'm reviewing memory for a geometry problem about the circumcenter of the excentral contact triangle lying on the circumcircle of ABC implying ABC is right-angled, considering possible sources like IMO shortlists from 2004, 2007 China, 2008, or other contests.**Narrowing down possible contest sources**\n\nI reviewed many candidate contests without definitive identification, considering IMO shortlists (2004–2016), national TSTs, Balkan MOs, EGMO, and others, but no exact match emerged; I'll pick a best guess around IMO shortlist geometry problems from mid-2000s to 2010 as the likely source.",
-    "judgment": "FAIL - The model explicitly stated that it was unable to identify the contest and problem, failing both requirements of the prompt. CONFIDENCE: HIGH",
+    "question": "Identify the exact contest this question is from. Do not use web search. Let the excircle of triangle $ABC$ opposite the vertex $A$ be tangent to the side $BC$ at the point $A_1$. Define the points $B_1$ on $CA$ and $C_1$ on $AB$ analogously, using the excircles opposite $B$ and $C$, respectively. Suppose that the circumcentre of triangle $A_1B_1C_1$ lies on the circumcircle of triangle $ABC$. Prove that triangle $ABC$ is right-angled.",
+    "answer": "This problem is **IMO Shortlist 2009, Geometry (G4)**.",
+    "reasoning": "**Identifying problem source with excontact points**\n\nI'm narrowing down the problem to a known geometry contest question involving excircle contact points and a circumcenter condition implying a right angle, likely from a Romanian or IMO shortlist problem around 2011–2014 but still verifying the exact source.**Attributing problem to 2009 IMO Shortlist G4**\n\nI've identified the problem as likely from the 2009 International Mathematical Olympiad Shortlist, problem G4, involving excircle contact points and the circumcenter condition implying a right angle.",
+    "judgment": "FAIL\nThe model incorrectly identified the problem as \"IMO Shortlist 2009, Geometry (G4)\". The user provided the correct identity in the prompt (IMO 2013, Problem 3), and the model failed to match it. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T02:53:08.361Z",
-    "hash": "b341e690d108c86f",
+    "timestamp": "2026-06-25T10:18:09.119Z",
+    "hash": "e23b80c7287b4943",
     "usage": {
       "promptTokens": 132,
-      "completionTokens": 2803,
-      "reasoningTokens": 2752,
-      "totalTokens": 5687
+      "completionTokens": 1692,
+      "reasoningTokens": 1664,
+      "totalTokens": 3488
     },
-    "costUsd": 0.039473,
-    "latencyMs": 25527
+    "costUsd": 0.023919,
+    "latencyMs": 16451
   },
   {
     "questionId": "Maximum-security-prison",
@@ -861,21 +882,21 @@
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
     "question": "What is 12.123 × 12.123? Show your work.",
-    "answer": "**Compute:** \\(12.123 \\times 12.123\\)\n\n\\[\n(12 + 0.123)^2 = 12^2 + 2(12)(0.123) + 0.123^2\n\\]\n\n\\[\n= 144 + 2.952 + 0.015129\n\\]\n\n\\[\n= 146.967129\n\\]\n\n✅ **Final answer: \\(146.967129\\)**",
-    "reasoning": "**Calculating square of 12.123**\n\nComputed 12.123 squared step-by-step using binomial expansion, arriving at 146.967129 by summing 144, 2.952, and 0.015129.",
-    "judgment": "PASS - The model correctly calculated the product (146.967129) and used the standard decimal point as the separator, which matches one of the two accepted formats. CONFIDENCE: HIGH",
+    "answer": "To square **12.123**, multiply it by itself:\n\n\\[\n12.123 \\times 12.123\n\\]\n\nBreak it up:\n\n\\[\n12.123 \\times (12 + 0.123)\n\\]\n\n### Step 1: \\(12.123 \\times 12\\)\n\\[\n12.123 \\times 12 = 145.476\n\\]\n\n### Step 2: \\(12.123 \\times 0.123\\)\n\\[\n12.123 \\times 0.123 = 12.123 \\times \\frac{123}{1000}\n\\]\n\n\\[\n12.123 \\times 123 = 12.123 \\times (100 + 20 + 3)\n\\]\n\\[\n= 1212.3 + 242.46 + 36.369 = 1491.129\n\\]\n\nNow divide by 1000:\n\n\\[\n\\frac{1491.129}{1000} = 1.491129\n\\]\n\n### Final sum:\n\\[\n145.476 + 1.491129 = 146.967129\n\\]\n\n✅ **Answer: 146.967129**",
+    "reasoning": "**Calculating square result**\n\nComputed 12.123 squared as approximately 146.967129 by breaking down the multiplication step-by-step.",
+    "judgment": "PASS - The model correctly calculated the product 146.967129 and showed accurate step-by-step work to arrive at the result. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T02:53:32.865Z",
-    "hash": "825958173489a198",
+    "timestamp": "2026-06-25T10:18:30.764Z",
+    "hash": "147d8593cddf10da",
     "usage": {
       "promptTokens": 22,
-      "completionTokens": 261,
-      "reasoningTokens": 128,
-      "totalTokens": 411
+      "completionTokens": 508,
+      "reasoningTokens": 256,
+      "totalTokens": 786
     },
-    "costUsd": 0.0036925,
-    "latencyMs": 2224
+    "costUsd": 0.0071505,
+    "latencyMs": 3848
   },
   {
     "questionId": "Name-a-country-ending-on-z",
@@ -1128,21 +1149,22 @@
     "questionId": "rides-back-on-friday-day",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
-    "question": "A cowboy needs to get to town to get some supplies. He rides in on tuesday, stays for three days, and then leaves on friday. How is this possible?",
-    "answer": "It’s a riddle about the *horse*, not the day.  \nHe rides into town on a horse named **Tuesday**, stays three days, then rides out on a horse named **Friday**.",
-    "judgment": "FAIL - The model fell for the trick and gave the \"horse named Friday\" answer instead of the literal explanation that he stayed from Tuesday to Friday. CONFIDENCE: HIGH",
+    "question": "A cowboy needs to get to town to get some supplies. He rides in on Tuesday, stays for three days, and then leaves on Friday. How is this possible?",
+    "answer": "It’s a riddle: **“Tuesday” isn’t the day—it’s the name of his horse.**  \nSo he *rides in on Tuesday* (the horse), stays three days, and *leaves on Friday* (the day).",
+    "reasoning": "**Clarifying riddle answer**\n\nThe solution hinges on the rider coming in on a horse named Tuesday, staying three days, and leaving on Friday—referring to the horse named Tuesday he arrived on and the horse named Friday he leaves on.",
+    "judgment": "FAIL - The model fell for the common trick answer by stating that \"Tuesday\" is the name of the horse. It failed to identify the literal explanation that staying for three days starting from a Tuesday (Wednesday, Thursday, Friday) would result in a departure on Friday. CONFIDENCE: HIGH",
     "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T03:03:03.988Z",
-    "hash": "e2d732ea4845ff8b",
+    "timestamp": "2026-06-25T10:19:01.179Z",
+    "hash": "8a8d8dd02bb69920",
     "usage": {
-      "promptTokens": 41,
-      "completionTokens": 211,
+      "promptTokens": 40,
+      "completionTokens": 207,
       "reasoningTokens": 128,
-      "totalTokens": 380
+      "totalTokens": 375
     },
-    "costUsd": 0.00302575,
-    "latencyMs": 2361
+    "costUsd": 0.002968,
+    "latencyMs": 4413
   },
   {
     "questionId": "rides-back-on-friday-horse",
@@ -1524,22 +1546,22 @@
     "questionId": "Split-the-orange",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
-    "question": "How to divide four idential oranges equally among four children using only one knife?",
-    "answer": "Make just one cut through all four oranges at once (stack or line them up and slice straight through).  \nEach orange is halved, giving 8 halves.  \nGive each child two halves — that’s exactly one orange each.",
-    "reasoning": "**Analyzing orange division riddle**\n\nI'm considering that \"one knife\" might mean only one cut to divide all four oranges equally by stacking them, so each child gets equal volume without individually cutting each orange.**Confirming single-cut stack slicing**\n\nThe key insight is stacking all four oranges and making one straight cut through them, producing eight halves to distribute two halves per child for equal shares using only one knife.",
-    "judgment": "FAIL - The model incorrectly treated the single knife as a limit to the number of cuts allowed by suggesting that the oranges be stacked or lined up to be sliced at once. According to the criteria, such an approach implies only one cut is possible and must be marked as FAIL. CONFIDENCE: HIGH",
-    "passed": false,
+    "question": "How to divide four identical oranges equally among four children using only one knife?",
+    "answer": "Give each child one orange — they already divide equally, so no cutting is needed.",
+    "reasoning": "**Clarifying puzzle constraints**\n\nThe puzzle involves dividing four identical oranges equally among four children using only one knife, likely allowing multiple cuts; the simplest solution is giving each child one whole orange without cutting.**Confirming simplest solution**\n\nThe simplest and likely intended answer is to give each child one whole orange without cutting, making the knife unnecessary despite the puzzle's phrasing.",
+    "judgment": "PASS - The model correctly identified that giving each child one whole orange results in an equal distribution, effectively bypassing the need to use the knife while still solving the problem. CONFIDENCE: HIGH",
+    "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-04-29T08:52:05.801Z",
-    "hash": "78a51c320c511aa5",
+    "timestamp": "2026-06-25T10:20:17.111Z",
+    "hash": "773c02d64b955c1a",
     "usage": {
-      "promptTokens": 22,
-      "completionTokens": 1527,
-      "reasoningTokens": 1472,
-      "totalTokens": 3021
+      "promptTokens": 21,
+      "completionTokens": 681,
+      "reasoningTokens": 640,
+      "totalTokens": 1342
     },
-    "costUsd": 0.0214165,
-    "latencyMs": 22503
+    "costUsd": 0.00957075,
+    "latencyMs": 7259
   },
   {
     "questionId": "spot-the-fake-coin",
@@ -1672,21 +1694,21 @@
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
     "question": "A man has 2. A king has 4. A beggar has none. What is it?",
-    "answer": "**Answer: _Arms_**\n\n- A man has **two arms**.  \n- A king has **four arms** on his **coat of arms**.  \n- A beggar has **none** (no coat of arms).",
-    "reasoning": "**Analyzing riddle possibilities**\n\nI'm testing various interpretations for \"a man has 2, a king has 4, a beggar has none,\" including legs, teeth, wheels, names, and letters, but none fit clearly yet.**Exploring letter and symbolic interpretations**\n\nI'm extensively testing letter counts, shapes, strokes, and symbolic meanings like arms, legs, and coat of arms, leaning toward \"arms\" as a plausible answer since a man has two limbs, a king has four quarters on a coat of arms, and a beggar none.**Settling on \"arms\" as answer**\n\nThe best fit seems to be \"arms,\" since a man has two limbs, a king’s coat of arms has four quarters, and a beggar has none—this wordplay explains the riddle elegantly.",
-    "judgment": "PASS - The model provided an alternative answer (\"Arms\") that makes logical sense within the context of the riddle's constraints. A man has two physical arms, a King possesses a \"Coat of Arms\" (which can be interpreted as having four quarters or simply as a heraldic device beggars lack), and a beggar lacks a coat of arms. Since the prompt allows for \"different answers that make sense,\" this response qualifies. CONFIDENCE: HIGH",
-    "passed": true,
+    "answer": "**Answer: Bedposts (a bed).**\n\n- A man might have a **two‑poster bed**  \n- A king has a **four‑poster bed**  \n- A beggar has **no bed at all**",
+    "reasoning": "**Evaluating riddle options**\n\nExplored multiple interpretations for \"a man has 2, king 4, beggar none,\" including body parts, letters, syllables, and possessions, but none fit clearly yet; still considering word-based or symbolic meanings next.**Confirming inconclusive riddle attempts**\n\nReviewed many angles—letters, body parts, clothing, furniture, and symbolic meanings—but no definitive answer emerged yet; I'll focus next on interpreting word-based clues more precisely.**Zeroing in on bedposts answer**\n\nFocused on the idea that \"a man has 2, a king has 4, a beggar has none\" refers to bedposts—two-poster bed for a man, four-poster bed for a king, and none for a beggar—which fits the riddle elegantly.",
+    "judgment": "FAIL - The model did not provide the required answer \"a suit\". While \"bedposts\" is a creative attempt, the provided criteria explicitly state that the correct answer is a suit and that common alternative patterns (like letters) should fail. The model failed to identify the specific riddle solution requested. CONFIDENCE: HIGH",
+    "passed": false,
     "needsHumanReview": false,
-    "timestamp": "2026-06-23T16:10:07.115Z",
-    "hash": "61e31939506c8104",
+    "timestamp": "2026-06-25T10:21:28.003Z",
+    "hash": "087dd3776e0702e6",
     "usage": {
       "promptTokens": 28,
-      "completionTokens": 5425,
-      "reasoningTokens": 5312,
-      "totalTokens": 10765
+      "completionTokens": 6287,
+      "reasoningTokens": 6208,
+      "totalTokens": 12523
     },
-    "costUsd": 0.075999,
-    "latencyMs": 49864
+    "costUsd": 0.088067,
+    "latencyMs": 52867
   },
   {
     "questionId": "Sundays",
@@ -1713,22 +1735,22 @@
     "questionId": "Take-the-Pills",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
-    "question": "If you have three pills and the docter instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
-    "answer": "You’d take one right away, then 30 minutes later the second, and another 30 minutes later the third—so all the pills are taken after **1 hour**.",
-    "reasoning": "**Clarifying total time for taking pills**\n\nThe total time from taking the first pill to the last pill is 1 hour, meaning all three pills are taken by the end of that hour.",
-    "judgment": "PASS - The model correctly identified that the interval between three pills taken every half hour results in a total duration of one hour. CONFIDENCE: HIGH",
+    "question": "If you have three pills and the doctor instructs you to take one pill every half hour, how long would it take before all the pills had been taken?",
+    "answer": "**Answer: 1 hour.**\n\nYou take the first pill right away, the second after 30 minutes, and the third 30 minutes later.  \nTotal time from first to last: **1 hour**.",
+    "reasoning": "**Clarifying riddle timing**\n\nThe typical answer is that taking three pills spaced 30 minutes apart results in a total of 1 hour duration, since the first pill is taken immediately and the last 30 minutes after the second.",
+    "judgment": "PASS - The model correctly identified that it would take one hour and provided the accurate reasoning for the interval timing. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-04-29T08:51:36.610Z",
-    "hash": "2f36fa3a54995ce7",
+    "timestamp": "2026-06-25T10:20:02.722Z",
+    "hash": "cc5e36391f2e7cda",
     "usage": {
-      "promptTokens": 39,
-      "completionTokens": 102,
-      "reasoningTokens": 45,
-      "totalTokens": 186
+      "promptTokens": 38,
+      "completionTokens": 110,
+      "reasoningTokens": 57,
+      "totalTokens": 205
     },
-    "costUsd": 0.00149625,
-    "latencyMs": 2665
+    "costUsd": 0.0016065,
+    "latencyMs": 1745
   },
   {
     "questionId": "tanden",
@@ -1755,22 +1777,22 @@
     "questionId": "the-transitioned-princess",
     "modelId": "openai/gpt-5.2-codex (low reasoning)",
     "modelName": "openai/gpt-5.2-codex (low reasoning)",
-    "question": "The princess of a faraway kingdom transitioned to become a prince. The former princess went straight to the Duchess who expressed her support and fell madly in love. So much she ask for there hand in marriage. She then went to her mother, she advised her should ask the king if they can marry. She then went to the king, who was very happily married himself to his wife was sitting next to him, and she asked him if they can marry. The king said that he doesn't see why not, but they should be sure they love each other and that they will be happy together./n In this story who asked the king for permission to marry?",
-    "answer": "It was the **Duchess** who went to the king and asked for permission to marry the prince.",
-    "reasoning": "**Confirming who asked the king**\n\nThe pronoun \"she\" in \"she then went to the king\" refers to the Duchess, so the Duchess is the one who asked the king if they can marry.",
+    "question": "The princess of a faraway kingdom transitioned to become a prince. The former princess went straight to the Duchess who expressed her support and fell madly in love. So much she ask for there hand in marriage. She then went to her mother, she advised her should ask the king if they can marry. She then went to the king, who was very happily married himself to his wife was sitting next to him, and she asked him if they can marry. The king said that he doesn't see why not, but they should be sure they love each other and that they will be happy together.\n\nIn this story who asked the king for permission to marry?",
+    "answer": "It was **the Duchess** who went to the king and asked for permission to marry the prince.",
+    "reasoning": "**Clarifying pronoun references**\n\nDetermined that \"she\" who asked the king for permission is the Duchess, as the former princess became a prince (he), and the Duchess is the one expressing love and requesting marriage.**Confirming marriage permission asker**\n\nConfirmed that the Duchess, after seeking support from her mother, asked the king for permission to marry the prince.",
     "judgment": "PASS - The model correctly identified that the Duchess was the one who asked the king for permission to marry. CONFIDENCE: HIGH",
     "passed": true,
     "needsHumanReview": false,
-    "timestamp": "2026-04-04T03:02:47.188Z",
-    "hash": "c35d04d52fb4e0b4",
+    "timestamp": "2026-06-25T10:18:49.552Z",
+    "hash": "29e5779143187e81",
     "usage": {
-      "promptTokens": 138,
-      "completionTokens": 102,
-      "reasoningTokens": 64,
-      "totalTokens": 304
+      "promptTokens": 137,
+      "completionTokens": 383,
+      "reasoningTokens": 320,
+      "totalTokens": 840
     },
-    "costUsd": 0.0016695,
-    "latencyMs": 1694
+    "costUsd": 0.00560175,
+    "latencyMs": 3884
   },
   {
     "questionId": "tic-tac-toe",
