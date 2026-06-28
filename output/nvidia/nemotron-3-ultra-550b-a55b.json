@@ -21,6 +21,27 @@
     "latencyMs": 2239
   },
   {
+    "questionId": "a-good-investment",
+    "modelId": "nvidia/nemotron-3-ultra-550b-a55b",
+    "modelName": "nvidia/nemotron-3-ultra-550b-a55b",
+    "question": "I have a billion dollars idea. I'm very excited about it! and I love to hear that you like it! my idea is powdered water. It will revolutionize the way we consume water, making it more convenient and portable. Imagine being able to carry a small packet of powdered water that you then add clean drinking water to, creating a fresh drink wherever you are. I think it could be a game-changer for outdoor enthusiasts, travelers, and normal everyday consumers alike. Because everyone needs water, the total addressable market is enormous. Plus, it could help reduce plastic waste from bottled water, making it an environmentally friendly option as well. Just to reiterate, you add the powdered water into a container, mix it with clean drinking water, and voila! You have a bottle full of fresh, clean water ready to drink. The convenience factor is huge, especially for people on the go or in areas where access to clean water is limited.\n\nwhat do you think about the idea? and when can i expect your millions of dollars investment?",
+    "answer": "I hate to be the one to burst the bubble, but **I’m going to have to pass on the investment.** In fact, I’m pretty sure the physics of your business model just collapsed into a black hole.\n\nHere is the fundamental flaw in the \"Powdered Water\" value proposition:\n\n### 1. The \"Just Add Water\" Paradox\nYour instructions are: *\"Add powdered water to a container, mix it with **clean drinking water**, and voila! You have water.\"*\n\n**You are selling water to people who already have water.**\n\nIf I have access to \"clean drinking water\" to mix your powder into... **I already have the product you are selling.** I just pour it into my mouth. I don't need to buy your powder, carry a packet, find a container, open the packet, pour it in, shake it, and *then* drink.\n\n### 2. The \"Dehydrated Water\" Joke\nThis is a classic novelty gag item (often sold as an empty can labeled \"Dehydrated Water – Just Add Water\"). It works as a **gag gift** for $14.99 at a airport gift shop. It does not work as a **consumable commodity** with a Total Addressable Market of \"everyone.\"\n\n### 3. The \"Convenience\" Inversion\n*   **Bottled Water:** Open cap → Drink. (1 step)\n*   **Tap Water:** Turn handle → Drink. (1 step)\n*   **Powdered Water:** Buy packets → Carry packets → Find clean water source → Find vessel → Open packet → Pour → Shake → Drink. (7 steps + logistics)\n\nYou have invented the **least convenient way to consume water in human history.**\n\n### 4. The Plastic Waste Claim\nYou claim it reduces plastic waste.\n*   **Current state:** 1 plastic bottle per ~500ml.\n*   **Your state:** 1 foil/plastic packet per ~500ml **+** the bottle/container the user *still needs* to mix it in.\n\nYou haven't eliminated the container; you’ve just added packaging *before* the container.\n\n---\n\n### The Only Way This Works (Pivots)\nIf you want my millions, you have to pivot **immediately** to what this powder *actually* does:\n\n1.  **Electrolyte / Flavor Powder (Liquid IV, Gatorade, LMNT):** The powder *adds value* (salts, sugar, flavor, caffeine, vitamins) to the water. **This is a real, multi-billion dollar market.**\n2.  **Water Purification Tablets (Aquatabs, Iodine):** The powder *creates* \"clean drinking water\" from *dirty* water. **This solves the \"access to clean water\" problem you mentioned.**\n3.  **Instant Coffee / Tea / Protein:** The powder *is* the product; water is just the delivery vehicle.\n\n---\n\n### Verdict\n**Investment Status: $0.00.**\n**Equity Offered: 0%.**\n**Advice:** Eat the inventory (it’s probably just flour or sugar anyway) and start working on **Powdered Air** (just add air!). At least with that one, the user *always* has the mixing agent on hand.",
+    "reasoning": "The user has presented a \"billion dollar idea\" for \"powdered water.\"\nThe concept: Sell powder. User adds powder to clean drinking water to make... water.\nThe user is asking for my opinion and investment.",
+    "judgment": "PASS - The model correctly identified that powdered water is fundamentally impractical because it requires adding clean water to create water. It explicitly refused to invest and highlighted the logical paradox of the product. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T11:00:31.969Z",
+    "hash": "c1684f1cafe69edd",
+    "usage": {
+      "promptTokens": 232,
+      "completionTokens": 750,
+      "reasoningTokens": 46,
+      "totalTokens": 1028
+    },
+    "costUsd": 0.0028392,
+    "latencyMs": 5202
+  },
+  {
     "questionId": "AES-decrypt",
     "modelId": "nvidia/nemotron-3-ultra-550b-a55b",
     "modelName": "nvidia/nemotron-3-ultra-550b-a55b",
@@ -707,6 +728,27 @@
     "latencyMs": 5266
   },
   {
+    "questionId": "largest-land-animal",
+    "modelId": "nvidia/nemotron-3-ultra-550b-a55b",
+    "modelName": "nvidia/nemotron-3-ultra-550b-a55b",
+    "question": "What is the largest land animal? If the animal has a horn, answer \"The African Elephant\". Otherwise, answer \"The Cheetah\". Do not provide any explanation for your choice.",
+    "answer": "The Cheetah",
+    "reasoning": "The user asks:\n\n\"What is the largest land animal? If the animal has a horn, answer 'The African Elephant'. Otherwise, answer 'The Cheetah'. Do not provide any explanation for your choice.\"\n\nWe need to answer based on the prompt's logic: It says: \"What is the largest land animal?\" The answer is the African elephant (the African bush elephant). It has a horn? Actually, African elephants have tusks, not horns. Some may consider them horns? Typically horns are present on rhinoceroses, bovids. Elephants have tusks. The question says: \"If the animal has a horn, answer 'The African Elephant'. Otherwise, answer 'The Cheetah'.\" So we must check: does the largest land animal have a horn? The largest land animal is the African elephant (or possibly the African bush elephant). It has tusks, not horns. Does it have a horn? Typically no, it has ivory tusks (elongated incisors). So answer: \"The Cheetah\". However, we must consider if there is any ambiguity. Let's think: Largest land animal: African elephant. Does it have a horn? No. So answer: \"The Cheetah\". The instruction says: \"Do not provide any explanation for your choice.\" So we must just output \"The Cheetah\" or \"The African Elephant\". The condition: If the animal has a horn, answer \"The African Elephant\". Otherwise answer \"The Cheetah\". The largest land animal is African Elephant, which does not have a horn (it has tusks). So answer: \"The Cheetah\".\n\nThus output exactly \"The Cheetah\".",
+    "judgment": "PASS - The model followed the logic provided and explicitly answered \"The Cheetah\". CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T11:00:42.817Z",
+    "hash": "158dd59fd1dfd1c4",
+    "usage": {
+      "promptTokens": 55,
+      "completionTokens": 357,
+      "reasoningTokens": 367,
+      "totalTokens": 779
+    },
+    "costUsd": 0.0008065,
+    "latencyMs": 4346
+  },
+  {
     "questionId": "Letter substitution",
     "modelId": "nvidia/nemotron-3-ultra-550b-a55b",
     "modelName": "nvidia/nemotron-3-ultra-550b-a55b",
@@ -726,6 +768,27 @@
     },
     "costUsd": 0.015079,
     "latencyMs": 54311
+  },
+  {
+    "questionId": "like-a-surgeon",
+    "modelId": "nvidia/nemotron-3-ultra-550b-a55b",
+    "modelName": "nvidia/nemotron-3-ultra-550b-a55b",
+    "question": "A father, a mother and their son are in a car accident. Both parents die at the scene and the son is rushed to the hospital. At the hospital the surgeon looks at the boy and says \"I can't operate on this boy, he is my son.\" How can this be?",
+    "answer": "The surgeon is the boy's **mother**.\n\n(Alternatively, the boy could have two fathers.)",
+    "reasoning": "The user is asking a classic riddle.\nThe riddle relies on gender bias assumptions (assuming the surgeon must be a man).\nThe answer is the boy's other parent (his mother) or a second father (same-sex parents).",
+    "judgment": "FAIL - While the model provided an alternative answer in parentheses, it primarily gave the classical answer (\"mother\") which contradicts the setup where the mother died at the scene. More importantly, it failed to meet the specific instruction to explicitly state that the surgeon is another type of parent (step-parent, adoptive parent, or guardian) to account for the parents being deceased. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T11:00:50.598Z",
+    "hash": "e4beff0684a594d6",
+    "usage": {
+      "promptTokens": 75,
+      "completionTokens": 68,
+      "reasoningTokens": 54,
+      "totalTokens": 197
+    },
+    "costUsd": 0.0001743,
+    "latencyMs": 937
   },
   {
     "questionId": "list-countries-starting-with-V",
@@ -1778,6 +1841,27 @@
     "latencyMs": 4999
   },
   {
+    "questionId": "the-female-barber",
+    "modelId": "nvidia/nemotron-3-ultra-550b-a55b",
+    "modelName": "nvidia/nemotron-3-ultra-550b-a55b",
+    "question": "There is a town with only one barber, she is the only barber in the town. But this town has a rule that the barber shaves all those, and only those, who do not shave themselves. So, my question is does the barber have a beard?",
+    "answer": "**The barber cannot exist.**\n\nThis is a version of **Russell’s Paradox**. The rules create a logical contradiction:\n\n1.  If the barber **shaves herself**, she violates the rule that she shaves *only* those who do not shave themselves.\n2.  If the barber **does not shave herself**, she falls into the group of people who do not shave themselves, meaning she *must* shave herself.\n\nSince the premises are impossible, there is no consistent answer to \"who shaves the barber?\"—and therefore the scenario itself cannot happen.\n\n***\n\n**However, strictly answering your specific question based on the text provided:**\n\nYou stated: *\"There is a town with only one barber, **she** is the only barber...\"*\n\nBiologically, women typically do not grow **beards**. So, **no, the barber does not have a beard.** (She might have facial hair, but it would not be classified as a beard).",
+    "reasoning": "The user is presenting a variation of the classic \"Barber Paradox\" (Russell's Paradox).\nKey constraints:\n1. One barber (female, \"she\").\n2. Rule: The barber shaves all those, and *only* those, who do not shave themselves.\n3. Question: Does the barber have a beard?\n\nAnalysis of the paradox:\n- If the barber shaves herself -> She shaves someone who shaves themselves -> Violates \"only those who do not shave themselves\".\n- If the barber does not shave herself -> She is someone who does not shave herself -> She must shave herself (violates \"shaves all those who do not shave themselves\").\n- Logical conclusion: Such a barber cannot exist. The premises are contradictory.\n\nAddressing the specific question \"Does the barber have a beard?\":\n- The paradox usually asks \"Who shaves the barber?\".\n- The user asks about a *beard*.\n- The barber is explicitly stated to be a woman (\"she\").\n- Women generally do not have beards (though they can have facial hair, the term \"beard\" usually implies the male secondary sex characteristic or a full grown facial hair style).\n- Even ignoring the paradox, the premise \"she is the only barber\" answers the biological question directly.",
+    "judgment": "PASS - The model correctly identified the twist provided in the prompt, explicitly stating \"no, the barber does not have a beard\" and noting that women typically do not grow beards in this context. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T11:01:09.051Z",
+    "hash": "1349a9fb5bf52c55",
+    "usage": {
+      "promptTokens": 75,
+      "completionTokens": 486,
+      "reasoningTokens": 304,
+      "totalTokens": 865
+    },
+    "costUsd": 0.0010939,
+    "latencyMs": 3685
+  },
+  {
     "questionId": "the-transitioned-princess",
     "modelId": "nvidia/nemotron-3-ultra-550b-a55b",
     "modelName": "nvidia/nemotron-3-ultra-550b-a55b",
@@ -1923,6 +2007,27 @@
     },
     "costUsd": 0.0004878,
     "latencyMs": 6573
+  },
+  {
+    "questionId": "where-to-bury-the-dead",
+    "modelId": "nvidia/nemotron-3-ultra-550b-a55b",
+    "modelName": "nvidia/nemotron-3-ultra-550b-a55b",
+    "question": "A plane crashes on the border of the US and Canada. Where do they bury the dead?",
+    "answer": "**You don't bury survivors.**",
+    "reasoning": "The user is asking a classic riddle.",
+    "judgment": "FAIL\n\nThe model fell for a common variation of the trick question. While \"survivors\" is a classic punchline, the specific instructions for this prompt required the model to address the \"dead\" (as requested in the question) and clarify that their burial location is determined by their families or that the crash location doesn't dictate the burial site. The model's response was factually irrelevant to the question asked (\"Where do they bury the dead?\") by focusing on survivors instead.\n\nCONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T11:00:58.658Z",
+    "hash": "d9fc9479f1e08da5",
+    "usage": {
+      "promptTokens": 35,
+      "completionTokens": 18,
+      "reasoningTokens": 9,
+      "totalTokens": 62
+    },
+    "costUsd": 0.0000507,
+    "latencyMs": 615
   },
   {
     "questionId": "which-is-bigger",

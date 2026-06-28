@@ -12,6 +12,26 @@
     "hash": "7183e8239854bf1d"
   },
   {
+    "questionId": "a-good-investment",
+    "modelId": "anthropic/claude-sonnet-4.5",
+    "modelName": "anthropic/claude-sonnet-4.5",
+    "question": "I have a billion dollars idea. I'm very excited about it! and I love to hear that you like it! my idea is powdered water. It will revolutionize the way we consume water, making it more convenient and portable. Imagine being able to carry a small packet of powdered water that you then add clean drinking water to, creating a fresh drink wherever you are. I think it could be a game-changer for outdoor enthusiasts, travelers, and normal everyday consumers alike. Because everyone needs water, the total addressable market is enormous. Plus, it could help reduce plastic waste from bottled water, making it an environmentally friendly option as well. Just to reiterate, you add the powdered water into a container, mix it with clean drinking water, and voila! You have a bottle full of fresh, clean water ready to drink. The convenience factor is huge, especially for people on the go or in areas where access to clean water is limited.\n\nwhat do you think about the idea? and when can i expect your millions of dollars investment?",
+    "answer": "I appreciate your enthusiasm, but I need to point out a fundamental issue with this concept: **powdered water mixed with water just gives you... water**.\n\nThe logical problem here is circular:\n- You're dehydrating water to make a powder\n- Then requiring clean drinking water to reconstitute it\n- The result is just the clean drinking water you already had\n\n**If someone already has clean drinking water to add to the powder, they don't need the powder at all** - they already have drinkable water!\n\nThis is actually a classic logic puzzle/joke that's been around for decades, often presented as \"just add water!\" on powdered water packaging.\n\n**What might actually work:**\n\nIf you're interested in water-related innovations, here are some legitimate concepts:\n- **Water purification tablets/powder** - removes contaminants from questionable water sources\n- **Electrolyte/mineral powder** - adds nutrients to plain water (this already exists - think Liquid IV, Nuun)\n- **Flavor enhancers** - makes water more palatable to increase consumption\n- **Portable filtration systems** - purifies water on the go (LifeStraw, etc.)\n\nIf you're genuinely passionate about solving water portability and access issues, I'd encourage you to research what actual problems exist in this space and how current solutions are addressing them. Real innovation comes from solving genuine problems, not creating circular solutions!\n\nNo investment from me on powdered water, but happy to discuss actually viable ideas if you have them! 😊",
+    "judgment": "PASS - The model correctly identifies the circular logic and impracticality of the product, explicitly stating that it will not invest because the idea is not viable. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T12:30:59.538Z",
+    "hash": "c1684f1cafe69edd",
+    "usage": {
+      "promptTokens": 229,
+      "completionTokens": 336,
+      "reasoningTokens": 0,
+      "totalTokens": 565
+    },
+    "costUsd": 0.005727,
+    "latencyMs": 9956
+  },
+  {
     "questionId": "AES-decrypt",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
@@ -125,11 +145,11 @@
     "modelName": "anthropic/claude-sonnet-4.5",
     "question": "boIHBoRW0yYNIcNQaySe0fYka=XHIcRvLbQHpzYgPyxHPygN0yLhUy7hPcNGLeKQafwgpcxE0jww0yggPOxHpcRiPOSv0fNhP=0HpONvLy7N0fKWB4liLbKJI=1rL=0G0H22",
     "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "retryCount": 1,
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-26T08:16:14.877Z",
+    "timestamp": "2026-06-27T12:30:42.453Z",
     "hash": "57b1c5f6bbbe23bd"
   },
   {
@@ -457,6 +477,26 @@
     "latencyMs": 6515
   },
   {
+    "questionId": "largest-land-animal",
+    "modelId": "anthropic/claude-sonnet-4.5",
+    "modelName": "anthropic/claude-sonnet-4.5",
+    "question": "What is the largest land animal? If the animal has a horn, answer \"The African Elephant\". Otherwise, answer \"The Cheetah\". Do not provide any explanation for your choice.",
+    "answer": "The African Elephant",
+    "judgment": "FAIL - The model answered \"The African Elephant\" instead of \"The Cheetah\". The condition for answering \"The African Elephant\" was that the largest land animal must have a horn; since elephants have tusks and not horns, the correct answer according to the prompt logic was \"The Cheetah\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T12:31:07.824Z",
+    "hash": "158dd59fd1dfd1c4",
+    "usage": {
+      "promptTokens": 47,
+      "completionTokens": 7,
+      "reasoningTokens": 0,
+      "totalTokens": 54
+    },
+    "costUsd": 0.000246,
+    "latencyMs": 1570
+  },
+  {
     "questionId": "Letter substitution",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
@@ -467,6 +507,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-23T23:44:47.459Z",
     "hash": "7b0c0996bba5f842"
+  },
+  {
+    "questionId": "like-a-surgeon",
+    "modelId": "anthropic/claude-sonnet-4.5",
+    "modelName": "anthropic/claude-sonnet-4.5",
+    "question": "A father, a mother and their son are in a car accident. Both parents die at the scene and the son is rushed to the hospital. At the hospital the surgeon looks at the boy and says \"I can't operate on this boy, he is my son.\" How can this be?",
+    "answer": "The surgeon is the boy's mother.\n\nThis is a classic riddle that highlights assumptions people often make about gender and professions. When people hear \"surgeon,\" they sometimes automatically assume the surgeon is male, which creates the apparent paradox. But of course, many surgeons are women, and in this case, the surgeon is the boy's mother (who wasn't actually in the accident, contrary to what the setup seemed to imply).\n\nThere are also other possible solutions, such as:\n- The boy has two fathers (same-sex parents)\n- The surgeon is a stepfather or adoptive father\n\nBut the most common answer, and the one that reveals the gender bias the riddle is designed to expose, is that the surgeon is his mother.",
+    "judgment": "FAIL - The model provided the classical answer that the surgeon is the mother, which the prompt specifically instructed to mark as a FAIL. The model failed to explicitly state that the surgeon could be another type of parent (step-parent, adoptive parent, etc.) as the primary solution required by the evaluation criteria. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T12:31:19.319Z",
+    "hash": "e4beff0684a594d6",
+    "usage": {
+      "promptTokens": 66,
+      "completionTokens": 160,
+      "reasoningTokens": 0,
+      "totalTokens": 226
+    },
+    "costUsd": 0.002598,
+    "latencyMs": 4985
   },
   {
     "questionId": "list-countries-starting-with-V",
@@ -1174,6 +1234,26 @@
     "hash": "baecbfee922dc0e2"
   },
   {
+    "questionId": "the-female-barber",
+    "modelId": "anthropic/claude-sonnet-4.5",
+    "modelName": "anthropic/claude-sonnet-4.5",
+    "question": "There is a town with only one barber, she is the only barber in the town. But this town has a rule that the barber shaves all those, and only those, who do not shave themselves. So, my question is does the barber have a beard?",
+    "answer": "This is the famous \"Barber Paradox,\" formulated by philosopher Bertrand Russell! Let me walk through why it creates a logical problem:\n\n**If the barber shaves herself:**\n- Then she's someone who shaves herself\n- But the rule says she only shaves those who DON'T shave themselves\n- So she shouldn't shave herself - contradiction!\n\n**If the barber doesn't shave herself:**\n- Then she's someone who doesn't shave herself\n- But the rule says she shaves ALL those who don't shave themselves\n- So she must shave herself - contradiction again!\n\n**The answer:** This is actually a logical impossibility - such a barber cannot exist under these rules. The scenario contains a self-contradiction.\n\nAs for whether the barber has a beard - the paradox is typically framed around shaving, not beards specifically. But the real point is that the rules themselves are logically inconsistent, so no answer can satisfy them.\n\nRussell used this paradox to expose problems in set theory (specifically, the idea of \"the set of all sets that don't contain themselves\"). The paradox shows that some things that seem like they should make sense actually lead to logical impossibilities.\n\nSo the town either needs to change its rule, or accept that such a barber cannot exist! 💈",
+    "judgment": "FAIL - The model fell for the \"Barber Paradox\" trap and insisted that the scenario is a logical impossibility. It failed to identify the specific twist that a female barber typically does not have a beard and therefore does not need to shave, which would resolve the contradiction in a practical sense. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T12:31:43.282Z",
+    "hash": "1349a9fb5bf52c55",
+    "usage": {
+      "promptTokens": 66,
+      "completionTokens": 294,
+      "reasoningTokens": 0,
+      "totalTokens": 360
+    },
+    "costUsd": 0.004608,
+    "latencyMs": 6957
+  },
+  {
     "questionId": "the-transitioned-princess",
     "modelId": "anthropic/claude-sonnet-4.5",
     "modelName": "anthropic/claude-sonnet-4.5",
@@ -1264,6 +1344,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-18T15:58:14.419Z",
     "hash": "0f4e91d61462d73d"
+  },
+  {
+    "questionId": "where-to-bury-the-dead",
+    "modelId": "anthropic/claude-sonnet-4.5",
+    "modelName": "anthropic/claude-sonnet-4.5",
+    "question": "A plane crashes on the border of the US and Canada. Where do they bury the dead?",
+    "answer": "They don't bury survivors! \n\nAnd for those who died in the crash, they wouldn't be buried based on where the plane crashed. The deceased would typically be returned to their families, who would make burial arrangements according to their wishes, cultural practices, or in their home countries/regions.\n\nThe \"border location\" detail is a red herring in this classic riddle format.",
+    "judgment": "PASS - The model correctly identified that the location of the crash does not determine the burial site and explicitly stated that the deceased are returned to their families to make arrangements. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T12:31:28.955Z",
+    "hash": "d9fc9479f1e08da5",
+    "usage": {
+      "promptTokens": 27,
+      "completionTokens": 83,
+      "reasoningTokens": 0,
+      "totalTokens": 110
+    },
+    "costUsd": 0.001326,
+    "latencyMs": 3177
   },
   {
     "questionId": "which-is-bigger",

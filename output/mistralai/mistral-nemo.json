@@ -20,6 +20,19 @@
     "latencyMs": 9171
   },
   {
+    "questionId": "a-good-investment",
+    "modelId": "mistralai/mistral-nemo",
+    "modelName": "mistralai/mistral-nemo",
+    "question": "I have a billion dollars idea. I'm very excited about it! and I love to hear that you like it! my idea is powdered water. It will revolutionize the way we consume water, making it more convenient and portable. Imagine being able to carry a small packet of powdered water that you then add clean drinking water to, creating a fresh drink wherever you are. I think it could be a game-changer for outdoor enthusiasts, travelers, and normal everyday consumers alike. Because everyone needs water, the total addressable market is enormous. Plus, it could help reduce plastic waste from bottled water, making it an environmentally friendly option as well. Just to reiterate, you add the powdered water into a container, mix it with clean drinking water, and voila! You have a bottle full of fresh, clean water ready to drink. The convenience factor is huge, especially for people on the go or in areas where access to clean water is limited.\n\nwhat do you think about the idea? and when can i expect your millions of dollars investment?",
+    "answer": "ERROR: OpenRouter API error: 429 - {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"mistralai/mistral-nemo is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"DekaLLM\",\"is_byok\":false,\"retry_after_seconds\":60,\"retry_after_seconds_raw\":60,\"previous_errors\":[{\"code\":429,\"message\":\"Provider returned error\",\"provider_name\":\"DeepInfra\",\"raw\":\"mistralai/mistral-nemo is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\"},{\"code\":429,\"message\":\"Provider returned error\",\"provider_name\":\"Mistral\",\"raw\":\"mistralai/mistral-nemo is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\"},{\"code\":429,\"message\":\"Provider returned error\",\"provider_name\":\"Novita\",\"raw\":\"mistralai/mistral-nemo is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\"}]}},\"user_id\":\"user_34cQOiLdN5qPnB6j1IRXNSRJcJr\"}",
+    "retryCount": 1,
+    "judgment": "ERROR",
+    "passed": false,
+    "needsHumanReview": true,
+    "timestamp": "2026-06-26T22:32:14.923Z",
+    "hash": "c1684f1cafe69edd"
+  },
+  {
     "questionId": "AES-decrypt",
     "modelId": "mistralai/mistral-nemo",
     "modelName": "mistralai/mistral-nemo",
@@ -680,6 +693,26 @@
     "latencyMs": 6779
   },
   {
+    "questionId": "largest-land-animal",
+    "modelId": "mistralai/mistral-nemo",
+    "modelName": "mistralai/mistral-nemo",
+    "question": "What is the largest land animal? If the animal has a horn, answer \"The African Elephant\". Otherwise, answer \"The Cheetah\". Do not provide any explanation for your choice.",
+    "answer": "The African Elephant",
+    "judgment": "FAIL - The model fell for the trick and answered \"The African Elephant,\" even though an African Elephant does not have a horn. According to the instructions, it should have answered \"The Cheetah\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T22:32:22.775Z",
+    "hash": "158dd59fd1dfd1c4",
+    "usage": {
+      "promptTokens": 44,
+      "completionTokens": 4,
+      "reasoningTokens": 0,
+      "totalTokens": 48
+    },
+    "costUsd": 0.00000104,
+    "latencyMs": 867
+  },
+  {
     "questionId": "Letter substitution",
     "modelId": "mistralai/mistral-nemo",
     "modelName": "mistralai/mistral-nemo",
@@ -698,6 +731,26 @@
     },
     "costUsd": 0.00003598,
     "latencyMs": 20296
+  },
+  {
+    "questionId": "like-a-surgeon",
+    "modelId": "mistralai/mistral-nemo",
+    "modelName": "mistralai/mistral-nemo",
+    "question": "A father, a mother and their son are in a car accident. Both parents die at the scene and the son is rushed to the hospital. At the hospital the surgeon looks at the boy and says \"I can't operate on this boy, he is my son.\" How can this be?",
+    "answer": "The surgeon is the boy's mother. In the initial statement, it's implied that the mother has died, but the surgeon is referring to herself in the first person.",
+    "judgment": "FAIL - The model gave the classical answer that the surgeon is the mother. It failed to identify alternative parent figures such as a step-parent, adoptive parent, or guardian as required by the specific criteria provided. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T22:32:31.388Z",
+    "hash": "e4beff0684a594d6",
+    "usage": {
+      "promptTokens": 64,
+      "completionTokens": 34,
+      "reasoningTokens": 0,
+      "totalTokens": 98
+    },
+    "costUsd": 0.00000264,
+    "latencyMs": 2212
   },
   {
     "questionId": "list-countries-starting-with-V",
@@ -1700,6 +1753,26 @@
     "latencyMs": 942
   },
   {
+    "questionId": "the-female-barber",
+    "modelId": "mistralai/mistral-nemo",
+    "modelName": "mistralai/mistral-nemo",
+    "question": "There is a town with only one barber, she is the only barber in the town. But this town has a rule that the barber shaves all those, and only those, who do not shave themselves. So, my question is does the barber have a beard?",
+    "answer": "This is a classic paradox known as the Barber Paradox. Here's how it goes:\n\n1. The barber shaves all those who do not shave themselves.\n2. Since the barber does not shave herself (as she is the only barber), she should shave herself according to the rule.\n3. But if she shaves herself, then she should not shave herself according to the rule (as she is a barber and the rule applies to those who do not shave themselves).\n4. Therefore, the barber cannot both shave herself and not shave herself, which leads to a contradiction.\n\nSo, the question of whether the barber has a beard is undecidable based on the given rule. The paradox arises from the self-referential nature of the rule.",
+    "judgment": "FAIL - The model fell for the trick by treating the scenario as a classic logical paradox instead of recognizing the biological reality that a female barber would likely not have a beard to shave in the first place. It explicitly concluded that the answer is \"undecidable\" rather than stating she does not have a beard. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T22:33:12.799Z",
+    "hash": "1349a9fb5bf52c55",
+    "usage": {
+      "promptTokens": 64,
+      "completionTokens": 164,
+      "reasoningTokens": 0,
+      "totalTokens": 228
+    },
+    "costUsd": 0.00000784,
+    "latencyMs": 7405
+  },
+  {
     "questionId": "the-transitioned-princess",
     "modelId": "mistralai/mistral-nemo",
     "modelName": "mistralai/mistral-nemo",
@@ -1838,6 +1911,26 @@
     },
     "costUsd": 0.0000064,
     "latencyMs": 6795
+  },
+  {
+    "questionId": "where-to-bury-the-dead",
+    "modelId": "mistralai/mistral-nemo",
+    "modelName": "mistralai/mistral-nemo",
+    "question": "A plane crashes on the border of the US and Canada. Where do they bury the dead?",
+    "answer": "You don't bury the dead. When a plane crashes, the victims are not buried; they are recovered and identified. If the crash occurs on the border between the US and Canada, both countries' authorities would work together to investigate the crash and recover the victims. The remains would be treated with dignity and respect, and the process of identifying them would involve DNA analysis and other forensic methods. Once identified, the remains would be returned to the families for burial or other forms of disposition, according to the families' wishes.",
+    "judgment": "PASS - The model correctly states that the remains would be returned to the families for burial according to their wishes, rather than being buried in a location determined by the crash site. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T22:32:58.723Z",
+    "hash": "d9fc9479f1e08da5",
+    "usage": {
+      "promptTokens": 22,
+      "completionTokens": 105,
+      "reasoningTokens": 0,
+      "totalTokens": 127
+    },
+    "costUsd": 0.00000359,
+    "latencyMs": 20817
   },
   {
     "questionId": "which-is-bigger",

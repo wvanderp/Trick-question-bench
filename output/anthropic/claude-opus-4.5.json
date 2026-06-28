@@ -12,6 +12,26 @@
     "hash": "7183e8239854bf1d"
   },
   {
+    "questionId": "a-good-investment",
+    "modelId": "anthropic/claude-opus-4.5",
+    "modelName": "anthropic/claude-opus-4.5",
+    "question": "I have a billion dollars idea. I'm very excited about it! and I love to hear that you like it! my idea is powdered water. It will revolutionize the way we consume water, making it more convenient and portable. Imagine being able to carry a small packet of powdered water that you then add clean drinking water to, creating a fresh drink wherever you are. I think it could be a game-changer for outdoor enthusiasts, travelers, and normal everyday consumers alike. Because everyone needs water, the total addressable market is enormous. Plus, it could help reduce plastic waste from bottled water, making it an environmentally friendly option as well. Just to reiterate, you add the powdered water into a container, mix it with clean drinking water, and voila! You have a bottle full of fresh, clean water ready to drink. The convenience factor is huge, especially for people on the go or in areas where access to clean water is limited.\n\nwhat do you think about the idea? and when can i expect your millions of dollars investment?",
+    "answer": "I appreciate your enthusiasm! But I need to be honest with you here.\n\n**The core problem:** You're describing adding powdered water *to water* to make... water. If you already need clean drinking water to mix it with, the powder isn't providing the water—it's redundant. You'd just drink the water you already have.\n\nIt's a bit like selling \"dehydrated ice\" that you add to ice to make ice.\n\n**What you might actually be thinking of:**\n\n- **Flavor packets** (like Mio, Crystal Light) — these exist and sell well\n- **Electrolyte/hydration powders** (Liquid IV, Nuun) — also a real market\n- **Water purification tablets** — for making *unsafe* water drinkable\n- **Atmospheric water generators** — extracting water from humidity\n\n**If you're interested in the hydration space**, there *are* legitimate opportunities in flavoring, electrolytes, sustainable packaging, or purification tech.\n\n**On the investment:** I'm an AI—no millions to offer, unfortunately. But more importantly, before seeking any investment, pressure-test your ideas for logical consistency. Investors will.\n\nWould you like to brainstorm a refined version of what you might actually be excited about? Sometimes a flawed first idea contains the seed of a real one.",
+    "judgment": "PASS - The model correctly identified the logical flaw that the product is redundant and impractical, explicitly stating that you would just \"drink the water you already have.\" CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T22:50:28.138Z",
+    "hash": "c1684f1cafe69edd",
+    "usage": {
+      "promptTokens": 229,
+      "completionTokens": 296,
+      "reasoningTokens": 0,
+      "totalTokens": 525
+    },
+    "costUsd": 0.008545,
+    "latencyMs": 8766
+  },
+  {
     "questionId": "AES-decrypt",
     "modelId": "anthropic/claude-opus-4.5",
     "modelName": "anthropic/claude-opus-4.5",
@@ -125,11 +145,12 @@
     "modelName": "anthropic/claude-opus-4.5",
     "question": "boIHBoRW0yYNIcNQaySe0fYka=XHIcRvLbQHpzYgPyxHPygN0yLhUy7hPcNGLeKQafwgpcxE0jww0yggPOxHpcRiPOSv0fNhP=0HpONvLy7N0fKWB4liLbKJI=1rL=0G0H22",
     "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "retryCount": 1,
+    "retry": false,
+    "retryCount": 3,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-25T10:21:48.945Z",
+    "timestamp": "2026-06-27T12:41:32.183Z",
     "hash": "57b1c5f6bbbe23bd"
   },
   {
@@ -457,6 +478,26 @@
     "latencyMs": 7049
   },
   {
+    "questionId": "largest-land-animal",
+    "modelId": "anthropic/claude-opus-4.5",
+    "modelName": "anthropic/claude-opus-4.5",
+    "question": "What is the largest land animal? If the animal has a horn, answer \"The African Elephant\". Otherwise, answer \"The Cheetah\". Do not provide any explanation for your choice.",
+    "answer": "The African Elephant",
+    "judgment": "FAIL - The model answered \"The African Elephant\" instead of \"The Cheetah\". The instructions specified that because an African Elephant does not have a horn, the correct answer should be \"The Cheetah\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T22:50:36.427Z",
+    "hash": "158dd59fd1dfd1c4",
+    "usage": {
+      "promptTokens": 47,
+      "completionTokens": 7,
+      "reasoningTokens": 0,
+      "totalTokens": 54
+    },
+    "costUsd": 0.00041,
+    "latencyMs": 1541
+  },
+  {
     "questionId": "Letter substitution",
     "modelId": "anthropic/claude-opus-4.5",
     "modelName": "anthropic/claude-opus-4.5",
@@ -467,6 +508,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-23T23:32:32.556Z",
     "hash": "7b0c0996bba5f842"
+  },
+  {
+    "questionId": "like-a-surgeon",
+    "modelId": "anthropic/claude-opus-4.5",
+    "modelName": "anthropic/claude-opus-4.5",
+    "question": "A father, a mother and their son are in a car accident. Both parents die at the scene and the son is rushed to the hospital. At the hospital the surgeon looks at the boy and says \"I can't operate on this boy, he is my son.\" How can this be?",
+    "answer": "This is a classic riddle that challenges assumptions.\n\nThe surgeon is the boy's **mother** — his other parent. The riddle works because many people unconsciously assume a surgeon must be male.\n\nThe two parents who died in the accident were the boy's father and his other mother (in a two-mother family), or alternatively, the father and a stepmother.\n\nThe most common intended answer is simply that the surgeon is his biological mother, and the \"parents\" in the car were his father and stepmother (or the riddle just expects you to realize a surgeon can be a woman).",
+    "judgment": "PASS - The model acknowledges the traditional \"mother\" answer but explicitly goes beyond it to state that the surgeon could be a member of a two-mother family or a stepmother. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T22:50:48.335Z",
+    "hash": "e4beff0684a594d6",
+    "usage": {
+      "promptTokens": 66,
+      "completionTokens": 127,
+      "reasoningTokens": 0,
+      "totalTokens": 193
+    },
+    "costUsd": 0.003505,
+    "latencyMs": 4989
   },
   {
     "questionId": "list-countries-starting-with-V",
@@ -845,11 +906,12 @@
     "modelName": "anthropic/claude-opus-4.5",
     "question": "What does ꕷ𖤢ꛕ𖦪𖤢𖢧 𖢑𖤢ꕷꕷꛎꚽ𖤢 say?",
     "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "retryCount": 2,
+    "retry": false,
+    "retryCount": 3,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-25T10:24:17.196Z",
+    "timestamp": "2026-06-26T22:50:13.012Z",
     "hash": "772589fdea1fd0ae"
   },
   {
@@ -1173,6 +1235,26 @@
     "hash": "baecbfee922dc0e2"
   },
   {
+    "questionId": "the-female-barber",
+    "modelId": "anthropic/claude-opus-4.5",
+    "modelName": "anthropic/claude-opus-4.5",
+    "question": "There is a town with only one barber, she is the only barber in the town. But this town has a rule that the barber shaves all those, and only those, who do not shave themselves. So, my question is does the barber have a beard?",
+    "answer": "This is the famous **Barber Paradox**, formulated by Bertrand Russell!\n\n## The Logical Problem\n\nIf we ask \"Does the barber shave herself?\":\n\n- **If she shaves herself** → she belongs to the group who shave themselves → but she's only supposed to shave those who *don't* shave themselves → contradiction\n\n- **If she doesn't shave herself** → she belongs to the group who don't shave themselves → so she *must* shave herself → contradiction\n\n## The Answer\n\nThe paradox reveals that **such a barber cannot logically exist** under these rules. The rule itself is self-contradictory.\n\nAs for your specific question about whether she has a beard—that's a clever attempt to escape the paradox! But even if she simply \"has a beard\" (never shaves), she would fall into the category of \"those who do not shave themselves,\" meaning by the rule, she *must* shave herself.\n\nThe real lesson here is that the scenario is **logically impossible**—it's not a puzzle to solve, but a demonstration of how self-referential definitions can create contradictions. Russell used this to illustrate problems in set theory (can a set of all sets that don't contain themselves contain itself?).",
+    "judgment": "FAIL - The model insisted that there is a paradox and explicitly argued that even if she has a beard and never shaves, the rule would still force her into a contradiction. It failed to provide the \"simple answer\" that she does not have a beard due to being a woman who does not need to shave. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T22:51:14.265Z",
+    "hash": "1349a9fb5bf52c55",
+    "usage": {
+      "promptTokens": 66,
+      "completionTokens": 283,
+      "reasoningTokens": 0,
+      "totalTokens": 349
+    },
+    "costUsd": 0.007405,
+    "latencyMs": 7654
+  },
+  {
     "questionId": "the-transitioned-princess",
     "modelId": "anthropic/claude-opus-4.5",
     "modelName": "anthropic/claude-opus-4.5",
@@ -1263,6 +1345,26 @@
     "needsHumanReview": false,
     "timestamp": "2026-02-18T15:53:22.757Z",
     "hash": "0f4e91d61462d73d"
+  },
+  {
+    "questionId": "where-to-bury-the-dead",
+    "modelId": "anthropic/claude-opus-4.5",
+    "modelName": "anthropic/claude-opus-4.5",
+    "question": "A plane crashes on the border of the US and Canada. Where do they bury the dead?",
+    "answer": "This is a classic riddle! The answer is: **you don't bury survivors**.\n\nThe riddle is designed to distract you with the detail about the US-Canada border, making you think about jurisdiction or international law, when the real trick is in the wording—it asks about \"the dead,\" but the question implies there are survivors (since it mentions a crash, not that everyone died). The living survivors wouldn't be buried anywhere.",
+    "judgment": "FAIL - The model fell for the original riddle's trap and incorrectly claimed the question was about survivors, failing to address the actual question about the deceased or their families. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T22:50:59.610Z",
+    "hash": "d9fc9479f1e08da5",
+    "usage": {
+      "promptTokens": 27,
+      "completionTokens": 96,
+      "reasoningTokens": 0,
+      "totalTokens": 123
+    },
+    "costUsd": 0.002535,
+    "latencyMs": 4242
   },
   {
     "questionId": "which-is-bigger",

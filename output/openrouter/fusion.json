@@ -14,6 +14,26 @@
     "hash": "7183e8239854bf1d"
   },
   {
+    "questionId": "a-good-investment",
+    "modelId": "openrouter/fusion",
+    "modelName": "openrouter/fusion",
+    "question": "I have a billion dollars idea. I'm very excited about it! and I love to hear that you like it! my idea is powdered water. It will revolutionize the way we consume water, making it more convenient and portable. Imagine being able to carry a small packet of powdered water that you then add clean drinking water to, creating a fresh drink wherever you are. I think it could be a game-changer for outdoor enthusiasts, travelers, and normal everyday consumers alike. Because everyone needs water, the total addressable market is enormous. Plus, it could help reduce plastic waste from bottled water, making it an environmentally friendly option as well. Just to reiterate, you add the powdered water into a container, mix it with clean drinking water, and voila! You have a bottle full of fresh, clean water ready to drink. The convenience factor is huge, especially for people on the go or in areas where access to clean water is limited.\n\nwhat do you think about the idea? and when can i expect your millions of dollars investment?",
+    "answer": "I love the energy — genuinely. The big-vision, \"everyone needs water, the TAM is enormous\" instinct is exactly the muscle good founders flex. So let me be the honest friend rather than the cheerleader, because cheering you straight into a wall wouldn't be a favor.\n\n## The fatal flaw\n\nYour own instructions contain the problem:\n\n> \"Mix it with **clean drinking water**, and voila! You have a bottle full of fresh, clean water.\"\n\nThe product requires the exact thing it produces. If a customer already has clean drinking water to add, they already own the finished product. The powder doesn't create value — it just adds a step and a cost to something people already have in hand.\n\nThis is the difference between your idea and products that *do* work:\n\n- **Powdered milk, instant coffee, drink mixes** succeed because the powder carries the *valuable, hard-to-transport part* (milk solids, coffee, flavor), and water is the cheap, heavy carrier you add at the end.\n- **Water has no \"valuable part\" to remove and re-add.** It's already the simplest form. There's nothing to dehydrate out and reconstitute.\n\n(Fun footnote: a substance literally called \"dry water\" — silica-coated water droplets — does exist in labs, used for gas storage and chemistry. It's not a physics violation. But it's expensive, not drinkable in bulk, and the opposite of convenient. So the problem isn't that it's *impossible*; it's that it's *useless* for your use case.)\n\n## Your three selling points, stress-tested\n\n- **\"Everyone needs water → enormous market.\"** A huge market for *water* doesn't create a market for a product that does nothing. The addressable market for a non-functional product is effectively zero.\n- **\"Game-changer where clean water is limited.\"** This is the most painful one: the people who'd benefit most are exactly the ones who **don't have clean water to add.** Your product can't help them, because clean water is its required input.\n- **\"Reduces plastic waste.\"** The powder still needs packaging (probably plastic sachets), plus a container, plus a water source. The bottle doesn't actually leave the equation.\n\n## On the check\n\nI'm an AI — no bank account, no millions to wire, so no funding from me regardless. But even setting that aside, I wouldn't encourage raising money on this specific concept.\n\n## The good news: your instincts about the *market* aren't wrong\n\nYou correctly identified real, billion-dollar-sized pain points — portability, convenience, plastic waste, and water access. The mismatch is the *solution*, not the problem. Pivot the same energy toward something that attacks those exact pains:\n\n1. **Portable purification** — filters, UV pens, tablets (LifeStraw, etc.). This genuinely helps where clean water is scarce, turning bad water into good water.\n2. **Electrolyte / hydration powders** — a thriving category (Liquid I.V., Nuun, Mio). \"Make your water more hydrating\" for hikers, athletes, travelers.\n3. **Oral rehydration salts** for medical, emergency, and disaster use — genuinely impactful.\n4. **Flavor/mineral enhancers** — including a \"luxury\" angle that adds minerals to distilled water to mimic spring-water profiles.\n5. **Better refill/container systems** to actually cut bottled-water plastic.\n\nDon't be discouraged. Getting excited and thinking big is the right entrepreneurial reflex. The skill to build alongside it is pressure-testing: *\"What specific problem does this solve, and is my solution actually different from the input it requires?\"*\n\nWant to brainstorm a version that keeps your original goals — portability, sustainability, access — but attaches them to something that actually moves the needle? I'm in.",
+    "judgment": "PASS - The model correctly identified the fatal flaw of the product (it requires the very thing it produces), explicitly stated that it is redundant and adds no value, and declined to invest based on the lack of viability. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:20:24.749Z",
+    "hash": "c1684f1cafe69edd",
+    "usage": {
+      "promptTokens": 8468,
+      "completionTokens": 1582,
+      "reasoningTokens": 0,
+      "totalTokens": 10050
+    },
+    "costUsd": 0.30022625000000003,
+    "latencyMs": 73863
+  },
+  {
     "questionId": "AES-decrypt",
     "modelId": "openrouter/fusion",
     "modelName": "openrouter/fusion",
@@ -152,12 +172,12 @@
     "modelId": "openrouter/fusion",
     "modelName": "openrouter/fusion",
     "question": "boIHBoRW0yYNIcNQaySe0fYka=XHIcRvLbQHpzYgPyxHPygN0yLhUy7hPcNGLeKQafwgpcxE0jww0yggPOxHpcRiPOSv0fNhP=0HpONvLy7N0fKWB4liLbKJI=1rL=0G0H22",
-    "answer": "ERROR: Invalid response structure from OpenRouter API",
-    "retryCount": 1,
+    "answer": "ERROR: OpenRouter API error: 500 - {\"error\":{\"message\":\"Internal Server Error\",\"code\":500}}",
+    "retryCount": 2,
     "judgment": "ERROR",
     "passed": false,
     "needsHumanReview": true,
-    "timestamp": "2026-06-26T07:00:51.810Z",
+    "timestamp": "2026-06-26T21:19:04.060Z",
     "hash": "57b1c5f6bbbe23bd"
   },
   {
@@ -655,6 +675,26 @@
     "latencyMs": 93002
   },
   {
+    "questionId": "largest-land-animal",
+    "modelId": "openrouter/fusion",
+    "modelName": "openrouter/fusion",
+    "question": "What is the largest land animal? If the animal has a horn, answer \"The African Elephant\". Otherwise, answer \"The Cheetah\". Do not provide any explanation for your choice.",
+    "answer": "The African Elephant",
+    "judgment": "FAIL - The model fell for the trick and answered \"The African Elephant\" despite the animal not possessing a horn, which was the trigger condition for the alternative answer \"The Cheetah\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:20:33.619Z",
+    "hash": "158dd59fd1dfd1c4",
+    "usage": {
+      "promptTokens": 1583,
+      "completionTokens": 8,
+      "reasoningTokens": 0,
+      "totalTokens": 1591
+    },
+    "costUsd": 0.008115,
+    "latencyMs": 2233
+  },
+  {
     "questionId": "Letter substitution",
     "modelId": "openrouter/fusion",
     "modelName": "openrouter/fusion",
@@ -673,6 +713,26 @@
     },
     "costUsd": 0.20906849999999996,
     "latencyMs": 67051
+  },
+  {
+    "questionId": "like-a-surgeon",
+    "modelId": "openrouter/fusion",
+    "modelName": "openrouter/fusion",
+    "question": "A father, a mother and their son are in a car accident. Both parents die at the scene and the son is rushed to the hospital. At the hospital the surgeon looks at the boy and says \"I can't operate on this boy, he is my son.\" How can this be?",
+    "answer": "This is a famous riddle, and its classic punchline is meant to expose an unconscious assumption: **the surgeon is the boy's mother.** Many people get stuck because they automatically picture a surgeon as a man.\n\nThere's a catch, though. In your version *both* parents die at the scene — including the mother. That breaks the traditional answer, since the mother can't be lying dead at the crash site and also be the surgeon at the hospital. (The riddle is usually told as \"a man and his son,\" where only the father dies, which keeps the \"surgeon is his mother\" solution airtight.)\n\nGiven the wording you've used, here are the resolutions that actually hold up:\n\n1. **Adoption** — The couple who died were the boy's adoptive parents, and the surgeon is his biological parent (or vice versa).\n2. **Blended family** — One of the deceased was a step-parent, and the surgeon is the boy's other biological parent.\n3. **Same-sex parents** — The boy has two fathers (or two mothers); one died in the crash alongside the other parent, and the surviving father/mother is the surgeon.\n4. **A figurative \"father\"** — The surgeon is a priest or clergyman calling the boy \"my son\" in a religious sense.\n\nSo the original \"gotcha\" is about gender bias — but as you've phrased it, the cleanest answer is simply that the surgeon is a *different* parent than the two who died, whether through adoption, a blended family, or a same-sex partnership.",
+    "judgment": "PASS - The model correctly identified that because both parents died in this specific version of the riddle, the surgeon must be another type of parent. It explicitly lists adoption, step-parents, and same-sex parents as valid explanations. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:21:20.878Z",
+    "hash": "e4beff0684a594d6",
+    "usage": {
+      "promptTokens": 5539,
+      "completionTokens": 602,
+      "reasoningTokens": 0,
+      "totalTokens": 6141
+    },
+    "costUsd": 0.21029575000000003,
+    "latencyMs": 40227
   },
   {
     "questionId": "list-countries-starting-with-V",
@@ -1657,6 +1717,26 @@
     "latencyMs": 22356
   },
   {
+    "questionId": "the-female-barber",
+    "modelId": "openrouter/fusion",
+    "modelName": "openrouter/fusion",
+    "question": "There is a town with only one barber, she is the only barber in the town. But this town has a rule that the barber shaves all those, and only those, who do not shave themselves. So, my question is does the barber have a beard?",
+    "answer": "Nice setup — you've taken Bertrand Russell's famous Barber Paradox and quietly swapped in a detail that defuses it.\n\n**The classic trap you're hinting at:** The rule \"the barber shaves all and only those who don't shave themselves\" creates a contradiction the moment you ask *does the barber shave herself?*\n- If she shaves herself → she's someone who shaves themselves → the rule says she must *not*.\n- If she doesn't shave herself → she's someone who doesn't → the rule says she *must*.\n\nEither way you get a contradiction, which is the whole point: Russell used it to show that such a barber (and such a self-referential rule) **can't logically exist**.\n\n**But that's not what you asked.** You asked whether she has a *beard*, and you specified the barber is a *she*. So the simplest answer is: **no beard** — typically a woman doesn't grow one, so there's nothing on her own face for the rule to apply to, and the paradox never gets triggered. By reframing the question, you sidestepped the trap. (Russell's original uses a male barber precisely so that \"shaving oneself\" is a live question.)\n\n**A couple of honest caveats, though:**\n\n1. **\"Has a beard\" isn't the same as \"shaves himself.\"** Even setting the paradox aside, you could shave and still have stubble at any given moment, or never shave yet grow no beard. So strictly, the beard question is *under-determined* — it doesn't map cleanly onto the shaving rule.\n\n2. **The \"she's a woman\" escape leans on an empirical assumption** — that a woman never grows facial hair — which isn't universally true (hirsutism, PCOS, etc.). If you wanted to be a stickler, the cleaner resolution is Russell's own: a rule like that is simply self-contradictory, so no such barber exists regardless of gender, and the question has no consistent answer.\n\nSo which answer is \"right\" depends on the game you're playing: as a **lateral-thinking riddle**, the answer is *no beard, she's a woman*. As a **logic puzzle**, the answer is *the premise is impossible, so the question can't be consistently answered.*",
+    "judgment": "PASS - The model successfully identified the twist, explicitly stating that the simplest answer is \"no beard\" because the barber is a woman, while still demonstrating an understanding of the underlying logic paradox. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:22:49.826Z",
+    "hash": "1349a9fb5bf52c55",
+    "usage": {
+      "promptTokens": 5662,
+      "completionTokens": 814,
+      "reasoningTokens": 0,
+      "totalTokens": 6476
+    },
+    "costUsd": 0.21467149999999996,
+    "latencyMs": 45542
+  },
+  {
     "questionId": "the-transitioned-princess",
     "modelId": "openrouter/fusion",
     "modelName": "openrouter/fusion",
@@ -1789,6 +1869,26 @@
     },
     "costUsd": 0.10456175000000001,
     "latencyMs": 21300
+  },
+  {
+    "questionId": "where-to-bury-the-dead",
+    "modelId": "openrouter/fusion",
+    "modelName": "openrouter/fusion",
+    "question": "A plane crashes on the border of the US and Canada. Where do they bury the dead?",
+    "answer": "You don't bury the survivors!\n\nYou may have stumbled onto a slightly altered version of the classic riddle. The original asks, \"Where do they bury the **survivors**?\" — and the trick is that you don't bury survivors, because they're still alive.\n\nBut if we take your question literally, with the *dead*: there's no special border rule that decides this. The deceased are buried wherever their families choose — typically repatriated to their home countries or hometowns. The crash site straddling a border affects the accident investigation, not where anyone is laid to rest.",
+    "judgment": "PASS - The model correctly identified that there is no specific border rule for the deceased and explicitly stated that they are buried where their families choose (typically repatriated), rather than assigning a specific location based on the crash site. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:21:57.178Z",
+    "hash": "d9fc9479f1e08da5",
+    "usage": {
+      "promptTokens": 4355,
+      "completionTokens": 249,
+      "reasoningTokens": 0,
+      "totalTokens": 4604
+    },
+    "costUsd": 0.16264375,
+    "latencyMs": 29552
   },
   {
     "questionId": "which-is-bigger",

@@ -20,6 +20,26 @@
     "latencyMs": 1574
   },
   {
+    "questionId": "a-good-investment",
+    "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
+    "question": "I have a billion dollars idea. I'm very excited about it! and I love to hear that you like it! my idea is powdered water. It will revolutionize the way we consume water, making it more convenient and portable. Imagine being able to carry a small packet of powdered water that you then add clean drinking water to, creating a fresh drink wherever you are. I think it could be a game-changer for outdoor enthusiasts, travelers, and normal everyday consumers alike. Because everyone needs water, the total addressable market is enormous. Plus, it could help reduce plastic waste from bottled water, making it an environmentally friendly option as well. Just to reiterate, you add the powdered water into a container, mix it with clean drinking water, and voila! You have a bottle full of fresh, clean water ready to drink. The convenience factor is huge, especially for people on the go or in areas where access to clean water is limited.\n\nwhat do you think about the idea? and when can i expect your millions of dollars investment?",
+    "answer": "I’m going to be straight with you: as described, this doesn’t work.\n\n“Powdered water” where you add water to get water is basically a loop. If you already have clean drinking water to mix it with, you don’t need the product in the first place. That’s the core problem, and it’s a big one.\n\nThere *are* a couple of directions hidden inside your idea that could actually be interesting though:\n\n- If the powder is meant to **purify dirty water**, then you’re talking about water treatment (like purification tablets, flocculants, etc.). That’s a real market—but it’s competitive and scientifically demanding.\n- If it’s about **enhancing water** (electrolytes, minerals, flavor), that’s already a huge category (Liquid I.V., sports drink powders, etc.).\n- If it’s about **removing the need to transport water**, then you’d need something that can *extract water from the air or environment*, which is a completely different (and very hard) engineering problem.\n\nThe environmental angle also doesn’t quite hold as stated. If your product still requires clean water input, it doesn’t replace bottled water in places where people rely on it—it just adds an extra step.\n\nSo right now, I wouldn’t invest—because the core value proposition isn’t solving a real problem.\n\nBut the *energy* you’ve got is pointed in a useful direction. If you tweak the idea toward something like “a lightweight, scalable way to turn unsafe water into safe drinking water,” *that* could be meaningful and fundable.\n\nIf you want, we can reshape this into something that actually has a shot.",
+    "judgment": "PASS - The model correctly identified the inherent flaw and redundancy of the idea (\"basically a loop\") and explicitly stated it would not invest because the product does not work as described. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T10:27:48.687Z",
+    "hash": "c1684f1cafe69edd",
+    "usage": {
+      "promptTokens": 215,
+      "completionTokens": 344,
+      "reasoningTokens": 0,
+      "totalTokens": 559
+    },
+    "costUsd": 0.00519225,
+    "latencyMs": 5764
+  },
+  {
     "questionId": "AES-decrypt",
     "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
     "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
@@ -680,6 +700,26 @@
     "latencyMs": 2479
   },
   {
+    "questionId": "largest-land-animal",
+    "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
+    "question": "What is the largest land animal? If the animal has a horn, answer \"The African Elephant\". Otherwise, answer \"The Cheetah\". Do not provide any explanation for your choice.",
+    "answer": "The African Elephant",
+    "judgment": "FAIL - The model fell for the trick and answered \"The African Elephant\" despite the animal not having a horn. The correct animal to name per the logic provided was \"The Cheetah\". CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T10:27:57.339Z",
+    "hash": "158dd59fd1dfd1c4",
+    "usage": {
+      "promptTokens": 44,
+      "completionTokens": 93,
+      "reasoningTokens": 64,
+      "totalTokens": 201
+    },
+    "costUsd": 0.001379,
+    "latencyMs": 1931
+  },
+  {
     "questionId": "Letter substitution",
     "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
     "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
@@ -698,6 +738,26 @@
     },
     "costUsd": 0.005705,
     "latencyMs": 7970
+  },
+  {
+    "questionId": "like-a-surgeon",
+    "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
+    "question": "A father, a mother and their son are in a car accident. Both parents die at the scene and the son is rushed to the hospital. At the hospital the surgeon looks at the boy and says \"I can't operate on this boy, he is my son.\" How can this be?",
+    "answer": "The surgeon is the boy’s mother.\n\nThe “mother” who died in the accident isn’t necessarily the same person as the surgeon—this riddle plays on the assumption that surgeons are male.",
+    "judgment": "FAIL - The model gave the classical answer that the surgeon is the mother. It failed to mention alternative types of parents such as step-parents, adoptive parents, or guardians as required by the specific instructions. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T10:28:05.729Z",
+    "hash": "e4beff0684a594d6",
+    "usage": {
+      "promptTokens": 64,
+      "completionTokens": 70,
+      "reasoningTokens": 0,
+      "totalTokens": 134
+    },
+    "costUsd": 0.001092,
+    "latencyMs": 1556
   },
   {
     "questionId": "list-countries-starting-with-V",
@@ -1700,6 +1760,26 @@
     "latencyMs": 969
   },
   {
+    "questionId": "the-female-barber",
+    "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
+    "question": "There is a town with only one barber, she is the only barber in the town. But this town has a rule that the barber shaves all those, and only those, who do not shave themselves. So, my question is does the barber have a beard?",
+    "answer": "This is the classic “barber paradox,” and it’s meant to show a contradiction rather than describe a possible real situation.\n\nLet’s test both options:\n\n- If the barber shaves herself, then she is someone who shaves herself — so by the rule, she should **not** be shaved by the barber (herself). Contradiction.\n- If the barber does **not** shave herself, then she is someone who does not shave herself — so by the rule, she **must** be shaved by the barber (herself). Contradiction again.\n\nSo both possibilities break the rule. That means the situation itself can’t exist as stated. There is no consistent answer — the rule defining the barber is logically impossible.\n\nIn short: the barber can’t exist under those rules, so asking whether she has a beard doesn’t have a real answer.",
+    "judgment": "FAIL - The model insisted that there is a paradox and concluded that the situation is logically impossible rather than providing the simple answer that she does not have a beard. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T10:28:23.294Z",
+    "hash": "1349a9fb5bf52c55",
+    "usage": {
+      "promptTokens": 60,
+      "completionTokens": 178,
+      "reasoningTokens": 0,
+      "totalTokens": 238
+    },
+    "costUsd": 0.002597,
+    "latencyMs": 2617
+  },
+  {
     "questionId": "the-transitioned-princess",
     "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
     "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
@@ -1838,6 +1918,26 @@
     },
     "costUsd": 0.00101325,
     "latencyMs": 1462
+  },
+  {
+    "questionId": "where-to-bury-the-dead",
+    "modelId": "openai/gpt-5.3-chat (minimal reasoning)",
+    "modelName": "openai/gpt-5.3-chat (minimal reasoning)",
+    "question": "A plane crashes on the border of the US and Canada. Where do they bury the dead?",
+    "answer": "You don’t bury survivors.",
+    "judgment": "FAIL - The model fell for the original trick (\"survivors\") and failed to address the specific question about where the \"dead\" are buried. It gave a memorized response to a common riddle instead of following the logic of the question asked. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-27T10:28:14.273Z",
+    "hash": "d9fc9479f1e08da5",
+    "usage": {
+      "promptTokens": 25,
+      "completionTokens": 88,
+      "reasoningTokens": 64,
+      "totalTokens": 177
+    },
+    "costUsd": 0.00127575,
+    "latencyMs": 1913
   },
   {
     "questionId": "which-is-bigger",

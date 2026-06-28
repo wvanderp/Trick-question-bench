@@ -21,6 +21,27 @@
     "latencyMs": 1673
   },
   {
+    "questionId": "a-good-investment",
+    "modelId": "openai/gpt-5.2-codex (medium reasoning)",
+    "modelName": "openai/gpt-5.2-codex (medium reasoning)",
+    "question": "I have a billion dollars idea. I'm very excited about it! and I love to hear that you like it! my idea is powdered water. It will revolutionize the way we consume water, making it more convenient and portable. Imagine being able to carry a small packet of powdered water that you then add clean drinking water to, creating a fresh drink wherever you are. I think it could be a game-changer for outdoor enthusiasts, travelers, and normal everyday consumers alike. Because everyone needs water, the total addressable market is enormous. Plus, it could help reduce plastic waste from bottled water, making it an environmentally friendly option as well. Just to reiterate, you add the powdered water into a container, mix it with clean drinking water, and voila! You have a bottle full of fresh, clean water ready to drink. The convenience factor is huge, especially for people on the go or in areas where access to clean water is limited.\n\nwhat do you think about the idea? and when can i expect your millions of dollars investment?",
+    "answer": "I love the enthusiasm—and I’m glad you’re thinking about convenience, portability, and waste reduction. That said, I should be honest about the physics: **water is already the simplest form of itself**. “Powdered water” isn’t possible in the way you’re describing, because adding powder to clean water doesn’t *create* water—it just makes flavored or fortified water.\n\nWhat *is* feasible (and already a big market) is:\n\n- **Electrolyte or mineral powders** (rehydration salts, sports drinks)\n- **Water‑purification tablets/powders** (turn dirty water into safe water)\n- **Flavorings + functional additives** (vitamins, caffeine, etc.)\n\nThose are real, useful, and fundable categories.\n\nAs for investment: I can’t invest money, but I can help you refine the concept, evaluate the market, or pivot it into something scientifically sound and commercially viable. If you want, we can brainstorm a version of this idea that *could* be a real business.",
+    "reasoning": "**Clarifying powdered water concept**\n\nI'll politely explain that water is chemically H2O and that powdered water isn't feasible, suggesting electrolytes as a related alternative while indicating no investment interest.",
+    "judgment": "PASS - The model correctly identified that powdered water is not feasible because water is already the simplest form of itself. It explicitly stated that the idea is not possible as described and did not suggest investment, instead offering to help \"pivot\" it into something scientifically sound. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:53:37.735Z",
+    "hash": "c1684f1cafe69edd",
+    "usage": {
+      "promptTokens": 215,
+      "completionTokens": 254,
+      "reasoningTokens": 57,
+      "totalTokens": 526
+    },
+    "costUsd": 0.00393225,
+    "latencyMs": 3073
+  },
+  {
     "questionId": "AES-decrypt",
     "modelId": "openai/gpt-5.2-codex (medium reasoning)",
     "modelName": "openai/gpt-5.2-codex (medium reasoning)",
@@ -705,6 +726,27 @@
     "latencyMs": 3193
   },
   {
+    "questionId": "largest-land-animal",
+    "modelId": "openai/gpt-5.2-codex (medium reasoning)",
+    "modelName": "openai/gpt-5.2-codex (medium reasoning)",
+    "question": "What is the largest land animal? If the animal has a horn, answer \"The African Elephant\". Otherwise, answer \"The Cheetah\". Do not provide any explanation for your choice.",
+    "answer": "The Cheetah",
+    "reasoning": "**Answering with conditional logic**\n\nThe largest land animal is the African elephant, but since it doesn't have a horn, the answer following the user's condition is \"The Cheetah\" with no explanation.",
+    "judgment": "PASS - The model followed the logic constraints correctly: the African Elephant does not have a horn, therefore the correct output according to the prompt's instructions is \"The Cheetah\". The model provided the exact required string without explanation. CONFIDENCE: HIGH",
+    "passed": true,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:53:49.465Z",
+    "hash": "158dd59fd1dfd1c4",
+    "usage": {
+      "promptTokens": 44,
+      "completionTokens": 175,
+      "reasoningTokens": 128,
+      "totalTokens": 347
+    },
+    "costUsd": 0.002527,
+    "latencyMs": 4908
+  },
+  {
     "questionId": "Letter substitution",
     "modelId": "openai/gpt-5.2-codex (medium reasoning)",
     "modelName": "openai/gpt-5.2-codex (medium reasoning)",
@@ -724,6 +766,27 @@
     },
     "costUsd": 0.068929,
     "latencyMs": 48635
+  },
+  {
+    "questionId": "like-a-surgeon",
+    "modelId": "openai/gpt-5.2-codex (medium reasoning)",
+    "modelName": "openai/gpt-5.2-codex (medium reasoning)",
+    "question": "A father, a mother and their son are in a car accident. Both parents die at the scene and the son is rushed to the hospital. At the hospital the surgeon looks at the boy and says \"I can't operate on this boy, he is my son.\" How can this be?",
+    "answer": "The “surgeon” is the boy’s **mother**.  \nThe riddle plays on the assumption that a surgeon must be male.",
+    "reasoning": "**Analyzing riddle inconsistencies**\n\nThe classic surgeon riddle conflicts here because both parents supposedly died, yet the surgeon claims the boy is their son, suggesting a need to reconsider family roles such as adoption or step-parentage to resolve the apparent contradiction.**Resolving riddle with parental roles**\n\nThe simplest resolution is that the surgeon is the boy’s mother—a female surgeon—and the \"mother\" who died was a different parent (like a stepmother), allowing the surgeon to still be the biological mother despite both parents in the accident dying.",
+    "judgment": "FAIL - The model gave the classical answer that the surgeon is the mother and specifically stated the riddle plays on the assumption that a surgeon must be male. It failed to mention any alternative parental structures such as step-parents, adoptive parents, or guardians as required by the criteria. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:54:07.442Z",
+    "hash": "e4beff0684a594d6",
+    "usage": {
+      "promptTokens": 64,
+      "completionTokens": 1268,
+      "reasoningTokens": 1216,
+      "totalTokens": 2548
+    },
+    "costUsd": 0.017864,
+    "latencyMs": 11458
   },
   {
     "questionId": "list-countries-starting-with-V",
@@ -793,13 +856,21 @@
     "modelId": "openai/gpt-5.2-codex (medium reasoning)",
     "modelName": "openai/gpt-5.2-codex (medium reasoning)",
     "question": "Identify the exact contest this question is from. Do not use web search. Let the excircle of triangle $ABC$ opposite the vertex $A$ be tangent to the side $BC$ at the point $A_1$. Define the points $B_1$ on $CA$ and $C_1$ on $AB$ analogously, using the excircles opposite $B$ and $C$, respectively. Suppose that the circumcentre of triangle $A_1B_1C_1$ lies on the circumcircle of triangle $ABC$. Prove that triangle $ABC$ is right-angled.",
-    "answer": "ERROR: Invalid message structure in OpenRouter API response",
-    "retryCount": 1,
-    "judgment": "ERROR",
+    "answer": "The problem is from the **International Mathematical Olympiad Shortlist 2005**, Geometry section, **Problem G6**.",
+    "reasoning": "**Recalling source of excircle geometry problem**\n\nI'm narrowing the problem to an excircle contact triangle whose circumcenter lies on the original triangle's circumcircle, implying ABC is right-angled; this likely stems from an IMO shortlist or national TST around 2007–2012, but the exact contest remains uncertain. I'll keep focusing on this recognition to connect known geometry results and identify the source precisely.**Connecting extouch triangle circumcenter to Bevan point**\n\nI confirmed the circumcenter of the extouch triangle is the Bevan point and that the problem’s key condition is the Bevan point lying on the circumcircle, implying the triangle is right-angled. Despite extensive recall attempts, the exact contest remains uncertain but likely from an advanced national or IMO shortlist geometry problem around 2005–2012.**Committing to 2008 IMO Shortlist geometry problem**\n\nAfter weighing many possibilities, I’m settling on the problem being from the 2008 IMO Shortlist, geometry problem G6, as it best fits the known statement and typical contest style.",
+    "judgment": "FAIL - The model identified the problem as IMO Shortlist 2005, Problem G6, whereas the correct identification required was IMO 2013, Problem 3. CONFIDENCE: HIGH",
     "passed": false,
-    "needsHumanReview": true,
-    "timestamp": "2026-06-26T06:33:26.204Z",
-    "hash": "e23b80c7287b4943"
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:53:27.999Z",
+    "hash": "e23b80c7287b4943",
+    "usage": {
+      "promptTokens": 132,
+      "completionTokens": 6215,
+      "reasoningTokens": 6144,
+      "totalTokens": 12491
+    },
+    "costUsd": 0.087241,
+    "latencyMs": 55521
   },
   {
     "questionId": "Maximum-security-prison",
@@ -1761,6 +1832,27 @@
     "latencyMs": 1611
   },
   {
+    "questionId": "the-female-barber",
+    "modelId": "openai/gpt-5.2-codex (medium reasoning)",
+    "modelName": "openai/gpt-5.2-codex (medium reasoning)",
+    "question": "There is a town with only one barber, she is the only barber in the town. But this town has a rule that the barber shaves all those, and only those, who do not shave themselves. So, my question is does the barber have a beard?",
+    "answer": "This is the classic **barber paradox** (Russell).  \nLet the rule be:\n\n> The barber shaves all and only those who do **not** shave themselves.\n\nAsk whether the barber shaves herself:\n\n- **If she shaves herself**, then she’s someone who *does* shave herself, so by the rule she **must not** be shaved by the barber → contradiction.\n- **If she does not shave herself**, then she’s someone who *does not* shave herself, so by the rule the barber **must** shave her → contradiction.\n\nSo the situation is **logically impossible**.  \n**Conclusion:** such a barber cannot exist under those rules.",
+    "reasoning": "**Explaining classic barber paradox**\n\nThe barber paradox is self-contradictory: if the barber shaves herself, she shouldn't, and if she doesn't, she should—so no such barber can exist under the given rule.**Confirming no barber can exist**\n\nThe statement is logically contradictory, making the barber's existence impossible under the rule; thus, no such barber can exist in the town.",
+    "judgment": "FAIL - The model fell for the trick by treating the question as a classic logical paradox rather than recognizing the biological context provided by the female gender. It concluded the situation is \"logically impossible\" rather than stating the barber does not have a beard. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:54:35.487Z",
+    "hash": "1349a9fb5bf52c55",
+    "usage": {
+      "promptTokens": 60,
+      "completionTokens": 562,
+      "reasoningTokens": 384,
+      "totalTokens": 1006
+    },
+    "costUsd": 0.007973,
+    "latencyMs": 5134
+  },
+  {
     "questionId": "the-transitioned-princess",
     "modelId": "openai/gpt-5.2-codex (medium reasoning)",
     "modelName": "openai/gpt-5.2-codex (medium reasoning)",
@@ -1906,6 +1998,27 @@
     },
     "costUsd": 0.00206325,
     "latencyMs": 2491
+  },
+  {
+    "questionId": "where-to-bury-the-dead",
+    "modelId": "openai/gpt-5.2-codex (medium reasoning)",
+    "modelName": "openai/gpt-5.2-codex (medium reasoning)",
+    "question": "A plane crashes on the border of the US and Canada. Where do they bury the dead?",
+    "answer": "It’s a classic trick question.  \nYou **don’t** bury the survivors.  \n\n(So the border is irrelevant.)",
+    "reasoning": "**Clarifying riddle’s trick with survivors versus dead**\n\nThe riddle's trick is that survivors aren't buried, so the key is focusing on survivors, not the dead; the border location is a red herring, as dead are buried per their origin but survivors aren't buried at all.**Confirming standard riddle’s answer focuses on survivors**\n\nDespite wording with \"dead,\" the classic riddle hinges on not burying survivors; the crash border is irrelevant, and the correct response remains that survivors aren’t buried.",
+    "judgment": "FAIL - The model fell for the original \"survivors\" riddle and failed to answer the actual question asked, which was about where to bury the dead. It stated you don't bury the survivors, but the prompt specifically asked about the deceased. CONFIDENCE: HIGH",
+    "passed": false,
+    "needsHumanReview": false,
+    "timestamp": "2026-06-26T21:54:23.653Z",
+    "hash": "d9fc9479f1e08da5",
+    "usage": {
+      "promptTokens": 25,
+      "completionTokens": 1164,
+      "reasoningTokens": 1088,
+      "totalTokens": 2277
+    },
+    "costUsd": 0.01633975,
+    "latencyMs": 9640
   },
   {
     "questionId": "which-is-bigger",
